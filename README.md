@@ -1,47 +1,56 @@
 # Personal React + TypeScript Playground
 
-독립적인 React 실험과 검증 결과를 모아두는 저장소입니다. 첫 실험은 하나의 운영 대시보드에 브랜드 테마를 적용하는 네 가지 방식을 비교합니다.
+GitHub의 기본 브랜치에는 브랜드 테마 실험의 초기 상태가 있습니다. 아래 구조와 실행 절차는 세 실험을 함께 볼 수 있는 [통합 브랜치](https://github.com/callu9/personal-playground-react-ts/tree/feature/jonbeo-msw-performance)를 기준으로 설명합니다.
 
-## 실행
+## 프로젝트 개요
 
-Node.js 24와 Google Chrome을 사용했습니다.
+React와 TypeScript로 서로 다른 프론트엔드 질문을 작은 단위로 실험하는 저장소입니다. 후보마다 같은 화면과 데이터를 사용해 **구현·수정에 드는 시간, 코드 복잡도, 브라우저·서버 비용**을 비교합니다. 어떤 조건에서 무엇을 선택할지와 그 판단의 근거를 실험별 보고서에 남깁니다.
+
+현재 주제는 브랜드 테마 주입, 대시보드 실시간 갱신, Jonbeo의 MSW 초기화와 입력 반응입니다. React·TypeScript·Vite 의존성은 하나의 npm 패키지에서 관리하며, 실험마다 독립 진입점을 둡니다. 브라우저 검증은 Chrome과 Playwright로 실행합니다.
+
+[폴더 구조](#폴더-구조) · [따르는 지침](#따르는-지침) · [로컬 실행](#로컬-실행) · [실험 목록](#실험)
+
+## 폴더 구조
+
+| 경로 | 역할 |
+|---|---|
+| [`experiments/<실험명>/`](https://github.com/callu9/personal-playground-react-ts/tree/feature/jonbeo-msw-performance/experiments) | 실험별 화면, 스타일 진입점과 비교 구현 |
+| [`experiments/shared/`](https://github.com/callu9/personal-playground-react-ts/tree/feature/jonbeo-msw-performance/experiments/shared) | 화면 골격, 실험 이동, 문서 링크 |
+| [`docs/experiments/<실험명>/`](https://github.com/callu9/personal-playground-react-ts/tree/feature/jonbeo-msw-performance/docs/experiments) | `README.md`에 비교 설계와 재현 절차, `results.md`에 판단과 측정값, `evidence/`에 측정 원본 |
+| [`scripts/`](https://github.com/callu9/personal-playground-react-ts/tree/feature/jonbeo-msw-performance/scripts) | 측정 자동화와 원본 프로젝트 재현 |
+| [`tests/`](https://github.com/callu9/personal-playground-react-ts/tree/feature/jonbeo-msw-performance/tests) | 화면 동작, 실험 간 격리, 문서 연결 검증 |
+| [`screenshots/`](https://github.com/callu9/personal-playground-react-ts/tree/feature/jonbeo-msw-performance/screenshots) | 실험 지침에서 인용하는 화면 캡처 |
+
+## 따르는 지침
+
+- **실험 격리.** 실험마다 HTML 진입점과 스타일 범위를 둡니다. 함께 쓰는 UI·토큰·데이터가 비교에 영향을 주면 실험 지침에 기록합니다.
+- **같은 조건에서 비교.** 후보가 같은 화면과 데이터로 동작하게 하고, 바꾸는 조건과 관측 지표를 먼저 정합니다. 구현·수정 시간, 브라우저 반영 시간, 검증 완료 시간은 각각 기록합니다.
+- **검증 근거 남기기.** 실행 환경, 반복 횟수, 단위와 원본 경로를 결과에 붙입니다. 로컬 모의 실험, 원본 프로젝트 재현, 운영 관측을 구분하고 측정하지 않은 값은 미측정으로 표시합니다.
+- **화면과 문서를 함께 갱신.** 각 실험의 화면에서 지침·보고서·측정 원본을 열 수 있게 하고, 문서에서 관련 Playground로 돌아갈 수 있게 합니다.
+
+[프로젝트 공통 지침 전문](https://github.com/callu9/personal-playground-react-ts/blob/feature/jonbeo-msw-performance/AGENTS.md) · [실험 문서 목차](https://github.com/callu9/personal-playground-react-ts/blob/feature/jonbeo-msw-performance/docs/experiments/README.md)
+
+## 로컬 실행
+
+세 실험이 있는 [통합 브랜치](https://github.com/callu9/personal-playground-react-ts/tree/feature/jonbeo-msw-performance)에서 Node.js 24와 Google Chrome으로 실행합니다. 처음 내려받을 때는 다음 명령을 사용합니다.
 
 ```sh
+git clone --branch feature/jonbeo-msw-performance https://github.com/callu9/personal-playground-react-ts.git
+cd personal-playground-react-ts
 npm ci
-npm run dev
+npm run dev -- --host 127.0.0.1 --port 5173 --strictPort
 ```
 
-Vite가 출력한 로컬 주소를 열고 구현을 선택한 뒤, 화면 우측 상단의 **Demo account**에서 Grove, Signal, Ember를 선택합니다. 계정은 이 탭에서 새로고침 후에도 유지되며, **Signed out**을 선택하면 환경 변수로 설정한 브랜드로 돌아갑니다.
+[React playground](http://127.0.0.1:5173/)에서 실험을 선택합니다. 다른 포트를 사용하면 문서의 화면 링크에 적힌 경로를 해당 서버 주소에 붙입니다.
 
-환경 변수는 `.env.example`을 참고해 `.env.local`에 `VITE_DEFAULT_BRAND=signal` 등으로 설정합니다. 공통 우선순위는 **데모 계정 브랜드 → 유효한 환경 변수 → Grove**입니다. 프로덕션의 env 기본값을 바꾸려면 다시 빌드합니다.
+전체 Chrome 검증은 `npm test`, 프로덕션 빌드는 `npm run build`로 실행합니다. 실험별 계측 명령은 아래 지침에 있습니다.
 
-페이지 배경은 Grove가 공통 기본값을 쓰고, Signal과 Ember는 각각 지정한 색을 씁니다. 상단의 **Page background**에서 기본값과 브랜드 지정값을 구분할 수 있습니다.
+## 실험
 
-## 브랜드 테마 화면
+| 실험 | 로컬 Playground | 실험 지침 | 결과 보고서 |
+|---|---|---|---|
+| 브랜드 테마 | [Brand style runtime](http://127.0.0.1:5173/experiments/brand-theme/#playground) | [설계·실행·화면 캡처](https://github.com/callu9/personal-playground-react-ts/blob/feature/jonbeo-msw-performance/docs/experiments/brand-theme/README.md) | [후보 비교와 추천](https://github.com/callu9/personal-playground-react-ts/blob/feature/jonbeo-msw-performance/docs/experiments/brand-theme/results.md) |
+| 대시보드 실시간 갱신 | [Dashboard auto refresh](http://127.0.0.1:5173/experiments/dashboard-refresh/#playground) | [조건과 계측 방법](https://github.com/callu9/personal-playground-react-ts/blob/feature/jonbeo-msw-performance/docs/experiments/dashboard-refresh/README.md) | [폴링·SSE 비교와 사용 목적별 선택](https://github.com/callu9/personal-playground-react-ts/blob/feature/jonbeo-msw-performance/docs/experiments/dashboard-refresh/results.md) |
+| Jonbeo MSW | [Jonbeo MSW performance](http://127.0.0.1:5173/experiments/jonbeo-msw/#playground) | [Playground·원본 재현 방법](https://github.com/callu9/personal-playground-react-ts/blob/feature/jonbeo-msw-performance/docs/experiments/jonbeo-msw/README.md) | [코드 분석과 Chrome 측정](https://github.com/callu9/personal-playground-react-ts/blob/feature/jonbeo-msw-performance/docs/experiments/jonbeo-msw/results.md) |
 
-CSS Modules 대시보드에서 배경색, 강조색, 글꼴이 브랜드마다 어떻게 달라지는지 한눈에 비교할 수 있습니다. 이미지를 누르면 원본을 볼 수 있습니다.
-
-| Grove · 공통 배경 | Signal · 브랜드 배경 | Ember · 브랜드 배경 |
-|---|---|---|
-| [![공통 배경의 Grove 대시보드](screenshots/grove.jpg)](screenshots/grove.jpg) | [![블루 바이올렛 배경의 Signal 대시보드](screenshots/signal.jpg)](screenshots/signal.jpg) | [![피치 배경의 Ember 대시보드](screenshots/ember.jpg)](screenshots/ember.jpg) |
-
-## 검증 및 측정
-
-```sh
-npm test
-npm run build
-npm run measure
-```
-
-테스트는 설치된 Chrome을 새 테스트 컨텍스트로 실행합니다. 측정 명령은 `dist`를 사용해 `test-results/theme-benchmark.json`과 후보별 대시보드 캡처를 저장합니다.
-
-## 구조
-
-- `experiments/brand-theme/shared/design-system/tokens.ts`가 공통 디자인 토큰, `brands.ts`가 브랜드별 오버라이드, `theme.ts`가 최종 테마와 CSS 변수 매핑을 정의합니다.
-- 대시보드는 계정과 env로 브랜드를 결정한 뒤 같은 최종 테마를 네 후보에 전달합니다. 공통값을 바꿀 때는 `tokens.ts`, 특정 브랜드 색상·글꼴만 바꿀 때는 디자인 시스템의 `brands.ts`를 수정합니다.
-- 실험의 각 후보는 자체 HTML과 스타일 진입점이 있습니다. Tailwind와 shadcn/ui는 유틸리티 정의를 공유하면서도 각각의 HTML에서 스타일을 로드합니다.
-- 새 주제는 `experiments/<주제>/`에 자체 진입점을 둡니다. 현재 의존성은 하나의 npm 패키지에서 관리합니다.
-
-## 실험 기록
-
-[실험별 구현 시간·복잡도·트레이드오프](docs/experiments/README.md)
+[실험 문서 목차](https://github.com/callu9/personal-playground-react-ts/blob/feature/jonbeo-msw-performance/docs/experiments/README.md)에는 실험의 핵심 화면과 측정 원본이 연결돼 있습니다.
