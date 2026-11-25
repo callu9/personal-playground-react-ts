@@ -7,7 +7,7 @@
 | 실험 | 문제 | 확인한 결과 | 로컬 화면 경로 | 기준 측정 |
 |---|---|---|---|---|
 | 브랜드 테마 | 공통 디자인 토큰을 유지하면서 계정별 색상·글꼴·배경을 바꿀 때 수정 비용과 브라우저 비용이 얼마나 드는가? | CSS Modules와 styled-components는 모달 토큰 연결을 각각 1곳, Tailwind 계열은 2곳 수정했습니다. styled-components는 새 브랜드를 처음 적용할 때 CSS 규칙 73개를 더 만들었고, 후보별 빌드 시간 범위는 겹쳤습니다. [브랜드 테마 결과](docs/experiments/brand-theme/results.md) | `/experiments/brand-theme/` | `npm run measure` |
-| 대시보드 결과 자동 조회 | 폴링 요청을 줄일 때 완료 표시는 얼마나 늦어지고, 중간 상태는 얼마나 누락되는가? | 정상에서 고정 1초 → 3초로 늘리면 평균 요청은 작업당 14.0 → 5.7건, 완료 p95는 524 → 2,105ms였습니다. SSE 반영 p95는 75ms였고 누락은 없었습니다. [자동 조회 결과](docs/experiments/dashboard-refresh/results.md) | `/experiments/dashboard-refresh/` | `npm run measure:refresh` |
+| 대시보드 실시간 갱신 | 지표가 계속 변할 때 요청을 줄이면 화면이 최신 상태보다 얼마나 뒤처지는가? | 정상 시 고정 3초는 20.6건/분/탭이었고, SSE의 집중 갱신 반영 p95는 70ms였습니다. [실시간 갱신 결과](docs/experiments/dashboard-refresh/results.md) | `/experiments/dashboard-refresh/` | `npm run measure:refresh` |
 | Jonbeo MSW | 워커 준비 대기가 초기 화면과 로딩 후 클릭 반응에 각각 어떤 영향을 주는가? | 원본 개발 서버에서 워커 대기를 제거하자 제목 DOM 등장이 6.44초 → 0.34초로 줄었습니다. 로딩 후 INP 개선은 확인되지 않았고, 가장 오래 걸린 구간은 클릭 이벤트 처리였습니다. [Jonbeo MSW 결과](docs/experiments/jonbeo-msw/results.md) | `/experiments/jonbeo-msw/` | `npm run measure:msw` |
 
 세 실험의 자료와 공통 기록 기준은 [실험 문서](docs/experiments/README.md)에서 볼 수 있습니다.
@@ -26,7 +26,7 @@ Vite가 출력한 주소에서 실험을 선택합니다. 위 표의 경로를 �
 각 실험의 상단에 **문제 · 확인한 결과 · 판단**이 나옵니다. 이어서 **선택지 → Playground → 결론 → 검증 결과** 순서로 볼 수 있으며, 상단에서 각 섹션과 다른 실험으로 이동할 수 있습니다.
 
 - **Brand style runtime**에서 후보별 주입 코드를 비교합니다. 페이지 안의 CSS Modules 대시보드 또는 **Playground 전체 화면 열기**에서 **Demo account**를 바꿔 Grove, Signal, Ember를 전환할 수 있습니다. **Signed out**을 고르면 기본 브랜드가 적용됩니다.
-- **Dashboard auto refresh**에서 **Update method**는 작업을 가져오는 방식, **Next run scenario**는 다음 작업의 서버 전달 조건을 고릅니다. 시나리오를 바꾸면 기존 측정표가 갱신되고, **Start run**을 누르면 별도로 실제 관측 목록을 볼 수 있습니다.
+- **Dashboard auto refresh**는 브랜드 테마 실험의 **Operations overview**를 재사용합니다. 같은 카드, 차트, 표가 서버 스냅샷에 맞춰 갱신됩니다. **Update method**는 같은 피드의 조회 방식, **Delivery scenario**는 새 피드의 서버 전달 조건을 바꿉니다.
 - **Jonbeo MSW performance**의 **원본 코드 분석**에서 `MSWComponent`의 렌더링 조건, 서버의 데이터 경로, 통화 전환 코드를 확인합니다. **Playground**의 **Request path**와 **Initial rendering**은 같은 합성 응답으로 초기화·렌더링을 비교하는 별도 실험입니다.
 
 ## 브랜드 테마 화면

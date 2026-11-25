@@ -21,3 +21,11 @@ export const activity = [
   { day: 'Sun', value: 196 }, { day: 'Mon', value: 177 }, { day: 'Tue', value: 219 },
   { day: 'Wed', value: 266 },
 ]
+
+export interface DashboardData {
+  metrics: readonly { label: string; value: string; note: string }[]
+  activity: readonly { day: string; value: number }[]
+  results: readonly (typeof results)[number][]
+}
+
+export const dashboardFixture: DashboardData = { metrics, activity, results }

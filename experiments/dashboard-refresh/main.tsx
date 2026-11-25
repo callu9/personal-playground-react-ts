@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
+import { classes, ThemeProvider } from '../brand-theme/css-modules/theme'
+import { Dashboard as OperationsDashboard } from '../brand-theme/shared/dashboard'
 import { ExperimentPage, ExperimentSection, ExperimentWorkbench } from '../shared/ExperimentPage'
 import {
-  apiPath, dashboardPath, methodLabels, pollingIntervals, runPath, scenarioLabels,
-  type Connection, type Method, type PollInterval, type Run, type Scenario, type Snapshot,
+  apiPath, dashboardPath, feedPath, methodLabels, pollingIntervals, scenarioLabels,
+  type Connection, type Feed, type Method, type PollInterval, type Scenario, type Snapshot,
 } from './contract'
 import { transports } from './transports'
-import { RefreshConclusion, RefreshOptions, Results, RunSettingsHelp } from './Results'
+import { RefreshConclusion, RefreshOptions, Results, RefreshSummary } from './Results'
 import styles from './dashboard.module.css'
 
 function initialSettings() {
@@ -17,87 +19,63 @@ function initialSettings() {
     method: method && Object.hasOwn(methodLabels, method) ? method as Method : 'fixed' as const,
     scenario: scenario && Object.hasOwn(scenarioLabels, scenario) ? scenario as Scenario : 'normal' as const,
     interval: pollingIntervals.find((value) => value === Number(query.get('interval'))) ?? 3_000,
-    run: query.get('run'),
+    feed: query.get('feed'),
   }
 }
 
-function monitorUrl(run: string, method: Method, interval: PollInterval, scenario: Scenario) {
-  const query = new URLSearchParams({ run, method, interval: String(interval), scenario })
+function feedUrl(id: string, method: Method, interval: PollInterval, scenario: Scenario) {
+  const query = new URLSearchParams({ feed: id, method, interval: String(interval), scenario })
   return `${dashboardPath}?${query}`
 }
 
-function RunMonitor({ run, method, interval }: { run: string; method: Method; interval: PollInterval }) {
+function Monitor({ id, method, interval }: { id: string; method: Method; interval: PollInterval }) {
   const [connection, setConnection] = useState<Connection>('Connecting')
-  const [history, setHistory] = useState<Snapshot[]>([])
-  const latest = history.at(-1)
+  const [latest, setLatest] = useState<Snapshot | null>(null)
+  const lastVersion = useRef(-1)
 
   useEffect(() => {
     let stop = () => {}
-    let last: Snapshot | undefined
     let closed = false
 
-    function onVisibilityChange() {
+    function syncVisibility() {
       stop()
-      if (closed || last?.status === 'Completed') return
       if (document.visibilityState === 'hidden') {
         setConnection('Paused')
         return
       }
       setConnection('Connecting')
       stop = transports[method]({
-        url: runPath(run),
+        url: feedPath(id),
         interval,
-        lastVersion: last?.version ?? -1,
-        lastStatus: last?.status,
+        lastVersion: lastVersion.current,
         update(snapshot) {
-          if (closed || snapshot.version <= (last?.version ?? -1)) return
-          last = snapshot
-          setHistory((previous) => [...previous, snapshot])
-          if (snapshot.status === 'Completed') {
-            stop()
-            setConnection('Complete')
-          } else {
-            setConnection('Live')
-          }
+          if (closed || snapshot.version <= lastVersion.current) return
+          lastVersion.current = snapshot.version
+          setLatest(snapshot)
         },
         connection(state) {
-          if (!closed && last?.status !== 'Completed') setConnection(state)
+          if (!closed) setConnection(state)
         },
       })
     }
 
-    document.addEventListener('visibilitychange', onVisibilityChange)
-    onVisibilityChange()
+    document.addEventListener('visibilitychange', syncVisibility)
+    syncVisibility()
     return () => {
       closed = true
-      document.removeEventListener('visibilitychange', onVisibilityChange)
+      document.removeEventListener('visibilitychange', syncVisibility)
       stop()
     }
-  }, [run, method, interval])
+  }, [id, method, interval])
 
   return (
-    <>
-      <div className={styles.summary} aria-label="Current result">
-        <div><span>Job status</span><strong data-testid="job-status" aria-live="polite">{latest?.status ?? 'Waiting'}</strong></div>
-        <div><span>Progress</span><strong data-testid="job-progress">{latest ? `${latest.progress}%` : '—'}</strong></div>
-        <div><span>Connection</span><strong data-testid="connection" aria-live="polite">{connection}</strong></div>
-        <div><span>Updates observed</span><strong>{history.filter(({ version }) => version > 0).length}</strong></div>
+    <section aria-label="Live dashboard" lang="en">
+      <div className={styles.connectionStrip}>
+        <span className={styles.connection} data-testid="connection" role="status">{connection}</span>
       </div>
-      <section className={styles.history}>
-        <h3>Observed updates</h3>
-        {history.length === 0 && <p>Waiting for the first result.</p>}
-        <ol aria-label="Observed updates">
-          {history.slice().reverse().map(({ version, status, progress, recordedAt }) => (
-            <li key={version} data-version={version} data-recorded-at={recordedAt}>
-              <span>Version {version}</span>
-              <strong>{status}</strong>
-              <span>{progress}%</span>
-              <time dateTime={new Date(recordedAt).toISOString()}>{new Date(recordedAt).toLocaleTimeString()}</time>
-            </li>
-          ))}
-        </ol>
-      </section>
-    </>
+      {latest ? <OperationsDashboard c={classes} Scope={ThemeProvider} data={latest.data} live={latest} /> :
+        <p className={styles.empty}>{connection === 'Unavailable' ? 'Feed unavailable. Restart the feed to reconnect.' : 'Waiting for the first server snapshot.'}</p>}
+    </section>
   )
 }
 
@@ -106,46 +84,44 @@ function Dashboard() {
   const [method, setMethod] = useState<Method>(initial.method)
   const [scenario, setScenario] = useState<Scenario>(initial.scenario)
   const [interval, setInterval] = useState<PollInterval>(initial.interval)
-  const [run, setRun] = useState(initial.run ? { id: initial.run, scenario: initial.scenario } : null)
-  const [starting, setStarting] = useState(false)
+  const [feed, setFeed] = useState(initial.feed)
   const [error, setError] = useState(false)
-  const joinUrl = run ? monitorUrl(run.id, method, interval, run.scenario) : null
-  const monitorKey = run ? `${run.id}:${method}:${method === 'fixed' ? interval : ''}` : ''
+  const [attempt, setAttempt] = useState(0)
+  const shareUrl = feed ? feedUrl(feed, method, interval, scenario) : null
 
   useEffect(() => {
-    if (joinUrl) window.history.replaceState(null, '', joinUrl)
-  }, [joinUrl])
+    if (shareUrl) window.history.replaceState(null, '', shareUrl + window.location.hash)
+  }, [shareUrl])
 
-  async function start() {
-    setStarting(true)
+  useEffect(() => {
+    if (feed) return
+    const controller = new AbortController()
     setError(false)
-    try {
-      const response = await fetch(`${apiPath}/runs?scenario=${scenario}`, { method: 'POST' })
-      if (!response.ok) throw new Error(`Start failed with status ${response.status}`)
-      const next: Run = await response.json()
-      setRun({ id: next.id, scenario })
-    } catch {
-      setError(true)
-    } finally {
-      setStarting(false)
+    async function connect() {
+      try {
+        const response = await fetch(`${apiPath}/feeds?scenario=${scenario}`, { method: 'POST', signal: controller.signal })
+        if (!response.ok) throw new Error(`Feed returned ${response.status}`)
+        const next: Feed = await response.json()
+        if (!controller.signal.aborted) setFeed(next.id)
+      } catch {
+        if (!controller.signal.aborted) setError(true)
+      }
     }
+    void connect()
+    return () => controller.abort()
+  }, [feed, scenario, attempt])
+
+  function restart() {
+    setFeed(null)
+    setAttempt((value) => value + 1)
   }
 
   return (
-    <ExperimentPage
-      experiment="dashboard-refresh"
-      summary={{
-        problem: '최신 상태를 드물게 조회하면 완료 표시가 늦고, 두 요청 사이에 여러 번 바뀐 중간 상태를 건너뜁니다. 조회 주기를 줄이면 작업이 대기 중일 때도 요청이 늘어납니다.',
-        finding: <>정상 시나리오에서 고정 주기를 1초에서 3초로 늘리자 평균 요청은 <strong>14.0 → 5.7건/작업</strong>, 완료 반영 p95는 <strong>524 → 2,105 ms</strong>, 놓친 갱신은 <strong>2/18 → 8/18</strong>이었습니다. SSE는 전체 반영 p95 <strong>75 ms</strong>로 3회에서 총 18개 갱신을 모두 받았습니다.</>,
-        decision: '최신 상태나 완료만 필요하면 허용 지연과 요청 예산에 맞춰 고정 폴링을 고릅니다. 대기가 길고 진행 중 빠른 반영이 필요하면 적응형 폴링, 모든 버전이 필요하고 장기 연결을 운영할 수 있으면 SSE를 검토합니다.',
-      }}
-    >
-      <ExperimentSection id="options">
-        <RefreshOptions />
-      </ExperimentSection>
-      <ExperimentSection id="playground" description="방식과 서버 조건을 선택해 실제 가상 작업을 시작합니다. 진행 중인 작업은 다른 탭에서 같은 주소로 열 수 있습니다.">
+    <ExperimentPage experiment="dashboard-refresh" summary={RefreshSummary}>
+      <ExperimentSection id="options"><RefreshOptions /></ExperimentSection>
+      <ExperimentSection id="playground" description="브랜드 테마 실험의 Operations overview를 사용합니다. 조회 방식만 바꿔 같은 카드, 차트, 최근 결과 표에 서버 값이 반영되는 차이를 확인합니다.">
         <ExperimentWorkbench>
-          <section className={styles.controls} aria-label="Run settings" lang="en">
+          <section className={styles.controls} aria-label="Live dashboard settings" lang="en">
             <label>Update method
               <select aria-describedby="update-method-help" value={method} onChange={(event) => setMethod(event.target.value as Method)}>
                 {Object.entries(methodLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
@@ -153,36 +129,32 @@ function Dashboard() {
             </label>
             {method === 'fixed' && <label>Polling interval
               <select value={interval} onChange={(event) => setInterval(Number(event.target.value) as PollInterval)}>
-                {pollingIntervals.map((value) => <option key={value} value={value}>{value / 1_000} s</option>)}
+                {pollingIntervals.map((value) => <option key={value} value={value}>{value / 1_000} seconds</option>)}
               </select>
             </label>}
-            <label>Next run scenario
-              <select aria-describedby="run-scenario-help" value={scenario} onChange={(event) => setScenario(event.target.value as Scenario)}>
+            <label>Delivery scenario
+              <select aria-describedby="delivery-scenario-help" value={scenario} onChange={(event) => {
+                setScenario(event.target.value as Scenario)
+                setFeed(null)
+              }}>
                 {Object.entries(scenarioLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
               </select>
             </label>
-            <button type="button" disabled={starting} onClick={start}>{starting ? 'Starting…' : 'Start run'}</button>
+            <button type="button" onClick={restart}>Restart feed</button>
           </section>
-          <RunSettingsHelp />
-          {error && <p role="alert" lang="en">The run could not start. Try again.</p>}
-          {run && joinUrl ? (
-            <div lang="en">
-              <div className={styles.runInfo}><span>Run {run.id.slice(0, 8)} · {scenarioLabels[run.scenario]}</span><a href={joinUrl} target="_blank" rel="noreferrer">Open this run in another tab</a></div>
-              <RunMonitor key={monitorKey} run={run.id} method={method} interval={interval} />
-            </div>
-          ) : <p className={styles.empty} lang="en">Choose a method and start a run to see the job status and update history.</p>}
+          <div className={styles.controlHelp}>
+            <p id="update-method-help">조회 방식은 현재 데이터 피드에서 바로 바뀝니다.</p>
+            <p id="delivery-scenario-help">서버 조건을 바꾸면 같은 갱신 일정으로 새 피드를 시작합니다.</p>
+          </div>
+          {shareUrl && <p className={styles.feedLink}><a href={shareUrl + '#playground'} target="_blank" rel="noreferrer" lang="en">Open this feed in another tab</a></p>}
+          {feed ? <Monitor key={feed} id={feed} method={method} interval={method === 'fixed' ? interval : 1_000} /> :
+            <p className={styles.empty} role={error ? 'alert' : 'status'}>{error ? '피드를 열지 못했습니다. Restart feed로 다시 시도할 수 있습니다.' : '데이터 피드에 연결 중입니다.'}</p>}
         </ExperimentWorkbench>
       </ExperimentSection>
-      <ExperimentSection id="conclusion">
-        <RefreshConclusion scenario={scenario} />
-      </ExperimentSection>
-      <ExperimentSection id="verification">
-        <Results scenario={scenario} method={method} interval={interval} />
-      </ExperimentSection>
+      <ExperimentSection id="conclusion"><RefreshConclusion scenario={scenario} /></ExperimentSection>
+      <ExperimentSection id="verification"><Results scenario={scenario} method={method} interval={interval} /></ExperimentSection>
     </ExperimentPage>
   )
 }
 
-const root = document.getElementById('root')
-if (!root) throw new Error('Missing dashboard mount')
-createRoot(root).render(<Dashboard />)
+createRoot(document.getElementById('root')!).render(<Dashboard />)

@@ -1,115 +1,111 @@
-import { expect, test, type APIRequestContext } from '@playwright/test'
+import { expect, test, type APIRequestContext, type Page } from '@playwright/test'
 
 const api = '/api/dashboard-refresh'
 const dashboard = '/experiments/dashboard-refresh/'
 
-async function startRun(request: APIRequestContext, scenario: string) {
-  const response = await request.post(`${api}/runs?scenario=${scenario}`)
+async function createFeed(request: APIRequestContext, scenario = 'normal') {
+  const response = await request.post(`${api}/feeds?scenario=${scenario}&pace=fast`)
   expect(response.ok()).toBeTruthy()
   return (await response.json()).id as string
 }
 
 async function stats(request: APIRequestContext, id: string) {
-  const response = await request.get(`${api}/runs/${id}/stats`)
+  const response = await request.get(`${api}/feeds/${id}/stats`)
   expect(response.ok()).toBeTruthy()
   return await response.json()
 }
 
-test('launcher opens the dashboard refresh experiment', async ({ page }) => {
+const version = (page: Page) => page.getByTestId('live-metrics').getAttribute('data-version').then(Number)
+
+test('launcher opens a live dashboard and the scenario creates a separate feed', async ({ page }) => {
   await page.goto('/')
   await page.getByRole('link', { name: /Dashboard auto refresh/ }).click()
   await expect(page.getByRole('heading', { name: 'Dashboard auto refresh' })).toBeVisible()
-  const navigation = page.getByRole('navigation', { name: '실험 이동' })
-  await expect(navigation.getByRole('link', { name: 'Dashboard auto refresh' })).toHaveAttribute('aria-current', 'page')
-  await expect(navigation.getByRole('link', { name: 'Brand style runtime' })).toHaveAttribute('href', '/experiments/brand-theme/')
-  await expect(navigation.getByRole('link', { name: 'Jonbeo MSW performance' })).toHaveAttribute('href', '/experiments/jonbeo-msw/')
   await page.getByRole('navigation', { name: '이 페이지에서' }).getByRole('link', { name: 'Playground' }).click()
   await expect(page).toHaveURL(/#playground$/)
-  await expect(page.getByRole('region', { name: '선택지' })).toContainText('Adaptive polling')
-  await expect(page.getByRole('region', { name: '결론' })).toContainText('방식별 장단점')
-  const results = page.getByRole('region', { name: '시나리오별 측정 결과' })
-  await expect(results.getByRole('heading', { name: 'Normal delivery' })).toBeVisible()
-  await expect(results.getByRole('row', { name: /Fixed polling · 3 s/ })).toContainText('2,105 ms')
-  await expect(results.getByRole('row', { name: /Server-sent events/ })).toContainText('0 / 18')
-  await page.getByRole('region', { name: 'Playground' }).getByRole('button', { name: 'Start run' }).click()
-  const share = page.getByRole('link', { name: 'Open this run in another tab' })
+  const playground = page.getByRole('region', { name: 'Playground' })
+  await expect(playground.getByRole('heading', { name: 'Operations overview' })).toBeVisible()
+  await expect(playground.getByRole('heading', { name: 'Run activity' })).toBeVisible()
+  await expect(playground.getByRole('heading', { name: 'Recent results' })).toBeVisible()
+  await playground.getByRole('combobox', { name: 'Demo account' }).selectOption('ember-operator')
+  await expect(playground.getByRole('region', { name: 'Operations theme' })).toHaveAttribute('data-brand', 'ember')
+  const search = playground.getByRole('textbox', { name: 'Search results' })
+  await search.fill('Atlas')
+  const share = playground.getByRole('link', { name: 'Open this feed in another tab' })
   await expect(share).toHaveAttribute('href', /scenario=normal/)
-  await page.getByRole('combobox', { name: /scenario/i }).selectOption('slow')
-  await expect(results.getByRole('heading', { name: 'Slow delivery' })).toBeVisible()
-  await expect(results.getByRole('row', { name: /Fixed polling · 3 s/ })).toHaveCount(0)
-  await expect(results.getByRole('row', { name: /Server-sent events/ })).toContainText('1,369 ms')
-  await expect(share).toHaveAttribute('href', /scenario=normal/)
-  await page.getByRole('combobox', { name: /scenario/i }).selectOption('outage')
-  await expect(results.getByRole('heading', { name: 'Temporary outage' })).toBeVisible()
-  await expect(results.getByRole('row', { name: /Server-sent events/ })).toContainText('437 ms')
-  await page.getByRole('combobox', { name: 'Update method' }).selectOption('sse')
+  const original = new URL((await share.getAttribute('href'))!, 'http://localhost').searchParams.get('feed')
+  expect(original).toBeTruthy()
+  await playground.getByRole('combobox', { name: 'Update method' }).selectOption('sse')
   await expect(share).toHaveAttribute('href', /method=sse/)
-  await expect(share).toHaveAttribute('href', /scenario=normal/)
+  expect(new URL((await share.getAttribute('href'))!, 'http://localhost').searchParams.get('feed')).toBe(original)
+  await expect(playground.getByRole('region', { name: 'Operations theme' })).toHaveAttribute('data-brand', 'ember')
+  await expect(search).toHaveValue('Atlas')
+  await playground.getByRole('combobox', { name: 'Delivery scenario' }).selectOption('outage')
+  await expect(share).toHaveAttribute('href', /scenario=outage/)
+  expect(new URL((await share.getAttribute('href'))!, 'http://localhost').searchParams.get('feed')).not.toBe(original)
+  await expect(page.getByRole('heading', { name: 'Temporary outage' })).toBeVisible()
 })
 
 for (const method of ['fixed', 'adaptive', 'sse']) {
-  test(`${method} displays the first result and stops after completion`, async ({ page, request }) => {
-    const id = await startRun(request, 'quick')
-    await page.goto(`${dashboard}?run=${id}&method=${method}&interval=1000`)
-    await expect(page.getByTestId('job-status')).toHaveText('Running')
-    if (process.env.PLAYGROUND_PHASE_TIMING === '1') console.log('first-result', method, Date.now())
-    await expect(page.getByTestId('job-status')).toHaveText('Completed', { timeout: 12_000 })
-    await expect(page.getByTestId('job-progress')).toHaveText('100%')
-    await expect(page.getByRole('list', { name: 'Observed updates' }).locator('[data-version="4"]')).toHaveCount(1)
-    const before = await stats(request, id)
-    await expect.poll(async () => (await stats(request, id)).activeStreams).toBe(0)
-    await new Promise((resolve) => setTimeout(resolve, 1300))
-    const after = await stats(request, id)
-    expect(after.snapshotRequests + after.streamRequests).toBe(before.snapshotRequests + before.streamRequests)
-    expect(method === 'sse' ? after.streamRequests : after.snapshotRequests).toBeGreaterThan(0)
-    if (process.env.PLAYGROUND_PHASE_TIMING === '1') console.log('verified', method, Date.now())
+  test(`${method} keeps showing metrics across repeated update cycles`, async ({ page, request }) => {
+    const id = await createFeed(request)
+    await page.goto(`${dashboard}?feed=${id}&method=${method}&interval=1000`)
+    await expect(page.getByTestId('connection')).toHaveText('Live')
+    await expect.poll(() => version(page), { timeout: 12_000 }).toBeGreaterThan(10)
+    const newest = page.getByRole('table').first().getByRole('rowheader').first()
+    const firstRow = await newest.innerText()
+    const previous = await version(page)
+    await expect.poll(() => version(page), { timeout: 10_000 }).toBeGreaterThan(previous)
+    await expect.poll(() => newest.innerText()).not.toBe(firstRow)
+    await expect(page.getByTestId('connection')).toHaveText('Live')
+    const info = await stats(request, id)
+    expect(method === 'sse' ? info.activeStreams : info.snapshotRequests).toBeGreaterThan(0)
   })
 }
 
 test('slow polling stays single-flight and refreshes on foreground return', async ({ page, request }) => {
-  const id = await startRun(request, 'slow')
-  await page.goto(`${dashboard}?run=${id}&method=fixed&interval=1000`)
-  await expect(page.getByTestId('job-status')).toHaveText('Queued')
-  await page.evaluate(() => {
-    Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'hidden' })
-    document.dispatchEvent(new Event('visibilitychange'))
-  })
+  const id = await createFeed(request, 'slow')
+  await page.goto(`${dashboard}?feed=${id}&scenario=slow&method=fixed&interval=1000`)
+  await expect(page.getByTestId('connection')).toHaveText('Live')
+  async function visibility(state: 'hidden' | 'visible') {
+    await page.evaluate((value) => {
+      Object.defineProperty(document, 'visibilityState', { configurable: true, value })
+      document.dispatchEvent(new Event('visibilitychange'))
+    }, state)
+  }
+  await visibility('hidden')
   await expect(page.getByTestId('connection')).toHaveText('Paused')
   const hidden = await stats(request, id)
   await new Promise((resolve) => setTimeout(resolve, 1700))
   expect((await stats(request, id)).snapshotRequests).toBe(hidden.snapshotRequests)
-  await page.evaluate(() => {
-    Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'visible' })
-    document.dispatchEvent(new Event('visibilitychange'))
-  })
+  await visibility('visible')
   await expect.poll(async () => (await stats(request, id)).snapshotRequests).toBeGreaterThan(hidden.snapshotRequests)
-  await expect(page.getByTestId('job-status')).toHaveText('Completed', { timeout: 19_000 })
+  await expect.poll(() => version(page), { timeout: 8_000 }).toBeGreaterThan(4)
   expect((await stats(request, id)).maxActiveSnapshots).toBe(1)
 })
 
-test('SSE reconnects and replays missed versions exactly once', async ({ page, request }) => {
-  const id = await startRun(request, 'outage')
-  await page.goto(`${dashboard}?run=${id}&method=sse`)
-  await expect(page.getByTestId('job-status')).toHaveText('Completed', { timeout: 19_000 })
-  const versions = await page.getByRole('list', { name: 'Observed updates' }).locator('[data-version]').evaluateAll(
-    (nodes) => nodes.map((node) => Number(node.getAttribute('data-version'))),
-  )
-  expect(versions).toEqual([6, 5, 4, 3, 2, 1, 0])
+test('SSE reconnects with the latest snapshot after an outage and keeps streaming', async ({ page, request }) => {
+  const id = await createFeed(request, 'outage')
+  await page.goto(`${dashboard}?feed=${id}&scenario=outage&method=sse`)
+  await expect.poll(() => version(page), { timeout: 12_000 }).toBeGreaterThan(10)
+  await expect(page.getByRole('heading', { name: 'Operations overview' })).toBeVisible()
   const info = await stats(request, id)
   expect(info.streamRequests).toBeGreaterThan(1)
-  expect(info.maxActiveStreams).toBe(1)
+  expect(info.activeStreams).toBe(1)
+  await page.goto('/')
   await expect.poll(async () => (await stats(request, id)).activeStreams).toBe(0)
 })
 
-test('two tabs receive the same run with independent SSE streams', async ({ page, context, request }) => {
-  const id = await startRun(request, 'quick')
-  const url = `${dashboard}?run=${id}&method=sse`
-  const other = await context.newPage()
-  await Promise.all([page.goto(url), other.goto(url)])
-  await Promise.all([page, other].map(async (tab) => {
-    await expect(tab.getByTestId('job-status')).toHaveText('Completed', { timeout: 10_000 })
-  }))
-  const info = await stats(request, id)
-  expect(info.streamRequests).toBe(2)
-  expect(info.maxActiveStreams).toBe(2)
+test('two tabs receive the same live feed using independent streams', async ({ page, browser, request, baseURL }) => {
+  const id = await createFeed(request)
+  const url = `${dashboard}?feed=${id}&method=sse`
+  const context = await browser.newContext({ baseURL })
+  try {
+    const other = await context.newPage()
+    await Promise.all([page.goto(url), other.goto(url)])
+    await Promise.all([page, other].map((tab) => expect.poll(() => version(tab)).toBeGreaterThan(3)))
+    expect((await stats(request, id)).maxActiveStreams).toBe(2)
+  } finally {
+    await context.close()
+  }
 })

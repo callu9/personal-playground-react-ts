@@ -1,18 +1,317 @@
 {
   "node": "v24.20.0",
   "chrome": "158.0.8127.37",
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "brand": "grove",
+  "targetWindowMs": 32000,
+  "summary": {
+    "normal": [
+      {
+        "candidate": {
+          "id": "fixed-1s",
+          "method": "fixed",
+          "interval": 1000,
+          "label": "Fixed polling · 1 s"
+        },
+        "repeats": 3,
+        "steadyP95": 1014,
+        "burstP95": 850,
+        "missed": 21,
+        "versions": 60,
+        "behindPct": 31.595168679716785,
+        "requests": 58.725531028738025,
+        "bodyBytes": 66762.8071636818,
+        "recoveryP95": null,
+        "recovered": 0,
+        "firstSnapshotP95": 321
+      },
+      {
+        "candidate": {
+          "id": "fixed-3s",
+          "method": "fixed",
+          "interval": 3000,
+          "label": "Fixed polling · 3 s"
+        },
+        "repeats": 3,
+        "steadyP95": 2813,
+        "burstP95": 2797,
+        "missed": 39,
+        "versions": 60,
+        "behindPct": 49.56268221574344,
+        "requests": 20.616409829237817,
+        "bodyBytes": 23440.8579758434,
+        "recoveryP95": null,
+        "recovered": 0,
+        "firstSnapshotP95": 315
+      },
+      {
+        "candidate": {
+          "id": "fixed-5s",
+          "method": "fixed",
+          "interval": 5000,
+          "label": "Fixed polling · 5 s"
+        },
+        "repeats": 3,
+        "steadyP95": 2775,
+        "burstP95": 4088,
+        "missed": 42,
+        "versions": 60,
+        "behindPct": 59.72090601405884,
+        "requests": 13.121582921114294,
+        "bodyBytes": 14909.867222077584,
+        "recoveryP95": null,
+        "recovered": 0,
+        "firstSnapshotP95": 309
+      },
+      {
+        "candidate": {
+          "id": "adaptive",
+          "method": "adaptive",
+          "interval": null,
+          "label": "Adaptive polling"
+        },
+        "repeats": 3,
+        "steadyP95": 3888,
+        "burstP95": 802,
+        "missed": 30,
+        "versions": 60,
+        "behindPct": 38.61295395607028,
+        "requests": 39.99291792078486,
+        "bodyBytes": 45476.94679067249,
+        "recoveryP95": null,
+        "recovered": 0,
+        "firstSnapshotP95": 302
+      },
+      {
+        "candidate": {
+          "id": "sse",
+          "method": "sse",
+          "interval": null,
+          "label": "Server-sent events"
+        },
+        "repeats": 3,
+        "steadyP95": 69,
+        "burstP95": 70,
+        "missed": 0,
+        "versions": 60,
+        "behindPct": 6.495548497943458,
+        "requests": 1.8743166553860573,
+        "bodyBytes": 45429.68709324726,
+        "recoveryP95": null,
+        "recovered": 0,
+        "firstSnapshotP95": 304
+      }
+    ],
+    "slow": [
+      {
+        "candidate": {
+          "id": "fixed-1s",
+          "method": "fixed",
+          "interval": 1000,
+          "label": "Fixed polling · 1 s"
+        },
+        "repeats": 2,
+        "steadyP95": 2573,
+        "burstP95": 2334,
+        "missed": 19,
+        "versions": 40,
+        "behindPct": 60.01967858314201,
+        "requests": 44.042543222602255,
+        "bodyBytes": 47923.90947851755,
+        "recoveryP95": null,
+        "recovered": 0,
+        "firstSnapshotP95": 1611
+      },
+      {
+        "candidate": {
+          "id": "fixed-3s",
+          "method": "fixed",
+          "interval": 3000,
+          "label": "Fixed polling · 3 s"
+        },
+        "repeats": 2,
+        "steadyP95": 3764,
+        "burstP95": 4096,
+        "missed": 26,
+        "versions": 40,
+        "behindPct": 72.77243189202699,
+        "requests": 20.619845038740316,
+        "bodyBytes": 22372.53186703324,
+        "recoveryP95": null,
+        "recovered": 0,
+        "firstSnapshotP95": 1540
+      },
+      {
+        "candidate": {
+          "id": "fixed-5s",
+          "method": "fixed",
+          "interval": 5000,
+          "label": "Fixed polling · 5 s"
+        },
+        "repeats": 2,
+        "steadyP95": 3542,
+        "burstP95": 4842,
+        "missed": 29,
+        "versions": 40,
+        "behindPct": 76.99133015699444,
+        "requests": 13.121924548933842,
+        "bodyBytes": 13841.755838475356,
+        "recoveryP95": null,
+        "recovered": 0,
+        "firstSnapshotP95": 1628
+      },
+      {
+        "candidate": {
+          "id": "adaptive",
+          "method": "adaptive",
+          "interval": null,
+          "label": "Adaptive polling"
+        },
+        "repeats": 2,
+        "steadyP95": 3356,
+        "burstP95": 2569,
+        "missed": 18,
+        "versions": 40,
+        "behindPct": 64.18495665078497,
+        "requests": 36.553932672029994,
+        "bodyBytes": 39440.75607279543,
+        "recoveryP95": null,
+        "recovered": 0,
+        "firstSnapshotP95": 1544
+      },
+      {
+        "candidate": {
+          "id": "sse",
+          "method": "sse",
+          "interval": null,
+          "label": "Server-sent events"
+        },
+        "repeats": 2,
+        "steadyP95": 1382,
+        "burstP95": 1381,
+        "missed": 0,
+        "versions": 40,
+        "behindPct": 52.542399350345136,
+        "requests": 1.87400443514383,
+        "bodyBytes": 45422.11949901615,
+        "recoveryP95": null,
+        "recovered": 0,
+        "firstSnapshotP95": 1627
+      }
+    ],
+    "outage": [
+      {
+        "candidate": {
+          "id": "fixed-1s",
+          "method": "fixed",
+          "interval": 1000,
+          "label": "Fixed polling · 1 s"
+        },
+        "repeats": 2,
+        "steadyP95": 1049,
+        "burstP95": 1286,
+        "missed": 21,
+        "versions": 40,
+        "behindPct": 33.30574253096156,
+        "requests": 59.03390545204666,
+        "bodyBytes": 60882.69744342584,
+        "recoveryP95": 586,
+        "recovered": 2,
+        "firstSnapshotP95": 251
+      },
+      {
+        "candidate": {
+          "id": "fixed-3s",
+          "method": "fixed",
+          "interval": 3000,
+          "label": "Fixed polling · 3 s"
+        },
+        "repeats": 2,
+        "steadyP95": 2980,
+        "burstP95": 2986,
+        "missed": 28,
+        "versions": 40,
+        "behindPct": 51.885701787276595,
+        "requests": 24.371953505811774,
+        "bodyBytes": 22514.0607424072,
+        "recoveryP95": 568,
+        "recovered": 2,
+        "firstSnapshotP95": 245
+      },
+      {
+        "candidate": {
+          "id": "fixed-5s",
+          "method": "fixed",
+          "interval": 5000,
+          "label": "Fixed polling · 5 s"
+        },
+        "repeats": 2,
+        "steadyP95": 3980,
+        "burstP95": 2017,
+        "missed": 32,
+        "versions": 40,
+        "behindPct": 55.902571633909325,
+        "requests": 16.87341811705153,
+        "bodyBytes": 12941.91169577852,
+        "recoveryP95": 1317,
+        "recovered": 2,
+        "firstSnapshotP95": 278
+      },
+      {
+        "candidate": {
+          "id": "adaptive",
+          "method": "adaptive",
+          "interval": null,
+          "label": "Adaptive polling"
+        },
+        "repeats": 2,
+        "steadyP95": 1997,
+        "burstP95": 2288,
+        "missed": 25,
+        "versions": 40,
+        "behindPct": 40.65619873447386,
+        "requests": 42.184204359034446,
+        "bodyBytes": 41736.11436606515,
+        "recoveryP95": 1588,
+        "recovered": 2,
+        "firstSnapshotP95": 294
+      },
+      {
+        "candidate": {
+          "id": "sse",
+          "method": "sse",
+          "interval": null,
+          "label": "Server-sent events"
+        },
+        "repeats": 2,
+        "steadyP95": 71,
+        "burstP95": 766,
+        "missed": 10,
+        "versions": 40,
+        "behindPct": 15.4311152764761,
+        "requests": 15.932521087160262,
+        "bodyBytes": 34852.85848172446,
+        "recoveryP95": 544,
+        "recovered": 2,
+        "firstSnapshotP95": 289
+      }
+    ]
+  },
   "samples": [
     {
-      "method": "fixed-1s",
+      "candidate": "fixed-1s",
       "scenario": "normal",
       "round": 1,
       "tabs": 1,
       "startOffsetMs": 0,
-      "windowMs": 19500,
-      "snapshotRequests": 15,
+      "windowMs": 32013,
+      "snapshotRequests": 32,
       "streamRequests": 0,
       "unavailableRequests": 0,
-      "bodyBytes": 1086,
+      "bodyBytes": 36370,
       "activeSnapshots": 0,
       "maxActiveSnapshots": 1,
       "activeStreams": 0,
@@ -20,53 +319,125 @@
       "observations": [
         {
           "tab": 1,
+          "firstSnapshotMs": 321,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": 142
+              "phase": "steady",
+              "delayMs": 504
             },
             {
               "version": 2,
-              "status": "Running",
-              "delayMs": 309
+              "phase": "steady",
+              "delayMs": 528
             },
             {
               "version": 3,
-              "status": "Running",
-              "delayMs": 495
+              "phase": "burst",
+              "delayMs": 333
             },
             {
               "version": 4,
-              "status": "Running",
-              "delayMs": 861
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 5,
-              "status": "Running",
-              "delayMs": 816
+              "phase": "burst",
+              "delayMs": 351
             },
             {
               "version": 6,
-              "status": "Completed",
-              "delayMs": 524
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": 351
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": 353
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 850
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 597
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 633
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": 439
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": 443
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 454
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": 459
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 972
             }
           ],
+          "behindMs": 10616,
           "recoveryMs": null
         }
       ]
     },
     {
-      "method": "fixed-3s",
+      "candidate": "fixed-3s",
       "scenario": "normal",
       "round": 1,
       "tabs": 1,
       "startOffsetMs": 0,
-      "windowMs": 19500,
-      "snapshotRequests": 6,
+      "windowMs": 32009,
+      "snapshotRequests": 11,
       "streamRequests": 0,
       "unavailableRequests": 0,
-      "bodyBytes": 435,
+      "bodyBytes": 12500,
       "activeSnapshots": 0,
       "maxActiveSnapshots": 1,
       "activeStreams": 0,
@@ -74,53 +445,125 @@
       "observations": [
         {
           "tab": 1,
+          "firstSnapshotMs": 315,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": null
+              "phase": "steady",
+              "delayMs": 2479
             },
             {
               "version": 2,
-              "status": "Running",
+              "phase": "steady",
               "delayMs": null
             },
             {
               "version": 3,
-              "status": "Running",
-              "delayMs": 1039
+              "phase": "burst",
+              "delayMs": 284
             },
             {
               "version": 4,
-              "status": "Running",
+              "phase": "burst",
               "delayMs": null
             },
             {
               "version": 5,
-              "status": "Running",
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": 287
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 2797
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 1508
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 522
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
               "delayMs": 330
             },
             {
-              "version": 6,
-              "status": "Completed",
-              "delayMs": 1038
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 1846
             }
           ],
+          "behindMs": 17099,
           "recoveryMs": null
         }
       ]
     },
     {
-      "method": "fixed-5s",
+      "candidate": "fixed-5s",
       "scenario": "normal",
       "round": 1,
       "tabs": 1,
       "startOffsetMs": 0,
-      "windowMs": 19500,
-      "snapshotRequests": 4,
+      "windowMs": 32002,
+      "snapshotRequests": 7,
       "streamRequests": 0,
       "unavailableRequests": 0,
-      "bodyBytes": 291,
+      "bodyBytes": 7954,
       "activeSnapshots": 0,
       "maxActiveSnapshots": 1,
       "activeStreams": 0,
@@ -128,53 +571,125 @@
       "observations": [
         {
           "tab": 1,
+          "firstSnapshotMs": 309,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": null
+              "phase": "steady",
+              "delayMs": 1464
             },
             {
               "version": 2,
-              "status": "Running",
+              "phase": "steady",
               "delayMs": null
             },
             {
               "version": 3,
-              "status": "Running",
+              "phase": "burst",
               "delayMs": null
             },
             {
               "version": 4,
-              "status": "Running",
-              "delayMs": 387
-            },
-            {
-              "version": 5,
-              "status": "Running",
+              "phase": "burst",
               "delayMs": null
             },
             {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": 268
+            },
+            {
               "version": 6,
-              "status": "Completed",
-              "delayMs": 1036
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 2782
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 489
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": 297
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 1799
             }
           ],
+          "behindMs": 15828,
           "recoveryMs": null
         }
       ]
     },
     {
-      "method": "adaptive",
+      "candidate": "adaptive",
       "scenario": "normal",
       "round": 1,
       "tabs": 1,
       "startOffsetMs": 0,
-      "windowMs": 19500,
-      "snapshotRequests": 9,
+      "windowMs": 32001,
+      "snapshotRequests": 20,
       "streamRequests": 0,
       "unavailableRequests": 0,
-      "bodyBytes": 656,
+      "bodyBytes": 22732,
       "activeSnapshots": 0,
       "maxActiveSnapshots": 1,
       "activeStreams": 0,
@@ -182,107 +697,251 @@
       "observations": [
         {
           "tab": 1,
+          "firstSnapshotMs": 302,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": null
+              "phase": "steady",
+              "delayMs": 469
             },
             {
               "version": 2,
-              "status": "Running",
+              "phase": "steady",
               "delayMs": null
             },
             {
               "version": 3,
-              "status": "Running",
-              "delayMs": 138
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 4,
-              "status": "Running",
-              "delayMs": 505
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 5,
-              "status": "Running",
-              "delayMs": 461
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 6,
-              "status": "Completed",
-              "delayMs": 166
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": 300
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": 302
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 802
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 530
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 359
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": 377
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 877
             }
           ],
+          "behindMs": 11743,
           "recoveryMs": null
         }
       ]
     },
     {
-      "method": "sse",
+      "candidate": "sse",
       "scenario": "normal",
       "round": 1,
       "tabs": 1,
       "startOffsetMs": 0,
-      "windowMs": 19500,
+      "windowMs": 32024,
       "snapshotRequests": 0,
       "streamRequests": 1,
       "unavailableRequests": 0,
-      "bodyBytes": 671,
+      "bodyBytes": 24238,
       "activeSnapshots": 0,
       "maxActiveSnapshots": 0,
-      "activeStreams": 0,
+      "activeStreams": 1,
       "maxActiveStreams": 1,
       "observations": [
         {
           "tab": 1,
+          "firstSnapshotMs": 231,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": 47
-            },
-            {
-              "version": 2,
-              "status": "Running",
-              "delayMs": 53
-            },
-            {
-              "version": 3,
-              "status": "Running",
-              "delayMs": 53
-            },
-            {
-              "version": 4,
-              "status": "Running",
+              "phase": "steady",
               "delayMs": 69
             },
             {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": 63
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": 57
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": 46
+            },
+            {
               "version": 5,
-              "status": "Running",
+              "phase": "burst",
+              "delayMs": 60
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": 57
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": 46
+            },
+            {
+              "version": 8,
+              "phase": "burst",
               "delayMs": 65
             },
             {
-              "version": 6,
-              "status": "Completed",
+              "version": 9,
+              "phase": "burst",
+              "delayMs": 63
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 55
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 51
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 61
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": 58
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 47
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": 46
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": 63
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 59
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 45
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": 53
+            },
+            {
+              "version": 20,
+              "phase": "burst",
               "delayMs": 57
             }
           ],
+          "behindMs": 1376,
           "recoveryMs": null
         }
       ]
     },
     {
-      "method": "fixed-3s",
+      "candidate": "fixed-3s",
       "scenario": "normal",
       "round": 2,
       "tabs": 1,
-      "startOffsetMs": 1100,
-      "windowMs": 19500,
-      "snapshotRequests": 6,
+      "startOffsetMs": 700,
+      "windowMs": 32014,
+      "snapshotRequests": 11,
       "streamRequests": 0,
       "unavailableRequests": 0,
-      "bodyBytes": 437,
+      "bodyBytes": 12508,
       "activeSnapshots": 0,
       "maxActiveSnapshots": 1,
       "activeStreams": 0,
@@ -290,53 +949,125 @@
       "observations": [
         {
           "tab": 1,
+          "firstSnapshotMs": 309,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": 766
+              "phase": "steady",
+              "delayMs": 134
             },
             {
               "version": 2,
-              "status": "Running",
+              "phase": "steady",
               "delayMs": null
             },
             {
               "version": 3,
-              "status": "Running",
+              "phase": "burst",
               "delayMs": null
             },
             {
               "version": 4,
-              "status": "Running",
-              "delayMs": 457
+              "phase": "burst",
+              "delayMs": 446
             },
             {
               "version": 5,
-              "status": "Running",
-              "delayMs": 1416
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 6,
-              "status": "Completed",
-              "delayMs": 2105
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 462
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 2173
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 1178
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 482
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 2487
             }
           ],
+          "behindMs": 15588,
           "recoveryMs": null
         }
       ]
     },
     {
-      "method": "fixed-5s",
+      "candidate": "fixed-5s",
       "scenario": "normal",
       "round": 2,
       "tabs": 1,
-      "startOffsetMs": 1100,
-      "windowMs": 19500,
-      "snapshotRequests": 4,
+      "startOffsetMs": 700,
+      "windowMs": 32010,
+      "snapshotRequests": 7,
       "streamRequests": 0,
       "unavailableRequests": 0,
-      "bodyBytes": 291,
+      "bodyBytes": 7959,
       "activeSnapshots": 0,
       "maxActiveSnapshots": 1,
       "activeStreams": 0,
@@ -344,53 +1075,125 @@
       "observations": [
         {
           "tab": 1,
+          "firstSnapshotMs": 287,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": null
+              "phase": "steady",
+              "delayMs": 2158
             },
             {
               "version": 2,
-              "status": "Running",
+              "phase": "steady",
               "delayMs": null
             },
             {
               "version": 3,
-              "status": "Running",
+              "phase": "burst",
               "delayMs": null
             },
             {
               "version": 4,
-              "status": "Running",
-              "delayMs": 1490
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 5,
-              "status": "Running",
+              "phase": "burst",
               "delayMs": null
             },
             {
               "version": 6,
-              "status": "Completed",
-              "delayMs": 2113
+              "phase": "burst",
+              "delayMs": 462
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 3471
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 1172
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 474
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 2483
             }
           ],
+          "behindMs": 19625,
           "recoveryMs": null
         }
       ]
     },
     {
-      "method": "adaptive",
+      "candidate": "adaptive",
       "scenario": "normal",
       "round": 2,
       "tabs": 1,
-      "startOffsetMs": 1100,
-      "windowMs": 19500,
-      "snapshotRequests": 8,
+      "startOffsetMs": 700,
+      "windowMs": 32008,
+      "snapshotRequests": 22,
       "streamRequests": 0,
       "unavailableRequests": 0,
-      "bodyBytes": 583,
+      "bodyBytes": 25014,
       "activeSnapshots": 0,
       "maxActiveSnapshots": 1,
       "activeStreams": 0,
@@ -398,323 +1201,377 @@
       "observations": [
         {
           "tab": 1,
+          "firstSnapshotMs": 294,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": null
+              "phase": "steady",
+              "delayMs": 1145
             },
             {
               "version": 2,
-              "status": "Running",
+              "phase": "steady",
+              "delayMs": 164
+            },
+            {
+              "version": 3,
+              "phase": "burst",
               "delayMs": null
             },
             {
-              "version": 3,
-              "status": "Running",
-              "delayMs": 1141
-            },
-            {
               "version": 4,
-              "status": "Running",
-              "delayMs": 488
-            },
-            {
-              "version": 5,
-              "status": "Running",
-              "delayMs": 465
-            },
-            {
-              "version": 6,
-              "status": "Completed",
-              "delayMs": 163
-            }
-          ],
-          "recoveryMs": null
-        }
-      ]
-    },
-    {
-      "method": "sse",
-      "scenario": "normal",
-      "round": 2,
-      "tabs": 1,
-      "startOffsetMs": 1100,
-      "windowMs": 19500,
-      "snapshotRequests": 0,
-      "streamRequests": 1,
-      "unavailableRequests": 0,
-      "bodyBytes": 671,
-      "activeSnapshots": 0,
-      "maxActiveSnapshots": 0,
-      "activeStreams": 0,
-      "maxActiveStreams": 1,
-      "observations": [
-        {
-          "tab": 1,
-          "updates": [
-            {
-              "version": 1,
-              "status": "Running",
-              "delayMs": 75
-            },
-            {
-              "version": 2,
-              "status": "Running",
-              "delayMs": 42
-            },
-            {
-              "version": 3,
-              "status": "Running",
-              "delayMs": 67
-            },
-            {
-              "version": 4,
-              "status": "Running",
-              "delayMs": 57
-            },
-            {
-              "version": 5,
-              "status": "Running",
-              "delayMs": 56
-            },
-            {
-              "version": 6,
-              "status": "Completed",
-              "delayMs": 68
-            }
-          ],
-          "recoveryMs": null
-        }
-      ]
-    },
-    {
-      "method": "fixed-1s",
-      "scenario": "normal",
-      "round": 2,
-      "tabs": 1,
-      "startOffsetMs": 1100,
-      "windowMs": 19500,
-      "snapshotRequests": 14,
-      "streamRequests": 0,
-      "unavailableRequests": 0,
-      "bodyBytes": 1013,
-      "activeSnapshots": 0,
-      "maxActiveSnapshots": 1,
-      "activeStreams": 0,
-      "maxActiveStreams": 0,
-      "observations": [
-        {
-          "tab": 1,
-          "updates": [
-            {
-              "version": 1,
-              "status": "Running",
-              "delayMs": 767
-            },
-            {
-              "version": 2,
-              "status": "Running",
-              "delayMs": null
-            },
-            {
-              "version": 3,
-              "status": "Running",
-              "delayMs": 121
-            },
-            {
-              "version": 4,
-              "status": "Running",
+              "phase": "burst",
               "delayMs": 485
             },
             {
               "version": 5,
-              "status": "Running",
-              "delayMs": 450
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 6,
-              "status": "Completed",
-              "delayMs": 135
+              "phase": "burst",
+              "delayMs": 488
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": 499
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 501
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 229
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 61
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": 68
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 573
             }
           ],
+          "behindMs": 10930,
           "recoveryMs": null
         }
       ]
     },
     {
-      "method": "fixed-5s",
+      "candidate": "sse",
       "scenario": "normal",
-      "round": 3,
+      "round": 2,
       "tabs": 1,
-      "startOffsetMs": 2350,
-      "windowMs": 19500,
-      "snapshotRequests": 4,
-      "streamRequests": 0,
-      "unavailableRequests": 0,
-      "bodyBytes": 293,
-      "activeSnapshots": 0,
-      "maxActiveSnapshots": 1,
-      "activeStreams": 0,
-      "maxActiveStreams": 0,
-      "observations": [
-        {
-          "tab": 1,
-          "updates": [
-            {
-              "version": 1,
-              "status": "Running",
-              "delayMs": null
-            },
-            {
-              "version": 2,
-              "status": "Running",
-              "delayMs": 179
-            },
-            {
-              "version": 3,
-              "status": "Running",
-              "delayMs": null
-            },
-            {
-              "version": 4,
-              "status": "Running",
-              "delayMs": null
-            },
-            {
-              "version": 5,
-              "status": "Running",
-              "delayMs": 634
-            },
-            {
-              "version": 6,
-              "status": "Completed",
-              "delayMs": 3325
-            }
-          ],
-          "recoveryMs": null
-        }
-      ]
-    },
-    {
-      "method": "adaptive",
-      "scenario": "normal",
-      "round": 3,
-      "tabs": 1,
-      "startOffsetMs": 2350,
-      "windowMs": 19500,
-      "snapshotRequests": 7,
-      "streamRequests": 0,
-      "unavailableRequests": 0,
-      "bodyBytes": 510,
-      "activeSnapshots": 0,
-      "maxActiveSnapshots": 1,
-      "activeStreams": 0,
-      "maxActiveStreams": 0,
-      "observations": [
-        {
-          "tab": 1,
-          "updates": [
-            {
-              "version": 1,
-              "status": "Running",
-              "delayMs": null
-            },
-            {
-              "version": 2,
-              "status": "Running",
-              "delayMs": null
-            },
-            {
-              "version": 3,
-              "status": "Running",
-              "delayMs": null
-            },
-            {
-              "version": 4,
-              "status": "Running",
-              "delayMs": 687
-            },
-            {
-              "version": 5,
-              "status": "Running",
-              "delayMs": 639
-            },
-            {
-              "version": 6,
-              "status": "Completed",
-              "delayMs": 346
-            }
-          ],
-          "recoveryMs": null
-        }
-      ]
-    },
-    {
-      "method": "sse",
-      "scenario": "normal",
-      "round": 3,
-      "tabs": 1,
-      "startOffsetMs": 2350,
-      "windowMs": 19500,
+      "startOffsetMs": 700,
+      "windowMs": 32004,
       "snapshotRequests": 0,
       "streamRequests": 1,
       "unavailableRequests": 0,
-      "bodyBytes": 671,
+      "bodyBytes": 24238,
       "activeSnapshots": 0,
       "maxActiveSnapshots": 0,
-      "activeStreams": 0,
+      "activeStreams": 1,
       "maxActiveStreams": 1,
       "observations": [
         {
           "tab": 1,
+          "firstSnapshotMs": 280,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
+              "phase": "steady",
+              "delayMs": 54
+            },
+            {
+              "version": 2,
+              "phase": "steady",
               "delayMs": 58
             },
             {
-              "version": 2,
-              "status": "Running",
-              "delayMs": 43
-            },
-            {
               "version": 3,
-              "status": "Running",
-              "delayMs": 55
+              "phase": "burst",
+              "delayMs": 57
             },
             {
               "version": 4,
-              "status": "Running",
-              "delayMs": 69
+              "phase": "burst",
+              "delayMs": 46
             },
             {
               "version": 5,
-              "status": "Running",
+              "phase": "burst",
+              "delayMs": 63
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": 50
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": 52
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": 71
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": 65
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 53
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 46
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 68
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": 49
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 63
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": 50
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": 54
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 48
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 65
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": 54
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 48
+            }
+          ],
+          "behindMs": 2112,
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "candidate": "fixed-1s",
+      "scenario": "normal",
+      "round": 2,
+      "tabs": 1,
+      "startOffsetMs": 700,
+      "windowMs": 32023,
+      "snapshotRequests": 31,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 35238,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 270,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 212
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": 240
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": 548
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": 53
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
               "delayMs": 64
             },
             {
-              "version": 6,
-              "status": "Completed",
-              "delayMs": 69
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 577
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 321
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 352
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": 156
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": 164
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 168
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": 178
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 681
             }
           ],
+          "behindMs": 8163,
           "recoveryMs": null
         }
       ]
     },
     {
-      "method": "fixed-1s",
+      "candidate": "fixed-5s",
       "scenario": "normal",
       "round": 3,
       "tabs": 1,
-      "startOffsetMs": 2350,
-      "windowMs": 19500,
-      "snapshotRequests": 13,
+      "startOffsetMs": 1300,
+      "windowMs": 32013,
+      "snapshotRequests": 7,
       "streamRequests": 0,
       "unavailableRequests": 0,
-      "bodyBytes": 942,
+      "bodyBytes": 7949,
       "activeSnapshots": 0,
       "maxActiveSnapshots": 1,
       "activeStreams": 0,
@@ -722,269 +1579,1889 @@
       "observations": [
         {
           "tab": 1,
+          "firstSnapshotMs": 268,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": null
+              "phase": "steady",
+              "delayMs": 2775
             },
             {
               "version": 2,
-              "status": "Running",
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": 79
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 4088
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 1789
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": 91
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 3096
+            }
+          ],
+          "behindMs": 21894,
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "candidate": "adaptive",
+      "scenario": "normal",
+      "round": 3,
+      "tabs": 1,
+      "startOffsetMs": 1300,
+      "windowMs": 32008,
+      "snapshotRequests": 22,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 25030,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 273,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 1781
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": 810
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": 126
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": 135
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
               "delayMs": 150
             },
             {
-              "version": 3,
-              "status": "Running",
-              "delayMs": 341
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
             },
             {
-              "version": 4,
-              "status": "Running",
-              "delayMs": 700
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 165
             },
             {
-              "version": 5,
-              "status": "Running",
-              "delayMs": 644
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 3888
             },
             {
-              "version": 6,
-              "status": "Completed",
-              "delayMs": 349
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 896
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 209
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": 215
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 221
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 224
             }
           ],
+          "behindMs": 14402,
           "recoveryMs": null
         }
       ]
     },
     {
-      "method": "fixed-3s",
+      "candidate": "sse",
       "scenario": "normal",
       "round": 3,
       "tabs": 1,
-      "startOffsetMs": 2350,
-      "windowMs": 19500,
-      "snapshotRequests": 5,
-      "streamRequests": 0,
-      "unavailableRequests": 0,
-      "bodyBytes": 364,
-      "activeSnapshots": 0,
-      "maxActiveSnapshots": 1,
-      "activeStreams": 0,
-      "maxActiveStreams": 0,
-      "observations": [
-        {
-          "tab": 1,
-          "updates": [
-            {
-              "version": 1,
-              "status": "Running",
-              "delayMs": null
-            },
-            {
-              "version": 2,
-              "status": "Running",
-              "delayMs": null
-            },
-            {
-              "version": 3,
-              "status": "Running",
-              "delayMs": 331
-            },
-            {
-              "version": 4,
-              "status": "Running",
-              "delayMs": 1686
-            },
-            {
-              "version": 5,
-              "status": "Running",
-              "delayMs": null
-            },
-            {
-              "version": 6,
-              "status": "Completed",
-              "delayMs": 315
-            }
-          ],
-          "recoveryMs": null
-        }
-      ]
-    },
-    {
-      "method": "fixed-1s",
-      "scenario": "slow",
-      "round": 1,
-      "tabs": 1,
-      "startOffsetMs": 0,
-      "windowMs": 19500,
-      "snapshotRequests": 12,
-      "streamRequests": 0,
-      "unavailableRequests": 0,
-      "bodyBytes": 869,
-      "activeSnapshots": 0,
-      "maxActiveSnapshots": 1,
-      "activeStreams": 0,
-      "maxActiveStreams": 0,
-      "observations": [
-        {
-          "tab": 1,
-          "updates": [
-            {
-              "version": 1,
-              "status": "Running",
-              "delayMs": 1741
-            },
-            {
-              "version": 2,
-              "status": "Running",
-              "delayMs": null
-            },
-            {
-              "version": 3,
-              "status": "Running",
-              "delayMs": 1443
-            },
-            {
-              "version": 4,
-              "status": "Running",
-              "delayMs": 2525
-            },
-            {
-              "version": 5,
-              "status": "Running",
-              "delayMs": 1823
-            },
-            {
-              "version": 6,
-              "status": "Completed",
-              "delayMs": 2240
-            }
-          ],
-          "recoveryMs": null
-        }
-      ]
-    },
-    {
-      "method": "adaptive",
-      "scenario": "slow",
-      "round": 1,
-      "tabs": 1,
-      "startOffsetMs": 0,
-      "windowMs": 19500,
-      "snapshotRequests": 8,
-      "streamRequests": 0,
-      "unavailableRequests": 0,
-      "bodyBytes": 583,
-      "activeSnapshots": 0,
-      "maxActiveSnapshots": 1,
-      "activeStreams": 0,
-      "maxActiveStreams": 0,
-      "observations": [
-        {
-          "tab": 1,
-          "updates": [
-            {
-              "version": 1,
-              "status": "Running",
-              "delayMs": null
-            },
-            {
-              "version": 2,
-              "status": "Running",
-              "delayMs": 2128
-            },
-            {
-              "version": 3,
-              "status": "Running",
-              "delayMs": 2667
-            },
-            {
-              "version": 4,
-              "status": "Running",
-              "delayMs": 2383
-            },
-            {
-              "version": 5,
-              "status": "Running",
-              "delayMs": 1690
-            },
-            {
-              "version": 6,
-              "status": "Completed",
-              "delayMs": 2089
-            }
-          ],
-          "recoveryMs": null
-        }
-      ]
-    },
-    {
-      "method": "sse",
-      "scenario": "slow",
-      "round": 1,
-      "tabs": 1,
-      "startOffsetMs": 0,
-      "windowMs": 19500,
+      "startOffsetMs": 1300,
+      "windowMs": 32007,
       "snapshotRequests": 0,
       "streamRequests": 1,
       "unavailableRequests": 0,
-      "bodyBytes": 671,
+      "bodyBytes": 24238,
       "activeSnapshots": 0,
       "maxActiveSnapshots": 0,
-      "activeStreams": 0,
+      "activeStreams": 1,
       "maxActiveStreams": 1,
       "observations": [
         {
           "tab": 1,
+          "firstSnapshotMs": 304,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": 1352
+              "phase": "steady",
+              "delayMs": 68
             },
             {
               "version": 2,
-              "status": "Running",
-              "delayMs": 1361
+              "phase": "steady",
+              "delayMs": 51
             },
             {
               "version": 3,
-              "status": "Running",
+              "phase": "burst",
+              "delayMs": 67
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": 48
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": 70
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": 57
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": 55
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": 55
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": 65
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 49
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 42
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 55
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": 47
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 44
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": 44
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": 71
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 62
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 59
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": 53
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 70
+            }
+          ],
+          "behindMs": 2750,
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "candidate": "fixed-1s",
+      "scenario": "normal",
+      "round": 3,
+      "tabs": 1,
+      "startOffsetMs": 1300,
+      "windowMs": 32004,
+      "snapshotRequests": 31,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 35257,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 294,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 843
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": 883
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": 197
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": 209
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": 221
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 221
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 975
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 1014
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 326
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": 341
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 350
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 362
+            }
+          ],
+          "behindMs": 11565,
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "candidate": "fixed-3s",
+      "scenario": "normal",
+      "round": 3,
+      "tabs": 1,
+      "startOffsetMs": 1300,
+      "windowMs": 32017,
+      "snapshotRequests": 11,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 12513,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 235,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 755
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": 76
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 1085
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 2813
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 116
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 116
+            }
+          ],
+          "behindMs": 14913,
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "candidate": "fixed-1s",
+      "scenario": "slow",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 32001,
+      "snapshotRequests": 24,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 26139,
+      "activeSnapshots": 1,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 1611,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 1915
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": 2004
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": 1669
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": 1534
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 1387
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 2253
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 2334
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": 1490
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 1854
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 1709
+            }
+          ],
+          "behindMs": 18286,
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "candidate": "fixed-3s",
+      "scenario": "slow",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 32002,
+      "snapshotRequests": 11,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 12500,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 1540,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 3764
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": 1564
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": 1576
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 4096
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 2797
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 1804
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 1620
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 3125
+            }
+          ],
+          "behindMs": 24734,
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "candidate": "fixed-5s",
+      "scenario": "slow",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 32001,
+      "snapshotRequests": 7,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 7954,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 1628,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 2844
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": 1663
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 4162
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 1864
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": 1675
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 3190
+            }
+          ],
+          "behindMs": 23104,
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "candidate": "adaptive",
+      "scenario": "slow",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 32003,
+      "snapshotRequests": 20,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 21611,
+      "activeSnapshots": 1,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 1533,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 1742
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": 1836
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": 1498
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": 1855
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": 1715
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 2569
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 3356
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 2088
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 1753
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 1610
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 1462
+            }
+          ],
+          "behindMs": 20087,
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "candidate": "sse",
+      "scenario": "slow",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 32023,
+      "snapshotRequests": 0,
+      "streamRequests": 1,
+      "unavailableRequests": 0,
+      "bodyBytes": 24238,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 0,
+      "activeStreams": 1,
+      "maxActiveStreams": 1,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 1558,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 1381
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": 1362
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": 1378
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": 1373
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": 1357
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": 1359
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": 1360
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": 1362
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": 1364
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 1360
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 1379
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 1363
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": 1378
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 1355
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": 1358
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": 1354
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 1377
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 1356
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": 1381
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 1352
+            }
+          ],
+          "behindMs": 16441,
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "candidate": "fixed-3s",
+      "scenario": "slow",
+      "round": 2,
+      "tabs": 1,
+      "startOffsetMs": 700,
+      "windowMs": 32014,
+      "snapshotRequests": 11,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 11370,
+      "activeSnapshots": 1,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 1538,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 1445
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": 1761
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 1761
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 3483
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 2485
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 1784
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": null
+            }
+          ],
+          "behindMs": 21852,
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "candidate": "fixed-5s",
+      "scenario": "slow",
+      "round": 2,
+      "tabs": 1,
+      "startOffsetMs": 700,
+      "windowMs": 32014,
+      "snapshotRequests": 7,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 6814,
+      "activeSnapshots": 1,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 1611,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 3542
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": 1844
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 4842
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 2558
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": 1370
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": null
+            }
+          ],
+          "behindMs": 26182,
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "candidate": "adaptive",
+      "scenario": "slow",
+      "round": 2,
+      "tabs": 1,
+      "startOffsetMs": 700,
+      "windowMs": 32012,
+      "snapshotRequests": 19,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 20469,
+      "activeSnapshots": 1,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 1544,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 2477
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": 2543
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": 1703
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": 1560
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 1924
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 2731
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 1461
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": 1619
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": 1484
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 1843
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 2207
+            }
+          ],
+          "behindMs": 21001,
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "candidate": "sse",
+      "scenario": "slow",
+      "round": 2,
+      "tabs": 1,
+      "startOffsetMs": 700,
+      "windowMs": 32011,
+      "snapshotRequests": 0,
+      "streamRequests": 1,
+      "unavailableRequests": 0,
+      "bodyBytes": 24238,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 0,
+      "activeStreams": 1,
+      "maxActiveStreams": 1,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 1627,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 1353
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": 1357
+            },
+            {
+              "version": 3,
+              "phase": "burst",
               "delayMs": 1363
             },
             {
               "version": 4,
-              "status": "Running",
-              "delayMs": 1366
+              "phase": "burst",
+              "delayMs": 1371
             },
             {
               "version": 5,
-              "status": "Running",
-              "delayMs": 1355
+              "phase": "burst",
+              "delayMs": 1357
             },
             {
               "version": 6,
-              "status": "Completed",
-              "delayMs": 1369
+              "phase": "burst",
+              "delayMs": 1358
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": 1362
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": 1374
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": 1371
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 1356
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 1370
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 1382
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": 1371
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 1362
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": 1382
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": 1374
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 1367
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 1366
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": 1357
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 1376
             }
           ],
+          "behindMs": 17204,
           "recoveryMs": null
         }
       ]
     },
     {
-      "method": "fixed-1s",
+      "candidate": "fixed-1s",
+      "scenario": "slow",
+      "round": 2,
+      "tabs": 1,
+      "startOffsetMs": 700,
+      "windowMs": 32028,
+      "snapshotRequests": 23,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 25003,
+      "activeSnapshots": 1,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 1562,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 2573
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": 1449
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": 1805
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": 1670
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 2023
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 1516
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 1603
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": 1762
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": 1614
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": 1472
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 2334
+            }
+          ],
+          "behindMs": 20144,
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "candidate": "fixed-1s",
       "scenario": "outage",
       "round": 1,
       "tabs": 1,
       "startOffsetMs": 0,
-      "windowMs": 19500,
-      "snapshotRequests": 15,
+      "windowMs": 32002,
+      "snapshotRequests": 32,
       "streamRequests": 0,
       "unavailableRequests": 3,
-      "bodyBytes": 949,
+      "bodyBytes": 33052,
       "activeSnapshots": 0,
       "maxActiveSnapshots": 1,
       "activeStreams": 0,
@@ -992,53 +3469,251 @@
       "observations": [
         {
           "tab": 1,
+          "firstSnapshotMs": 223,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": 682
+              "phase": "steady",
+              "delayMs": 410
             },
             {
               "version": 2,
-              "status": "Running",
-              "delayMs": null
+              "phase": "steady",
+              "delayMs": 455
             },
             {
               "version": 3,
-              "status": "Running",
-              "delayMs": null
+              "phase": "burst",
+              "delayMs": 256
             },
             {
               "version": 4,
-              "status": "Running",
-              "delayMs": 1917
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 5,
-              "status": "Running",
-              "delayMs": 878
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 6,
-              "status": "Completed",
-              "delayMs": 586
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 1286
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 1038
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 1049
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 356
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": 368
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 373
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 387
             }
           ],
-          "recoveryMs": 1247
+          "behindMs": 11210,
+          "recoveryMs": 586
         }
       ]
     },
     {
-      "method": "adaptive",
+      "candidate": "fixed-3s",
       "scenario": "outage",
       "round": 1,
       "tabs": 1,
       "startOffsetMs": 0,
-      "windowMs": 19500,
+      "windowMs": 32001,
+      "snapshotRequests": 13,
+      "streamRequests": 0,
+      "unavailableRequests": 2,
+      "bodyBytes": 12566,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 245,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 2434
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": 237
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 1268
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 2980
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 291
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 292
+            }
+          ],
+          "behindMs": 16162,
+          "recoveryMs": 568
+        }
+      ]
+    },
+    {
+      "candidate": "fixed-5s",
+      "scenario": "outage",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 32002,
       "snapshotRequests": 9,
       "streamRequests": 0,
       "unavailableRequests": 3,
-      "bodyBytes": 521,
+      "bodyBytes": 6903,
       "activeSnapshots": 0,
       "maxActiveSnapshots": 1,
       "activeStreams": 0,
@@ -1046,107 +3721,377 @@
       "observations": [
         {
           "tab": 1,
+          "firstSnapshotMs": 241,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": null
+              "phase": "steady",
+              "delayMs": 1418
             },
             {
               "version": 2,
-              "status": "Running",
+              "phase": "steady",
               "delayMs": null
             },
             {
               "version": 3,
-              "status": "Running",
+              "phase": "burst",
               "delayMs": null
             },
             {
               "version": 4,
-              "status": "Running",
-              "delayMs": 1827
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 5,
-              "status": "Running",
-              "delayMs": 765
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 6,
-              "status": "Completed",
-              "delayMs": 472
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 1252
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 3980
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 291
             }
           ],
-          "recoveryMs": 1157
+          "behindMs": 16601,
+          "recoveryMs": 552
         }
       ]
     },
     {
-      "method": "sse",
+      "candidate": "adaptive",
       "scenario": "outage",
       "round": 1,
       "tabs": 1,
       "startOffsetMs": 0,
-      "windowMs": 19500,
+      "windowMs": 32003,
+      "snapshotRequests": 23,
+      "streamRequests": 0,
+      "unavailableRequests": 3,
+      "bodyBytes": 22828,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 223,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 408
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 2288
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 1997
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 1032
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 338
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": 349
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 356
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 369
+            }
+          ],
+          "behindMs": 14080,
+          "recoveryMs": 1588
+        }
+      ]
+    },
+    {
+      "candidate": "sse",
+      "scenario": "outage",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 32017,
       "snapshotRequests": 0,
-      "streamRequests": 7,
-      "unavailableRequests": 5,
-      "bodyBytes": 753,
+      "streamRequests": 8,
+      "unavailableRequests": 6,
+      "bodyBytes": 18588,
       "activeSnapshots": 0,
       "maxActiveSnapshots": 0,
-      "activeStreams": 0,
+      "activeStreams": 1,
       "maxActiveStreams": 1,
       "observations": [
         {
           "tab": 1,
+          "firstSnapshotMs": 221,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": 49
+              "phase": "steady",
+              "delayMs": 50
             },
             {
               "version": 2,
-              "status": "Running",
-              "delayMs": 53
+              "phase": "steady",
+              "delayMs": 60
             },
             {
               "version": 3,
-              "status": "Running",
-              "delayMs": 2757
+              "phase": "burst",
+              "delayMs": 63
             },
             {
               "version": 4,
-              "status": "Running",
-              "delayMs": 1107
-            },
-            {
-              "version": 5,
-              "status": "Running",
+              "phase": "burst",
               "delayMs": 64
             },
             {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
               "version": 6,
-              "status": "Completed",
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 766
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 71
+            },
+            {
+              "version": 12,
+              "phase": "steady",
               "delayMs": 65
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": 54
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 72
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": 53
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": 48
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 70
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 59
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": 50
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 71
             }
           ],
-          "recoveryMs": 437
+          "behindMs": 4350,
+          "recoveryMs": 66
         }
       ]
     },
     {
-      "method": "fixed-3s",
-      "scenario": "normal",
-      "round": 1,
-      "tabs": 2,
-      "startOffsetMs": 0,
-      "windowMs": 19500,
-      "snapshotRequests": 12,
+      "candidate": "fixed-3s",
+      "scenario": "outage",
+      "round": 2,
+      "tabs": 1,
+      "startOffsetMs": 700,
+      "windowMs": 32007,
+      "snapshotRequests": 13,
       "streamRequests": 0,
-      "unavailableRequests": 0,
-      "bodyBytes": 870,
+      "unavailableRequests": 3,
+      "bodyBytes": 11452,
       "activeSnapshots": 0,
       "maxActiveSnapshots": 1,
       "activeStreams": 0,
@@ -1154,89 +4099,629 @@
       "observations": [
         {
           "tab": 1,
+          "firstSnapshotMs": 235,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": null
+              "phase": "steady",
+              "delayMs": 116
             },
             {
               "version": 2,
-              "status": "Running",
+              "phase": "steady",
               "delayMs": null
             },
             {
               "version": 3,
-              "status": "Running",
-              "delayMs": 978
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 4,
-              "status": "Running",
+              "phase": "burst",
               "delayMs": null
             },
             {
               "version": 5,
-              "status": "Running",
-              "delayMs": 285
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 6,
-              "status": "Completed",
-              "delayMs": 971
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 957
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 2673
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": 481
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": 485
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 2986
             }
           ],
-          "recoveryMs": null
-        },
-        {
-          "tab": 2,
-          "updates": [
-            {
-              "version": 1,
-              "status": "Running",
-              "delayMs": null
-            },
-            {
-              "version": 2,
-              "status": "Running",
-              "delayMs": null
-            },
-            {
-              "version": 3,
-              "status": "Running",
-              "delayMs": 1056
-            },
-            {
-              "version": 4,
-              "status": "Running",
-              "delayMs": null
-            },
-            {
-              "version": 5,
-              "status": "Running",
-              "delayMs": 347
-            },
-            {
-              "version": 6,
-              "status": "Completed",
-              "delayMs": 1042
-            }
-          ],
-          "recoveryMs": null
+          "behindMs": 17049,
+          "recoveryMs": 257
         }
       ]
     },
     {
-      "method": "adaptive",
+      "candidate": "fixed-5s",
+      "scenario": "outage",
+      "round": 2,
+      "tabs": 1,
+      "startOffsetMs": 700,
+      "windowMs": 32004,
+      "snapshotRequests": 9,
+      "streamRequests": 0,
+      "unavailableRequests": 3,
+      "bodyBytes": 6903,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 278,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 2189
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 2017
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 733
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 1046
+            }
+          ],
+          "behindMs": 19180,
+          "recoveryMs": 1317
+        }
+      ]
+    },
+    {
+      "candidate": "adaptive",
+      "scenario": "outage",
+      "round": 2,
+      "tabs": 1,
+      "startOffsetMs": 700,
+      "windowMs": 32002,
+      "snapshotRequests": 22,
+      "streamRequests": 0,
+      "unavailableRequests": 3,
+      "bodyBytes": 21694,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 294,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 1218
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": 239
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": 58
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 1103
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 829
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 141
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 144
+            }
+          ],
+          "behindMs": 11942,
+          "recoveryMs": 403
+        }
+      ]
+    },
+    {
+      "candidate": "sse",
+      "scenario": "outage",
+      "round": 2,
+      "tabs": 1,
+      "startOffsetMs": 700,
+      "windowMs": 32003,
+      "snapshotRequests": 0,
+      "streamRequests": 9,
+      "unavailableRequests": 7,
+      "bodyBytes": 18600,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 0,
+      "activeStreams": 1,
+      "maxActiveStreams": 1,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 289,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 51
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": 47
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": 61
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": 57
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 1244
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 47
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 62
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": 46
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 66
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": 53
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": 51
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 66
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 52
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": 67
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 55
+            }
+          ],
+          "behindMs": 5529,
+          "recoveryMs": 544
+        }
+      ]
+    },
+    {
+      "candidate": "fixed-1s",
+      "scenario": "outage",
+      "round": 2,
+      "tabs": 1,
+      "startOffsetMs": 700,
+      "windowMs": 32029,
+      "snapshotRequests": 31,
+      "streamRequests": 0,
+      "unavailableRequests": 3,
+      "bodyBytes": 31921,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 251,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 198
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": 210
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 1060
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 800
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 820
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 126
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": 140
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 142
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 146
+            }
+          ],
+          "behindMs": 10116,
+          "recoveryMs": 360
+        }
+      ]
+    },
+    {
+      "candidate": "fixed-3s",
       "scenario": "normal",
       "round": 1,
       "tabs": 2,
       "startOffsetMs": 0,
-      "windowMs": 19500,
-      "snapshotRequests": 20,
+      "windowMs": 32010,
+      "snapshotRequests": 22,
       "streamRequests": 0,
       "unavailableRequests": 0,
-      "bodyBytes": 1458,
+      "bodyBytes": 25000,
       "activeSnapshots": 0,
       "maxActiveSnapshots": 2,
       "activeStreams": 0,
@@ -1244,505 +4729,689 @@
       "observations": [
         {
           "tab": 1,
+          "firstSnapshotMs": 259,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": null
+              "phase": "steady",
+              "delayMs": 2493
             },
             {
               "version": 2,
-              "status": "Running",
-              "delayMs": 821
+              "phase": "steady",
+              "delayMs": null
             },
             {
               "version": 3,
-              "status": "Running",
-              "delayMs": 990
-            },
-            {
-              "version": 4,
-              "status": "Running",
-              "delayMs": 347
-            },
-            {
-              "version": 5,
-              "status": "Running",
+              "phase": "burst",
               "delayMs": 305
             },
             {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
               "version": 6,
-              "status": "Completed",
-              "delayMs": 999
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": 325
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 2830
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 1535
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 544
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 356
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 1865
             }
           ],
+          "behindMs": 17223,
           "recoveryMs": null
         },
         {
           "tab": 2,
+          "firstSnapshotMs": 269,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": null
+              "phase": "steady",
+              "delayMs": 2508
             },
             {
               "version": 2,
-              "status": "Running",
-              "delayMs": 806
+              "phase": "steady",
+              "delayMs": null
             },
             {
               "version": 3,
-              "status": "Running",
-              "delayMs": 975
+              "phase": "burst",
+              "delayMs": 321
             },
             {
               "version": 4,
-              "status": "Running",
-              "delayMs": 338
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 5,
-              "status": "Running",
-              "delayMs": 290
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 6,
-              "status": "Completed",
-              "delayMs": 992
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": 325
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 2830
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 1535
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 544
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 356
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 1866
             }
           ],
+          "behindMs": 17270,
           "recoveryMs": null
         }
       ]
     },
     {
-      "method": "sse",
+      "candidate": "adaptive",
       "scenario": "normal",
       "round": 1,
       "tabs": 2,
       "startOffsetMs": 0,
-      "windowMs": 19500,
-      "snapshotRequests": 0,
-      "streamRequests": 2,
+      "windowMs": 32007,
+      "snapshotRequests": 40,
+      "streamRequests": 0,
       "unavailableRequests": 0,
-      "bodyBytes": 1342,
+      "bodyBytes": 45464,
       "activeSnapshots": 0,
-      "maxActiveSnapshots": 0,
+      "maxActiveSnapshots": 2,
       "activeStreams": 0,
-      "maxActiveStreams": 2,
+      "maxActiveStreams": 0,
       "observations": [
         {
           "tab": 1,
+          "firstSnapshotMs": 281,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": 57
+              "phase": "steady",
+              "delayMs": 497
             },
             {
               "version": 2,
-              "status": "Running",
-              "delayMs": 71
+              "phase": "steady",
+              "delayMs": null
             },
             {
               "version": 3,
-              "status": "Running",
-              "delayMs": 66
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 4,
-              "status": "Running",
-              "delayMs": 44
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 5,
-              "status": "Running",
-              "delayMs": 81
+              "phase": "burst",
+              "delayMs": null
             },
             {
               "version": 6,
-              "status": "Completed",
-              "delayMs": 50
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": 328
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": 338
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 844
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 581
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 415
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": 423
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 938
             }
           ],
+          "behindMs": 12065,
           "recoveryMs": null
         },
         {
           "tab": 2,
+          "firstSnapshotMs": 282,
           "updates": [
             {
               "version": 1,
-              "status": "Running",
-              "delayMs": 57
+              "phase": "steady",
+              "delayMs": 497
             },
             {
               "version": 2,
-              "status": "Running",
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": 328
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": 338
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 844
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 581
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": null
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 415
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": null
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": 423
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 938
+            }
+          ],
+          "behindMs": 12072,
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "candidate": "sse",
+      "scenario": "normal",
+      "round": 1,
+      "tabs": 2,
+      "startOffsetMs": 0,
+      "windowMs": 32015,
+      "snapshotRequests": 0,
+      "streamRequests": 2,
+      "unavailableRequests": 0,
+      "bodyBytes": 48476,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 0,
+      "activeStreams": 2,
+      "maxActiveStreams": 2,
+      "observations": [
+        {
+          "tab": 1,
+          "firstSnapshotMs": 254,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 64
+            },
+            {
+              "version": 2,
+              "phase": "steady",
               "delayMs": 71
             },
             {
               "version": 3,
-              "status": "Running",
-              "delayMs": 66
+              "phase": "burst",
+              "delayMs": 53
             },
             {
               "version": 4,
-              "status": "Running",
-              "delayMs": 44
+              "phase": "burst",
+              "delayMs": 68
             },
             {
               "version": 5,
-              "status": "Running",
-              "delayMs": 81
+              "phase": "burst",
+              "delayMs": 74
             },
             {
               "version": 6,
-              "status": "Completed",
+              "phase": "burst",
+              "delayMs": 59
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": 63
+            },
+            {
+              "version": 8,
+              "phase": "burst",
               "delayMs": 50
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": 67
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 58
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 70
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 54
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": 51
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 69
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": 53
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": 57
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 52
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 56
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": 45
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 46
             }
           ],
+          "behindMs": 1444,
+          "recoveryMs": null
+        },
+        {
+          "tab": 2,
+          "firstSnapshotMs": 295,
+          "updates": [
+            {
+              "version": 1,
+              "phase": "steady",
+              "delayMs": 64
+            },
+            {
+              "version": 2,
+              "phase": "steady",
+              "delayMs": 71
+            },
+            {
+              "version": 3,
+              "phase": "burst",
+              "delayMs": 54
+            },
+            {
+              "version": 4,
+              "phase": "burst",
+              "delayMs": 68
+            },
+            {
+              "version": 5,
+              "phase": "burst",
+              "delayMs": 74
+            },
+            {
+              "version": 6,
+              "phase": "burst",
+              "delayMs": 59
+            },
+            {
+              "version": 7,
+              "phase": "burst",
+              "delayMs": 63
+            },
+            {
+              "version": 8,
+              "phase": "burst",
+              "delayMs": 50
+            },
+            {
+              "version": 9,
+              "phase": "burst",
+              "delayMs": 67
+            },
+            {
+              "version": 10,
+              "phase": "burst",
+              "delayMs": 58
+            },
+            {
+              "version": 11,
+              "phase": "steady",
+              "delayMs": 70
+            },
+            {
+              "version": 12,
+              "phase": "steady",
+              "delayMs": 54
+            },
+            {
+              "version": 13,
+              "phase": "burst",
+              "delayMs": 51
+            },
+            {
+              "version": 14,
+              "phase": "burst",
+              "delayMs": 53
+            },
+            {
+              "version": 15,
+              "phase": "burst",
+              "delayMs": 69
+            },
+            {
+              "version": 16,
+              "phase": "burst",
+              "delayMs": 43
+            },
+            {
+              "version": 17,
+              "phase": "burst",
+              "delayMs": 67
+            },
+            {
+              "version": 18,
+              "phase": "burst",
+              "delayMs": 43
+            },
+            {
+              "version": 19,
+              "phase": "burst",
+              "delayMs": 61
+            },
+            {
+              "version": 20,
+              "phase": "burst",
+              "delayMs": 62
+            }
+          ],
+          "behindMs": 1511,
           "recoveryMs": null
         }
       ]
-    }
-  ],
-  "summary": [
-    {
-      "scenario": "normal",
-      "method": "fixed-1s",
-      "round": 1,
-      "tabs": 1,
-      "requests": 15,
-      "reqPerTabMin": 46.2,
-      "bodyBytes": 1086,
-      "updateP95Ms": 861,
-      "completedP95Ms": 524,
-      "missed": 0,
-      "recoveryMs": null,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "normal",
-      "method": "fixed-3s",
-      "round": 1,
-      "tabs": 1,
-      "requests": 6,
-      "reqPerTabMin": 18.5,
-      "bodyBytes": 435,
-      "updateP95Ms": 1039,
-      "completedP95Ms": 1038,
-      "missed": 3,
-      "recoveryMs": null,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "normal",
-      "method": "fixed-5s",
-      "round": 1,
-      "tabs": 1,
-      "requests": 4,
-      "reqPerTabMin": 12.3,
-      "bodyBytes": 291,
-      "updateP95Ms": 1036,
-      "completedP95Ms": 1036,
-      "missed": 4,
-      "recoveryMs": null,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "normal",
-      "method": "adaptive",
-      "round": 1,
-      "tabs": 1,
-      "requests": 9,
-      "reqPerTabMin": 27.7,
-      "bodyBytes": 656,
-      "updateP95Ms": 505,
-      "completedP95Ms": 166,
-      "missed": 2,
-      "recoveryMs": null,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "normal",
-      "method": "sse",
-      "round": 1,
-      "tabs": 1,
-      "requests": 1,
-      "reqPerTabMin": 3.1,
-      "bodyBytes": 671,
-      "updateP95Ms": 69,
-      "completedP95Ms": 57,
-      "missed": 0,
-      "recoveryMs": null,
-      "maxStreams": 1
-    },
-    {
-      "scenario": "normal",
-      "method": "fixed-3s",
-      "round": 2,
-      "tabs": 1,
-      "requests": 6,
-      "reqPerTabMin": 18.5,
-      "bodyBytes": 437,
-      "updateP95Ms": 2105,
-      "completedP95Ms": 2105,
-      "missed": 2,
-      "recoveryMs": null,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "normal",
-      "method": "fixed-5s",
-      "round": 2,
-      "tabs": 1,
-      "requests": 4,
-      "reqPerTabMin": 12.3,
-      "bodyBytes": 291,
-      "updateP95Ms": 2113,
-      "completedP95Ms": 2113,
-      "missed": 4,
-      "recoveryMs": null,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "normal",
-      "method": "adaptive",
-      "round": 2,
-      "tabs": 1,
-      "requests": 8,
-      "reqPerTabMin": 24.6,
-      "bodyBytes": 583,
-      "updateP95Ms": 1141,
-      "completedP95Ms": 163,
-      "missed": 2,
-      "recoveryMs": null,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "normal",
-      "method": "sse",
-      "round": 2,
-      "tabs": 1,
-      "requests": 1,
-      "reqPerTabMin": 3.1,
-      "bodyBytes": 671,
-      "updateP95Ms": 75,
-      "completedP95Ms": 68,
-      "missed": 0,
-      "recoveryMs": null,
-      "maxStreams": 1
-    },
-    {
-      "scenario": "normal",
-      "method": "fixed-1s",
-      "round": 2,
-      "tabs": 1,
-      "requests": 14,
-      "reqPerTabMin": 43.1,
-      "bodyBytes": 1013,
-      "updateP95Ms": 767,
-      "completedP95Ms": 135,
-      "missed": 1,
-      "recoveryMs": null,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "normal",
-      "method": "fixed-5s",
-      "round": 3,
-      "tabs": 1,
-      "requests": 4,
-      "reqPerTabMin": 12.3,
-      "bodyBytes": 293,
-      "updateP95Ms": 3325,
-      "completedP95Ms": 3325,
-      "missed": 3,
-      "recoveryMs": null,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "normal",
-      "method": "adaptive",
-      "round": 3,
-      "tabs": 1,
-      "requests": 7,
-      "reqPerTabMin": 21.5,
-      "bodyBytes": 510,
-      "updateP95Ms": 687,
-      "completedP95Ms": 346,
-      "missed": 3,
-      "recoveryMs": null,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "normal",
-      "method": "sse",
-      "round": 3,
-      "tabs": 1,
-      "requests": 1,
-      "reqPerTabMin": 3.1,
-      "bodyBytes": 671,
-      "updateP95Ms": 69,
-      "completedP95Ms": 69,
-      "missed": 0,
-      "recoveryMs": null,
-      "maxStreams": 1
-    },
-    {
-      "scenario": "normal",
-      "method": "fixed-1s",
-      "round": 3,
-      "tabs": 1,
-      "requests": 13,
-      "reqPerTabMin": 40,
-      "bodyBytes": 942,
-      "updateP95Ms": 700,
-      "completedP95Ms": 349,
-      "missed": 1,
-      "recoveryMs": null,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "normal",
-      "method": "fixed-3s",
-      "round": 3,
-      "tabs": 1,
-      "requests": 5,
-      "reqPerTabMin": 15.4,
-      "bodyBytes": 364,
-      "updateP95Ms": 1686,
-      "completedP95Ms": 315,
-      "missed": 3,
-      "recoveryMs": null,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "slow",
-      "method": "fixed-1s",
-      "round": 1,
-      "tabs": 1,
-      "requests": 12,
-      "reqPerTabMin": 36.9,
-      "bodyBytes": 869,
-      "updateP95Ms": 2525,
-      "completedP95Ms": 2240,
-      "missed": 1,
-      "recoveryMs": null,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "slow",
-      "method": "adaptive",
-      "round": 1,
-      "tabs": 1,
-      "requests": 8,
-      "reqPerTabMin": 24.6,
-      "bodyBytes": 583,
-      "updateP95Ms": 2667,
-      "completedP95Ms": 2089,
-      "missed": 1,
-      "recoveryMs": null,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "slow",
-      "method": "sse",
-      "round": 1,
-      "tabs": 1,
-      "requests": 1,
-      "reqPerTabMin": 3.1,
-      "bodyBytes": 671,
-      "updateP95Ms": 1369,
-      "completedP95Ms": 1369,
-      "missed": 0,
-      "recoveryMs": null,
-      "maxStreams": 1
-    },
-    {
-      "scenario": "outage",
-      "method": "fixed-1s",
-      "round": 1,
-      "tabs": 1,
-      "requests": 15,
-      "reqPerTabMin": 46.2,
-      "bodyBytes": 949,
-      "updateP95Ms": 1917,
-      "completedP95Ms": 586,
-      "missed": 2,
-      "recoveryMs": 1247,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "outage",
-      "method": "adaptive",
-      "round": 1,
-      "tabs": 1,
-      "requests": 9,
-      "reqPerTabMin": 27.7,
-      "bodyBytes": 521,
-      "updateP95Ms": 1827,
-      "completedP95Ms": 472,
-      "missed": 3,
-      "recoveryMs": 1157,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "outage",
-      "method": "sse",
-      "round": 1,
-      "tabs": 1,
-      "requests": 7,
-      "reqPerTabMin": 21.5,
-      "bodyBytes": 753,
-      "updateP95Ms": 2757,
-      "completedP95Ms": 65,
-      "missed": 0,
-      "recoveryMs": 437,
-      "maxStreams": 1
-    },
-    {
-      "scenario": "normal",
-      "method": "fixed-3s",
-      "round": 1,
-      "tabs": 2,
-      "requests": 12,
-      "reqPerTabMin": 18.5,
-      "bodyBytes": 870,
-      "updateP95Ms": 1056,
-      "completedP95Ms": 1042,
-      "missed": 6,
-      "recoveryMs": null,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "normal",
-      "method": "adaptive",
-      "round": 1,
-      "tabs": 2,
-      "requests": 20,
-      "reqPerTabMin": 30.8,
-      "bodyBytes": 1458,
-      "updateP95Ms": 999,
-      "completedP95Ms": 999,
-      "missed": 2,
-      "recoveryMs": null,
-      "maxStreams": 0
-    },
-    {
-      "scenario": "normal",
-      "method": "sse",
-      "round": 1,
-      "tabs": 2,
-      "requests": 2,
-      "reqPerTabMin": 3.1,
-      "bodyBytes": 1342,
-      "updateP95Ms": 81,
-      "completedP95Ms": 50,
-      "missed": 0,
-      "recoveryMs": null,
-      "maxStreams": 2
     }
   ]
 }

@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 
 const experiments = [
   { title: 'Brand style runtime', issue: '공통값', evidence: '73개' },
-  { title: 'Dashboard auto refresh', issue: '중간 상태', evidence: '75 ms' },
+  { title: 'Dashboard auto refresh', issue: '최신 상태', evidence: '분/탭' },
   { title: 'Jonbeo MSW performance', issue: '워커', evidence: '6.44초' },
 ] as const
 

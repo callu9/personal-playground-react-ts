@@ -54,7 +54,7 @@ const theme = useMemo(() => resolveTheme(brandId), [brandId])`}</code></pre>
               <h3 id="modules-code">CSS Modules + React Context</h3>
               <p>Context를 직접 읽는 곳은 <code>ThemeRegion</code> 한 곳입니다. 영역에 <code>--ds-*</code>를 설정하면 모듈 CSS가 상속된 변수를 사용합니다.</p>
               <figure className={styles.sourceExcerpt}>
-                <figcaption>Context와 영역 연결 <a href="https://github.com/callu9/personal-playground-react-ts/blob/0a26ebe/experiments/brand-theme/css-modules/main.tsx#L9-L19">css-modules/main.tsx</a></figcaption>
+                <figcaption>Context와 영역 연결 <a href="https://github.com/callu9/personal-playground-react-ts/blob/feature/jonbeo-msw-performance/experiments/brand-theme/css-modules/theme.tsx#L8-L18">css-modules/theme.tsx</a></figcaption>
                 <pre><code>{`<ThemeContext.Provider value={theme}>
   <ThemeRegion className={className}
     aria-label="Operations theme" data-brand={theme.brandId}>

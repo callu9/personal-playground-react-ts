@@ -1,14 +1,11 @@
 import { randomUUID } from 'node:crypto'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 import type { Plugin } from 'vite'
-import { apiPath, type JobStatus, type Run, type Snapshot } from './contract.ts'
+import { apiPath, scenarioLabels, type Feed, type Scenario } from './contract.ts'
+import { normalDelayMs, outageEndMs, outageStartMs, slowDelayMs, snapshotAt, snapshotFor, versionAt } from './fixture.ts'
 
-const schedule = [
-  [4_520, 15], [5_350, 35], [6_180, 48], [7_830, 64], [9_890, 88], [12_200, 100],
-] as const
-const quickSchedule = [[500, 15], [1_700, 48], [3_650, 88], [5_400, 100]] as const
-const runLifetimeMs = 10 * 60_000
-const runLimit = 256
+const idleLifetimeMs = 15 * 60_000
+const feedLimit = 256
 
 interface Metrics {
   snapshotRequests: number
@@ -21,27 +18,16 @@ interface Metrics {
   maxActiveStreams: number
 }
 
-type Scenario = 'normal' | 'slow' | 'outage' | 'quick'
-
-interface MockRun extends Run {
-  scenario: Scenario
-  snapshots: Snapshot[]
+interface MockFeed extends Feed {
+  pace: number
+  lastAccess: number
   metrics: Metrics
 }
 
-function createRun(scenario: Scenario): MockRun {
-  const createdAt = Date.now()
-  const quick = scenario === 'quick'
-  const startedAt = createdAt + (quick ? 750 : 2_000)
-  const events: Snapshot[] = (quick ? quickSchedule : schedule).map(([at, progress], index) => ({
-    version: index + 1,
-    status: (progress === 100 ? 'Completed' : 'Running') satisfies JobStatus,
-    progress,
-    recordedAt: startedAt + at,
-  }))
+function createFeed(scenario: Scenario, pace: number): MockFeed {
+  const startedAt = Date.now()
   return {
-    id: randomUUID(), startedAt, endsAt: startedAt + (quick ? 7_000 : 17_500), scenario,
-    snapshots: [{ version: 0, status: 'Queued', progress: 0, recordedAt: createdAt }, ...events],
+    id: randomUUID(), scenario, startedAt, pace, lastAccess: startedAt,
     metrics: {
       snapshotRequests: 0, streamRequests: 0, unavailableRequests: 0, bodyBytes: 0,
       activeSnapshots: 0, maxActiveSnapshots: 0, activeStreams: 0, maxActiveStreams: 0,
@@ -49,13 +35,17 @@ function createRun(scenario: Scenario): MockRun {
   }
 }
 
-function latencyFor(run: MockRun) {
-  return run.scenario === 'slow' ? 1_350 : 40
+function latencyFor(feed: MockFeed) {
+  return feed.scenario === 'slow' ? slowDelayMs : normalDelayMs
 }
 
-function isUnavailable(run: MockRun, now = Date.now()) {
-  const elapsed = now - run.startedAt
-  return run.scenario === 'outage' && elapsed >= 5_800 && elapsed < 8_500
+function isUnavailable(feed: MockFeed, now = Date.now()) {
+  const elapsed = (now - feed.startedAt) / feed.pace
+  return feed.scenario === 'outage' && elapsed >= outageStartMs && elapsed < outageEndMs
+}
+
+function isExpired(feed: MockFeed, now: number) {
+  return !feed.metrics.activeSnapshots && !feed.metrics.activeStreams && now - feed.lastAccess > idleLifetimeMs
 }
 
 function sendJson(response: ServerResponse, status: number, value: unknown, metrics?: Metrics) {
@@ -70,31 +60,28 @@ function unavailable(response: ServerResponse, metrics: Metrics) {
   sendJson(response, 503, { error: 'Temporary outage' }, metrics)
 }
 
-function availableSnapshots(run: MockRun, now: number) {
-  return run.snapshots.filter(({ recordedAt }) => recordedAt <= now)
-}
-
-function snapshot(run: MockRun, response: ServerResponse) {
-  const metrics = run.metrics
+function snapshot(feed: MockFeed, response: ServerResponse) {
+  const metrics = feed.metrics
   metrics.snapshotRequests++
-  if (isUnavailable(run)) return unavailable(response, metrics)
-
   const now = Date.now()
-  const latest = availableSnapshots(run, now).at(-1)
+  if (isUnavailable(feed, now)) return unavailable(response, metrics)
+
+  const latest = snapshotAt(feed.startedAt, now, feed.pace)
   metrics.activeSnapshots++
   metrics.maxActiveSnapshots = Math.max(metrics.maxActiveSnapshots, metrics.activeSnapshots)
   const timer = setTimeout(() => {
-    if (isUnavailable(run)) unavailable(response, metrics)
+    if (isUnavailable(feed)) unavailable(response, metrics)
     else sendJson(response, 200, latest, metrics)
-  }, latencyFor(run))
+  }, latencyFor(feed))
   response.once('close', () => {
     clearTimeout(timer)
     metrics.activeSnapshots--
+    feed.lastAccess = Date.now()
   })
 }
 
-function events(run: MockRun, request: IncomingMessage, response: ServerResponse, query: URLSearchParams) {
-  const { metrics } = run
+function events(feed: MockFeed, response: ServerResponse) {
+  const { metrics } = feed
   metrics.streamRequests++
   response.writeHead(200, {
     'Content-Type': 'text/event-stream',
@@ -106,45 +93,32 @@ function events(run: MockRun, request: IncomingMessage, response: ServerResponse
     response.write(frame)
   }
   write('retry: 500\n\n')
-  if (isUnavailable(run)) {
-    // A valid stream that closes is reconnectable by native EventSource.
+  if (isUnavailable(feed)) {
     metrics.unavailableRequests++
     response.end()
     return
   }
 
-  const header = request.headers['last-event-id']
-  const resumeFrom = Number(header ?? query.get('after') ?? -1)
-  let cursor = Number.isInteger(resumeFrom) && resumeFrom >= 0 && resumeFrom < run.snapshots.length ? resumeFrom : -1
-  let ready = false
-  const delay = latencyFor(run)
+  let cursor = -1
+  const delay = latencyFor(feed)
   const readyAt = Date.now() + delay
   let nextHeartbeat = readyAt + 5_000
 
   function pump() {
     if (response.writableEnded || response.destroyed) return
     const now = Date.now()
-    if (isUnavailable(run, now)) {
+    if (isUnavailable(feed, now)) {
       response.end()
       return
     }
-    if (now < readyAt) return
-    if (!ready) {
-      write('event: ready\ndata: {}\n\n')
-      ready = true
-    }
-
-    const available = availableSnapshots(run, now - delay)
-    const delivery = cursor < 0 ? available.slice(-1) : available.filter(({ version }) => version > cursor)
-    for (const item of delivery) {
-      write(`id: ${item.version}\ndata: ${JSON.stringify(item)}\n\n`)
-      cursor = item.version
-    }
-    if (cursor === run.snapshots.length - 1) {
-      response.end()
-      return
-    }
-    if (now >= nextHeartbeat) {
+    if (now < readyAt || response.writableNeedDrain) return
+    if (cursor < 0) write('event: ready\ndata: {}\n\n')
+    const version = versionAt(feed.startedAt, now - delay, feed.pace)
+    if (version > cursor) {
+      write(`id: ${version}\ndata: ${JSON.stringify(snapshotFor(feed.startedAt, version, feed.pace))}\n\n`)
+      cursor = version
+      nextHeartbeat = now + 5_000
+    } else if (now >= nextHeartbeat) {
       write(': heartbeat\n\n')
       nextHeartbeat = now + 5_000
     }
@@ -156,48 +130,49 @@ function events(run: MockRun, request: IncomingMessage, response: ServerResponse
   response.once('close', () => {
     clearInterval(timer)
     metrics.activeStreams--
+    feed.lastAccess = Date.now()
   })
-  pump()
 }
 
-function middleware(quickEnabled: boolean) {
-  const runs = new Map<string, MockRun>()
+function middleware(testMode: boolean) {
+  const feeds = new Map<string, MockFeed>()
   return (request: IncomingMessage, response: ServerResponse, next: () => void) => {
     const url = new URL(request.url ?? '/', 'http://localhost')
     if (!url.pathname.startsWith(`${apiPath}/`)) return next()
 
-    if (request.method === 'POST' && url.pathname === `${apiPath}/runs`) {
+    if (request.method === 'POST' && url.pathname === `${apiPath}/feeds`) {
       const scenario = url.searchParams.get('scenario') ?? 'normal'
-      if (scenario !== 'normal' && scenario !== 'slow' && scenario !== 'outage' && !(scenario === 'quick' && quickEnabled)) {
-        return sendJson(response, 400, { error: 'Unknown scenario' })
-      }
+      if (!Object.hasOwn(scenarioLabels, scenario)) return sendJson(response, 400, { error: 'Unknown scenario' })
       const now = Date.now()
-      for (const [id, run] of runs) {
-        if (now - run.endsAt > runLifetimeMs) runs.delete(id)
+      for (const [id, feed] of feeds) {
+        if (isExpired(feed, now)) feeds.delete(id)
       }
-      if (runs.size >= runLimit) return sendJson(response, 503, { error: 'Run limit reached' })
-      const run = createRun(scenario as Scenario)
-      runs.set(run.id, run)
-      return sendJson(response, 201, { id: run.id, startedAt: run.startedAt, endsAt: run.endsAt } satisfies Run)
+      if (feeds.size >= feedLimit) return sendJson(response, 503, { error: 'Feed limit reached' })
+      const pace = testMode && url.searchParams.get('pace') === 'fast' ? 0.2 : 1
+      const feed = createFeed(scenario as Scenario, pace)
+      feeds.set(feed.id, feed)
+      return sendJson(response, 201, { id: feed.id, scenario: feed.scenario, startedAt: feed.startedAt } satisfies Feed)
     }
 
-    const route = /^\/runs\/([0-9a-f-]+)\/(snapshot|events|stats)$/.exec(url.pathname.slice(apiPath.length))
-    const run = route && runs.get(route[1])
-    if (request.method !== 'GET' || !run || !route || Date.now() - run.endsAt > runLifetimeMs) {
-      return sendJson(response, 404, { error: 'Run unavailable' })
+    const route = /^\/feeds\/([0-9a-f-]+)\/(snapshot|events|stats)$/.exec(url.pathname.slice(apiPath.length))
+    const feed = route && feeds.get(route[1])
+    const now = Date.now()
+    if (request.method !== 'GET' || !feed || !route || isExpired(feed, now)) {
+      return sendJson(response, 404, { error: 'Feed unavailable' })
     }
+    feed.lastAccess = now
     switch (route[2]) {
-      case 'snapshot': return snapshot(run, response)
-      case 'stats': return sendJson(response, 200, { ...run.metrics, expected: run.snapshots })
-      case 'events': return events(run, request, response, url.searchParams)
+      case 'snapshot': return snapshot(feed, response)
+      case 'stats': return sendJson(response, 200, { ...feed.metrics, observedAt: now })
+      case 'events': return events(feed, response)
     }
   }
 }
 
-export function dashboardRefresh(quickEnabled = false): Plugin {
+export function dashboardRefresh(testMode = false): Plugin {
   return {
     name: 'dashboard-refresh-mock-api',
-    configureServer(server) { server.middlewares.use(middleware(quickEnabled)) },
+    configureServer(server) { server.middlewares.use(middleware(testMode)) },
     configurePreviewServer(server) { server.middlewares.use(middleware(false)) },
   }
 }

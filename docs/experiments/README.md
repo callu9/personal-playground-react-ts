@@ -5,7 +5,7 @@
 | 실험 결과 | 바로 볼 수 있는 내용 | 측정 원본 |
 |---|---|---|
 | [디자인 시스템과 브랜드 테마](brand-theme/results.md) | 네 후보의 구현·브라우저 비용과 선택 기준, [빌드·개발 반영·런타임 상세 측정](brand-theme/build-runtime.md) | [브랜드 테마 원본](brand-theme/evidence/) |
-| [대시보드 결과 자동 조회](dashboard-refresh/results.md) | 고정·적응형 폴링과 SSE의 반영 지연, 요청량, 단절 복구 | [자동 조회 원본](dashboard-refresh/evidence/) |
+| [대시보드 실시간 갱신](dashboard-refresh/results.md) | 평상시·집중 갱신의 반영 지연, 탭당 지속 요청량·전송량, 단절 복구 | [자동 조회 원본](dashboard-refresh/evidence/) |
 | [Jonbeo MSW와 입력 지연](jonbeo-msw/results.md) | 동일 조건 재측정, Chrome trace, Jonbeo 원본 클론의 로딩과 INP | [Jonbeo MSW 원본](jonbeo-msw/evidence/) |
 
 ## 공통 기록 기준

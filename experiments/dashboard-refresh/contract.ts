@@ -1,3 +1,5 @@
+import type { DashboardData } from '../brand-theme/shared/fixture.ts'
+
 export const apiPath = '/api/dashboard-refresh'
 export const dashboardPath = '/experiments/dashboard-refresh/'
 
@@ -17,22 +19,21 @@ export const pollingIntervals = [1_000, 3_000, 5_000] as const
 export type Method = keyof typeof methodLabels
 export type Scenario = keyof typeof scenarioLabels
 export type PollInterval = (typeof pollingIntervals)[number]
-export type JobStatus = 'Queued' | 'Running' | 'Completed'
-export type Connection = 'Connecting' | 'Live' | 'Retrying' | 'Paused' | 'Complete' | 'Unavailable'
+export type Connection = 'Connecting' | 'Live' | 'Retrying' | 'Paused' | 'Unavailable'
 
 export interface Snapshot {
   version: number
-  status: JobStatus
-  progress: number
   recordedAt: number
+  phase: 'steady' | 'burst'
+  data: DashboardData
 }
 
-export interface Run {
+export interface Feed {
   id: string
+  scenario: Scenario
   startedAt: number
-  endsAt: number
 }
 
-export function runPath(id: string) {
-  return `${apiPath}/runs/${encodeURIComponent(id)}`
+export function feedPath(id: string) {
+  return `${apiPath}/feeds/${encodeURIComponent(id)}`
 }

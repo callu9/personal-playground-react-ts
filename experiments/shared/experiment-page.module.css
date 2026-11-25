@@ -17,7 +17,7 @@
 }
 
 .page *, .page *::before, .page *::after { box-sizing: border-box; }
-.page a { color: var(--experiment-link); text-underline-offset: .18em; }
+.page a:where(:not([data-brand] a)) { color: var(--experiment-link); text-underline-offset: .18em; }
 .page :focus-visible { outline: 2px solid #137154; outline-offset: 3px; }
 .experiments, .content { width: min(100% - 2rem, 68rem); margin-inline: auto; }
 .experiments {

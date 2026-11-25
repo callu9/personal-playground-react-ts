@@ -1,4 +1,4 @@
-import type { Connection, JobStatus, Method, PollInterval, Snapshot } from './contract'
+import type { Connection, Method, PollInterval, Snapshot } from './contract'
 import { subscribeAdaptive } from './adaptive'
 import { subscribeFixed } from './polling'
 import { subscribeSse } from './sse'
@@ -7,7 +7,6 @@ export interface Subscription {
   url: string
   interval: PollInterval
   lastVersion: number
-  lastStatus: JobStatus | undefined
   update(snapshot: Snapshot): void
   connection(state: Connection): void
 }
