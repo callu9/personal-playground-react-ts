@@ -1,6 +1,6 @@
 # Personal React + TypeScript Playground
 
-독립적인 React 실험과 검증 결과를 모아두는 저장소입니다. 첫 실험은 하나의 운영 대시보드에 브랜드 테마를 적용하는 네 가지 방식을 비교합니다.
+독립적인 React 실험과 검증 결과를 모아두는 저장소입니다. 브랜드 테마와 대시보드 결과 자동 조회 방식을 비교합니다.
 
 ## 실행
 
@@ -25,15 +25,20 @@ CSS Modules 대시보드에서 배경색, 강조색, 글꼴이 브랜드마다 �
 |---|---|---|
 | [![공통 배경의 Grove 대시보드](screenshots/grove.jpg)](screenshots/grove.jpg) | [![블루 바이올렛 배경의 Signal 대시보드](screenshots/signal.jpg)](screenshots/signal.jpg) | [![피치 배경의 Ember 대시보드](screenshots/ember.jpg)](screenshots/ember.jpg) |
 
+## 대시보드 자동 조회
+
+런처에서 **Dashboard auto refresh**를 선택합니다. 고정 폴링, 적응형 폴링, SSE와 조회 시나리오를 선택하고 **Start run**을 누르면 가상 작업 상태와 화면에 반영된 버전을 볼 수 있습니다. [구현 시간·지연·요청량 비교](docs/experiments/dashboard-refresh.md)
+
 ## 검증 및 측정
 
 ```sh
 npm test
 npm run build
 npm run measure
+npm run measure:refresh
 ```
 
-테스트는 설치된 Chrome을 새 테스트 컨텍스트로 실행합니다. 측정 명령은 `dist`를 사용해 `test-results/theme-benchmark.json`과 후보별 대시보드 캡처를 저장합니다.
+테스트는 설치된 Chrome을 새 테스트 컨텍스트로 실행합니다. 측정 명령은 `dist`를 사용해 `test-results/theme-benchmark.json`과 후보별 대시보드 캡처를 저장합니다. 자동 조회 측정 결과는 `test-results/dashboard-refresh.json`에 저장됩니다.
 
 ## 구조
 

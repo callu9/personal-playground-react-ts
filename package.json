@@ -7,7 +7,8 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "playwright test",
-    "measure": "node scripts/measure-theme.mjs"
+    "measure": "node scripts/measure-theme.mjs",
+    "measure:refresh": "node scripts/measure-dashboard-refresh.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.5",

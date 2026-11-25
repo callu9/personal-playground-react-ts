@@ -1,0 +1,1748 @@
+{
+  "node": "v24.20.0",
+  "chrome": "158.0.8127.37",
+  "samples": [
+    {
+      "method": "fixed-1s",
+      "scenario": "normal",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 19500,
+      "snapshotRequests": 15,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 1086,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": 142
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": 309
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 495
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 861
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 816
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 524
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "fixed-3s",
+      "scenario": "normal",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 19500,
+      "snapshotRequests": 6,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 435,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 1039
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 330
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 1038
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "fixed-5s",
+      "scenario": "normal",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 19500,
+      "snapshotRequests": 4,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 291,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 387
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 1036
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "adaptive",
+      "scenario": "normal",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 19500,
+      "snapshotRequests": 9,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 656,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 138
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 505
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 461
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 166
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "sse",
+      "scenario": "normal",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 19500,
+      "snapshotRequests": 0,
+      "streamRequests": 1,
+      "unavailableRequests": 0,
+      "bodyBytes": 671,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 0,
+      "activeStreams": 0,
+      "maxActiveStreams": 1,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": 47
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": 53
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 53
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 69
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 65
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 57
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "fixed-3s",
+      "scenario": "normal",
+      "round": 2,
+      "tabs": 1,
+      "startOffsetMs": 1100,
+      "windowMs": 19500,
+      "snapshotRequests": 6,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 437,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": 766
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 457
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 1416
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 2105
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "fixed-5s",
+      "scenario": "normal",
+      "round": 2,
+      "tabs": 1,
+      "startOffsetMs": 1100,
+      "windowMs": 19500,
+      "snapshotRequests": 4,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 291,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 1490
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 2113
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "adaptive",
+      "scenario": "normal",
+      "round": 2,
+      "tabs": 1,
+      "startOffsetMs": 1100,
+      "windowMs": 19500,
+      "snapshotRequests": 8,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 583,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 1141
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 488
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 465
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 163
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "sse",
+      "scenario": "normal",
+      "round": 2,
+      "tabs": 1,
+      "startOffsetMs": 1100,
+      "windowMs": 19500,
+      "snapshotRequests": 0,
+      "streamRequests": 1,
+      "unavailableRequests": 0,
+      "bodyBytes": 671,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 0,
+      "activeStreams": 0,
+      "maxActiveStreams": 1,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": 75
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": 42
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 67
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 57
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 56
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 68
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "fixed-1s",
+      "scenario": "normal",
+      "round": 2,
+      "tabs": 1,
+      "startOffsetMs": 1100,
+      "windowMs": 19500,
+      "snapshotRequests": 14,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 1013,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": 767
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 121
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 485
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 450
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 135
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "fixed-5s",
+      "scenario": "normal",
+      "round": 3,
+      "tabs": 1,
+      "startOffsetMs": 2350,
+      "windowMs": 19500,
+      "snapshotRequests": 4,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 293,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": 179
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 634
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 3325
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "adaptive",
+      "scenario": "normal",
+      "round": 3,
+      "tabs": 1,
+      "startOffsetMs": 2350,
+      "windowMs": 19500,
+      "snapshotRequests": 7,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 510,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 687
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 639
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 346
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "sse",
+      "scenario": "normal",
+      "round": 3,
+      "tabs": 1,
+      "startOffsetMs": 2350,
+      "windowMs": 19500,
+      "snapshotRequests": 0,
+      "streamRequests": 1,
+      "unavailableRequests": 0,
+      "bodyBytes": 671,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 0,
+      "activeStreams": 0,
+      "maxActiveStreams": 1,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": 58
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": 43
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 55
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 69
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 64
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 69
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "fixed-1s",
+      "scenario": "normal",
+      "round": 3,
+      "tabs": 1,
+      "startOffsetMs": 2350,
+      "windowMs": 19500,
+      "snapshotRequests": 13,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 942,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": 150
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 341
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 700
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 644
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 349
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "fixed-3s",
+      "scenario": "normal",
+      "round": 3,
+      "tabs": 1,
+      "startOffsetMs": 2350,
+      "windowMs": 19500,
+      "snapshotRequests": 5,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 364,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 331
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 1686
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 315
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "fixed-1s",
+      "scenario": "slow",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 19500,
+      "snapshotRequests": 12,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 869,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": 1741
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 1443
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 2525
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 1823
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 2240
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "adaptive",
+      "scenario": "slow",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 19500,
+      "snapshotRequests": 8,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 583,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": 2128
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 2667
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 2383
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 1690
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 2089
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "sse",
+      "scenario": "slow",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 19500,
+      "snapshotRequests": 0,
+      "streamRequests": 1,
+      "unavailableRequests": 0,
+      "bodyBytes": 671,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 0,
+      "activeStreams": 0,
+      "maxActiveStreams": 1,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": 1352
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": 1361
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 1363
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 1366
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 1355
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 1369
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "fixed-1s",
+      "scenario": "outage",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 19500,
+      "snapshotRequests": 15,
+      "streamRequests": 0,
+      "unavailableRequests": 3,
+      "bodyBytes": 949,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": 682
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 1917
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 878
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 586
+            }
+          ],
+          "recoveryMs": 1247
+        }
+      ]
+    },
+    {
+      "method": "adaptive",
+      "scenario": "outage",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 19500,
+      "snapshotRequests": 9,
+      "streamRequests": 0,
+      "unavailableRequests": 3,
+      "bodyBytes": 521,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 1827
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 765
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 472
+            }
+          ],
+          "recoveryMs": 1157
+        }
+      ]
+    },
+    {
+      "method": "sse",
+      "scenario": "outage",
+      "round": 1,
+      "tabs": 1,
+      "startOffsetMs": 0,
+      "windowMs": 19500,
+      "snapshotRequests": 0,
+      "streamRequests": 7,
+      "unavailableRequests": 5,
+      "bodyBytes": 753,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 0,
+      "activeStreams": 0,
+      "maxActiveStreams": 1,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": 49
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": 53
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 2757
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 1107
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 64
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 65
+            }
+          ],
+          "recoveryMs": 437
+        }
+      ]
+    },
+    {
+      "method": "fixed-3s",
+      "scenario": "normal",
+      "round": 1,
+      "tabs": 2,
+      "startOffsetMs": 0,
+      "windowMs": 19500,
+      "snapshotRequests": 12,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 870,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 1,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 978
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 285
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 971
+            }
+          ],
+          "recoveryMs": null
+        },
+        {
+          "tab": 2,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 1056
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 347
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 1042
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "adaptive",
+      "scenario": "normal",
+      "round": 1,
+      "tabs": 2,
+      "startOffsetMs": 0,
+      "windowMs": 19500,
+      "snapshotRequests": 20,
+      "streamRequests": 0,
+      "unavailableRequests": 0,
+      "bodyBytes": 1458,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 2,
+      "activeStreams": 0,
+      "maxActiveStreams": 0,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": 821
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 990
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 347
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 305
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 999
+            }
+          ],
+          "recoveryMs": null
+        },
+        {
+          "tab": 2,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": null
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": 806
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 975
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 338
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 290
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 992
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    },
+    {
+      "method": "sse",
+      "scenario": "normal",
+      "round": 1,
+      "tabs": 2,
+      "startOffsetMs": 0,
+      "windowMs": 19500,
+      "snapshotRequests": 0,
+      "streamRequests": 2,
+      "unavailableRequests": 0,
+      "bodyBytes": 1342,
+      "activeSnapshots": 0,
+      "maxActiveSnapshots": 0,
+      "activeStreams": 0,
+      "maxActiveStreams": 2,
+      "observations": [
+        {
+          "tab": 1,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": 57
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": 71
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 66
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 44
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 81
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 50
+            }
+          ],
+          "recoveryMs": null
+        },
+        {
+          "tab": 2,
+          "updates": [
+            {
+              "version": 1,
+              "status": "Running",
+              "delayMs": 57
+            },
+            {
+              "version": 2,
+              "status": "Running",
+              "delayMs": 71
+            },
+            {
+              "version": 3,
+              "status": "Running",
+              "delayMs": 66
+            },
+            {
+              "version": 4,
+              "status": "Running",
+              "delayMs": 44
+            },
+            {
+              "version": 5,
+              "status": "Running",
+              "delayMs": 81
+            },
+            {
+              "version": 6,
+              "status": "Completed",
+              "delayMs": 50
+            }
+          ],
+          "recoveryMs": null
+        }
+      ]
+    }
+  ],
+  "summary": [
+    {
+      "scenario": "normal",
+      "method": "fixed-1s",
+      "round": 1,
+      "tabs": 1,
+      "requests": 15,
+      "reqPerTabMin": 46.2,
+      "bodyBytes": 1086,
+      "updateP95Ms": 861,
+      "completedP95Ms": 524,
+      "missed": 0,
+      "recoveryMs": null,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "normal",
+      "method": "fixed-3s",
+      "round": 1,
+      "tabs": 1,
+      "requests": 6,
+      "reqPerTabMin": 18.5,
+      "bodyBytes": 435,
+      "updateP95Ms": 1039,
+      "completedP95Ms": 1038,
+      "missed": 3,
+      "recoveryMs": null,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "normal",
+      "method": "fixed-5s",
+      "round": 1,
+      "tabs": 1,
+      "requests": 4,
+      "reqPerTabMin": 12.3,
+      "bodyBytes": 291,
+      "updateP95Ms": 1036,
+      "completedP95Ms": 1036,
+      "missed": 4,
+      "recoveryMs": null,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "normal",
+      "method": "adaptive",
+      "round": 1,
+      "tabs": 1,
+      "requests": 9,
+      "reqPerTabMin": 27.7,
+      "bodyBytes": 656,
+      "updateP95Ms": 505,
+      "completedP95Ms": 166,
+      "missed": 2,
+      "recoveryMs": null,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "normal",
+      "method": "sse",
+      "round": 1,
+      "tabs": 1,
+      "requests": 1,
+      "reqPerTabMin": 3.1,
+      "bodyBytes": 671,
+      "updateP95Ms": 69,
+      "completedP95Ms": 57,
+      "missed": 0,
+      "recoveryMs": null,
+      "maxStreams": 1
+    },
+    {
+      "scenario": "normal",
+      "method": "fixed-3s",
+      "round": 2,
+      "tabs": 1,
+      "requests": 6,
+      "reqPerTabMin": 18.5,
+      "bodyBytes": 437,
+      "updateP95Ms": 2105,
+      "completedP95Ms": 2105,
+      "missed": 2,
+      "recoveryMs": null,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "normal",
+      "method": "fixed-5s",
+      "round": 2,
+      "tabs": 1,
+      "requests": 4,
+      "reqPerTabMin": 12.3,
+      "bodyBytes": 291,
+      "updateP95Ms": 2113,
+      "completedP95Ms": 2113,
+      "missed": 4,
+      "recoveryMs": null,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "normal",
+      "method": "adaptive",
+      "round": 2,
+      "tabs": 1,
+      "requests": 8,
+      "reqPerTabMin": 24.6,
+      "bodyBytes": 583,
+      "updateP95Ms": 1141,
+      "completedP95Ms": 163,
+      "missed": 2,
+      "recoveryMs": null,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "normal",
+      "method": "sse",
+      "round": 2,
+      "tabs": 1,
+      "requests": 1,
+      "reqPerTabMin": 3.1,
+      "bodyBytes": 671,
+      "updateP95Ms": 75,
+      "completedP95Ms": 68,
+      "missed": 0,
+      "recoveryMs": null,
+      "maxStreams": 1
+    },
+    {
+      "scenario": "normal",
+      "method": "fixed-1s",
+      "round": 2,
+      "tabs": 1,
+      "requests": 14,
+      "reqPerTabMin": 43.1,
+      "bodyBytes": 1013,
+      "updateP95Ms": 767,
+      "completedP95Ms": 135,
+      "missed": 1,
+      "recoveryMs": null,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "normal",
+      "method": "fixed-5s",
+      "round": 3,
+      "tabs": 1,
+      "requests": 4,
+      "reqPerTabMin": 12.3,
+      "bodyBytes": 293,
+      "updateP95Ms": 3325,
+      "completedP95Ms": 3325,
+      "missed": 3,
+      "recoveryMs": null,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "normal",
+      "method": "adaptive",
+      "round": 3,
+      "tabs": 1,
+      "requests": 7,
+      "reqPerTabMin": 21.5,
+      "bodyBytes": 510,
+      "updateP95Ms": 687,
+      "completedP95Ms": 346,
+      "missed": 3,
+      "recoveryMs": null,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "normal",
+      "method": "sse",
+      "round": 3,
+      "tabs": 1,
+      "requests": 1,
+      "reqPerTabMin": 3.1,
+      "bodyBytes": 671,
+      "updateP95Ms": 69,
+      "completedP95Ms": 69,
+      "missed": 0,
+      "recoveryMs": null,
+      "maxStreams": 1
+    },
+    {
+      "scenario": "normal",
+      "method": "fixed-1s",
+      "round": 3,
+      "tabs": 1,
+      "requests": 13,
+      "reqPerTabMin": 40,
+      "bodyBytes": 942,
+      "updateP95Ms": 700,
+      "completedP95Ms": 349,
+      "missed": 1,
+      "recoveryMs": null,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "normal",
+      "method": "fixed-3s",
+      "round": 3,
+      "tabs": 1,
+      "requests": 5,
+      "reqPerTabMin": 15.4,
+      "bodyBytes": 364,
+      "updateP95Ms": 1686,
+      "completedP95Ms": 315,
+      "missed": 3,
+      "recoveryMs": null,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "slow",
+      "method": "fixed-1s",
+      "round": 1,
+      "tabs": 1,
+      "requests": 12,
+      "reqPerTabMin": 36.9,
+      "bodyBytes": 869,
+      "updateP95Ms": 2525,
+      "completedP95Ms": 2240,
+      "missed": 1,
+      "recoveryMs": null,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "slow",
+      "method": "adaptive",
+      "round": 1,
+      "tabs": 1,
+      "requests": 8,
+      "reqPerTabMin": 24.6,
+      "bodyBytes": 583,
+      "updateP95Ms": 2667,
+      "completedP95Ms": 2089,
+      "missed": 1,
+      "recoveryMs": null,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "slow",
+      "method": "sse",
+      "round": 1,
+      "tabs": 1,
+      "requests": 1,
+      "reqPerTabMin": 3.1,
+      "bodyBytes": 671,
+      "updateP95Ms": 1369,
+      "completedP95Ms": 1369,
+      "missed": 0,
+      "recoveryMs": null,
+      "maxStreams": 1
+    },
+    {
+      "scenario": "outage",
+      "method": "fixed-1s",
+      "round": 1,
+      "tabs": 1,
+      "requests": 15,
+      "reqPerTabMin": 46.2,
+      "bodyBytes": 949,
+      "updateP95Ms": 1917,
+      "completedP95Ms": 586,
+      "missed": 2,
+      "recoveryMs": 1247,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "outage",
+      "method": "adaptive",
+      "round": 1,
+      "tabs": 1,
+      "requests": 9,
+      "reqPerTabMin": 27.7,
+      "bodyBytes": 521,
+      "updateP95Ms": 1827,
+      "completedP95Ms": 472,
+      "missed": 3,
+      "recoveryMs": 1157,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "outage",
+      "method": "sse",
+      "round": 1,
+      "tabs": 1,
+      "requests": 7,
+      "reqPerTabMin": 21.5,
+      "bodyBytes": 753,
+      "updateP95Ms": 2757,
+      "completedP95Ms": 65,
+      "missed": 0,
+      "recoveryMs": 437,
+      "maxStreams": 1
+    },
+    {
+      "scenario": "normal",
+      "method": "fixed-3s",
+      "round": 1,
+      "tabs": 2,
+      "requests": 12,
+      "reqPerTabMin": 18.5,
+      "bodyBytes": 870,
+      "updateP95Ms": 1056,
+      "completedP95Ms": 1042,
+      "missed": 6,
+      "recoveryMs": null,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "normal",
+      "method": "adaptive",
+      "round": 1,
+      "tabs": 2,
+      "requests": 20,
+      "reqPerTabMin": 30.8,
+      "bodyBytes": 1458,
+      "updateP95Ms": 999,
+      "completedP95Ms": 999,
+      "missed": 2,
+      "recoveryMs": null,
+      "maxStreams": 0
+    },
+    {
+      "scenario": "normal",
+      "method": "sse",
+      "round": 1,
+      "tabs": 2,
+      "requests": 2,
+      "reqPerTabMin": 3.1,
+      "bodyBytes": 1342,
+      "updateP95Ms": 81,
+      "completedP95Ms": 50,
+      "missed": 0,
+      "recoveryMs": null,
+      "maxStreams": 2
+    }
+  ]
+}
