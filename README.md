@@ -23,7 +23,9 @@ npm run dev
 
 Vite가 출력한 주소에서 실험을 선택합니다. 위 표의 경로를 그 주소에 붙여 바로 열 수도 있습니다.
 
-- **Brand style runtime**에서 공통 토큰이 네 후보의 화면에 주입되는 코드를 비교합니다. **대시보드 열기**를 누른 뒤 **Demo account**에서 Grove, Signal, Ember를 전환할 수 있습니다. 같은 탭에서 새로고침하면 선택한 계정이 유지됩니다. **Signed out**을 고르면 기본 브랜드가 적용됩니다.
+세 실험은 **선택지 → Playground → 결론 → 검증 결과** 순서로 구성됩니다. 페이지 상단에서 실험 목록이나 다른 실험으로 이동할 수 있습니다.
+
+- **Brand style runtime**에서 후보별 주입 코드를 비교합니다. 페이지 안의 CSS Modules 대시보드 또는 **Playground 전체 화면 열기**에서 **Demo account**를 바꿔 Grove, Signal, Ember를 전환할 수 있습니다. **Signed out**을 고르면 기본 브랜드가 적용됩니다.
 - **Dashboard auto refresh**에서 **Update method**는 작업을 가져오는 방식, **Next run scenario**는 다음 작업의 서버 전달 조건을 고릅니다. 시나리오를 바꾸면 기존 측정표가 갱신되고, **Start run**을 누르면 별도로 실제 관측 목록을 볼 수 있습니다.
 - **Jonbeo MSW performance**에서 **Request path**와 **Initial rendering**을 각각 바꿔 볼 수 있습니다. 하단에서 동일한 응답을 사용한 플레이그라운드 결과와 원본 Next.js 개발 서버의 게이트 제거 전후 결과를 확인합니다.
 
@@ -57,5 +59,6 @@ Jonbeo 결과 문서에 [Chrome trace 수집](docs/experiments/jonbeo-msw/result
 ## 저장소 구조
 
 - [실험 코드](experiments/)는 `experiments/<주제>/`에 자체 진입점을 두고 하나의 npm 패키지로 의존성을 관리합니다.
+- [공통 실험 레이아웃](experiments/shared/ExperimentPage.tsx)이 제목, 페이지 이동, 섹션, 선택지 목록, 검증 표의 구조를 제공합니다.
 - [브랜드 디자인 시스템](experiments/brand-theme/shared/design-system/)의 `tokens.ts`는 공통값, `brands.ts`는 브랜드별 변경값, `theme.ts`는 네 후보가 받는 최종 테마와 CSS 변수 매핑을 정의합니다. 각 후보는 자체 HTML과 스타일 진입점을 가지며 Tailwind와 shadcn/ui는 유틸리티 정의를 공유합니다.
 - [실험 문서](docs/experiments/)는 코드와 같은 주제 이름의 폴더에 `results.md`와 측정 원본을 둡니다.

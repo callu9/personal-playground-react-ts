@@ -112,7 +112,7 @@ for (const variant of variants) {
   })
 }
 
-test('the launcher groups brand candidates into one experiment with a single demo', async ({ page }) => {
+test('the brand experiment compares four candidates and embeds the selected dashboard', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('/')
   await expect(page.getByRole('heading', { name: 'React playground' })).toBeVisible()
@@ -124,10 +124,24 @@ test('the launcher groups brand candidates into one experiment with a single dem
 
   await launcher.getByRole('link', { name: /Brand style runtime/ }).click()
   await expect(page.getByRole('heading', { name: 'Brand style runtime' })).toBeVisible()
-  const example = page.getByRole('region', { name: '대표 화면' })
-  await expect(example.getByRole('img')).toHaveCount(1)
-  await expect(example.getByRole('link', { name: '대시보드 열기' })).toHaveAttribute('href', './css-modules/')
-  const codeExamples = page.getByRole('region', { name: '브랜드 테마 주입 코드' })
+  const playground = page.getByRole('region', { name: 'Playground' })
+  await expect(playground.locator('iframe')).toHaveCount(1)
+  const dashboard = playground.locator('iframe[title="CSS Modules 브랜드 대시보드"]')
+  await expect(dashboard).toHaveAttribute('src', './css-modules/')
+  await dashboard.scrollIntoViewIfNeeded()
+  const embedded = dashboard.contentFrame()
+  await expect(embedded.getByRole('heading', { name: 'Operations overview' })).toBeVisible()
+  await embedded.getByLabel('Demo account').selectOption('ember-operator')
+  const theme = embedded.getByRole('region', { name: 'Operations theme' })
+  await expect(theme).toHaveAttribute('data-brand', 'ember')
+  await expect(theme).toHaveCSS('background-color', 'rgb(255, 241, 232)')
+  await expect(embedded.getByRole('link', { name: 'Brand theme experiment' })).toHaveAttribute('target', '_top')
+
+  const options = page.getByRole('region', { name: '선택지' })
+  const codeExamples = options.locator('details')
+  const showCode = codeExamples.getByText('공통 토큰 흐름과 후보별 주입 코드', { exact: true })
+  await expect(codeExamples.locator('pre').first()).toBeHidden()
+  await showCode.click()
   for (const [candidate, code] of [
     ['CSS Modules + React Context', 'useContext(ThemeContext)'],
     ['styled-components', 'ThemeProvider theme={theme.tokens}'],
@@ -136,16 +150,19 @@ test('the launcher groups brand candidates into one experiment with a single dem
   ]) {
     await expect(codeExamples.getByRole('article', { name: candidate }).locator('pre').filter({ hasText: code })).toBeVisible()
   }
-  const performance = page.getByRole('table', { name: '성능과 빌드 크기' })
+  const verification = page.getByRole('region', { name: '검증 결과' })
+  const performance = verification.getByRole('table', { name: '성능과 빌드 크기' })
   await expect(performance.getByRole('rowheader')).toHaveCount(4)
   await expect(performance.getByRole('cell', { name: '76,785 B' })).toBeVisible()
   await expect(page.getByRole('table', { name: '후보별 장단점' }).getByRole('rowheader')).toHaveCount(4)
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390)
   await expect(page.locator('[data-brand]')).toHaveCount(0)
 
-  await example.getByRole('link', { name: '대시보드 열기' }).click()
+  await playground.getByRole('link', { name: 'Playground 전체 화면 열기' }).click()
   await expect(page).toHaveURL(path('css-modules'))
   await expect(page.getByRole('heading', { name: 'Operations overview' })).toBeVisible()
+  await page.getByRole('link', { name: 'Brand theme experiment' }).click()
+  await expect(page).toHaveURL('/experiments/brand-theme/#playground')
 })
 
 test('falls back for missing, invalid and inherited env keys', () => {

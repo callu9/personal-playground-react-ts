@@ -1,4 +1,5 @@
 import { samples } from '../../docs/experiments/dashboard-refresh/evidence/dashboard-refresh-benchmark.json'
+import { ExperimentOptions, ExperimentTable } from '../shared/ExperimentPage'
 import { methodLabels, scenarioLabels, type Method, type PollInterval, type Scenario } from './contract'
 import styles from './dashboard.module.css'
 
@@ -23,11 +24,28 @@ const scenarios = {
   },
 } satisfies Record<Scenario, { conditions: string; finding: string }>
 
-export function RunSettingsHelp({ scenario, method }: { scenario: Scenario; method: Method }) {
+export function RefreshOptions() {
+  return (
+    <>
+      <h3 className={styles.groupTitle}>조회 방식 <span lang="en">Update method</span></h3>
+      <ExperimentOptions items={Object.entries(methodLabels).map(([id, label]) => ({
+        label: <span lang="en">{label}</span>,
+        description: methodDescription[id as Method],
+      }))} />
+      <h3 className={styles.groupTitle}>서버 조건 <span lang="en">Next run scenario</span></h3>
+      <ExperimentOptions items={Object.entries(scenarioLabels).map(([id, label]) => ({
+        label: <span lang="en">{label}</span>,
+        description: scenarios[id as Scenario].conditions,
+      }))} />
+    </>
+  )
+}
+
+export function RunSettingsHelp() {
   return (
     <div className={styles.controlHelp} lang="ko">
-      <p id="update-method-help"><strong lang="en">Update method</strong>는 가져오는 방식입니다. {methodDescription[method]} 실행 중에 바꾸면 현재 작업을 새 방식으로 다시 구독하고 관측 목록을 초기화합니다.</p>
-      <p id="run-scenario-help"><strong lang="en">Next run scenario</strong>는 서버의 전달 조건입니다. {scenarios[scenario].conditions} <span lang="en">Start run</span>을 누르면 새 작업에 적용됩니다.</p>
+      <p id="update-method-help"><strong lang="en">Update method</strong>를 바꾸면 현재 작업을 새 방식으로 다시 구독하고 관측 목록을 초기화합니다.</p>
+      <p id="run-scenario-help"><strong lang="en">Next run scenario</strong>는 <span lang="en">Start run</span>을 눌러 만드는 새 작업에 적용됩니다.</p>
     </div>
   )
 }
@@ -76,17 +94,16 @@ export function Results({ scenario, method, interval }: { scenario: Scenario; me
     (candidate.method !== 'fixed' || candidate.interval === interval)
 
   return (
-    <section id="refresh-results" className={styles.results} aria-labelledby="refresh-results-title" lang="ko">
-      <h2 id="refresh-results-title">시나리오별 측정 결과</h2>
+    <section id="refresh-results" className={styles.results} aria-labelledby="refresh-results-title">
+      <h3 id="refresh-results-title">시나리오별 측정 결과</h3>
       <p>위의 <span lang="en">Next run scenario</span>를 바꾸면 기존 벤치마크에서 해당 조건을 찾아 표시합니다.</p>
       <div className={styles.resultsCard}>
-        <h3 id="refresh-scenario-title" lang="en">{scenarioLabels[scenario]}</h3>
+        <h4 id="refresh-scenario-title" lang="en">{scenarioLabels[scenario]}</h4>
         <p>{scenario === 'normal' ? '단일 탭 · 후보별 3회' : '단일 탭 · 후보별 1회 · 고정 폴링 1초만 측정'}</p>
         {!rows.some(({ candidate }) => isSelected(candidate)) &&
           <p>현재 선택한 고정 주기는 이 시나리오에서 측정하지 않았습니다.</p>}
-        <p className={styles.tableHint}>표를 가로로 스크롤하면 모든 지표를 볼 수 있습니다.</p>
-        <div className={styles.resultsScroll} tabIndex={0} role="region" aria-label="시나리오 수치 비교표">
-          <table aria-labelledby="refresh-scenario-title">
+        <div className={styles.resultTable}>
+          <ExperimentTable label={scenarioLabels[scenario]}>
             <thead>
               <tr>
                 <th scope="col">방식</th>
@@ -111,13 +128,21 @@ export function Results({ scenario, method, interval }: { scenario: Scenario; me
                 </tr>
               ))}
             </tbody>
-          </table>
+          </ExperimentTable>
         </div>
-        <p>{scenarios[scenario].finding}</p>
         <p className={styles.dataNote}>반영 지연은 서버 기록부터 화면에 나타날 때까지입니다. p95는 관측된 지연의 95백분위이며, 화면에 나타나지 않은 버전은 별도로 셉니다. 요청에는 스냅샷 조회와 SSE 연결·재연결이 포함됩니다. 본문에는 SSE 프레임과 하트비트가 포함되며 HTTP 헤더와 TLS 비용은 제외합니다.</p>
         {showRecovery && <p className={styles.dataNote}>최신 상태 복구는 단절 종료부터 그 시점의 최신 버전 이상이 화면에 나타날 때까지입니다.</p>}
       </div>
-      <h3 className={styles.tradeoffTitle}>방식별 장단점</h3>
+      <p className={styles.dataNote}><a href="https://github.com/callu9/personal-playground-react-ts/blob/0a26ebe/docs/experiments/dashboard-refresh/results.md">측정 조건과 전체 보고서</a></p>
+    </section>
+  )
+}
+
+export function RefreshConclusion({ scenario }: { scenario: Scenario }) {
+  return (
+    <>
+      <p className={styles.finding}><strong lang="en">{scenarioLabels[scenario]}</strong> {scenarios[scenario].finding}</p>
+      <h3 className={styles.groupTitle}>방식별 장단점</h3>
       <dl className={styles.tradeoffs}>
         <div>
           <dt lang="en">{methodLabels.fixed}</dt>
@@ -132,7 +157,6 @@ export function Results({ scenario, method, interval }: { scenario: Scenario; me
           <dd>빠른 반영과 단절 후 재생에 유리합니다. 장기 연결, 프록시 버퍼링, 서버의 버전 이력을 관리해야 합니다.</dd>
         </div>
       </dl>
-      <p className={styles.dataNote}><a href="https://github.com/callu9/personal-playground-react-ts/blob/0a26ebe/docs/experiments/dashboard-refresh/results.md">측정 조건과 전체 보고서</a></p>
-    </section>
+    </>
   )
 }

@@ -54,14 +54,16 @@ async function sample(page, url, { mode, variant }, visit) {
   }
 
   const sort = page.getByRole('button', { name: 'Sort by name' })
-  await expect(page.getByRole('row')).toHaveCount(8)
+  const holdings = page.getByRole('table', { name: 'Holdings', exact: true })
+  const rows = holdings.getByRole('row')
+  await expect(rows).toHaveCount(8)
   await expect(sort).toHaveAttribute('aria-pressed', 'false')
   for (let index = 0; index < actions; index++) {
     await sort.click()
     await expect(sort).toHaveAttribute('aria-pressed', String(index % 2 === 0))
     await page.waitForTimeout(80)
   }
-  await expect(page.getByRole('row').nth(1)).toContainText('MESA')
+  await expect(rows.nth(1)).toContainText('MESA')
 
   const { timing, metrics } = await page.evaluate(() => ({
     timing: {

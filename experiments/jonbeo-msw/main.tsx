@@ -1,5 +1,6 @@
 import { memo, useEffect, useLayoutEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
+import { ExperimentOptions, ExperimentPage, ExperimentSection, ExperimentTable } from '../shared/ExperimentPage'
 import { labPath, portfolioPath, responseDelayMs, workerScope, type Portfolio, type RequestPath, type Variant } from './contract'
 import { mark, metrics } from './metrics'
 import { coldResults, originalResults } from './recorded'
@@ -15,11 +16,13 @@ const paths = ['off', 'passthrough', 'mock'] as const
 const number = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
 const metricNumber = new Intl.NumberFormat('en-US')
 const reportUrl = 'https://github.com/callu9/personal-playground-react-ts/blob/0a26ebe0fc0b6725abda9089028f1ce52634b9d1/docs/experiments/jonbeo-msw/results.md'
+const sourceChangeUrl = 'https://github.com/callu9/jonbeo-next-ts/commit/76f9ac6'
 
 function Controls() {
   const [path, setPath] = useState(mode)
+  const action = (path === 'off' ? labPath : workerScope) + '#playground'
   return (
-    <form className={styles.controls} action={path === 'off' ? labPath : workerScope}>
+    <form className={styles.controls} action={action}>
       <label>Request path
         <select name="mode" value={path} aria-describedby="request-path-description" onChange={(event) => setPath(event.target.value as RequestPath)}>
           {paths.map((key) => <option value={key} key={key}>{labels[key]}</option>)}
@@ -38,109 +41,153 @@ function Controls() {
 
 const ComparisonAxes = memo(function ComparisonAxes() {
   return (
-    <dl className={styles.axes} lang="ko">
+    <div className={styles.axes}>
       <div>
-        <dt lang="en">Request path</dt>
-        <dd id="request-path-description">
-          <span lang="en">MSW off</span>는 로컬 API로 직접 요청합니다. <span lang="en">MSW passthrough</span>는 워커를 거쳐 같은 API로 요청하고,
-          {' '}<span lang="en">MSW mock</span>은 MSW 핸들러가 응답합니다. 세 경로의 응답 본문은 동일한 7종목이고 지연 설정은 {responseDelayMs} ms입니다.
-        </dd>
+        <h3 lang="en">Request path</h3>
+        <p id="request-path-description">세 경로의 응답 본문은 동일한 7종목이며 지연 설정은 {responseDelayMs} ms입니다.</p>
+        <ExperimentOptions items={[
+          { label: <span lang="en">{labels.off}</span>, description: '로컬 API로 직접 요청합니다.' },
+          { label: <span lang="en">{labels.passthrough}</span>, description: '워커를 거쳐 같은 로컬 API로 요청합니다.' },
+          { label: <span lang="en">{labels.mock}</span>, description: 'MSW 핸들러가 동일한 응답 본문을 반환합니다.' },
+        ]} />
       </div>
       <div>
-        <dt lang="en">Initial rendering</dt>
-        <dd id="rendering-description">
-          <span lang="en">Wait for worker</span>는 워커가 준비되면 보유 종목 영역과 정렬 버튼을 그립니다. <span lang="en">Render shell first</span>는
-          {' '}빈 보유 종목 영역과 버튼을 먼저 그립니다. MSW를 켠 두 구현 모두 데이터 요청은 워커가 준비된 뒤 시작합니다.
-          {' '}<span lang="en">MSW off</span>에서는 두 설정 모두 워커 대기 없이 시작합니다.
-        </dd>
+        <h3 lang="en">Initial rendering</h3>
+        <p id="rendering-description">MSW를 켠 두 구현 모두 데이터 요청은 워커가 준비된 뒤 시작합니다. <span lang="en">MSW off</span>에서는 두 구현 모두 워커 대기 없이 시작합니다.</p>
+        <ExperimentOptions items={[
+          { label: <span lang="en">{renderingLabels.gated}</span>, description: '워커가 준비되면 보유 종목 영역과 정렬 버튼을 그립니다.' },
+          { label: <span lang="en">{renderingLabels.shell}</span>, description: '빈 보유 종목 영역과 정렬 버튼을 먼저 그립니다.' },
+        ]} />
       </div>
-    </dl>
+    </div>
   )
 })
 
-function MetricChange({ label, values, unit = ' ms' }: {
-  label: string
-  values: readonly [number, number]
-  unit?: string
-}) {
+function VisitChange({ values }: { values: readonly [number, number] }) {
   return (
-    <div className={styles.metric}>
-      <dt>{label}</dt>
-      <dd>
-        <span><span className={styles.srOnly}>변경 전 </span><span>{metricNumber.format(values[0])}{unit}</span></span>
-        <span aria-hidden="true" className={styles.arrow}>→</span>
-        <span><span className={styles.srOnly}>변경 후 </span><span>{metricNumber.format(values[1])}{unit}</span></span>
-      </dd>
-    </div>
+    <td>
+      <span className={styles.measurement}>
+        <span className={styles.srOnly}>변경 전 </span>{metricNumber.format(values[0])}
+        <span aria-hidden="true"> → </span><span className={styles.srOnly}> 변경 후 </span>{metricNumber.format(values[1])}
+      </span>
+    </td>
   )
 }
 
+const Findings = memo(function Findings() {
+  return (
+    <div className={styles.findings}>
+      <div>
+        <h3>요청 경로와 초기 렌더링</h3>
+        <p>
+          <span lang="en">Render shell first</span>로 렌더링을 고정했을 때 요청부터 응답 헤더까지 직접 API는 {coldResults.off.headers[1]} ms,
+          요청 통과는 {coldResults.passthrough.headers[1]} ms, 모의 응답은 {coldResults.mock.headers[1]} ms가 걸렸습니다.
+          각 수치에는 해당 경로의 응답 타이머, 워커 메시지 전달, 브라우저 스케줄링, 로컬 API까지의 네트워크 시간이 포함됩니다.
+        </p>
+        <p>
+          보유 종목 UI를 먼저 그리자 정렬 버튼은 요청 통과에서 <strong>201.5 ms</strong>, 모의 응답에서 <strong>171.2 ms</strong> 빨리 준비됐습니다.
+          두 경로의 로딩 후 INP 중앙값은 모두 40 ms였습니다.
+        </p>
+        <p>
+          초회에 두 워커 경로의 데이터 표시가 늦어진 방향은 같은 조건의 재측정에서 반복되지 않았습니다. Chrome trace에서는 요청 전 스크립트 작업과 MSW 모듈 로드 시간이 실행마다 달랐습니다.
+          재측정에서 응답 본문 수신 후 DOM 반영까지는 두 구현 모두 약 11~12 ms였습니다.
+        </p>
+      </div>
+      <div>
+        <h3>원본 Jonbeo에서 첫 화면을 가린 게이트</h3>
+        <p>
+          원본 개발 서버에서 게이트를 제거하자 제목이 DOM에 나타난 중앙값이 <strong>{originalResults.titleSeconds[0]}초 → {originalResults.titleSeconds[1]}초</strong>로 줄었습니다.
+          제거 전에는 탐색부터 워커 등록 호출까지 {originalResults.navigationToRegisterSeconds}초, 등록 호출부터 모의 응답 활성화까지 약 {Math.round(originalResults.registerToEnabledMs)} ms가 걸렸습니다.
+          초기 번들 로드와 모의 응답 활성화를 기다리는 동안 게이트가 화면 전체를 가렸습니다.
+        </p>
+        <p>
+          통화 전환 INP 중앙값은 {originalResults.inpMs[0]} → {originalResults.inpMs[1]} ms였습니다. 클릭 이벤트 처리가 가장 오래 걸린 구간이었고,
+          해당 구간의 중앙값은 {originalResults.eventProcessingMs[0]} → {originalResults.eventProcessingMs[1]} ms였습니다. 운영 환경의 영향은 별도 측정 대상입니다.
+        </p>
+        <div className={styles.sourceLinks}>
+          <a href={sourceChangeUrl}>원본 게이트 제거 커밋</a>
+          <a href={reportUrl}>자세한 측정 보고서</a>
+        </div>
+      </div>
+    </div>
+  )
+})
+
 const RecordedResults = memo(function RecordedResults() {
   return (
-    <div className={styles.results} lang="ko">
-      <section aria-labelledby="cold-results-title">
-        <header className={styles.resultsHeader}>
-          <h2 id="cold-results-title">플레이그라운드 첫 방문 결과</h2>
-          <p>기록된 초회 측정의 조건별 7회 중앙값입니다. 버튼 준비와 데이터 DOM 반영은 탐색 시작 기준이며, INP는 데이터가 표시된 뒤 정렬 버튼을 8회 눌러 측정했습니다.</p>
-          <p className={styles.comparisonKey}>
-            <span>변경 전 · <span lang="en">{renderingLabels.gated}</span></span>
-            <span aria-hidden="true">→</span>
-            <span>변경 후 · <span lang="en">{renderingLabels.shell}</span></span>
-          </p>
-        </header>
-
-        <div className={styles.resultGrid}>
-          {paths.map((path) => {
-            const { button, headers, data, inp, repeatedData } = coldResults[path]
-            return (
-              <article className={styles.resultCard} key={path}>
-                <h3 lang="en">{labels[path]}</h3>
-                <dl>
-                  <MetricChange label="정렬 버튼 준비" values={button} />
-                  <MetricChange label="요청 → 응답 헤더" values={headers} />
-                  <MetricChange label="데이터 DOM 반영" values={data} />
-                  <MetricChange label="로딩 후 INP" values={inp} />
-                  <MetricChange label="재측정 데이터 DOM 반영" values={repeatedData} />
-                </dl>
-              </article>
-            )
-          })}
-        </div>
-
-        <div className={styles.finding}>
-          <h3>어떤 설정이 어느 구간에 영향을 줬나요?</h3>
-          <p><strong>요청 경로.</strong> <span lang="en">Render shell first</span>로 고정했을 때 헤더까지 직접 API {coldResults.off.headers[1]} ms, 요청 통과 {coldResults.passthrough.headers[1]} ms, 모의 응답 {coldResults.mock.headers[1]} ms가 걸렸습니다. 응답을 만드는 타이머, 워커 메시지 전달, 브라우저 스케줄링, 로컬 API를 이용하는 경로의 네트워크 시간을 포함한 수치입니다.</p>
-          <p><strong>초기 렌더링.</strong> 버튼은 요청 통과에서 <strong>201.5 ms</strong>, 모의 응답에서 <strong>171.2 ms</strong> 먼저 준비됐습니다. 두 경로의 로딩 후 INP 중앙값은 모두 40 ms였습니다.</p>
-          <p>
-            초회에는 두 워커 경로의 데이터 표시가 늦어졌습니다. 같은 조건의 재측정에서는 그 방향이 반복되지 않았습니다. Chrome trace에서는 요청 전 초기 스크립트 작업과
-            {' '}MSW 모듈 로드 시간이 실행마다 달랐습니다. 재측정에서 응답 본문 수신 후 DOM 반영까지는 두 구현 모두 약 11~12 ms였습니다.
-          </p>
-        </div>
-      </section>
-
-      <section className={styles.sourceResults} aria-labelledby="source-results-title">
-        <header className={styles.resultsHeader}>
-          <h2 id="source-results-title">원본 Jonbeo 개발 서버 결과</h2>
-          <p>원본 Next.js 개발 서버에서 커밋별 7회 측정했습니다. INP는 포트폴리오가 표시된 뒤 통화 버튼을 8회 눌러 측정했습니다.</p>
-          <p className={styles.comparisonKey}>
-            <span>변경 전 · <code>d68ac41</code> 게이트 적용</span>
-            <span aria-hidden="true">→</span>
-            <span>변경 후 · <code>76f9ac6</code> 게이트 제거</span>
-          </p>
-        </header>
-        <dl className={styles.sourceMetrics}>
-          <MetricChange label="포트폴리오 제목 첫 DOM 등장" values={originalResults.titleSeconds} unit="초" />
-          <MetricChange label="통화 전환 INP" values={originalResults.inpMs} />
-        </dl>
+    <div className={styles.recorded}>
+      <div>
+        <h3 id="cold-results-title">플레이그라운드 첫 방문 결과</h3>
         <p>
-          변경 전에는 워커 등록 호출부터 모의 응답 활성화까지 <strong>약 {Math.round(originalResults.registerToEnabledMs)} ms</strong>가 걸렸습니다.
-          {' '}탐색부터 등록 호출까지는 {originalResults.navigationToRegisterSeconds}초였습니다. 화면 전체를 가리던 게이트는 그 사이의 개발 번들 로드와 실행 시간까지 사용자가 기다리게 했습니다.
+          단위는 ms이며 조건별 7회 중앙값입니다. 각 셀은 변경 전 <span lang="en">{renderingLabels.gated}</span> → 변경 후 <span lang="en">{renderingLabels.shell}</span> 순서입니다.
+          정렬 버튼 준비와 데이터 DOM 반영은 탐색 시작 기준이며, INP는 데이터가 표시된 뒤 정렬 버튼을 8회 눌러 측정했습니다.
         </p>
+        <ExperimentTable label="플레이그라운드 첫 방문 결과">
+          <caption className={styles.srOnly}>조건별 중앙값, 단위 ms. Wait for worker에서 Render shell first로 변경한 결과입니다.</caption>
+          <thead>
+            <tr>
+              <th scope="col" lang="en">Request path</th>
+              <th scope="col">정렬 버튼 준비</th>
+              <th scope="col">요청 → 응답 헤더</th>
+              <th scope="col">데이터 DOM 반영</th>
+              <th scope="col">로딩 후 INP</th>
+              <th scope="col">재측정 데이터 DOM 반영</th>
+            </tr>
+          </thead>
+          <tbody>
+            {paths.map((path) => {
+              const { button, headers, data, inp, repeatedData } = coldResults[path]
+              return (
+                <tr key={path}>
+                  <th scope="row" lang="en">{labels[path]}</th>
+                  <VisitChange values={button} />
+                  <VisitChange values={headers} />
+                  <VisitChange values={data} />
+                  <VisitChange values={inp} />
+                  <VisitChange values={repeatedData} />
+                </tr>
+              )
+            })}
+          </tbody>
+        </ExperimentTable>
+      </div>
+      <div>
+        <h3 id="source-results-title">원본 Jonbeo 개발 서버 결과</h3>
         <p>
-          통화 전환에서 가장 오래 걸린 구간은 클릭 이벤트 처리였습니다. 중앙값은 {originalResults.eventProcessingMs[0]} → {originalResults.eventProcessingMs[1]} ms입니다.
-          {' '}이 결과는 로컬 개발 서버에서 측정했으며 운영 환경은 별도 검증이 필요합니다.
+          원본 Next.js 개발 서버에서 커밋별 7회 측정한 중앙값입니다. INP는 포트폴리오가 표시된 뒤 통화 버튼을 8회 눌러 측정했습니다.
         </p>
-      </section>
+        <ExperimentTable label="원본 Jonbeo 개발 서버 결과">
+          <thead>
+            <tr>
+              <th scope="col">측정 항목</th>
+              <th scope="col">변경 전 · <code>d68ac41</code> 게이트 적용</th>
+              <th scope="col">변경 후 · <code>76f9ac6</code> 게이트 제거</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">포트폴리오 제목 첫 DOM 등장</th>
+              <td>{originalResults.titleSeconds[0]}초</td>
+              <td>{originalResults.titleSeconds[1]}초</td>
+            </tr>
+            <tr>
+              <th scope="row">등록 호출 → 모의 응답 활성화</th>
+              <td>{originalResults.registerToEnabledMs} ms</td>
+              <td>해당 없음</td>
+            </tr>
+            <tr>
+              <th scope="row">통화 전환 INP</th>
+              <td>{originalResults.inpMs[0]} ms</td>
+              <td>{originalResults.inpMs[1]} ms</td>
+            </tr>
+            <tr>
+              <th scope="row">통화 전환 이벤트 처리</th>
+              <td>{originalResults.eventProcessingMs[0]} ms</td>
+              <td>{originalResults.eventProcessingMs[1]} ms</td>
+            </tr>
+          </tbody>
+        </ExperimentTable>
+      </div>
     </div>
   )
 })
@@ -158,7 +205,7 @@ function Holdings({ portfolio }: { portfolio: Portfolio | null }) {
     <section className={styles.panel} aria-labelledby="holdings-title">
       <header className={styles.panelHeader}>
         <div>
-          <h2 id="holdings-title">Holdings</h2>
+          <h3 id="holdings-title">Holdings</h3>
           <p role="status">{portfolio ? rows.length + ' positions' : 'Loading portfolio…'}</p>
         </div>
         <button aria-pressed={sorted} onClick={() => setSorted(!sorted)}>
@@ -167,7 +214,7 @@ function Holdings({ portfolio }: { portfolio: Portfolio | null }) {
       </header>
       {portfolio && (
         <div className={styles.tableScroll}>
-          <table>
+          <table aria-labelledby="holdings-title">
             <thead><tr><th scope="col">Symbol</th><th scope="col">Name</th><th scope="col">Shares</th><th scope="col">Price</th></tr></thead>
             <tbody>
               {rows.map(({ code, name, shares, price }) => (
@@ -227,23 +274,28 @@ function App() {
   }, [])
 
   return (
-    <main className={styles.main}>
-      <a className={styles.back} href="/">← React playground</a>
-      <header className={styles.title}>
-        <h1>Jonbeo MSW performance lab</h1>
-        <p lang="ko">요청이 어느 경로를 지나는지와 보유 종목 UI를 언제 그리는지 바꿔 보고, 정렬 버튼을 쓸 수 있는 시점과 데이터가 표시되는 시점을 비교합니다.</p>
-        <div className={styles.resultLinks} lang="ko">
-          <a className={styles.back} href="#cold-results-title">측정 결과 바로 보기</a>
-          <a className={styles.back} href={reportUrl}>자세한 측정 보고서</a>
+    <ExperimentPage
+      experiment="jonbeo-msw"
+      description="요청 경로와 초기 렌더링 순서를 바꿔 정렬 버튼을 쓸 수 있는 시점, 데이터 표시 시점, 로딩 후 입력 지연을 비교합니다."
+    >
+      <ExperimentSection id="options">
+        <ComparisonAxes />
+      </ExperimentSection>
+      <ExperimentSection id="playground" description="두 설정을 고른 뒤 Apply를 누르면 선택한 조건으로 다시 로드합니다.">
+        <div className={styles.workbench}>
+          <Controls />
+          <p className={styles.condition}>현재 실행 조건 · <span lang="en">{labels[mode]} · {renderingLabels[variant]}</span></p>
+          {error && <p role="alert">{error}</p>}
+          {(variant === 'shell' || workerReady) ? <Holdings portfolio={portfolio} /> : <p role="status">Starting the worker…</p>}
         </div>
-      </header>
-      <Controls />
-      <p className={styles.condition} lang="ko">현재 실행 조건 · <span lang="en">{labels[mode]} · {renderingLabels[variant]}</span></p>
-      <ComparisonAxes />
-      {error && <p role="alert">{error}</p>}
-      {(variant === 'shell' || workerReady) ? <Holdings portfolio={portfolio} /> : <p role="status">Starting the worker…</p>}
-      <RecordedResults />
-    </main>
+      </ExperimentSection>
+      <ExperimentSection id="conclusion">
+        <Findings />
+      </ExperimentSection>
+      <ExperimentSection id="verification" description="플레이그라운드의 통제 실험과 원본 Jonbeo 개발 서버 재현은 별도로 측정했습니다.">
+        <RecordedResults />
+      </ExperimentSection>
+    </ExperimentPage>
   )
 }
 

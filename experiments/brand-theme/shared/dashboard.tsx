@@ -123,7 +123,7 @@ function Dashboard({ c, Scope, components = plainComponents }: {
           <a href="#activity"><Activity aria-hidden="true" size={17} /> Run activity</a>
           <a href="#results"><ListChecks aria-hidden="true" size={17} /> Recent results</a>
         </nav>
-        <a className={c.back} href="/"><ArrowLeft aria-hidden="true" size={15} /> All implementations</a>
+        <a className={c.back} href="/experiments/brand-theme/#playground" target="_top"><ArrowLeft aria-hidden="true" size={15} /> Brand theme experiment</a>
       </aside>
       <div className={c.workspace}>
         <header className={c.topbar}>

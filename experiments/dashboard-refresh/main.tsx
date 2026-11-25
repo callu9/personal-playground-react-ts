@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
+import { ExperimentPage, ExperimentSection } from '../shared/ExperimentPage'
 import {
   apiPath, dashboardPath, methodLabels, pollingIntervals, runPath, scenarioLabels,
   type Connection, type Method, type PollInterval, type Run, type Scenario, type Snapshot,
 } from './contract'
 import { transports } from './transports'
-import { Results, RunSettingsHelp } from './Results'
+import { RefreshConclusion, RefreshOptions, Results, RunSettingsHelp } from './Results'
 import styles from './dashboard.module.css'
 
 function initialSettings() {
@@ -83,7 +84,7 @@ function RunMonitor({ run, method, interval }: { run: string; method: Method; in
         <div><span>Updates observed</span><strong>{history.filter(({ version }) => version > 0).length}</strong></div>
       </div>
       <section className={styles.history}>
-        <h2>Observed updates</h2>
+        <h3>Observed updates</h3>
         {history.length === 0 && <p>Waiting for the first result.</p>}
         <ol aria-label="Observed updates">
           {history.slice().reverse().map(({ version, status, progress, recordedAt }) => (
@@ -131,41 +132,47 @@ function Dashboard() {
   }
 
   return (
-    <main className={styles.dashboard}>
-      <header>
-        <a className={styles.back} href="/">← React playground</a>
-        <h1>Dashboard auto refresh</h1>
-        <p lang="ko">같은 가상 작업을 세 방식으로 받아 보고, 전달 조건에 따라 반영 지연과 요청량이 어떻게 달라지는지 비교합니다.</p>
-        <a className={styles.back} href="#refresh-results" lang="ko">측정 결과로 이동 ↓</a>
-      </header>
-      <section className={styles.controls} aria-label="Run settings">
-        <label>Update method
-          <select aria-describedby="update-method-help" value={method} onChange={(event) => setMethod(event.target.value as Method)}>
-            {Object.entries(methodLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
-          </select>
-        </label>
-        {method === 'fixed' && <label>Polling interval
-          <select value={interval} onChange={(event) => setInterval(Number(event.target.value) as PollInterval)}>
-            {pollingIntervals.map((value) => <option key={value} value={value}>{value / 1_000} s</option>)}
-          </select>
-        </label>}
-        <label>Next run scenario
-          <select aria-describedby="run-scenario-help" value={scenario} onChange={(event) => setScenario(event.target.value as Scenario)}>
-            {Object.entries(scenarioLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
-          </select>
-        </label>
-        <button type="button" disabled={starting} onClick={start}>{starting ? 'Starting…' : 'Start run'}</button>
-      </section>
-      <RunSettingsHelp method={method} scenario={scenario} />
-      {error && <p role="alert">The run could not start. Try again.</p>}
-      {run && joinUrl ? (
-        <>
-          <div className={styles.runInfo}><span>Run {run.id.slice(0, 8)} · {scenarioLabels[run.scenario]}</span><a href={joinUrl} target="_blank" rel="noreferrer">Open this run in another tab</a></div>
-          <RunMonitor key={monitorKey} run={run.id} method={method} interval={interval} />
-        </>
-      ) : <p className={styles.empty}>Choose a method and start a run to see the job status and update history.</p>}
-      <Results scenario={scenario} method={method} interval={interval} />
-    </main>
+    <ExperimentPage experiment="dashboard-refresh" description="같은 가상 작업을 세 방식으로 받아 보고, 전달 조건에 따라 반영 지연과 요청량이 어떻게 달라지는지 비교합니다.">
+      <ExperimentSection id="options">
+        <RefreshOptions />
+      </ExperimentSection>
+      <ExperimentSection id="playground" description="방식과 서버 조건을 선택해 실제 가상 작업을 시작합니다. 진행 중인 작업은 다른 탭에서 같은 주소로 열 수 있습니다.">
+        <div className={styles.workbench}>
+          <section className={styles.controls} aria-label="Run settings" lang="en">
+            <label>Update method
+              <select aria-describedby="update-method-help" value={method} onChange={(event) => setMethod(event.target.value as Method)}>
+                {Object.entries(methodLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+              </select>
+            </label>
+            {method === 'fixed' && <label>Polling interval
+              <select value={interval} onChange={(event) => setInterval(Number(event.target.value) as PollInterval)}>
+                {pollingIntervals.map((value) => <option key={value} value={value}>{value / 1_000} s</option>)}
+              </select>
+            </label>}
+            <label>Next run scenario
+              <select aria-describedby="run-scenario-help" value={scenario} onChange={(event) => setScenario(event.target.value as Scenario)}>
+                {Object.entries(scenarioLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+              </select>
+            </label>
+            <button type="button" disabled={starting} onClick={start}>{starting ? 'Starting…' : 'Start run'}</button>
+          </section>
+          <RunSettingsHelp />
+          {error && <p role="alert" lang="en">The run could not start. Try again.</p>}
+          {run && joinUrl ? (
+            <div lang="en">
+              <div className={styles.runInfo}><span>Run {run.id.slice(0, 8)} · {scenarioLabels[run.scenario]}</span><a href={joinUrl} target="_blank" rel="noreferrer">Open this run in another tab</a></div>
+              <RunMonitor key={monitorKey} run={run.id} method={method} interval={interval} />
+            </div>
+          ) : <p className={styles.empty} lang="en">Choose a method and start a run to see the job status and update history.</p>}
+        </div>
+      </ExperimentSection>
+      <ExperimentSection id="conclusion">
+        <RefreshConclusion scenario={scenario} />
+      </ExperimentSection>
+      <ExperimentSection id="verification">
+        <Results scenario={scenario} method={method} interval={interval} />
+      </ExperimentSection>
+    </ExperimentPage>
   )
 }
 

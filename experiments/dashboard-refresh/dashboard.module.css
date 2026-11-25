@@ -1,51 +1,40 @@
-body { margin: 0; background: #f3f6f5; color: #182926; font: 15px/1.5 system-ui, sans-serif; }
-*, *::before, *::after { box-sizing: border-box; }
-.dashboard { width: min(100% - 2rem, 66rem); margin-inline: auto; padding: clamp(2rem, 6vw, 4rem) 0; }
-.dashboard h1 { margin: .4rem 0 .2rem; font-size: clamp(2.1rem, 5.5vw, 3.5rem); line-height: 1.1; letter-spacing: -.045em; }
-.dashboard h2 { margin: 0; font-size: 1.15rem; }
-.dashboard p { color: #415b55; }
-.back, .runInfo a { color: #1a5f51; }
+.workbench { padding: clamp(.75rem, 2vw, 1.2rem); border: 1px solid #d3e1dc; border-radius: .8rem; background: #edf4f1; }
+.workbench p, .results p { color: #415b55; }
+.runInfo a { color: #1a5f51; }
 .controls, .history, .summary > div, .empty { border: 1px solid #d3e1dc; border-radius: .8rem; background: #fff; }
-.controls { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem; padding: 1rem; margin: 1.5rem 0 1rem; }
+.controls { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem; padding: 1rem; margin-bottom: 1rem; }
 .controls label { display: grid; flex: 1 1 9rem; gap: .35rem; color: #334d46; font-weight: 700; }
 .controls select, .controls button { min-height: 2.75rem; padding: .4rem .65rem; border: 1px solid #90afa4; border-radius: .45rem; font: inherit; }
 .controls select { width: 100%; background: #fff; color: #182926; }
 .controls button { background: #185a4c; border-color: #185a4c; color: #fff; font-weight: 700; cursor: pointer; }
 .controls button:hover { background: #104337; }
 .controls button:disabled { opacity: .65; cursor: wait; }
-.dashboard :focus-visible { outline: 2px solid #006950; outline-offset: 2px; }
 .runInfo { display: flex; flex-wrap: wrap; gap: .3rem 1rem; justify-content: space-between; margin-block: 1rem; color: #415b55; }
 .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(9.5rem, 100%), 1fr)); gap: .75rem; margin-block: 1rem; }
 .summary > div { display: grid; gap: .2rem; padding: .9rem; }
 .summary strong { font-size: 1.35rem; }
 .summary span, .history time { color: #415b55; font-size: .875rem; }
 .empty, .history { padding: 1.1rem; }
+.empty { margin-bottom: 0; }
+.history h3 { margin: 0; font-size: 1.15rem; }
 .history ol { list-style: none; margin: .8rem 0 0; padding: 0; }
 .history li { display: grid; grid-template-columns: 1fr 1fr .55fr auto; gap: .5rem; padding: .6rem .2rem; border-top: 1px solid #e0ebe7; }
 .history li:first-child strong { color: #185a4c; }
 .controlHelp { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 1fr)); gap: .6rem 1.25rem; }
 .controlHelp p { margin: 0 0 .55rem; font-size: .9rem; word-break: keep-all; }
-.results { margin-top: 2rem; word-break: keep-all; }
-.results h2 { font-size: 1.5rem; letter-spacing: -.025em; }
-.results h3 { margin: 0; font-size: 1.05rem; }
+.groupTitle, .results h3, .results h4 { margin: 0; font-size: 1.05rem; }
+.groupTitle:not(:first-child) { margin-top: 1rem; }
+.groupTitle span { margin-left: .35rem; color: #415b55; font-size: .85em; font-weight: 500; }
+.finding { margin: 0; color: #415b55; }
+.finding strong { color: #182926; }
 .results a { color: #1a5f51; text-underline-offset: .17em; }
 .resultsCard { padding: clamp(.8rem, 2.4vw, 1.2rem); border: 1px solid #d3e1dc; border-radius: .8rem; background: #fff; }
 .resultsCard p { margin: .45rem 0; }
-.resultsScroll { overflow-x: auto; margin: .8rem 0; border: 1px solid #d3e1dc; border-radius: .45rem; }
-.resultsScroll table { width: 100%; border-collapse: collapse; text-align: left; font-size: .875rem; white-space: nowrap; }
-.resultsScroll :is(th, td) { padding: .55rem .7rem; border-bottom: 1px solid #e0ebe7; }
-.resultsScroll thead { background: #edf4f1; }
-.resultsScroll tbody tr:last-child > * { border-bottom: 0; }
-.resultsScroll td { font-variant-numeric: tabular-nums; }
-.resultsScroll small { display: block; color: #185a4c; }
+.resultTable table { white-space: nowrap; }
+.resultTable small { display: block; color: #185a4c; }
 .selectedResult { background: #e6f4ec; }
-.results .tradeoffTitle { margin-top: 1.25rem; }
 .tradeoffs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr)); gap: .65rem; margin: .65rem 0; }
 .tradeoffs div { border: 1px solid #d3e1dc; border-radius: .65rem; background: #fff; padding: .8rem; }
 .tradeoffs dt { font-weight: 700; }
 .tradeoffs dd { margin: .35rem 0 0; color: #415b55; font-size: .875rem; }
 .dataNote { font-size: .825rem; }
-.tableHint { display: none; }
-@media (max-width: 860px) {
-  .tableHint { display: block; font-size: .825rem; }
-}
