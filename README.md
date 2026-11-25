@@ -17,6 +17,14 @@ Vite가 출력한 로컬 주소를 열고 구현을 선택한 뒤, 화면 우측
 
 페이지 배경은 Grove가 공통 기본값을 쓰고, Signal과 Ember는 각각 지정한 색을 씁니다. 상단의 **Page background**에서 기본값과 브랜드 지정값을 구분할 수 있습니다.
 
+## 브랜드 테마 화면
+
+CSS Modules 대시보드에서 배경색, 강조색, 글꼴이 브랜드마다 어떻게 달라지는지 한눈에 비교할 수 있습니다. 이미지를 누르면 원본을 볼 수 있습니다.
+
+| Grove · 공통 배경 | Signal · 브랜드 배경 | Ember · 브랜드 배경 |
+|---|---|---|
+| [![공통 배경의 Grove 대시보드](screenshots/grove.jpg)](screenshots/grove.jpg) | [![블루 바이올렛 배경의 Signal 대시보드](screenshots/signal.jpg)](screenshots/signal.jpg) | [![피치 배경의 Ember 대시보드](screenshots/ember.jpg)](screenshots/ember.jpg) |
+
 ## 검증 및 측정
 
 ```sh
