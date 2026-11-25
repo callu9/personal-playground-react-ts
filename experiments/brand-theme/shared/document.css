@@ -4,5 +4,5 @@ body { margin: 0; }
 button, input, select { font-family: inherit; font-size: inherit; }
 button, select { cursor: pointer; }
 a { color: inherit; }
-:focus-visible { outline: 2px solid var(--brand-accent, #186649); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--ds-color-accent, currentColor); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

@@ -6,8 +6,8 @@ import { preview } from 'vite'
 
 const variants = ['css-modules', 'styled-components', 'tailwind', 'shadcn']
 const switchTargets = [
-  { brand: 'signal', font: 'Verdana, sans-serif', color: 'rgb(68, 69, 180)' },
-  { brand: 'grove', font: 'Georgia, serif', color: 'rgb(24, 102, 73)' },
+  { brand: 'signal', font: 'Verdana, sans-serif', color: 'rgb(68, 69, 180)', pageColor: 'rgb(237, 240, 255)' },
+  { brand: 'grove', font: 'Georgia, serif', color: 'rgb(24, 102, 73)', pageColor: 'rgb(245, 247, 246)' },
 ]
 const manifest = JSON.parse(await readFile('dist/.vite/manifest.json', 'utf8'))
 const output = 'test-results'
@@ -47,7 +47,7 @@ async function switches(page) {
   const samples = []
   for (let i = 0; i < 22; i++) {
     const target = switchTargets[i % switchTargets.length]
-    const sample = await page.evaluate(async ({ brand, color, font }) => {
+    const sample = await page.evaluate(async ({ brand, color, font, pageColor }) => {
       const input = document.querySelector('[aria-label="Operations theme"] select')
       const root = document.querySelector('[data-brand]')
       const heading = root?.querySelector('h1')
@@ -61,7 +61,11 @@ async function switches(page) {
       await new Promise((resolve) => requestAnimationFrame(resolve))
       if (root.dataset.brand !== brand) throw new Error(`Theme did not update to ${brand}`)
       const stateMs = performance.now() - start
-      while (getComputedStyle(heading).fontFamily !== font || getComputedStyle(action).backgroundColor !== color) {
+      while (
+        getComputedStyle(heading).fontFamily !== font
+        || getComputedStyle(action).backgroundColor !== color
+        || getComputedStyle(root).backgroundColor !== pageColor
+      ) {
         if (performance.now() - start > 750) {
           throw new Error(`Theme styles did not settle for ${brand}: ${getComputedStyle(action).backgroundColor}`)
         }
@@ -90,7 +94,7 @@ async function inspectStyleRules(page) {
       return {
         brand, linkedRules: count(sheets.filter((sheet) => sheet.ownerNode instanceof HTMLLinkElement)),
         inlineRules: count(inline), styledRules: count(styled),
-        scopedBrandVariables: [...scope.style].filter((name) => name.startsWith('--brand-')).length,
+        scopedDesignVariables: [...scope.style].filter((name) => name.startsWith('--ds-')).length,
       }
     }, brand))
   }

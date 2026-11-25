@@ -1,6 +1,6 @@
-import { brandProperties } from '../shared/brands'
+import { themeVariables } from '../shared/design-system/theme'
 import type { ThemeScope } from '../shared/dashboard'
 
-export const Scope: ThemeScope = ({ brand, brandId, className, children }) => (
-  <section className={className} style={brandProperties(brand)} aria-label="Operations theme" data-brand={brandId}>{children}</section>
+export const Scope: ThemeScope = ({ theme, className, children }) => (
+  <section className={className} style={themeVariables(theme.tokens)} aria-label="Operations theme" data-brand={theme.brandId}>{children}</section>
 )

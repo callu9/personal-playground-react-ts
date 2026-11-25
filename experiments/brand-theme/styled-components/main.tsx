@@ -5,9 +5,9 @@ import { Region } from './Region'
 
 const classes = Object.fromEntries(slots.map((slot) => [slot, `lab-${slot}`])) as Classes
 
-const Scope: ThemeScope = ({ brand, brandId, className, children }) => (
-  <ThemeProvider theme={brand}>
-    <Region className={className} aria-label="Operations theme" data-brand={brandId}>{children}</Region>
+const Scope: ThemeScope = ({ theme, className, children }) => (
+  <ThemeProvider theme={theme.tokens}>
+    <Region className={className} aria-label="Operations theme" data-brand={theme.brandId}>{children}</Region>
   </ThemeProvider>
 )
 

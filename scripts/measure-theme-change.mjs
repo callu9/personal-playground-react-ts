@@ -9,6 +9,9 @@ import { createServer } from 'vite'
 const repo = fileURLToPath(new URL('..', import.meta.url))
 const lab = 'experiments/brand-theme'
 const watch = process.argv.includes('--watch')
+const tokensFile = 'shared/design-system/tokens.ts'
+const brandFile = 'shared/design-system/brands.ts'
+const themeFile = 'shared/design-system/theme.ts'
 const fallbackColor = 'rgb(217, 226, 221)'
 const brands = [
   { name: 'grove', hex: '#438361', rgb: 'rgb(67, 131, 97)' },
@@ -17,12 +20,12 @@ const brands = [
 ]
 
 const tailwindEdits = [
-  ['tailwind/tokens.css', '  --color-brand-ink: var(--brand-ink);', '  --color-brand-ink: var(--brand-ink);\n  --color-brand-outline: var(--brand-outline);'],
-  ['tailwind/classes.ts', 'border border-control bg-white p-[22px]', 'border border-brand-outline bg-white p-[22px]'],
+  ['tailwind/tokens.css', '  --color-brand-ink: var(--ds-color-accent-ink);', '  --color-brand-ink: var(--ds-color-accent-ink);\n  --color-brand-outline: var(--ds-color-dialog-outline);'],
+  ['tailwind/classes.ts', 'border border-control bg-surface p-[22px]', 'border border-brand-outline bg-surface p-[22px]'],
 ]
 const variants = [
-  ['css-modules', [['css-modules/dashboard.module.css', 'padding: 22px; border: 1px solid #d9e2dd;', 'padding: 22px; border: 1px solid var(--brand-outline);']]],
-  ['styled-components', [['styled-components/Region.ts', 'padding: 22px; border: 1px solid #d9e2dd;', 'padding: 22px; border: 1px solid ${({ theme }) => theme.outline};']]],
+  ['css-modules', [['css-modules/dashboard.module.css', 'padding: 22px; border: 1px solid var(--ds-color-control-border);', 'padding: 22px; border: 1px solid var(--ds-color-dialog-outline);']]],
+  ['styled-components', [['styled-components/Region.ts', 'padding: 22px; border: 1px solid ${({ theme }) => theme.color.controlBorder};', 'padding: 22px; border: 1px solid ${({ theme }) => theme.color.dialogOutline};']]],
   ['tailwind', tailwindEdits],
   ['shadcn', tailwindEdits],
 ]
@@ -113,7 +116,7 @@ async function measureBrandEdit(root, page, url, variant, round, originals) {
     if (message.text().includes('already been passed to createRoot()')) duplicateRootWarnings++
   })
   const start = performance.now()
-  await applyEdits(root, [['shared/brands.ts', '#186649', '#315c8e']], originals)
+  await applyEdits(root, [[tokensFile, '#186649', '#315c8e']], originals)
   await page.waitForFunction((color) => {
     const button = document.querySelector('button[aria-label="View Atlas import"]')
     return button && getComputedStyle(button).backgroundColor === color
@@ -132,12 +135,15 @@ try {
   }
   await symlink(join(repo, 'node_modules'), join(root, 'node_modules'), 'junction')
 
-  const commonEdits = brands.map(({ name, hex }) =>
-    ['shared/brands.ts', `  ${name}: { name:`, `  ${name}: { outline: '${hex}', name:`])
-  commonEdits.push(
-    ['shared/brands.ts', 'export type Brand = {', 'export type Brand = { outline: string;'],
-    ['shared/brands.ts', "    '--brand-accent':", "    '--brand-outline': brand.outline,\n    '--brand-accent':"],
-  )
+  const [grove, signal, ember] = brands
+  const commonEdits = [
+    [tokensFile, "    controlBorder: '#d9e2dd',", "    controlBorder: '#d9e2dd',\n    dialogOutline: '#d9e2dd',"],
+    [brandFile, "| 'accentInk'>", "| 'accentInk' | 'dialogOutline'>"],
+    [brandFile, 'overrides: {}', `overrides: { color: { dialogOutline: '${grove.hex}' } }`],
+    [brandFile, "page: '#edf0ff',", `page: '#edf0ff', dialogOutline: '${signal.hex}',`],
+    [brandFile, "page: '#fff1e8',", `page: '#fff1e8', dialogOutline: '${ember.hex}',`],
+    [themeFile, "    '--ds-color-control-border': tokens.color.controlBorder,", "    '--ds-color-control-border': tokens.color.controlBorder,\n    '--ds-color-dialog-outline': tokens.color.dialogOutline,"],
+  ]
   if (!watch) await applyEdits(root, commonEdits, new Map())
 
   const browser = await chromium.launch({ channel: 'chrome' })
@@ -151,7 +157,7 @@ try {
     const output = join(repo, 'test-results', watch ? 'theme-dev-edit.json' : 'theme-change.json')
     await mkdir(dirname(output), { recursive: true })
     await writeFile(output, JSON.stringify({
-      chrome: browser.version(), sharedFiles: 1,
+      chrome: browser.version(), sharedFiles: watch ? 1 : new Set(commonEdits.map(([path]) => path)).size,
       sharedEdits: watch ? 1 : commonEdits.length, samples,
     }, null, 2))
     console.table(samples)

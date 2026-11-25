@@ -1,8 +1,10 @@
 import { Activity, ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, CheckCircle2, Database, Gauge, LayoutDashboard, ListChecks, Search, Timer, X } from 'lucide-react'
-import { useEffect, useId, useRef, useState, type ComponentType, type ComponentPropsWithoutRef, type ReactNode } from 'react'
+import { useEffect, useId, useMemo, useRef, useState, type ComponentType, type ComponentPropsWithoutRef, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { createRoot } from 'react-dom/client'
-import { accounts, brands, resolveBrand, type Brand, type BrandId } from './brands'
+import { accounts, resolveBrand } from './brands'
+import { brands } from './design-system/brands'
+import { resolveTheme, type ResolvedTheme } from './design-system/theme'
 import { activity, metrics, results, statuses, type Status } from './fixture'
 
 export const slots = [
@@ -15,7 +17,7 @@ export const slots = [
 ] as const
 
 export type Classes = Record<(typeof slots)[number], string>
-type ThemeScopeProps = { brand: Brand; brandId: BrandId; className: string; children: ReactNode }
+type ThemeScopeProps = { theme: ResolvedTheme; className: string; children: ReactNode }
 export type ThemeScope = ComponentType<ThemeScopeProps>
 
 export type Components = {
@@ -87,7 +89,7 @@ function Dashboard({ c, Scope, components = plainComponents }: {
   const portalRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLButtonElement | null>(null)
   const brandId = resolveBrand(account, import.meta.env.VITE_DEFAULT_BRAND)
-  const brand: Brand = brands[brandId]
+  const theme = useMemo(() => resolveTheme(brandId), [brandId])
   const { Card, Button, Badge } = components
   const search = query.trim().toLowerCase()
   const visibleResults = results.filter((item) => (
@@ -110,11 +112,11 @@ function Dashboard({ c, Scope, components = plainComponents }: {
   }
 
   return (
-    <Scope brand={brand} brandId={brandId} className={c.shell}>
+    <Scope theme={theme} className={c.shell}>
       <aside className={c.sidebar}>
         <div className={c.identity}>
-          <span className={c.mark} aria-hidden="true">{brand.monogram}</span>
-          <div><strong>{brand.name}</strong><small>Operations workspace</small></div>
+          <span className={c.mark} aria-hidden="true">{theme.monogram}</span>
+          <div><strong>{theme.name}</strong><small>Operations workspace</small></div>
         </div>
         <nav className={c.nav} aria-label="Dashboard">
           <a href="#overview"><LayoutDashboard aria-hidden="true" size={17} /> Overview</a>
@@ -128,7 +130,7 @@ function Dashboard({ c, Scope, components = plainComponents }: {
           <span>
             Workspace <span aria-hidden="true">/</span> Operations
             <span aria-hidden="true"> · </span>
-            <small>Page background: {brand.pageBackground ? 'Brand color' : 'Default'}</small>
+            <small>Page background: {theme.pageBackgroundSource === 'brand' ? 'Brand color' : 'Default'}</small>
           </span>
           <label className={c.account}>Demo account
             <select value={account} onChange={(event) => changeAccount(event.target.value)}>

@@ -1,11 +1,14 @@
 @theme inline {
-  --color-page: var(--brand-page);
-  --color-ink: #182520;
-  --color-muted: #52615a;
-  --color-edge: #e1e7e3;
-  --color-control: #d9e2dd;
-  --color-rule: #edf0ee;
-  --color-brand: var(--brand-accent);
-  --color-brand-soft: var(--brand-soft);
-  --color-brand-ink: var(--brand-ink);
+  --color-page: var(--ds-color-page);
+  --color-surface: var(--ds-color-surface);
+  --color-ink: var(--ds-color-text);
+  --color-muted: var(--ds-color-text-muted);
+  --color-subtle: var(--ds-color-text-subtle);
+  --color-edge: var(--ds-color-border);
+  --color-control: var(--ds-color-control-border);
+  --color-rule: var(--ds-color-divider);
+  --color-brand: var(--ds-color-accent);
+  --color-brand-soft: var(--ds-color-accent-soft);
+  --color-brand-ink: var(--ds-color-accent-ink);
+  --color-on-brand: var(--ds-color-on-accent);
 }

@@ -1,106 +1,106 @@
 {
   "chrome": "158.0.8127.37",
-  "sharedFiles": 1,
-  "sharedEdits": 5,
+  "sharedFiles": 3,
+  "sharedEdits": 6,
   "samples": [
     {
       "variant": "css-modules",
       "round": 1,
       "variantFiles": 1,
       "variantEdits": 1,
-      "patchMs": 4,
-      "firstMs": 639,
-      "allMs": 897
+      "patchMs": 6,
+      "firstMs": 714,
+      "allMs": 939
     },
     {
       "variant": "styled-components",
       "round": 1,
+      "variantFiles": 1,
+      "variantEdits": 1,
+      "patchMs": 6,
+      "firstMs": 654,
+      "allMs": 919
+    },
+    {
+      "variant": "tailwind",
+      "round": 1,
+      "variantFiles": 2,
+      "variantEdits": 2,
+      "patchMs": 10,
+      "firstMs": 702,
+      "allMs": 936
+    },
+    {
+      "variant": "shadcn",
+      "round": 1,
+      "variantFiles": 2,
+      "variantEdits": 2,
+      "patchMs": 13,
+      "firstMs": 761,
+      "allMs": 1019
+    },
+    {
+      "variant": "styled-components",
+      "round": 2,
       "variantFiles": 1,
       "variantEdits": 1,
       "patchMs": 5,
-      "firstMs": 726,
-      "allMs": 985
-    },
-    {
-      "variant": "tailwind",
-      "round": 1,
-      "variantFiles": 2,
-      "variantEdits": 2,
-      "patchMs": 13,
-      "firstMs": 713,
-      "allMs": 1024
-    },
-    {
-      "variant": "shadcn",
-      "round": 1,
-      "variantFiles": 2,
-      "variantEdits": 2,
-      "patchMs": 13,
-      "firstMs": 690,
-      "allMs": 933
-    },
-    {
-      "variant": "styled-components",
-      "round": 2,
-      "variantFiles": 1,
-      "variantEdits": 1,
-      "patchMs": 4,
-      "firstMs": 559,
-      "allMs": 787
+      "firstMs": 611,
+      "allMs": 875
     },
     {
       "variant": "tailwind",
       "round": 2,
       "variantFiles": 2,
       "variantEdits": 2,
-      "patchMs": 10,
-      "firstMs": 492,
-      "allMs": 753
+      "patchMs": 13,
+      "firstMs": 626,
+      "allMs": 853
     },
     {
       "variant": "shadcn",
       "round": 2,
       "variantFiles": 2,
       "variantEdits": 2,
-      "patchMs": 8,
-      "firstMs": 1085,
-      "allMs": 1422
+      "patchMs": 11,
+      "firstMs": 724,
+      "allMs": 953
     },
     {
       "variant": "css-modules",
       "round": 2,
-      "variantFiles": 1,
-      "variantEdits": 1,
-      "patchMs": 3,
-      "firstMs": 544,
-      "allMs": 772
-    },
-    {
-      "variant": "tailwind",
-      "round": 3,
-      "variantFiles": 2,
-      "variantEdits": 2,
-      "patchMs": 10,
-      "firstMs": 518,
-      "allMs": 781
-    },
-    {
-      "variant": "shadcn",
-      "round": 3,
-      "variantFiles": 2,
-      "variantEdits": 2,
-      "patchMs": 10,
-      "firstMs": 606,
-      "allMs": 836
-    },
-    {
-      "variant": "css-modules",
-      "round": 3,
       "variantFiles": 1,
       "variantEdits": 1,
       "patchMs": 5,
       "firstMs": 592,
-      "allMs": 820
+      "allMs": 858
+    },
+    {
+      "variant": "tailwind",
+      "round": 3,
+      "variantFiles": 2,
+      "variantEdits": 2,
+      "patchMs": 10,
+      "firstMs": 658,
+      "allMs": 908
+    },
+    {
+      "variant": "shadcn",
+      "round": 3,
+      "variantFiles": 2,
+      "variantEdits": 2,
+      "patchMs": 11,
+      "firstMs": 706,
+      "allMs": 935
+    },
+    {
+      "variant": "css-modules",
+      "round": 3,
+      "variantFiles": 1,
+      "variantEdits": 1,
+      "patchMs": 5,
+      "firstMs": 612,
+      "allMs": 911
     },
     {
       "variant": "styled-components",
@@ -108,8 +108,8 @@
       "variantFiles": 1,
       "variantEdits": 1,
       "patchMs": 4,
-      "firstMs": 521,
-      "allMs": 752
+      "firstMs": 563,
+      "allMs": 804
     }
   ]
 }

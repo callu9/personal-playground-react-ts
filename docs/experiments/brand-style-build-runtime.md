@@ -8,7 +8,7 @@
 
 ## 어느 단계에서 어떤 작업을 하는가
 
-클래스와 선언의 **구조를 정하는 시점**과 브랜드 **값을 선택하는 시점**은 다릅니다. 이 저장소에서 계정으로 브랜드를 고르는 일은 네 후보 모두 브라우저에서 수행합니다. CSS Modules·Tailwind·shadcn은 미리 만든 CSS에 브랜드 CSS 변수 값을 넘깁니다. styled-components는 테마 객체의 값을 CSS 템플릿에 보간하고, 새로운 결과가 나오면 브라우저의 스타일시트에 규칙을 추가합니다. 어떤 등록 브랜드로 전환하든 다시 빌드할 필요가 없습니다. 소스에 들어 있는 브랜드 정의를 편집해 배포하려면 네 후보 모두 다시 빌드합니다.
+공통 토큰과 브랜드별 오버라이드를 합친 최종 테마를 네 후보에 전달합니다. 클래스와 선언의 **구조를 정하는 시점**과 브랜드 **값을 선택하는 시점**은 다릅니다. 이 저장소에서 계정으로 브랜드를 고르는 일은 네 후보 모두 브라우저에서 수행합니다. CSS Modules·Tailwind·shadcn은 미리 만든 CSS에 브랜드 CSS 변수 값을 넘깁니다. styled-components는 테마 객체의 값을 CSS 템플릿에 보간하고, 새로운 결과가 나오면 브라우저의 스타일시트에 규칙을 추가합니다. 어떤 등록 브랜드로 전환하든 다시 빌드할 필요가 없습니다. 소스에 들어 있는 브랜드 정의를 편집해 배포하려면 네 후보 모두 다시 빌드합니다.
 
 | 후보 | 빌드에서 하는 일 | 브라우저에서 하는 일 | 빠른 수정 기준의 장점 | 비용과 제약 |
 |---|---|---|---|---|
@@ -19,7 +19,7 @@
 
 [Vite CSS Modules](https://vite.dev/guide/features.html#css-modules) · [styled-components 런타임 성능](https://styled-components.com/docs/advanced#performance) · [styled-components 빌드 플러그인](https://styled-components.com/docs/tooling) · [Tailwind 클래스 탐지](https://tailwindcss.com/docs/detecting-classes-in-source-files#dynamic-class-names) · [Tailwind 테마 변수](https://tailwindcss.com/docs/theme#referencing-other-variables) · [shadcn/ui 테마](https://ui.shadcn.com/docs/theming)
 
-빌드 시간과 개발 중 강조 색상 수정 시간은 페이지 배경 토큰을 추가하기 전의 측정값입니다. 자산 및 브라우저 CSS 규칙은 배경 토큰을 추가한 뒤 다시 측정했습니다.
+빌드 시간, 개발 중 강조 색상 수정, 자산 및 브라우저 CSS 규칙은 공통 토큰과 브랜드 오버라이드를 분리한 뒤 다시 측정했습니다.
 
 ## 단일 페이지 프로덕션 빌드
 
@@ -27,36 +27,36 @@
 
 | 후보 | Vite 중앙값 (최소–최대) | 프로세스 중앙값 |
 |---|---:|---:|
-| CSS Modules + React Context | 1,180ms (865–2,837) | 1,450ms |
-| styled-components | 1,098ms (888–2,902) | 1,346ms |
-| Tailwind CSS | 1,246ms (882–2,988) | 1,482ms |
-| shadcn/ui | 1,351ms (917–2,573) | 1,694ms |
+| CSS Modules + React Context | 881ms (811–1,090) | 1,088ms |
+| styled-components | 881ms (777–1,078) | 1,090ms |
+| Tailwind CSS | 915ms (761–1,272) | 1,145ms |
+| shadcn/ui | 944ms (838–1,048) | 1,189ms |
 
 이번 크기의 대시보드에서는 **styled-components가 빌드를 일관되게 더 느리게 한다는 근거가 없었습니다**. 중앙값 간격에 비해 실행 간 변동이 컸습니다. 이 실험의 styled-components에서 확인된 차이는 브라우저의 규칙 생성과 초기 자산입니다. styled-components 전용 컴파일러 플러그인을 추가한 빌드, 더 큰 규모의 프로젝트, CI 빌드 시간은 측정하지 않았습니다. [28회 빌드 원시 기록](evidence/theme-build-benchmark.json)
 
 ## 개발 중 색상 수정
 
-임시 복사본의 `brands.ts`에서 Grove의 강조 색상 한 값을 바꿨습니다. 일반 Vite 개발 서버에 연결된 상태에서 파일 쓰기 시작부터 첫 행 버튼의 계산된 색상이 새 값에 도달하기까지를 측정했습니다. 후보당 3회입니다. 첫 반영 이후 500ms 동안 페이지 새로고침을 관찰하고 최종색을 다시 확인했습니다.
+임시 복사본의 `design-system/tokens.ts`에서 Grove가 상속하는 공통 강조 색상 한 값을 바꿨습니다. 일반 Vite 개발 서버에 연결된 상태에서 파일 쓰기 시작부터 첫 행 버튼의 계산된 색상이 새 값에 도달하기까지를 측정했습니다. 후보당 3회입니다. 첫 반영 이후 500ms 동안 페이지 새로고침을 관찰하고 최종색을 다시 확인했습니다.
 
 | 후보 | 첫 반영 중앙값 (최소–최대) | 새로고침 발생 |
 |---|---:|---:|
-| CSS Modules + React Context | 50ms (33–56) | 3/3회 |
-| styled-components | 42ms (40–47) | 3/3회 |
-| Tailwind CSS | 58ms (57–58) | 3/3회 |
-| shadcn/ui | 188ms (185–227) | 3/3회 |
+| CSS Modules + React Context | 36ms (29–170) | 3/3회 |
+| styled-components | 46ms (42–47) | 3/3회 |
+| Tailwind CSS | 56ms (51–56) | 3/3회 |
+| shadcn/ui | 179ms (178–181) | 3/3회 |
 
 이 시간에는 브라우저 스타일 정착까지 포함됩니다. shadcn 버튼의 150ms 전환과 페이지 새로고침이 영향을 줄 수 있습니다. 개발 로그에서 공통 `dashboard.tsx`의 `mountDashboard` 내보내기가 Fast Refresh 경계에서 무효화되는 현상과 일부 진입점의 중복 `createRoot` 경고를 확인했습니다. 따라서 표의 반영 시간은 현재 앱의 개발 피드백이며 스타일 라이브러리 자체의 HMR 지연으로 해석하기 어렵습니다. 이 측정에서는 해당 공통 구조를 수정하지 않았습니다. [12회 개발 수정 원시 기록](evidence/theme-dev-edit-benchmark.json)
 
 ## 브라우저에서 생성된 규칙
 
-로컬 프로덕션 빌드에서 Grove → Signal → Ember → Grove를 같은 탭에서 선택했습니다. 각 단계에 인라인 스타일시트의 CSSOM 최상위 규칙 수를 기록했습니다. 미디어 쿼리의 내부 규칙은 중복해서 세지 않았으며, 루트의 CSS 변수 선언은 개별 스타일 선언으로 취급했습니다.
+로컬 프로덕션 빌드에서 Grove → Signal → Ember → Grove를 같은 탭에서 선택했습니다. 각 단계에 인라인 스타일시트의 CSSOM 최상위 규칙 수를 기록했습니다. 미디어 쿼리의 내부 규칙은 중복해서 세지 않았으며, 루트의 CSS 변수 선언은 개별 스타일 선언으로 취급했습니다. 공통값 및 브랜드 오버라이드의 최종 테마를 전달합니다. CSS 변수 기반 후보가 루트에 설정하는 CSS 변수는 토큰 분리 전 5개에서 분리 후 15개가 됐습니다.
 
-| 후보 | 인라인 CSS 규칙 수 | 루트 브랜드 변수 수 |
+| 후보 | 인라인 CSS 규칙 수 | 루트 디자인 변수 수 |
 |---|---|---:|
-| CSS Modules + React Context | 0 → 0 → 0 → 0 | 5 |
+| CSS Modules + React Context | 0 → 0 → 0 → 0 | 15 |
 | styled-components | 73 → 146 → 219 → 219 | 0 |
-| Tailwind CSS | 0 → 0 → 0 → 0 | 5 |
-| shadcn/ui | 0 → 0 → 0 → 0 | 5 |
+| Tailwind CSS | 0 → 0 → 0 → 0 | 15 |
+| shadcn/ui | 0 → 0 → 0 → 0 | 15 |
 
 styled-components는 **처음 방문한 브랜드마다 73개의 최상위 규칙을 추가**했습니다. Grove로 돌아갈 때 규칙 수가 그대로였습니다. CSS 변수 기반 후보도 브라우저에서 스타일을 재계산하지만, 관찰한 전환에서 스타일시트 규칙을 추가하지 않았습니다. 규칙 수는 메인 스레드 실행 시간, 메모리 사용량, 사용자 입력 지연을 직접 나타내지 않습니다. [CSSOM 원시 기록](evidence/theme-runtime-style-rules.json)
 

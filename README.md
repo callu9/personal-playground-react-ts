@@ -29,7 +29,8 @@ npm run measure
 
 ## 구조
 
-- `experiments/brand-theme/shared/`는 대시보드 동작, 고정 데이터, 브랜드 토큰을 공유합니다.
+- `experiments/brand-theme/shared/design-system/tokens.ts`가 공통 디자인 토큰, `brands.ts`가 브랜드별 오버라이드, `theme.ts`가 최종 테마와 CSS 변수 매핑을 정의합니다.
+- 대시보드는 계정과 env로 브랜드를 결정한 뒤 같은 최종 테마를 네 후보에 전달합니다. 공통값을 바꿀 때는 `tokens.ts`, 특정 브랜드 색상·글꼴만 바꿀 때는 디자인 시스템의 `brands.ts`를 수정합니다.
 - 실험의 각 후보는 자체 HTML과 스타일 진입점이 있습니다. Tailwind와 shadcn/ui는 유틸리티 정의를 공유하면서도 각각의 HTML에서 스타일을 로드합니다.
 - 새 주제는 `experiments/<주제>/`에 자체 진입점을 둡니다. 현재 의존성은 하나의 npm 패키지에서 관리합니다.
 

@@ -3,133 +3,173 @@
   "variants": [
     {
       "variant": "css-modules",
+      "jsGzipBytes": 74559,
+      "cssGzipBytes": 2226,
+      "stateMedianMs": 16.6,
+      "stateP95Ms": 16.8,
+      "styleMedianMs": 16.7,
+      "styleP95Ms": 16.8,
+      "transition": {
+        "property": "all",
+        "duration": "0s"
+      },
       "ruleSnapshots": [
         {
           "brand": "grove",
           "linkedRules": 80,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 5
+          "scopedDesignVariables": 15
         },
         {
           "brand": "signal",
           "linkedRules": 80,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 5
+          "scopedDesignVariables": 15
         },
         {
           "brand": "ember",
           "linkedRules": 80,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 5
+          "scopedDesignVariables": 15
         },
         {
           "brand": "grove",
           "linkedRules": 80,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 5
+          "scopedDesignVariables": 15
         }
       ]
     },
     {
       "variant": "styled-components",
+      "jsGzipBytes": 86723,
+      "cssGzipBytes": 237,
+      "stateMedianMs": 16.6,
+      "stateP95Ms": 16.7,
+      "styleMedianMs": 16.6,
+      "styleP95Ms": 16.7,
+      "transition": {
+        "property": "all",
+        "duration": "0s"
+      },
       "ruleSnapshots": [
         {
           "brand": "grove",
           "linkedRules": 8,
           "inlineRules": 73,
           "styledRules": 73,
-          "scopedBrandVariables": 0
+          "scopedDesignVariables": 0
         },
         {
           "brand": "signal",
           "linkedRules": 8,
           "inlineRules": 146,
           "styledRules": 146,
-          "scopedBrandVariables": 0
+          "scopedDesignVariables": 0
         },
         {
           "brand": "ember",
           "linkedRules": 8,
           "inlineRules": 219,
           "styledRules": 219,
-          "scopedBrandVariables": 0
+          "scopedDesignVariables": 0
         },
         {
           "brand": "grove",
           "linkedRules": 8,
           "inlineRules": 219,
           "styledRules": 219,
-          "scopedBrandVariables": 0
+          "scopedDesignVariables": 0
         }
       ]
     },
     {
       "variant": "tailwind",
+      "jsGzipBytes": 75854,
+      "cssGzipBytes": 4745,
+      "stateMedianMs": 16.6,
+      "stateP95Ms": 16.7,
+      "styleMedianMs": 16.6,
+      "styleP95Ms": 16.7,
+      "transition": {
+        "property": "all",
+        "duration": "0s"
+      },
       "ruleSnapshots": [
         {
           "brand": "grove",
           "linkedRules": 32,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 5
+          "scopedDesignVariables": 15
         },
         {
           "brand": "signal",
           "linkedRules": 32,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 5
+          "scopedDesignVariables": 15
         },
         {
           "brand": "ember",
           "linkedRules": 32,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 5
+          "scopedDesignVariables": 15
         },
         {
           "brand": "grove",
           "linkedRules": 32,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 5
+          "scopedDesignVariables": 15
         }
       ]
     },
     {
       "variant": "shadcn",
+      "jsGzipBytes": 89015,
+      "cssGzipBytes": 5815,
+      "stateMedianMs": 16.7,
+      "stateP95Ms": 16.9,
+      "styleMedianMs": 166.8,
+      "styleP95Ms": 167,
+      "transition": {
+        "property": "all",
+        "duration": "0.15s"
+      },
       "ruleSnapshots": [
         {
           "brand": "grove",
           "linkedRules": 33,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 5
+          "scopedDesignVariables": 15
         },
         {
           "brand": "signal",
           "linkedRules": 33,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 5
+          "scopedDesignVariables": 15
         },
         {
           "brand": "ember",
           "linkedRules": 33,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 5
+          "scopedDesignVariables": 15
         },
         {
           "brand": "grove",
           "linkedRules": 33,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 5
+          "scopedDesignVariables": 15
         }
       ]
     }

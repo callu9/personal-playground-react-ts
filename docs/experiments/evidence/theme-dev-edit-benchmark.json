@@ -6,84 +6,84 @@
     {
       "variant": "css-modules",
       "round": 1,
-      "visibleMs": 50,
+      "visibleMs": 170,
       "reloads": 1,
       "duplicateRootWarnings": 1
     },
     {
       "variant": "styled-components",
       "round": 1,
-      "visibleMs": 47,
+      "visibleMs": 46,
       "reloads": 1,
       "duplicateRootWarnings": 1
     },
     {
       "variant": "tailwind",
       "round": 1,
-      "visibleMs": 58,
+      "visibleMs": 51,
       "reloads": 1,
       "duplicateRootWarnings": 0
     },
     {
       "variant": "shadcn",
       "round": 1,
-      "visibleMs": 185,
+      "visibleMs": 178,
       "reloads": 1,
       "duplicateRootWarnings": 0
     },
     {
       "variant": "styled-components",
       "round": 2,
-      "visibleMs": 40,
+      "visibleMs": 42,
       "reloads": 1,
       "duplicateRootWarnings": 1
     },
     {
       "variant": "tailwind",
       "round": 2,
-      "visibleMs": 58,
+      "visibleMs": 56,
       "reloads": 1,
       "duplicateRootWarnings": 0
     },
     {
       "variant": "shadcn",
       "round": 2,
-      "visibleMs": 188,
+      "visibleMs": 181,
       "reloads": 1,
       "duplicateRootWarnings": 0
     },
     {
       "variant": "css-modules",
       "round": 2,
-      "visibleMs": 33,
+      "visibleMs": 29,
       "reloads": 1,
       "duplicateRootWarnings": 1
     },
     {
       "variant": "tailwind",
-      "round": 3,
-      "visibleMs": 57,
-      "reloads": 1,
-      "duplicateRootWarnings": 0
-    },
-    {
-      "variant": "shadcn",
-      "round": 3,
-      "visibleMs": 227,
-      "reloads": 1,
-      "duplicateRootWarnings": 0
-    },
-    {
-      "variant": "css-modules",
       "round": 3,
       "visibleMs": 56,
       "reloads": 1,
+      "duplicateRootWarnings": 0
+    },
+    {
+      "variant": "shadcn",
+      "round": 3,
+      "visibleMs": 179,
+      "reloads": 1,
+      "duplicateRootWarnings": 0
+    },
+    {
+      "variant": "css-modules",
+      "round": 3,
+      "visibleMs": 36,
+      "reloads": 1,
       "duplicateRootWarnings": 1
     },
     {
       "variant": "styled-components",
       "round": 3,
-      "visibleMs": 42,
+      "visibleMs": 47,
       "reloads": 1,
       "duplicateRootWarnings": 1
     }

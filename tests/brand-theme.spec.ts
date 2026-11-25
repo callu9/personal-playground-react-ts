@@ -59,6 +59,39 @@ for (const variant of variants) {
       await expect(panel).toHaveCSS('background-color', 'rgb(237, 240, 255)')
     })
 
+    test('applies a shared token change to every brand and a brand change only to Signal', async ({ page }) => {
+      // Change the served values before reloading, keeping the app sources untouched.
+      for (const [module, original, replacement] of [
+        ['tokens.ts', '#e1e7e3', '#324c76'],
+        ['brands.ts', '#edf0ff', '#dde8ff'],
+      ]) {
+        await page.route(`**/shared/design-system/${module}*`, async (route) => {
+          const response = await route.fetch()
+          const source = await response.text()
+          expect(source).toContain(original)
+          await route.fulfill({ response, body: source.replace(original, replacement) })
+        })
+      }
+      await page.reload()
+
+      const panel = page.getByRole('region', { name: 'Operations theme' })
+      const card = page.locator('[aria-label="Weekly metrics"] > :first-child')
+      const account = page.getByLabel('Demo account')
+      await expect(panel).toHaveCSS('background-color', 'rgb(221, 232, 255)')
+      await expect(card).toHaveCSS('border-top-color', 'rgb(50, 76, 118)')
+      await expect(card).toHaveCSS('background-color', 'rgb(255, 255, 255)')
+      await expect(card).toHaveCSS('border-top-left-radius', '13px')
+
+      for (const [brand, background] of [
+        ['grove', 'rgb(245, 247, 246)'],
+        ['ember', 'rgb(255, 241, 232)'],
+      ]) {
+        await account.selectOption(`${brand}-operator`)
+        await expect(panel).toHaveCSS('background-color', background)
+        await expect(card).toHaveCSS('border-top-color', 'rgb(50, 76, 118)')
+      }
+    })
+
     test('filters results and keeps the theme through the details portal', async ({ page }) => {
       await page.getByLabel('Demo account').selectOption('ember-operator')
       await page.getByLabel('Result status').selectOption('Running')
