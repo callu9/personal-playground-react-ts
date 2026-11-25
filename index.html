@@ -9,7 +9,7 @@
   <body>
     <main>
       <h1 lang="en">React playground</h1>
-      <p class="intro">세 실험에서 해결하려던 문제와 측정 결과입니다. 항목을 열면 판단 근거와 직접 실행할 수 있는 화면을 볼 수 있습니다.</p>
+      <p class="intro">여러 실험에서 해결하려던 문제와 측정 결과입니다. 항목을 열면 판단 근거와 직접 실행할 수 있는 화면을 볼 수 있습니다.</p>
       <nav aria-label="Playground experiments">
         <a href="/experiments/brand-theme/">
           <span class="card-title" lang="en">Brand style runtime</span>
@@ -27,6 +27,12 @@
           <span class="card-title" lang="en">Jonbeo MSW performance</span>
           <span class="problem">MSW가 첫 화면과 화면이 뜬 뒤의 클릭 반응을 각각 늦췄을까?</span>
           <span class="finding">워커 대기가 화면을 가렸습니다. 대기 제거 후 개발 서버에서 제목이 6.44초 → 0.34초에 나타났고, 로딩 후 INP 개선은 확인되지 않았습니다.</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <a href="/experiments/state-subscription/">
+          <span class="card-title" lang="en">State subscription and INP</span>
+          <span class="problem">통화 단위를 바꿀 때 상태 구독 방식을 바꾸면 입력 반응이 얼마나 달라질까?</span>
+          <span class="finding">행 1,000개에서 단위 전환 INP는 네 구독 방식 모두 192~208 ms였고, 금액 셀만 구독하면 144~160 ms였습니다. 행 선택은 Zustand selector만 64 ms로 줄었습니다.</span>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
       </nav>

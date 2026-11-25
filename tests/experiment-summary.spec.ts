@@ -4,6 +4,7 @@ const experiments = [
   { id: 'brand-theme', title: 'Brand style runtime', issue: '공통값', evidence: '73개' },
   { id: 'dashboard-refresh', title: 'Dashboard auto refresh', issue: '최신 상태', evidence: '분/탭' },
   { id: 'jonbeo-msw', title: 'Jonbeo MSW performance', issue: '워커', evidence: '6.44초' },
+  { id: 'state-subscription', title: 'State subscription and INP', issue: '통화', evidence: '192' },
 ] as const
 
 for (const { id, title, issue, evidence } of experiments) {

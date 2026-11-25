@@ -14,6 +14,7 @@ export const experimentTitles = {
   'brand-theme': { label: 'Brand style runtime', title: 'Brand style runtime' },
   'dashboard-refresh': { label: 'Dashboard auto refresh', title: 'Dashboard auto refresh' },
   'jonbeo-msw': { label: 'Jonbeo MSW performance', title: 'Jonbeo MSW performance lab' },
+  'state-subscription': { label: 'State subscription and INP', title: 'State subscription and INP' },
 } as const
 
 export type Experiment = keyof typeof experimentTitles
