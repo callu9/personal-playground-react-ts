@@ -16,6 +16,7 @@ export default defineConfig(({ mode }) => ({
     rolldownOptions: {
       input: {
         home: input('./index.html'),
+        'brand-style-runtime': input('./experiments/brand-theme/index.html'),
         'jonbeo-msw': input('./experiments/jonbeo-msw/index.html'),
         'jonbeo-msw-worker': input('./experiments/jonbeo-msw/worker/index.html'),
         'dashboard-refresh': input('./experiments/dashboard-refresh/index.html'),

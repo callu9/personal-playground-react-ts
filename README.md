@@ -6,7 +6,7 @@
 
 | 실험 | 비교 질문 | 결과 | 로컬 화면 경로 | 기준 측정 |
 |---|---|---|---|---|
-| 브랜드 테마 | 같은 디자인 토큰을 CSS Modules, styled-components, Tailwind CSS, shadcn/ui에 적용하면 수정·빌드·브라우저 비용이 어떻게 달라지는가? | [브랜드 테마 결과](docs/experiments/brand-theme/results.md) | `/experiments/brand-theme/css-modules/` | `npm run measure` |
+| 브랜드 테마 | 같은 디자인 토큰을 CSS Modules, styled-components, Tailwind CSS, shadcn/ui에 적용하면 수정·빌드·브라우저 비용이 어떻게 달라지는가? | [브랜드 테마 결과](docs/experiments/brand-theme/results.md) | `/experiments/brand-theme/` | `npm run measure` |
 | 대시보드 결과 자동 조회 | 고정 폴링, 적응형 폴링, SSE의 반영 지연·요청량·단절 복구는 어떻게 다른가? | [대시보드 자동 조회 결과](docs/experiments/dashboard-refresh/results.md) | `/experiments/dashboard-refresh/` | `npm run measure:refresh` |
 | Jonbeo MSW | MSW 세 요청 경로와 워커 준비 대기가 화면·버튼 준비 시간과 로딩 후 INP에 어떤 영향을 주는가? | [Jonbeo MSW 결과](docs/experiments/jonbeo-msw/results.md) | `/experiments/jonbeo-msw/` | `npm run measure:msw` |
 
@@ -23,7 +23,7 @@ npm run dev
 
 Vite가 출력한 주소에서 실험을 선택합니다. 위 표의 경로를 그 주소에 붙여 바로 열 수도 있습니다.
 
-- 브랜드 테마는 런처에서 네 구현을 모두 열 수 있습니다. 우측 상단의 **Demo account**에서 Grove, Signal, Ember를 바꿔 봅니다. 같은 탭에서 새로고침하면 선택한 계정이 유지됩니다. **Signed out**을 고르면 기본 브랜드가 적용됩니다.
+- **Brand style runtime**에서 대표 화면과 네 구현의 비교표를 봅니다. **대시보드 열기**를 누른 뒤 **Demo account**에서 Grove, Signal, Ember를 전환할 수 있습니다. 같은 탭에서 새로고침하면 선택한 계정이 유지됩니다. **Signed out**을 고르면 기본 브랜드가 적용됩니다.
 - **Dashboard auto refresh**에서는 조회 방식과 시나리오를 고른 뒤 **Start run**을 누릅니다. 가상 작업의 상태와 화면이 반영한 버전을 볼 수 있습니다.
 - **Jonbeo MSW performance**에서는 MSW 끔·요청 통과·모의 응답을 고르고, 워커를 기다린 뒤 포트폴리오를 그리는 방식과 화면을 먼저 그리는 방식을 비교합니다.
 

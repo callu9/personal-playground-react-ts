@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Brand style runtime · React playground</title>
+    <link rel="stylesheet" href="./overview.css">
+  </head>
+  <body>
+    <main>
+      <a class="back" href="/">← React experiments</a>
+      <header class="intro">
+        <h1>Brand style runtime</h1>
+        <p>공통 디자인 토큰을 유지하면서 등록된 브랜드의 색상, 글꼴, 배경을 전환하는 네 가지 방식을 비교했습니다.</p>
+      </header>
+
+      <section class="showcase" aria-labelledby="example-title">
+        <div class="showcase-header">
+          <div>
+            <h2 id="example-title">대표 화면</h2>
+            <p><strong>CSS Modules + React Context + CSS 변수</strong></p>
+            <p>초기 자산이 가장 작고, 브랜드 전환 시 CSS 규칙을 추가하지 않습니다. 새 모달 토큰을 연결할 때 후보 코드에서 수정한 곳도 한 곳이었습니다.</p>
+          </div>
+          <a class="primary-link" href="./css-modules/">대시보드 열기 <span aria-hidden="true">↗</span></a>
+        </div>
+        <img src="../../screenshots/grove.jpg" alt="Grove 공통 배경과 녹색 강조색을 적용한 Operations overview 대시보드" width="1920" height="889">
+      </section>
+
+      <section class="comparison" aria-labelledby="performance-title">
+        <h2 id="performance-title">성능과 빌드 크기</h2>
+        <p class="table-hint">좁은 화면에서는 표를 가로로 스크롤해 모든 항목을 볼 수 있습니다.</p>
+        <div class="table-scroll" role="region" aria-labelledby="performance-title" tabindex="0">
+          <table aria-labelledby="performance-title">
+            <thead>
+              <tr>
+                <th scope="col">후보</th>
+                <th scope="col">초기 JS+CSS<br>gzip</th>
+                <th scope="col">Vite 빌드<br>중앙값</th>
+                <th scope="col">개발 중 색상 수정<br>첫 반영 중앙값</th>
+                <th scope="col">브랜드 전환<br>스타일 정착 중앙값</th>
+                <th scope="col">새 브랜드<br>추가 CSS 규칙</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="selected"><th scope="row">CSS Modules<br>+ React Context</th><td>76,785 B</td><td>881 ms</td><td>36 ms</td><td>16.7 ms</td><td>0</td></tr>
+              <tr><th scope="row">styled-components</th><td>86,960 B</td><td>881 ms</td><td>46 ms</td><td>16.6 ms</td><td>73</td></tr>
+              <tr><th scope="row">Tailwind CSS</th><td>80,599 B</td><td>915 ms</td><td>56 ms</td><td>16.6 ms</td><td>0</td></tr>
+              <tr><th scope="row">shadcn/ui + Tailwind</th><td>94,830 B</td><td>944 ms</td><td>179 ms</td><td>166.8 ms</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="measurement-note">2026-11-25 로컬 Chrome과 단일 페이지 Vite 빌드 측정입니다. 빌드 시간 범위는 서로 겹쳤습니다. shadcn/ui 결과에는 버튼의 150 ms 색상 전환 효과가 포함됩니다.</p>
+      </section>
+
+      <section class="comparison" aria-labelledby="tradeoffs-title">
+        <h2 id="tradeoffs-title">후보별 장단점</h2>
+        <div class="table-scroll" role="region" aria-labelledby="tradeoffs-title" tabindex="0">
+          <table class="tradeoffs" aria-labelledby="tradeoffs-title">
+            <thead><tr><th scope="col">후보</th><th scope="col">장점</th><th scope="col">비용과 제약</th></tr></thead>
+            <tbody>
+              <tr class="selected">
+                <th scope="row">CSS Modules<br>+ React Context</th>
+                <td>파일 단위로 스타일을 격리하고 기존 디자인 토큰을 CSS 변수로 연결하기 쉽습니다.</td>
+                <td>컴포넌트 변형과 포커스 등 상태별 CSS를 직접 관리합니다.</td>
+              </tr>
+              <tr>
+                <th scope="row">styled-components</th>
+                <td>타입이 있는 테마와 props를 받아 스타일 규칙을 직접 계산할 수 있습니다.</td>
+                <td>이 구현은 새 브랜드에서 CSS 규칙을 생성하며, 런타임 라이브러리가 JS 번들에 포함됩니다.</td>
+              </tr>
+              <tr>
+                <th scope="row">Tailwind CSS</th>
+                <td>기존 유틸리티와 토큰을 활용해 반응형·상태 스타일을 조합하기 쉽습니다.</td>
+                <td>시맨틱 토큰 매핑과 클래스 탐지 범위를 관리해야 합니다.</td>
+              </tr>
+              <tr>
+                <th scope="row">shadcn/ui + Tailwind</th>
+                <td>Button, Card, Badge처럼 요구에 맞는 컴포넌트의 소스와 사용 패턴을 재사용할 수 있습니다.</td>
+                <td>가져온 컴포넌트의 기본 스타일과 전환을 디자인 시스템에 맞추고 변경 사항을 직접 관리합니다.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="measurement-note"><a href="https://github.com/callu9/personal-playground-react-ts/blob/65c004a/docs/experiments/brand-theme/results.md">상세 결정 근거와 측정 기록</a></p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -112,13 +112,31 @@ for (const variant of variants) {
   })
 }
 
-test('the launcher keeps the experiment documents isolated', async ({ page }) => {
+test('the launcher groups brand candidates into one experiment with a single demo', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('/')
   await expect(page.getByRole('heading', { name: 'React playground' })).toBeVisible()
-  for (const variant of variants) {
-    await expect(page.locator(`a[href="${path(variant)}"]`)).toBeVisible()
-  }
+  const launcher = page.getByRole('navigation', { name: 'Playground experiments' })
+  await expect(launcher.getByRole('link')).toHaveCount(3)
+  await expect(launcher.getByRole('link', { name: /Dashboard auto refresh/ })).toHaveAttribute('href', '/experiments/dashboard-refresh/')
+  await expect(launcher.getByRole('link', { name: /Jonbeo MSW performance/ })).toHaveAttribute('href', '/experiments/jonbeo-msw/')
   await expect(page.locator('[data-brand]')).toHaveCount(0)
+
+  await launcher.getByRole('link', { name: /Brand style runtime/ }).click()
+  await expect(page.getByRole('heading', { name: 'Brand style runtime' })).toBeVisible()
+  const example = page.getByRole('region', { name: '대표 화면' })
+  await expect(example.getByRole('img')).toHaveCount(1)
+  await expect(example.getByRole('link', { name: '대시보드 열기' })).toHaveAttribute('href', './css-modules/')
+  const performance = page.getByRole('table', { name: '성능과 빌드 크기' })
+  await expect(performance.getByRole('rowheader')).toHaveCount(4)
+  await expect(performance.getByRole('cell', { name: '76,785 B' })).toBeVisible()
+  await expect(page.getByRole('table', { name: '후보별 장단점' }).getByRole('rowheader')).toHaveCount(4)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390)
+  await expect(page.locator('[data-brand]')).toHaveCount(0)
+
+  await example.getByRole('link', { name: '대시보드 열기' }).click()
+  await expect(page).toHaveURL(path('css-modules'))
+  await expect(page.getByRole('heading', { name: 'Operations overview' })).toBeVisible()
 })
 
 test('falls back for missing, invalid and inherited env keys', () => {
