@@ -20,7 +20,7 @@
         <a href="/experiments/dashboard-refresh/">
           <span class="card-title" lang="en">Dashboard auto refresh</span>
           <span class="problem">지표가 계속 변할 때 요청을 줄이면 화면이 최신 상태보다 얼마나 뒤처질까?</span>
-          <span class="finding">정상 시 고정 3초는 20.6건/분/탭으로 갱신 39/60개를 건너뛰었습니다. SSE의 집중 갱신 반영 p95는 70 ms였습니다.</span>
+          <span class="finding">일상 운영 화면의 기본값은 고정 3초입니다. 정상 전달에서 20.6건/분/탭이었고, 낮은 지연이 필요한 관제에는 집중 갱신 p95 70 ms의 SSE가 유리했습니다.</span>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
         <a href="/experiments/jonbeo-msw/">

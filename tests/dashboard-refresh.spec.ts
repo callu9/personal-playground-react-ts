@@ -17,6 +17,27 @@ async function stats(request: APIRequestContext, id: string) {
 
 const version = (page: Page) => page.getByTestId('live-metrics').getAttribute('data-version').then(Number)
 
+test('the summary leads to concrete refresh choices by purpose', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto(dashboard)
+  const summary = page.getByRole('region', { name: '실험 요약' })
+  await expect(summary).toContainText('기본값은 고정 3초')
+  await summary.getByRole('link', { name: '사용 목적별 선택' }).click()
+  await expect(page).toHaveURL(/#refresh-choice$/)
+  const guide = page.getByRole('region', { name: '사용 목적별 선택' })
+  await expect(guide.getByRole('term')).toHaveCount(5)
+  await expect(guide.getByText('2,797 ms', { exact: true })).toBeVisible()
+  await expect(guide.getByText('3,888 ms', { exact: true })).toBeVisible()
+  await expect(guide.getByText('70 ms', { exact: true })).toBeVisible()
+  const conclusion = page.getByRole('region', { name: '결론' })
+  await expect(conclusion).not.toContainText('Normal delivery')
+  await page.getByRole('combobox', { name: 'Delivery scenario' }).selectOption('outage')
+  await expect(page.getByRole('region', { name: '검증 결과' }).getByRole('heading', { name: 'Temporary outage' })).toBeVisible()
+  await expect(conclusion).not.toContainText('Temporary outage')
+  await expect(guide.getByRole('term')).toHaveCount(5)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390)
+})
+
 test('launcher opens a live dashboard and the scenario creates a separate feed', async ({ page }) => {
   await page.goto('/')
   await page.getByRole('link', { name: /Dashboard auto refresh/ }).click()

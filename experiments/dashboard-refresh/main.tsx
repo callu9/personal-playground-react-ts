@@ -151,7 +151,7 @@ function Dashboard() {
             <p className={styles.empty} role={error ? 'alert' : 'status'}>{error ? '피드를 열지 못했습니다. Restart feed로 다시 시도할 수 있습니다.' : '데이터 피드에 연결 중입니다.'}</p>}
         </ExperimentWorkbench>
       </ExperimentSection>
-      <ExperimentSection id="conclusion"><RefreshConclusion scenario={scenario} /></ExperimentSection>
+      <ExperimentSection id="conclusion"><RefreshConclusion /></ExperimentSection>
       <ExperimentSection id="verification"><Results scenario={scenario} method={method} interval={interval} /></ExperimentSection>
     </ExperimentPage>
   )

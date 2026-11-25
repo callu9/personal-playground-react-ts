@@ -7,7 +7,7 @@
 | 실험 | 문제 | 확인한 결과 | 로컬 화면 경로 | 기준 측정 |
 |---|---|---|---|---|
 | 브랜드 테마 | 공통 디자인 토큰을 유지하면서 계정별 색상·글꼴·배경을 바꿀 때 수정 비용과 브라우저 비용이 얼마나 드는가? | CSS Modules와 styled-components는 모달 토큰 연결을 각각 1곳, Tailwind 계열은 2곳 수정했습니다. styled-components는 새 브랜드를 처음 적용할 때 CSS 규칙 73개를 더 만들었고, 후보별 빌드 시간 범위는 겹쳤습니다. [브랜드 테마 결과](docs/experiments/brand-theme/results.md) | `/experiments/brand-theme/` | `npm run measure` |
-| 대시보드 실시간 갱신 | 지표가 계속 변할 때 요청을 줄이면 화면이 최신 상태보다 얼마나 뒤처지는가? | 정상 시 고정 3초는 20.6건/분/탭이었고, SSE의 집중 갱신 반영 p95는 70ms였습니다. [실시간 갱신 결과](docs/experiments/dashboard-refresh/results.md) | `/experiments/dashboard-refresh/` | `npm run measure:refresh` |
+| 대시보드 실시간 갱신 | 지표가 계속 변할 때 요청을 줄이면 화면이 최신 상태보다 얼마나 뒤처지는가? | 수 초 지연을 허용하는 운영 현황은 고정 3초(20.6건/분/탭)를 기본으로, 낮은 지연이 필요한 관제는 SSE(정상 집중 갱신 p95 70ms)를 검토합니다. [사용 목적별 선택](docs/experiments/dashboard-refresh/results.md#사용-목적별-선택) | `/experiments/dashboard-refresh/` | `npm run measure:refresh` |
 | Jonbeo MSW | 워커 준비 대기가 초기 화면과 로딩 후 클릭 반응에 각각 어떤 영향을 주는가? | 원본 개발 서버에서 워커 대기를 제거하자 제목 DOM 등장이 6.44초 → 0.34초로 줄었습니다. 로딩 후 INP 개선은 확인되지 않았고, 가장 오래 걸린 구간은 클릭 이벤트 처리였습니다. [Jonbeo MSW 결과](docs/experiments/jonbeo-msw/results.md) | `/experiments/jonbeo-msw/` | `npm run measure:msw` |
 
 세 실험의 자료와 공통 기록 기준은 [실험 문서](docs/experiments/README.md)에서 볼 수 있습니다.

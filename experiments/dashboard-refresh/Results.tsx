@@ -16,9 +16,18 @@ const scenarioDescription: Record<Scenario, string> = {
   outage: `시작 후 ${outageStartMs / 1_000}~${outageEndMs / 1_000}초 사이에 연결을 끊습니다. 지표는 계속 갱신됩니다.`,
 }
 
-const normalRows = summary.normal
-const fixed3 = normalRows.find(({ candidate }) => candidate.id === 'fixed-3s')
-const push = normalRows.find(({ candidate }) => candidate.id === 'sse')
+const scenarioFinding: Record<Scenario, string> = {
+  normal: '고정 3초의 탭당 요청량과 본문 전송량은 고정 1초보다 적었습니다. SSE는 모든 버전을 관측했고 반영 p95가 가장 낮았습니다.',
+  slow: '1,350 ms의 전달 지연은 SSE에도 적용됩니다. 폴링은 앞선 응답을 기다린 뒤 다음 GET을 보내므로 짧게 설정한 조회 주기만큼 자주 받을 수 없습니다.',
+  outage: '폴링과 SSE는 모두 최신 스냅샷으로 복구했습니다. 아래 복구 수치는 후보별 2회이며 재시도 타이밍에 따라 달라질 수 있습니다.',
+}
+
+const normalResult = (id: string) => summary.normal.find(({ candidate }) => candidate.id === id)
+const fixed1 = normalResult('fixed-1s')
+const fixed3 = normalResult('fixed-3s')
+const fixed5 = normalResult('fixed-5s')
+const adaptive = normalResult('adaptive')
+const push = normalResult('sse')
 const number = new Intl.NumberFormat('ko-KR')
 const ms = (value: number | null) => value === null ? '—' : `${number.format(value)} ms`
 
@@ -27,7 +36,7 @@ export const RefreshSummary = {
   finding: fixed3 && push
     ? <>고정 3초 폴링은 <strong>{fixed3.requests.toFixed(1)}건/분/탭</strong>이었고 갱신 {fixed3.missed}/{fixed3.versions}개가 화면에 나타나지 않았습니다. 정상 시 SSE의 집중 갱신 반영 p95는 <strong>{ms(push.burstP95)}</strong>였습니다.</>
     : '반영 지연, 지속 요청/분/탭, 화면이 최신 버전보다 뒤처진 시간, 단절 후 복구를 비교합니다.',
-  decision: '최신 상태만 필요하면 허용 지연과 요청 예산을 만족하는 고정 주기를 고릅니다. 갱신이 몰릴 때만 신속한 반영이 필요하면 적응형, 낮은 지연이 중요하고 열린 연결을 운영할 수 있으면 SSE를 검토합니다.',
+  decision: <>일상 운영 현황 화면의 기본값은 <strong>고정 3초</strong>입니다. 몇 초 늦어도 최신 집계와 최근 결과를 확인할 수 있고, 일반 GET으로 운영할 수 있습니다. <a href="#refresh-choice">사용 목적별 선택</a></>,
 }
 
 export function RefreshOptions() {
@@ -59,6 +68,7 @@ export function Results({ scenario, method, interval }: { scenario: Scenario; me
       <p>서버 조건을 바꾸면 해당 시나리오의 로컬 Chrome 측정 결과가 표시됩니다.</p>
       <div className={styles.resultsCard}>
         <h4 lang="en">{scenarioLabels[scenario]}</h4>
+        <p>{scenarioFinding[scenario]}</p>
         {rows.length > 0 ? <>
           <p>단일 탭 · 목표 창 {targetWindowMs / 1_000}초 · 후보별 {rows[0].repeats}회</p>
           {!rows.some(({ candidate }) => isSelected(candidate)) && <p>현재 선택한 고정 주기는 이 조건에서 측정하지 않았습니다.</p>}
@@ -101,30 +111,33 @@ export function Results({ scenario, method, interval }: { scenario: Scenario; me
   )
 }
 
-export function RefreshConclusion({ scenario }: { scenario: Scenario }) {
-  const finding = {
-    normal: '폴링은 조회 사이에 생긴 중간 스냅샷을 건너뛸 수 있고, SSE는 연결을 열어 둔 채 변경마다 데이터를 받습니다.',
-    slow: '단일 요청 정책을 쓰면 느린 응답 동안 다음 폴링이 밀립니다. SSE도 전달 지연을 받지만 다음 갱신을 받으려고 GET 완료를 기다리는 단계는 없습니다.',
-    outage: '두 방식 모두 최신 버전부터 복구합니다. 폴링은 다음 조회나 재시도 때, SSE는 연결이 다시 열린 뒤 서버가 최신 스냅샷을 보내면 반영합니다.',
-  }
+export function RefreshConclusion() {
   return (
-    <>
-      <p className={styles.finding}><strong lang="en">{scenarioLabels[scenario]}</strong> {finding[scenario]}</p>
-      <h3 className={styles.groupTitle}>방식별 장단점</h3>
-      <dl className={styles.tradeoffs}>
+    <section id="refresh-choice" className={styles.choiceGuide} aria-labelledby="refresh-choice-title">
+      <h3 id="refresh-choice-title" className={styles.groupTitle}>사용 목적별 선택</h3>
+      <p>아래 지연·요청 기준은 방식 선택을 보여 주기 위한 예시입니다. 수치는 정상 전달을 후보별 3회 재서 얻었으며, 반영 p95는 화면에 나타난 버전의 지연입니다.</p>
+      {fixed1 && fixed3 && fixed5 && adaptive && push && <dl className={styles.tradeoffs}>
         <div>
-          <dt lang="en">{methodLabels.fixed}</dt>
-          <dd>일반 GET과 일정한 주기를 사용합니다. 값이 그대로여도 요청을 보내며 긴 주기는 최신 값 반영이 느립니다.</dd>
+          <dt>일상 운영 현황<strong>고정 3초 · 이 화면의 기본값</strong></dt>
+          <dd>관측 p95 약 3초와 탭당 25건/분을 허용하고 최신 집계와 최근 결과를 볼 때 고릅니다. 집중 갱신 p95 <strong>{ms(fixed3.burstP95)}</strong>, {fixed3.requests.toFixed(1)}건/분/탭이었고 {fixed3.missed}/{fixed3.versions}개 중간 버전을 건너뛰었습니다.</dd>
         </div>
         <div>
-          <dt lang="en">{methodLabels.adaptive}</dt>
-          <dd>변경이 뜸하면 요청을 줄입니다. 집중 갱신의 시작은 직전의 긴 주기 동안 놓칠 수 있습니다.</dd>
+          <dt>보고용 화면·요청 예산 우선<strong>고정 5초</strong></dt>
+          <dd>관측 p95 약 4.5초를 허용하고 탭당 15건/분 정도로 줄여야 할 때 고릅니다. {fixed5.requests.toFixed(1)}건/분/탭이었고 집중 갱신 p95는 <strong>{ms(fixed5.burstP95)}</strong>였습니다.</dd>
         </div>
         <div>
-          <dt lang="en">{methodLabels.sse}</dt>
-          <dd>연결을 유지해 변경 시 서버가 최신 값을 보냅니다. 탭별 연결 수, 프록시 버퍼링과 종료·재연결을 관리해야 합니다.</dd>
+          <dt>장기 연결 없이 고른 응답 속도<strong>고정 1초</strong></dt>
+          <dd>일반 GET으로 평상시와 집중 갱신 모두 약 1.2초 이내의 관측 p95를 목표로 할 때 고릅니다. 각각 <strong>{ms(fixed1.steadyP95)}</strong>, {ms(fixed1.burstP95)}였고 탭당 {fixed1.requests.toFixed(1)}건/분이 들었습니다.</dd>
         </div>
-      </dl>
-    </>
+        <div>
+          <dt>몰리는 갱신에만 빠르게 반응<strong>적응형 폴링</strong></dt>
+          <dd>장기 연결이 어렵고 집중 갱신 p95는 약 1초, 평상시는 약 4초를 허용할 때 고릅니다. 각각 {ms(adaptive.burstP95)}, <strong>{ms(adaptive.steadyP95)}</strong>였고 고정 1초보다 요청을 줄여 {adaptive.requests.toFixed(1)}건/분/탭을 사용했습니다.</dd>
+        </div>
+        <div>
+          <dt>상시 관제·낮은 지연 우선<strong>SSE</strong></dt>
+          <dd>서버가 밀어 주는 최신 상태를 바로 봐야 하고 탭별 장기 연결을 운영할 수 있을 때 고릅니다. 정상 집중 갱신 p95 <strong>{ms(push.burstP95)}</strong>, 미관측 {push.missed}/{push.versions}개였습니다. 연결은 탭당 1회였고 응답 본문은 고정 3초의 약 {(push.bodyBytes / fixed3.bodyBytes).toFixed(1)}배였습니다.</dd>
+        </div>
+      </dl>}
+    </section>
   )
 }
