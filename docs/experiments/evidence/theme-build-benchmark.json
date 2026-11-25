@@ -1,0 +1,205 @@
+{
+  "node": "v24.20.0",
+  "platform": "win32",
+  "cpu": "Intel(R) Core(TM) i5-14400F",
+  "summary": [
+    {
+      "variant": "css-modules",
+      "viteMedianMs": 1180,
+      "viteMinMs": 865,
+      "viteMaxMs": 2837,
+      "processMedianMs": 1450
+    },
+    {
+      "variant": "styled-components",
+      "viteMedianMs": 1098,
+      "viteMinMs": 888,
+      "viteMaxMs": 2902,
+      "processMedianMs": 1346
+    },
+    {
+      "variant": "tailwind",
+      "viteMedianMs": 1246,
+      "viteMinMs": 882,
+      "viteMaxMs": 2988,
+      "processMedianMs": 1482
+    },
+    {
+      "variant": "shadcn",
+      "viteMedianMs": 1351,
+      "viteMinMs": 917,
+      "viteMaxMs": 2573,
+      "processMedianMs": 1694
+    }
+  ],
+  "samples": [
+    {
+      "variant": "css-modules",
+      "round": 1,
+      "processMs": 1072,
+      "viteMs": 865
+    },
+    {
+      "variant": "styled-components",
+      "round": 1,
+      "processMs": 1096,
+      "viteMs": 888
+    },
+    {
+      "variant": "tailwind",
+      "round": 1,
+      "processMs": 1111,
+      "viteMs": 882
+    },
+    {
+      "variant": "shadcn",
+      "round": 1,
+      "processMs": 1136,
+      "viteMs": 917
+    },
+    {
+      "variant": "styled-components",
+      "round": 2,
+      "processMs": 1246,
+      "viteMs": 983
+    },
+    {
+      "variant": "tailwind",
+      "round": 2,
+      "processMs": 1411,
+      "viteMs": 1171
+    },
+    {
+      "variant": "shadcn",
+      "round": 2,
+      "processMs": 1694,
+      "viteMs": 1351
+    },
+    {
+      "variant": "css-modules",
+      "round": 2,
+      "processMs": 1225,
+      "viteMs": 998
+    },
+    {
+      "variant": "tailwind",
+      "round": 3,
+      "processMs": 1148,
+      "viteMs": 945
+    },
+    {
+      "variant": "shadcn",
+      "round": 3,
+      "processMs": 1272,
+      "viteMs": 1061
+    },
+    {
+      "variant": "css-modules",
+      "round": 3,
+      "processMs": 1450,
+      "viteMs": 1180
+    },
+    {
+      "variant": "styled-components",
+      "round": 3,
+      "processMs": 1346,
+      "viteMs": 1098
+    },
+    {
+      "variant": "shadcn",
+      "round": 4,
+      "processMs": 1252,
+      "viteMs": 1029
+    },
+    {
+      "variant": "css-modules",
+      "round": 4,
+      "processMs": 1197,
+      "viteMs": 964
+    },
+    {
+      "variant": "styled-components",
+      "round": 4,
+      "processMs": 1219,
+      "viteMs": 999
+    },
+    {
+      "variant": "tailwind",
+      "round": 4,
+      "processMs": 1482,
+      "viteMs": 1246
+    },
+    {
+      "variant": "css-modules",
+      "round": 5,
+      "processMs": 1865,
+      "viteMs": 1522
+    },
+    {
+      "variant": "styled-components",
+      "round": 5,
+      "processMs": 2571,
+      "viteMs": 2097
+    },
+    {
+      "variant": "tailwind",
+      "round": 5,
+      "processMs": 2365,
+      "viteMs": 1950
+    },
+    {
+      "variant": "shadcn",
+      "round": 5,
+      "processMs": 2531,
+      "viteMs": 2081
+    },
+    {
+      "variant": "styled-components",
+      "round": 6,
+      "processMs": 3346,
+      "viteMs": 2902
+    },
+    {
+      "variant": "tailwind",
+      "round": 6,
+      "processMs": 3078,
+      "viteMs": 2583
+    },
+    {
+      "variant": "shadcn",
+      "round": 6,
+      "processMs": 3304,
+      "viteMs": 2573
+    },
+    {
+      "variant": "css-modules",
+      "round": 6,
+      "processMs": 2698,
+      "viteMs": 2208
+    },
+    {
+      "variant": "tailwind",
+      "round": 7,
+      "processMs": 3436,
+      "viteMs": 2988
+    },
+    {
+      "variant": "shadcn",
+      "round": 7,
+      "processMs": 2954,
+      "viteMs": 2440
+    },
+    {
+      "variant": "css-modules",
+      "round": 7,
+      "processMs": 3402,
+      "viteMs": 2837
+    },
+    {
+      "variant": "styled-components",
+      "round": 7,
+      "processMs": 2623,
+      "viteMs": 2128
+    }
+  ]
+}

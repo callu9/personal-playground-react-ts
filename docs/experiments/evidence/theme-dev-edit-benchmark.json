@@ -1,0 +1,91 @@
+{
+  "chrome": "158.0.8127.37",
+  "sharedFiles": 1,
+  "sharedEdits": 1,
+  "samples": [
+    {
+      "variant": "css-modules",
+      "round": 1,
+      "visibleMs": 50,
+      "reloads": 1,
+      "duplicateRootWarnings": 1
+    },
+    {
+      "variant": "styled-components",
+      "round": 1,
+      "visibleMs": 47,
+      "reloads": 1,
+      "duplicateRootWarnings": 1
+    },
+    {
+      "variant": "tailwind",
+      "round": 1,
+      "visibleMs": 58,
+      "reloads": 1,
+      "duplicateRootWarnings": 0
+    },
+    {
+      "variant": "shadcn",
+      "round": 1,
+      "visibleMs": 185,
+      "reloads": 1,
+      "duplicateRootWarnings": 0
+    },
+    {
+      "variant": "styled-components",
+      "round": 2,
+      "visibleMs": 40,
+      "reloads": 1,
+      "duplicateRootWarnings": 1
+    },
+    {
+      "variant": "tailwind",
+      "round": 2,
+      "visibleMs": 58,
+      "reloads": 1,
+      "duplicateRootWarnings": 0
+    },
+    {
+      "variant": "shadcn",
+      "round": 2,
+      "visibleMs": 188,
+      "reloads": 1,
+      "duplicateRootWarnings": 0
+    },
+    {
+      "variant": "css-modules",
+      "round": 2,
+      "visibleMs": 33,
+      "reloads": 1,
+      "duplicateRootWarnings": 1
+    },
+    {
+      "variant": "tailwind",
+      "round": 3,
+      "visibleMs": 57,
+      "reloads": 1,
+      "duplicateRootWarnings": 0
+    },
+    {
+      "variant": "shadcn",
+      "round": 3,
+      "visibleMs": 227,
+      "reloads": 1,
+      "duplicateRootWarnings": 0
+    },
+    {
+      "variant": "css-modules",
+      "round": 3,
+      "visibleMs": 56,
+      "reloads": 1,
+      "duplicateRootWarnings": 1
+    },
+    {
+      "variant": "styled-components",
+      "round": 3,
+      "visibleMs": 42,
+      "reloads": 1,
+      "duplicateRootWarnings": 1
+    }
+  ]
+}

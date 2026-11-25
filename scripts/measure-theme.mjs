@@ -74,6 +74,29 @@ async function switches(page) {
   return samples
 }
 
+async function inspectStyleRules(page) {
+  const snapshots = []
+  const account = page.getByLabel('Demo account')
+  const root = page.getByRole('region', { name: 'Operations theme' })
+  for (const brand of ['grove', 'signal', 'ember', 'grove']) {
+    await account.selectOption(`${brand}-operator`)
+    if (await root.getAttribute('data-brand') !== brand) throw new Error(`Brand selection failed: ${brand}`)
+    snapshots.push(await page.evaluate((brand) => {
+      const sheets = [...document.styleSheets]
+      const count = (filtered) => filtered.reduce((sum, sheet) => sum + sheet.cssRules.length, 0)
+      const inline = sheets.filter((sheet) => sheet.ownerNode instanceof HTMLStyleElement)
+      const styled = inline.filter((sheet) => sheet.ownerNode.hasAttribute('data-styled'))
+      const scope = document.querySelector('[data-brand]')
+      return {
+        brand, linkedRules: count(sheets.filter((sheet) => sheet.ownerNode instanceof HTMLLinkElement)),
+        inlineRules: count(inline), styledRules: count(styled),
+        scopedBrandVariables: [...scope.style].filter((name) => name.startsWith('--brand-')).length,
+      }
+    }, brand))
+  }
+  return snapshots
+}
+
 const app = await preview({ preview: { host: '127.0.0.1', port: 4183, strictPort: true } })
 try {
   const browser = await chromium.launch({ channel: 'chrome' })
@@ -86,6 +109,7 @@ try {
         const entry = `experiments/brand-theme/${variant}/index.html`
         await page.goto(`http://127.0.0.1:4183/experiments/brand-theme/${variant}/`)
         await page.getByRole('heading', { name: 'Operations overview' }).waitFor()
+        const ruleSnapshots = await inspectStyleRules(page)
         const samples = await switches(page)
         await page.screenshot({ path: join(output, `theme-${variant}.png`), fullPage: true })
         results.push({
@@ -98,14 +122,14 @@ try {
             const style = getComputedStyle(button)
             return { property: style.transitionProperty, duration: style.transitionDuration }
           }),
-          samples,
+          ruleSnapshots, samples,
         })
       } finally {
         await context.close()
       }
     }
     await writeFile(join(output, 'theme-benchmark.json'), JSON.stringify({ chrome: browser.version(), variants: results }, null, 2))
-    console.table(results.map(({ samples, transition, ...row }) => ({ ...row, transition: transition.duration, samples: samples.length })))
+    console.table(results.map(({ samples, transition, ruleSnapshots, ...row }) => ({ ...row, transition: transition.duration, samples: samples.length })))
     console.log(`Chrome ${browser.version()}`)
   } finally {
     await browser.close()

@@ -1,0 +1,137 @@
+{
+  "chrome": "158.0.8127.37",
+  "variants": [
+    {
+      "variant": "css-modules",
+      "ruleSnapshots": [
+        {
+          "brand": "grove",
+          "linkedRules": 80,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedBrandVariables": 4
+        },
+        {
+          "brand": "signal",
+          "linkedRules": 80,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedBrandVariables": 4
+        },
+        {
+          "brand": "ember",
+          "linkedRules": 80,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedBrandVariables": 4
+        },
+        {
+          "brand": "grove",
+          "linkedRules": 80,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedBrandVariables": 4
+        }
+      ]
+    },
+    {
+      "variant": "styled-components",
+      "ruleSnapshots": [
+        {
+          "brand": "grove",
+          "linkedRules": 8,
+          "inlineRules": 73,
+          "styledRules": 73,
+          "scopedBrandVariables": 0
+        },
+        {
+          "brand": "signal",
+          "linkedRules": 8,
+          "inlineRules": 146,
+          "styledRules": 146,
+          "scopedBrandVariables": 0
+        },
+        {
+          "brand": "ember",
+          "linkedRules": 8,
+          "inlineRules": 219,
+          "styledRules": 219,
+          "scopedBrandVariables": 0
+        },
+        {
+          "brand": "grove",
+          "linkedRules": 8,
+          "inlineRules": 219,
+          "styledRules": 219,
+          "scopedBrandVariables": 0
+        }
+      ]
+    },
+    {
+      "variant": "tailwind",
+      "ruleSnapshots": [
+        {
+          "brand": "grove",
+          "linkedRules": 32,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedBrandVariables": 4
+        },
+        {
+          "brand": "signal",
+          "linkedRules": 32,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedBrandVariables": 4
+        },
+        {
+          "brand": "ember",
+          "linkedRules": 32,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedBrandVariables": 4
+        },
+        {
+          "brand": "grove",
+          "linkedRules": 32,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedBrandVariables": 4
+        }
+      ]
+    },
+    {
+      "variant": "shadcn",
+      "ruleSnapshots": [
+        {
+          "brand": "grove",
+          "linkedRules": 33,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedBrandVariables": 4
+        },
+        {
+          "brand": "signal",
+          "linkedRules": 33,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedBrandVariables": 4
+        },
+        {
+          "brand": "ember",
+          "linkedRules": 33,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedBrandVariables": 4
+        },
+        {
+          "brand": "grove",
+          "linkedRules": 33,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedBrandVariables": 4
+        }
+      ]
+    }
+  ]
+}

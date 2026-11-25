@@ -2,7 +2,7 @@
 
 | 실험 | 상태 | 기록 |
 |---|---|---|
-| 01. 디자인 시스템과 브랜드 테마 | 구현 및 로컬 측정 완료 | [네 후보의 시간, 변경 복잡도, 브라우저 비용과 추천](../brand-theme-results.md) |
+| 01. 디자인 시스템과 브랜드 테마 | 구현 및 로컬 측정 완료 | [네 후보의 시간, 변경 복잡도, 브라우저 비용과 추천](../brand-theme-results.md) · [정적·동적 스타일의 빌드와 런타임](brand-style-build-runtime.md) |
 | 02. 대시보드 결과 자동 조회 | 측정 계획 | [고정·적응형 폴링과 SSE 비교 계획](dashboard-refresh.md) |
 | 03. Jonbeo MSW와 입력 지연 | 측정 계획 | [과거 원인 재현과 성능 개선 비교 계획](jonbeo-msw-performance.md) |
 

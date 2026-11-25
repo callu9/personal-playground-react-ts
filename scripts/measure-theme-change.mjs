@@ -1,5 +1,6 @@
 import { cp, mkdir, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
+import { setTimeout as delay } from 'node:timers/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { chromium, expect } from '@playwright/test'
@@ -7,6 +8,7 @@ import { createServer } from 'vite'
 
 const repo = fileURLToPath(new URL('..', import.meta.url))
 const lab = 'experiments/brand-theme'
+const watch = process.argv.includes('--watch')
 const fallbackColor = 'rgb(217, 226, 221)'
 const brands = [
   { name: 'grove', hex: '#438361', rgb: 'rgb(67, 131, 97)' },
@@ -52,7 +54,7 @@ async function measure(root, browser, variant, edits, round) {
     root,
     cacheDir: join(root, '.vite-cache'),
     configFile: join(root, 'vite.config.ts'),
-    server: { host: '127.0.0.1', port: 0, open: false, hmr: false },
+    server: { host: '127.0.0.1', port: 0, open: false, hmr: watch },
   })
   const originals = new Map()
   let context
@@ -62,6 +64,7 @@ async function measure(root, browser, variant, edits, round) {
     const url = `http://127.0.0.1:${address.port}/${lab}/${variant}/`
     context = await browser.newContext()
     const page = await context.newPage()
+    if (watch) return await measureBrandEdit(root, page, url, variant, round, originals)
     await page.goto(url)
     await openAndCheck(page, fallbackColor)
 
@@ -93,6 +96,35 @@ async function measure(root, browser, variant, edits, round) {
   }
 }
 
+async function measureBrandEdit(root, page, url, variant, round, originals) {
+  const connected = page.waitForEvent('console', {
+    predicate: (message) => message.text() === '[vite] connected.',
+    timeout: 10_000,
+  })
+  await Promise.all([page.goto(url), connected])
+  await page.getByLabel('Demo account').selectOption('grove-operator')
+  const button = page.getByRole('button', { name: 'View Atlas import' })
+  await expect(button).toHaveCSS('background-color', 'rgb(24, 102, 73)')
+
+  let reloads = 0
+  let duplicateRootWarnings = 0
+  page.on('framenavigated', (frame) => { if (frame === page.mainFrame()) reloads++ })
+  page.on('console', (message) => {
+    if (message.text().includes('already been passed to createRoot()')) duplicateRootWarnings++
+  })
+  const start = performance.now()
+  await applyEdits(root, [['shared/brands.ts', '#186649', '#315c8e']], originals)
+  await page.waitForFunction((color) => {
+    const button = document.querySelector('button[aria-label="View Atlas import"]')
+    return button && getComputedStyle(button).backgroundColor === color
+  }, 'rgb(49, 92, 142)', { timeout: 10_000 })
+  const visibleMs = Math.round(performance.now() - start)
+  // Fast Refresh can show the new style just before invalidating the module and reloading.
+  await delay(500)
+  await expect(button).toHaveCSS('background-color', 'rgb(49, 92, 142)')
+  return { variant, round, visibleMs, reloads, duplicateRootWarnings }
+}
+
 const root = await mkdtemp(join(tmpdir(), 'playground-theme-change-'))
 try {
   for (const path of ['experiments', 'package.json', 'tsconfig.json', 'vite.config.ts', 'index.html']) {
@@ -106,7 +138,7 @@ try {
     ['shared/brands.ts', 'export type Brand = {', 'export type Brand = { outline: string;'],
     ['shared/brands.ts', "    '--brand-accent':", "    '--brand-outline': brand.outline,\n    '--brand-accent':"],
   )
-  await applyEdits(root, commonEdits, new Map())
+  if (!watch) await applyEdits(root, commonEdits, new Map())
 
   const browser = await chromium.launch({ channel: 'chrome' })
   try {
@@ -116,9 +148,12 @@ try {
         samples.push(await measure(root, browser, variant, edits, round + 1))
       }
     }
-    const output = join(repo, 'test-results/theme-change.json')
+    const output = join(repo, 'test-results', watch ? 'theme-dev-edit.json' : 'theme-change.json')
     await mkdir(dirname(output), { recursive: true })
-    await writeFile(output, JSON.stringify({ chrome: browser.version(), sharedFiles: 1, sharedEdits: commonEdits.length, samples }, null, 2))
+    await writeFile(output, JSON.stringify({
+      chrome: browser.version(), sharedFiles: 1,
+      sharedEdits: watch ? 1 : commonEdits.length, samples,
+    }, null, 2))
     console.table(samples)
   } finally {
     await browser.close()
