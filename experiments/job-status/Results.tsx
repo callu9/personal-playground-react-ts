@@ -1,4 +1,4 @@
-import evidence from '../../docs/experiments/job-status/evidence/job-status-benchmark.json'
+import { aggregate, environment as measuredEnvironment } from '../../docs/experiments/job-status/evidence/job-status-benchmark.json'
 import { ExperimentOptions, ExperimentTable } from '../shared/ExperimentPage'
 import {
   cancelSettleMs, methodLabels, requestLimit, retryPolicyLabels, scenarioLabels,
@@ -14,8 +14,8 @@ interface ScenarioRow {
 }
 interface Stat { min: number; median: number; max: number }
 interface CancelRow { scenario: 'cancel'; candidate: string; runs: number; clickerCancelledMs: Stat; observerCancelledMs: Stat; cancellingSeen: string }
-const environment = evidence.environment as Partial<Record<'platform' | 'node' | 'chrome', string>>
-const rows = evidence.aggregate as unknown as (ScenarioRow | CancelRow)[]
+const environment = measuredEnvironment as Partial<Record<'platform' | 'node' | 'chrome', string>>
+const rows = aggregate as unknown as (ScenarioRow | CancelRow)[]
 const scenarioRows = rows.filter((row): row is ScenarioRow => row.scenario !== 'cancel')
 const cancelRows = rows.filter((row): row is CancelRow => row.scenario === 'cancel')
 
