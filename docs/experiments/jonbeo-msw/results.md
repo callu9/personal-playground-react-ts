@@ -1,5 +1,9 @@
 # 03. Jonbeo MSW와 입력 반응성
 
+[실험 목차](../README.md) · [실험 지침](README.md) · [Playground](http://127.0.0.1:5173/experiments/jonbeo-msw/#playground) · [측정 원본](evidence/)
+
+[원본 코드의 원인](#원본-코드에서-확인한-경로) · [Playground 측정](#chrome-측정) · [재측정과 Chrome trace](#데이터-표시-지연-재측정) · [원본 클론 측정](#jonbeo-원본-클론-재측정)
+
 **Jonbeo 원본의 첫 화면은 `MSWComponent`가 워커 준비를 기다리는 동안 자식을 렌더링하지 않아 늦어졌습니다.** `d68ac41` → `76f9ac6`에서 제목의 첫 DOM 등장 중앙값은 **6.44초 → 0.34초**였습니다. 홈 데이터는 두 커밋 모두 서버에서 같은 fixture를 읽었습니다. 로딩 후 통화 전환 INP의 가장 큰 구간은 클릭 이벤트 처리였으며, 워커 대기 제거 이후 INP 개선은 확인되지 않았습니다. [원본 Chrome 측정](#jonbeo-원본-클론-재측정)
 
 **플레이그라운드**에서는 같은 합성 데이터로 MSW 끔·요청 통과·모의 응답을 비교했습니다. UI를 먼저 그리자 첫 방문의 정렬 버튼은 워커 경로에서 **171.2~201.5ms** 빨리 준비됐습니다. 초회에 관측한 데이터 표시 지연은 같은 조건의 재측정에서 반복되지 않았습니다. [플레이그라운드 재측정과 Chrome trace](#데이터-표시-지연-재측정)
@@ -144,45 +148,15 @@ Chrome에서 `navigator.serviceWorker.register()`를 보류했습니다. `d68ac4
 - **서버 fixture나 Route Handler로 충분한 경우**에는 화면을 브라우저 워커 준비에 묶을 필요가 없다. Jonbeo 홈은 두 커밋 모두 서버 fixture를 사용했고, 이번 비교에서 제거한 것은 앱 전체의 초기화 대기였다. 브라우저에서 API 오류나 지연을 재현해야 하는 요청에는 인터셉션을 적용할 수 있다. [Jonbeo 변경 diff](https://github.com/callu9/jonbeo-next-ts/commit/76f9ac6)
 - **표시된 버튼을 누르고도 느린 경우**에는 입력과 겹친 긴 메인 스레드 작업, 이벤트 처리, 다음 페인트를 각각 본다. 원본의 스켈레톤 최소 시간은 콘텐츠 표시를 늦추는 별도 후보이고, CPU 작업의 영향은 해당 작업과 입력 시점이 겹친 trace에서 판단한다.
 
+
 ## 재실행
 
-```sh
-npm ci
-npm run build
-npm run measure:msw
-npx playwright test tests/jonbeo-msw.spec.ts --workers=1
-```
-
-`npm run dev`의 런처에서 **Jonbeo MSW performance**를 열면 세 요청 경로와 두 렌더링 방식을 바꿔 볼 수 있다. 워커는 실험의 `worker/` 하위에서만 등록되며 MSW 끔 경로와 다른 실험을 제어하지 않는다. 벤치마크는 원시 Event Timing과 Long Tasks, 응답 출처, 환경을 `test-results/jonbeo-msw/results.json`에 남긴다. 달리 지정하려면 `MSW_BENCH_ROUNDS`를 설정한다.
+[실험 지침](README.md#재실행과-원본)에서 로컬 측정 명령과 게시된 원본을 확인할 수 있습니다.
 
 ### Chrome trace 수집
 
-프로덕션 빌드 뒤 PowerShell에서 실행한다. 환경 변수 없이 실행하면 계측 마크가 있는 일반 측정이고, trace 옵션은 첫 방문마다 Chrome CDP 기록을 추가한다. 브라우저 타이밍과 trace 타이밍은 별도 실행으로 비교한다.
-
-```powershell
-$env:MSW_BENCH_ROUNDS = '3'
-$env:MSW_BENCH_TRACE = '1'
-npm run measure:msw
-Remove-Item Env:MSW_BENCH_TRACE, Env:MSW_BENCH_ROUNDS
-```
-
-`test-results/jonbeo-msw/traces/`의 `.json.gz`를 Chrome DevTools **Performance → Load profile**로 열고 **Timings**, **Main**, **Network**를 함께 본다. `jonbeo:appCommit`, `jonbeo:effect`, `jonbeo:workerStart`, `jonbeo:workerModuleReady`, `jonbeo:workerReady`, `jonbeo:request`, `jonbeo:body`, `jonbeo:stateUpdate`, `jonbeo:data` 순서로 확인할 수 있다. `jonbeo:data`는 레이아웃 effect에서 찍은 DOM 커밋 시점이다. [Chrome trace 사용법](https://developer.chrome.com/docs/devtools/performance/reference/) · [React useLayoutEffect](https://react.dev/reference/react/useLayoutEffect)
+[계측 옵션과 DevTools에서 보는 순서](README.md#chrome-trace-수집)
 
 ### Jonbeo 원본 측정
 
-[원본 저장소](https://github.com/callu9/jonbeo-next-ts)를 클론한 뒤 `d68ac41`과 `76f9ac6`을 각각 체크아웃한다. 각 체크아웃에서 `npm ci` 후 다음 서버를 별도 터미널에서 실행한다. 첫 컴파일을 제외하려면 두 서버에서 각각 `/api/portfolio`와 `/`에 먼저 한 번씩 요청해 HTTP 200을 확인한다.
-
-```sh
-# d68ac41
-npm run dev -- --hostname 127.0.0.1 --port 4188
-
-# 76f9ac6
-npm run dev -- --hostname 127.0.0.1 --port 4189
-```
-
-플레이그라운드 루트에서 아래 명령을 실행한다. 첫 스크립트는 등록을 보류해 화면의 의존성을 확인한다. 두 번째는 API 본문을 대조하고 새 Chrome 컨텍스트에서 통화 전환 버튼을 누른다. `test-results/jonbeo-msw/source-development/`에 개별 결과와 커밋별 Chrome trace를 저장한다.
-
-```sh
-node scripts/verify-jonbeo-source-gate.mjs http://127.0.0.1:4188/ http://127.0.0.1:4189/
-node scripts/measure-jonbeo-source.mjs http://127.0.0.1:4188/ http://127.0.0.1:4189/ development
-```
+[원본 두 커밋의 개발 서버 실행과 측정 명령](README.md#jonbeo-원본-측정)

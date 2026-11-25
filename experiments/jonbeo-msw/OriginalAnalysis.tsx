@@ -1,9 +1,9 @@
+import { documentsFor } from '../shared/experiment-documents'
 import { originalResults } from './recorded'
 import styles from './lab.module.css'
 
 const repo = 'https://github.com/callu9/jonbeo-next-ts'
 const before = `${repo}/blob/d68ac41/src`
-const report = 'https://github.com/callu9/personal-playground-react-ts/blob/feature/jonbeo-msw-performance/docs/experiments/jonbeo-msw/results.md'
 
 export function OriginalAnalysis() {
   return (
@@ -68,7 +68,7 @@ export function OriginalAnalysis() {
       </article>
       <div className={styles.sourceLinks}>
         <a href="#source-results-title">원본 Chrome 측정표</a>
-        <a href={report}>측정 보고서와 원시 데이터</a>
+        <a href={`${documentsFor('jonbeo-msw').report}#jonbeo-원본-클론-재측정`}>보고서의 원본 클론 측정</a>
       </div>
     </div>
   )

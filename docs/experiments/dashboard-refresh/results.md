@@ -1,6 +1,12 @@
 # 02. 대시보드 실시간 갱신
 
+[실험 목차](../README.md) · [실험 지침](README.md) · [Playground](http://127.0.0.1:5173/experiments/dashboard-refresh/#playground) · [측정 원본](evidence/)
+
+[비교 조건](#무엇을-비교했나) · [시나리오별 수치](#측정-결과) · [사용 목적별 선택](#사용-목적별-선택)
+
 브랜드 테마 실험의 **Operations overview**를 재사용했습니다. 같은 CSS Modules 테마, 지표 카드, 활동 차트, 상태 분포, 최근 결과 표로 서버의 최신 스냅샷을 보여 줍니다. 화면을 열어 둔 동안 데이터는 계속 갱신되고, 비교에서 바꾸는 것은 고정 폴링·적응형 폴링·SSE의 조회 방식입니다. 기존 작업 상태 실험의 수치는 별도로 볼 수 있습니다. [이전 작업 상태 실험](https://github.com/callu9/personal-playground-react-ts/blob/60c12c6/docs/experiments/dashboard-refresh/results.md)
+
+**이 예시의 일상 운영 화면은 고정 3초를 기본으로 둡니다.** 정상 전달에서 집중 갱신 p95는 2,797ms, 요청량은 20.6건/분/탭이었습니다. 지연이 중요한 관제에서는 SSE가 70ms를 기록했습니다. SSE는 탭별 연결을 유지했고 본문 전송량은 고정 3초의 약 1.9배였습니다. [사용 목적별 선택](#사용-목적별-선택)
 
 ## 무엇을 비교했나
 
@@ -95,11 +101,4 @@ Windows · Intel Core i5-14400F · Node v24.20.0 · Chrome 158.0.8127.37 · 1280
 
 ## 재실행
 
-```sh
-npm ci
-npm run build
-npm run measure:refresh
-npm test -- tests/dashboard-refresh.spec.ts --workers=1
-```
-
-`npm run dev`의 **Dashboard auto refresh**에서 Operations overview가 서버 데이터로 갱신됩니다. **Update method**는 같은 피드에서 바뀌고 **Delivery scenario**는 같은 일정의 새 피드를 엽니다. 공유 링크로 새 탭에서 같은 피드를 구독할 수 있습니다. 측정 명령은 실제 관측값을 `test-results/dashboard-refresh.json`에 저장합니다. [Chrome 회차별 원본](evidence/dashboard-refresh-benchmark.json)
+[실험 지침](README.md#재실행과-원본)에서 실행 명령과 출력 위치를 확인할 수 있습니다. [Chrome 회차별 원본](evidence/dashboard-refresh-benchmark.json)

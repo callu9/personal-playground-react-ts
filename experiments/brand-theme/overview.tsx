@@ -1,5 +1,6 @@
 import { createRoot } from 'react-dom/client'
 import { ExperimentFrame, ExperimentOptions, ExperimentPage, ExperimentSection, ExperimentTable } from '../shared/ExperimentPage'
+import { brandBuildReport, documentsFor } from '../shared/experiment-documents'
 import styles from './overview.module.css'
 
 const options = [
@@ -221,7 +222,7 @@ return <section {...props} style={themeVariables(theme.tokens)}>
           </tbody>
         </ExperimentTable>
         <p className={styles.measurementNote}>2026-11-25 로컬 Chrome과 단일 페이지 Vite 빌드 측정입니다. 빌드 시간 범위는 서로 겹쳤습니다. 스타일 정착 시간은 글꼴과 버튼·페이지의 배경색이 목표 값에 도달할 때까지 잰 값입니다. Provider 자체 비용은 별도로 측정하지 않았으며, shadcn/ui 결과에는 버튼의 150 ms 색상 전환 효과가 포함됩니다.</p>
-        <p className={styles.measurementNote}><a href="https://github.com/callu9/personal-playground-react-ts/blob/65c004a/docs/experiments/brand-theme/results.md">상세 결정 근거와 측정 기록</a></p>
+        <p className={styles.measurementNote}><a href={`${documentsFor('brand-theme').report}#브라우저와-빌드`}>브라우저 측정 기록</a> · <a href={brandBuildReport}>빌드·개발 반영·런타임 상세</a></p>
       </ExperimentSection>
     </ExperimentPage>
   )

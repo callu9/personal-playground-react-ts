@@ -4,9 +4,11 @@ main { max-width: 780px; margin: 0 auto; padding: clamp(28px, 6vw, 64px) clamp(1
 h1 { margin: 0; font-size: clamp(36px, 7vw, 61px); letter-spacing: -0.055em; line-height: 1.1; }
 .intro { margin: 12px 0 22px; color: #4d5d54; }
 nav { display: grid; gap: 10px; }
-a { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 3px 14px; padding: clamp(13px, 3vw, 18px); border: 1px solid #dbe5df; border-radius: 11px; background: #fff; color: inherit; text-decoration: none; }
-a:hover { border-color: #186649; }
+nav > a { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 3px 14px; padding: clamp(13px, 3vw, 18px); border: 1px solid #dbe5df; border-radius: 11px; background: #fff; color: inherit; text-decoration: none; }
+nav > a:hover { border-color: #186649; }
 a:focus-visible { outline: 2px solid #186649; outline-offset: 3px; }
+.documents { margin: 14px 0 0; }
+.documents a { color: #186649; text-underline-offset: .18em; }
 .card-title { font-size: 1.05rem; font-weight: 750; }
 .problem, .finding { grid-column: 1 / -1; }
 .finding { color: #4d5d54; font-size: .875rem; }

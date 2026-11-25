@@ -1,6 +1,8 @@
 # 브랜드 테마의 빌드와 런타임 비용
 
-2026-11-25 · [브랜드 테마 후보 선택 가이드와 전체 결과](results.md)
+[실험 지침](README.md) · [브랜드 테마 후보 선택과 전체 결과](results.md) · [Playground의 검증 결과](http://127.0.0.1:5173/experiments/brand-theme/#verification) · [측정 원본](evidence/)
+
+2026-11-25
 
 ## 결정 조건
 
@@ -62,11 +64,4 @@ styled-components는 **처음 방문한 브랜드마다 73개의 최상위 규�
 
 ## 재실행
 
-```sh
-node scripts/measure-theme-build.mjs
-node scripts/measure-theme-change.mjs --watch
-npm run build
-npm run measure
-```
-
-원시 출력은 `test-results/`에 생성됩니다.
+[실험 지침](README.md#재실행과-원본)에서 빌드, 개발 중 색상 수정, 스타일 전환의 재실행 명령과 출력 위치를 확인할 수 있습니다.

@@ -1,11 +1,6 @@
 import { useLayoutEffect, type ReactNode } from 'react'
+import { documentsFor, experimentTitles, projectDocuments, type Experiment } from './experiment-documents'
 import styles from './experiment-page.module.css'
-
-const experiments = {
-  'brand-theme': { label: 'Brand style runtime', title: 'Brand style runtime' },
-  'dashboard-refresh': { label: 'Dashboard auto refresh', title: 'Dashboard auto refresh' },
-  'jonbeo-msw': { label: 'Jonbeo MSW performance', title: 'Jonbeo MSW performance lab' },
-} as const
 
 const sections = {
   'source-analysis': '원본 코드 분석',
@@ -15,7 +10,6 @@ const sections = {
   verification: '검증 결과',
 } as const
 
-type Experiment = keyof typeof experiments
 type Section = keyof typeof sections
 
 export function ExperimentPage({ experiment, summary, sourceAnalysis, children }: {
@@ -24,6 +18,7 @@ export function ExperimentPage({ experiment, summary, sourceAnalysis, children }
   sourceAnalysis?: ReactNode
   children: ReactNode
 }) {
+  const documents = documentsFor(experiment)
   useLayoutEffect(() => {
     // A direct fragment can be resolved only after React has mounted its target.
     const target = document.getElementById(window.location.hash.slice(1))
@@ -35,7 +30,7 @@ export function ExperimentPage({ experiment, summary, sourceAnalysis, children }
       <nav className={styles.experiments} aria-label="실험 이동">
         <a href="/" className={styles.home} lang="en">React experiments</a>
         <ul lang="en">
-          {Object.entries(experiments).map(([id, { label }]) => (
+          {Object.entries(experimentTitles).map(([id, { label }]) => (
             <li key={id}>
               <a href={`/experiments/${id}/`} aria-current={id === experiment ? 'page' : undefined}>{label}</a>
             </li>
@@ -44,7 +39,7 @@ export function ExperimentPage({ experiment, summary, sourceAnalysis, children }
       </nav>
       <main className={styles.content}>
         <header className={styles.header}>
-          <h1 lang="en">{experiments[experiment].title}</h1>
+          <h1 lang="en">{experimentTitles[experiment].title}</h1>
           <section className={styles.summary} aria-labelledby="experiment-summary-title">
             <h2 id="experiment-summary-title">실험 요약</h2>
             <dl>
@@ -58,6 +53,14 @@ export function ExperimentPage({ experiment, summary, sourceAnalysis, children }
               {Object.entries(sections)
                 .filter(([id]) => id !== 'source-analysis' || sourceAnalysis)
                 .map(([id, label]) => <li key={id}><a href={`#${id}`}>{label}</a></li>)}
+            </ul>
+          </nav>
+          <nav className={styles.documents} aria-label="실험 문서">
+            <ul>
+              <li><a href={documents.guide}>실험 지침</a></li>
+              <li><a href={documents.report}>결과 보고서</a></li>
+              <li><a href={documents.evidence}>측정 원본</a></li>
+              <li><a href={projectDocuments.guide}>프로젝트 공통 지침</a></li>
             </ul>
           </nav>
         </header>

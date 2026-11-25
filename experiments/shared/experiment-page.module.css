@@ -30,7 +30,7 @@
   border-bottom: 1px solid var(--experiment-line);
 }
 .page .home { color: var(--experiment-ink); font-weight: 750; text-decoration: none; }
-.experiments ul, .sections ul {
+.experiments ul, .sections ul, .documents ul {
   display: flex;
   flex-wrap: wrap;
   gap: .25rem .5rem;
@@ -72,6 +72,9 @@
 }
 .sections { margin-top: 1rem; }
 .sections a { border: 1px solid var(--experiment-line); background: #fff; text-decoration: none; }
+.documents { margin-top: .5rem; }
+.documents ul { gap: .15rem .65rem; }
+.documents a { display: inline-block; padding: .3rem .12rem; font-size: .875rem; }
 
 .section { margin-top: .85rem; padding-block: 1.15rem 1.65rem; border-top: 1px solid var(--experiment-line); scroll-margin-top: 1rem; }
 .section > h2 { margin: 0 0 .85rem; line-height: 1.25; font-size: clamp(1.35rem, 3.3vw, 1.85rem); letter-spacing: -.025em; }

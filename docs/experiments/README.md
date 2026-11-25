@@ -1,15 +1,13 @@
-# 실험 문서
+# 실험 문서 목차
 
-각 실험의 `results.md`에 결론, 측정 조건, 재실행 절차가 있습니다. 개별 측정 원본은 같은 폴더의 `evidence/`에서 찾을 수 있습니다. 로컬 화면과 기준 측정 명령은 [저장소 README](../../README.md)를 참고하세요.
+[저장소 목차](../../README.md) · [공통 지침](../../AGENTS.md) · [로컬 실행](../../README.md#로컬-실행)
 
-| 실험 결과 | 바로 볼 수 있는 내용 | 측정 원본 |
-|---|---|---|
-| [디자인 시스템과 브랜드 테마](brand-theme/results.md) | 네 후보의 구현·브라우저 비용과 선택 기준, [빌드·개발 반영·런타임 상세 측정](brand-theme/build-runtime.md) | [브랜드 테마 원본](brand-theme/evidence/) |
-| [대시보드 실시간 갱신](dashboard-refresh/results.md) | 평상시·집중 갱신의 반영 지연, 탭당 지속 요청량·전송량, 단절 복구 | [자동 조회 원본](dashboard-refresh/evidence/) |
-| [Jonbeo MSW와 입력 지연](jonbeo-msw/results.md) | 동일 조건 재측정, Chrome trace, Jonbeo 원본 클론의 로딩과 INP | [Jonbeo MSW 원본](jonbeo-msw/evidence/) |
+실험 **지침**에는 비교 조건과 재현 명령이, **결과 보고서**에는 관측값과 판단이 있습니다. **측정 원본**에서 표에 사용한 기록을 확인할 수 있습니다.
 
-## 공통 기록 기준
+| 실험 | 화면에서 바로 볼 내용 | 지침 | 보고서 | 측정 원본 |
+|---|---|---|---|---|
+| 브랜드 테마 | [공통 대시보드와 계정별 배경](http://127.0.0.1:5173/experiments/brand-theme/#playground) | [네 구현 후보와 확인 순서](brand-theme/README.md) | [후보 선택](brand-theme/results.md) · [빌드·개발 반영·런타임 상세](brand-theme/build-runtime.md) | [브랜드 테마](brand-theme/evidence/) |
+| 대시보드 실시간 갱신 | [용도별 방식 선택](http://127.0.0.1:5173/experiments/dashboard-refresh/#refresh-choice) | [스냅샷과 전달 시나리오](dashboard-refresh/README.md) | [비교표와 선택 기준](dashboard-refresh/results.md) | [실시간 갱신](dashboard-refresh/evidence/) |
+| Jonbeo MSW | [원본 코드 분석](http://127.0.0.1:5173/experiments/jonbeo-msw/#source-analysis) | [로컬·원본 재현](jonbeo-msw/README.md) | [Worker 준비, DOM 반영, 통화 전환 INP](jonbeo-msw/results.md) | [Jonbeo MSW](jonbeo-msw/evidence/) |
 
-각 실험은 **동일한 비교 과제**와 **통과 조건**을 먼저 정합니다. 처음 동작한 시점과 전체 검증 완료 시점을 따로 기록합니다. 공통 기반 작업과 후보별 작업에 귀속되는 시간을 구분하고, 재사용한 코드와 측정에 포함된 대기를 기록합니다. 유지보수 복잡도는 같은 변경에 필요한 파일·수정 지점·의존성으로 비교합니다.
-
-판정은 초기 구현, 이후 변경, 브라우저·서버 비용, 운영 제약 등 기준마다 남깁니다. 측정 전 수치와 추천은 각각 **미측정**과 **가설**로 표시합니다. 로컬에서 확인한 결과는 실행 환경과 함께 기록합니다.
+대시보드 실시간 갱신은 브랜드 테마의 `Operations overview`와 CSS Modules 테마를 재사용합니다. 실시간 갱신 결과는 같은 UI에서 조회 방식을 바꿔 얻었습니다. [공유 대시보드 코드](../../experiments/brand-theme/shared/dashboard.tsx)

@@ -1,5 +1,6 @@
 import { summary, targetWindowMs } from '../../docs/experiments/dashboard-refresh/evidence/dashboard-refresh-benchmark.json'
 import { ExperimentOptions, ExperimentTable } from '../shared/ExperimentPage'
+import { documentsFor } from '../shared/experiment-documents'
 import { methodLabels, scenarioLabels, type Method, type PollInterval, type Scenario } from './contract'
 import { normalDelayMs, outageEndMs, outageStartMs, slowDelayMs } from './fixture'
 import styles from './dashboard.module.css'
@@ -106,7 +107,7 @@ export function Results({ scenario, method, interval }: { scenario: Scenario; me
           {showRecovery && <p className={styles.dataNote}>복구는 단절 종료 때 서버에 있던 버전 이상을 처음 화면에 보여 준 시점으로 계산합니다.</p>}
         </> : <p>이 시나리오의 벤치마크 결과를 준비 중입니다.</p>}
       </div>
-      <p className={styles.dataNote}><a href="https://github.com/callu9/personal-playground-react-ts/blob/feature/jonbeo-msw-performance/docs/experiments/dashboard-refresh/results.md">측정 조건과 전체 보고서</a></p>
+      <p className={styles.dataNote}><a href={`${documentsFor('dashboard-refresh').report}#측정-방법`}>보고서의 측정 조건</a></p>
     </section>
   )
 }
