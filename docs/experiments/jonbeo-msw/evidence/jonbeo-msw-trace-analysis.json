@@ -1,0 +1,1754 @@
+{
+  "recordedAt": "2026-11-25T05:07:37.446Z",
+  "environment": {
+    "platform": "win32",
+    "osRelease": "10.0.26200",
+    "cpu": "Intel(R) Core(TM) i5-14400F",
+    "chrome": "158.0.8127.37",
+    "node": "v24.20.0",
+    "react": "19.3.1",
+    "vite": "8.3.8",
+    "msw": "3.0.7",
+    "web-vitals": "6.2.3"
+  },
+  "protocol": {
+    "rounds": 3,
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "cpuRate": 4,
+    "actions": 8,
+    "delayMs": 150,
+    "origin": "loopback",
+    "cold": "new Playwright context",
+    "repeat": "same context and tab after navigating away, worker registration retained",
+    "inp": "web-vitals/attribution, reportAllChanges, 16 ms threshold, captured after the visibilitychange hidden flush"
+  },
+  "summary": [
+    {
+      "visit": "cold",
+      "mode": "off",
+      "n": 3,
+      "before": {
+        "boot": 229,
+        "appCommit": 324.9,
+        "bootToAppCommit": 96.7,
+        "appCommitToEffect": 197.5,
+        "bootToStart": 296.1,
+        "start": null,
+        "workerToModule": null,
+        "moduleToWorkerReady": null,
+        "workerInit": null,
+        "request": 512.6,
+        "fetchHeaders": 170.5,
+        "fetchBody": 182,
+        "bodyToData": 21.8,
+        "bodyToState": 0.7,
+        "stateToData": 21.1,
+        "data": 728.3,
+        "shell": 324.3,
+        "inp": 48,
+        "inpInput": 1,
+        "mockDelay": null,
+        "appCommitToEffectBusy": 197.4,
+        "dataToMainPaint": 30.67
+      },
+      "after": {
+        "boot": 209.8,
+        "appCommit": 315.5,
+        "bootToAppCommit": 123.9,
+        "appCommitToEffect": 99,
+        "bootToStart": 248.4,
+        "start": null,
+        "workerToModule": null,
+        "moduleToWorkerReady": null,
+        "workerInit": null,
+        "request": 415.9,
+        "fetchHeaders": 174.1,
+        "fetchBody": 176.7,
+        "bodyToData": 21.6,
+        "bodyToState": 0.7,
+        "stateToData": 20.8,
+        "data": 634,
+        "shell": 315.1,
+        "inp": 64,
+        "inpInput": 1.3,
+        "mockDelay": null,
+        "appCommitToEffectBusy": 98.18,
+        "dataToMainPaint": 31.98
+      },
+      "pairedAfterMinusBefore": {
+        "boot": -6.7,
+        "appCommit": -75.4,
+        "bootToAppCommit": 14.4,
+        "appCommitToEffect": -113.6,
+        "bootToStart": -156.4,
+        "start": null,
+        "workerToModule": null,
+        "moduleToWorkerReady": null,
+        "workerInit": null,
+        "request": -189.5,
+        "fetchHeaders": 3.6,
+        "fetchBody": 3.8,
+        "bodyToData": -0.2,
+        "bodyToState": 0,
+        "stateToData": -0.3,
+        "data": -179,
+        "shell": -75.2,
+        "inp": 8,
+        "inpInput": 0.3,
+        "mockDelay": null,
+        "appCommitToEffectBusy": -113.55,
+        "dataToMainPaint": 1.63
+      }
+    },
+    {
+      "visit": "cold",
+      "mode": "passthrough",
+      "n": 3,
+      "before": {
+        "boot": 261.5,
+        "appCommit": 456.3,
+        "bootToAppCommit": 187.3,
+        "appCommitToEffect": 161.7,
+        "bootToStart": 270.6,
+        "start": 659,
+        "workerToModule": 100.7,
+        "moduleToWorkerReady": 65.8,
+        "workerInit": 166.5,
+        "request": 904.1,
+        "fetchHeaders": 252.3,
+        "fetchBody": 256.8,
+        "bodyToData": 12,
+        "bodyToState": 0.5,
+        "stateToData": 11.4,
+        "data": 1324.1,
+        "shell": 953.6,
+        "inp": 80,
+        "inpInput": 2.9,
+        "mockDelay": null,
+        "appCommitToEffectBusy": 161.51,
+        "dataToMainPaint": 33.93
+      },
+      "after": {
+        "boot": 215.4,
+        "appCommit": 334.1,
+        "bootToAppCommit": 118.7,
+        "appCommitToEffect": 220.6,
+        "bootToStart": 319.2,
+        "start": 549.1,
+        "workerToModule": 90.3,
+        "moduleToWorkerReady": 62.6,
+        "workerInit": 145.9,
+        "request": 685.5,
+        "fetchHeaders": 219.4,
+        "fetchBody": 227.3,
+        "bodyToData": 12,
+        "bodyToState": 0.6,
+        "stateToData": 12,
+        "data": 918.7,
+        "shell": 333.7,
+        "inp": 80,
+        "inpInput": 1.2,
+        "mockDelay": null,
+        "appCommitToEffectBusy": 220.5,
+        "dataToMainPaint": 32.84
+      },
+      "pairedAfterMinusBefore": {
+        "boot": -50.5,
+        "appCommit": -95.5,
+        "bootToAppCommit": -45,
+        "appCommitToEffect": 58.9,
+        "bootToStart": 26.6,
+        "start": -23.9,
+        "workerToModule": 0.9,
+        "moduleToWorkerReady": -7.9,
+        "workerInit": -10.8,
+        "request": 37.1,
+        "fetchHeaders": -33,
+        "fetchBody": -30,
+        "bodyToData": 0.4,
+        "bodyToState": -0.1,
+        "stateToData": 0.6,
+        "data": 2.2,
+        "shell": -595.7,
+        "inp": 8,
+        "inpInput": -1.9,
+        "mockDelay": null,
+        "appCommitToEffectBusy": 58.99,
+        "dataToMainPaint": -1.09
+      }
+    },
+    {
+      "visit": "cold",
+      "mode": "mock",
+      "n": 3,
+      "before": {
+        "boot": 236.6,
+        "appCommit": 304.5,
+        "bootToAppCommit": 70.6,
+        "appCommitToEffect": 143.5,
+        "bootToStart": 214.9,
+        "start": 413.4,
+        "workerToModule": 252.1,
+        "moduleToWorkerReady": 51.1,
+        "workerInit": 297.1,
+        "request": 935.5,
+        "fetchHeaders": 253.6,
+        "fetchBody": 262.1,
+        "bodyToData": 10.3,
+        "bodyToState": 0.5,
+        "stateToData": 9.8,
+        "data": 1207.9,
+        "shell": 945.3,
+        "inp": 56,
+        "inpInput": 1.8,
+        "mockDelay": 155.4,
+        "appCommitToEffectBusy": 143.36,
+        "dataToMainPaint": 32.21
+      },
+      "after": {
+        "boot": 226.9,
+        "appCommit": 315.7,
+        "bootToAppCommit": 88.8,
+        "appCommitToEffect": 169.7,
+        "bootToStart": 256.6,
+        "start": 483.5,
+        "workerToModule": 76.8,
+        "moduleToWorkerReady": 57.3,
+        "workerInit": 134.1,
+        "request": 617.4,
+        "fetchHeaders": 219.1,
+        "fetchBody": 225.3,
+        "bodyToData": 11.7,
+        "bodyToState": 0.3,
+        "stateToData": 11.4,
+        "data": 858.4,
+        "shell": 315.7,
+        "inp": 48,
+        "inpInput": 1.3,
+        "mockDelay": 152.7,
+        "appCommitToEffectBusy": 169.34,
+        "dataToMainPaint": 32.28
+      },
+      "pairedAfterMinusBefore": {
+        "boot": 11.5,
+        "appCommit": 24.7,
+        "bootToAppCommit": 13.2,
+        "appCommitToEffect": 26.2,
+        "bootToStart": 39.5,
+        "start": 51,
+        "workerToModule": -176.3,
+        "moduleToWorkerReady": 6.2,
+        "workerInit": -164.8,
+        "request": -318.1,
+        "fetchHeaders": -32.3,
+        "fetchBody": -32.8,
+        "bodyToData": 1.4,
+        "bodyToState": -0.2,
+        "stateToData": 1.6,
+        "data": -349.5,
+        "shell": -629.6,
+        "inp": 0,
+        "inpInput": -0.5,
+        "mockDelay": -2.7,
+        "appCommitToEffectBusy": 25.98,
+        "dataToMainPaint": 0.07
+      }
+    }
+  ],
+  "samples": [
+    {
+      "run": 1,
+      "mode": "off",
+      "variant": "gated",
+      "trace": "test-results\\jonbeo-msw\\traces\\1-off-gated.json.gz",
+      "phases": {
+        "boot": 294.8999999985099,
+        "appCommit": 428.5,
+        "bootToAppCommit": 133.60000000149012,
+        "appCommitToEffect": 269.19999999925494,
+        "bootToStart": 404.80000000074506,
+        "start": null,
+        "workerToModule": null,
+        "moduleToWorkerReady": null,
+        "workerInit": null,
+        "request": 699.6999999992549,
+        "fetchHeaders": 179.39999999850988,
+        "fetchBody": 182,
+        "bodyToData": 21.800000000745058,
+        "bodyToState": 0.6999999992549419,
+        "stateToData": 21.100000001490116,
+        "data": 903.5,
+        "shell": 427.3999999985099,
+        "inp": 136,
+        "inpInput": 1.7000000029802322,
+        "mockDelay": null,
+        "appCommitToEffectBusy": 269.153,
+        "dataToMainPaint": 30.667
+      },
+      "rendererBusyMs": 269.15,
+      "rendererLongestTaskMs": 155.63,
+      "preEffectActivities": [
+        {
+          "name": "EvaluateScript",
+          "overlapMs": 92.756
+        },
+        {
+          "name": "Layout",
+          "overlapMs": 86.174
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 34.346
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 30.337
+        },
+        {
+          "name": "FunctionCall",
+          "overlapMs": 4.913,
+          "script": "http://127.0.0.1:61581/assets/jsx-runtime-BrntCUzc.js"
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 412.032,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 583.09,
+          "fromServiceWorker": false,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 586.09,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    },
+    {
+      "run": 1,
+      "mode": "passthrough",
+      "variant": "gated",
+      "trace": "test-results\\jonbeo-msw\\traces\\1-passthrough-gated.json.gz",
+      "phases": {
+        "boot": 261.5,
+        "appCommit": 456.30000000074506,
+        "bootToAppCommit": 194.80000000074506,
+        "appCommitToEffect": 277.69999999925494,
+        "bootToStart": 474.1000000014901,
+        "start": 735.6000000014901,
+        "workerToModule": 100.69999999925494,
+        "moduleToWorkerReady": 65.80000000074506,
+        "workerInit": 166.5,
+        "request": 904.1000000014901,
+        "fetchHeaders": 382.5,
+        "fetchBody": 384.69999999925494,
+        "bodyToData": 35.30000000074506,
+        "bodyToState": 0.5,
+        "stateToData": 34.80000000074506,
+        "data": 1324.1000000014901,
+        "shell": 953.6000000014901,
+        "inp": 80,
+        "inpInput": 2.899999998509884,
+        "mockDelay": null,
+        "appCommitToEffectBusy": 277.41,
+        "dataToMainPaint": 64.267
+      },
+      "rendererBusyMs": 277.41,
+      "rendererLongestTaskMs": 151.84,
+      "preEffectActivities": [
+        {
+          "name": "EvaluateScript",
+          "overlapMs": 89.011
+        },
+        {
+          "name": "Layout",
+          "overlapMs": 75.887
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 35.214
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 34.35
+        },
+        {
+          "name": "FunctionCall",
+          "overlapMs": 8.383,
+          "script": "http://127.0.0.1:61581/assets/jsx-runtime-BrntCUzc.js"
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 480.946,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 519.28,
+          "fromServiceWorker": false,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 522.475,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 644.249,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 1024.909,
+          "fromServiceWorker": true,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 1026.823,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    },
+    {
+      "run": 1,
+      "mode": "mock",
+      "variant": "gated",
+      "trace": "test-results\\jonbeo-msw\\traces\\1-mock-gated.json.gz",
+      "phases": {
+        "boot": 236.59999999776483,
+        "appCommit": 304.5,
+        "bootToAppCommit": 67.90000000223517,
+        "appCommitToEffect": 108,
+        "bootToStart": 176.80000000074506,
+        "start": 413.3999999985099,
+        "workerToModule": 3165.60000000149,
+        "moduleToWorkerReady": 89.29999999701977,
+        "workerInit": 3254.89999999851,
+        "request": 3669.5,
+        "fetchHeaders": 299.0999999977648,
+        "fetchBody": 303.29999999701977,
+        "bodyToData": 9.5,
+        "bodyToState": 0.7000000029802322,
+        "stateToData": 8.799999997019768,
+        "data": 3982.2999999970198,
+        "shell": 3687.7999999970198,
+        "inp": 64,
+        "inpInput": 13.599999997764826,
+        "mockDelay": 155.40000000223517,
+        "appCommitToEffectBusy": 108.009,
+        "dataToMainPaint": 21.119
+      },
+      "rendererBusyMs": 108.01,
+      "rendererLongestTaskMs": 106.84,
+      "preEffectActivities": [
+        {
+          "name": "Layout",
+          "overlapMs": 58.813
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 28.991
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 16.571
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 179.368,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 3200.934,
+          "fromServiceWorker": false,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 3204.973,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 3434.171,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 3731.872,
+          "fromServiceWorker": true,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 3735.549,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    },
+    {
+      "run": 1,
+      "mode": "off",
+      "variant": "shell",
+      "trace": "test-results\\jonbeo-msw\\traces\\1-off-shell.json.gz",
+      "phases": {
+        "boot": 167.5,
+        "appCommit": 315.5,
+        "bootToAppCommit": 148,
+        "appCommitToEffect": 99,
+        "bootToStart": 248.39999999850988,
+        "start": null,
+        "workerToModule": null,
+        "moduleToWorkerReady": null,
+        "workerInit": null,
+        "request": 415.8999999985099,
+        "fetchHeaders": 192.5,
+        "fetchBody": 196.5,
+        "bodyToData": 21.600000001490116,
+        "bodyToState": 0.8000000007450581,
+        "stateToData": 20.800000000745058,
+        "data": 634,
+        "shell": 315.0999999977648,
+        "inp": 64,
+        "inpInput": 1.300000000745058,
+        "mockDelay": null,
+        "appCommitToEffectBusy": 98.184,
+        "dataToMainPaint": 32.295
+      },
+      "rendererBusyMs": 98.18,
+      "rendererLongestTaskMs": 135.47,
+      "preEffectActivities": [
+        {
+          "name": "Layout",
+          "overlapMs": 51.127
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 29.605
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 7.839
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 263.126,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 440.301,
+          "fromServiceWorker": false,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 443.106,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    },
+    {
+      "run": 1,
+      "mode": "passthrough",
+      "variant": "shell",
+      "trace": "test-results\\jonbeo-msw\\traces\\1-passthrough-shell.json.gz",
+      "phases": {
+        "boot": 211,
+        "appCommit": 360.80000000074506,
+        "bootToAppCommit": 149.80000000074506,
+        "appCommitToEffect": 343.5,
+        "bootToStart": 500.69999999925494,
+        "start": 711.6999999992549,
+        "workerToModule": 2105.10000000149,
+        "moduleToWorkerReady": 86.89999999850988,
+        "workerInit": 2192,
+        "request": 2905.5,
+        "fetchHeaders": 253,
+        "fetchBody": 280.80000000074506,
+        "bodyToData": 39.19999999925494,
+        "bodyToState": 1.199999999254942,
+        "stateToData": 38,
+        "data": 3225.5,
+        "shell": 357.8999999985099,
+        "inp": 88,
+        "inpInput": 1,
+        "mockDelay": null,
+        "appCommitToEffectBusy": 343.07,
+        "dataToMainPaint": 84.725
+      },
+      "rendererBusyMs": 343.07,
+      "rendererLongestTaskMs": 180.98,
+      "preEffectActivities": [
+        {
+          "name": "EvaluateScript",
+          "overlapMs": 159.842
+        },
+        {
+          "name": "Layout",
+          "overlapMs": 57.576
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 42.697
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 31.306
+        },
+        {
+          "name": "FunctionCall",
+          "overlapMs": 5.72,
+          "script": "http://127.0.0.1:61581/assets/jsx-runtime-BrntCUzc.js"
+        },
+        {
+          "name": "FunctionCall",
+          "overlapMs": 3.056,
+          "script": "http://127.0.0.1:61581/assets/jsx-runtime-BrntCUzc.js"
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 510.8,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 2576.492,
+          "fromServiceWorker": false,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 2576.995,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 2696.538,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 2943.266,
+          "fromServiceWorker": true,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 2969.64,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    },
+    {
+      "run": 1,
+      "mode": "mock",
+      "variant": "shell",
+      "trace": "test-results\\jonbeo-msw\\traces\\1-mock-shell.json.gz",
+      "phases": {
+        "boot": 281.5,
+        "appCommit": 468,
+        "bootToAppCommit": 186.5,
+        "appCommitToEffect": 342.8999999985099,
+        "bootToStart": 529.5,
+        "start": 811,
+        "workerToModule": 1620.5999999977648,
+        "moduleToWorkerReady": 58.400000002235174,
+        "workerInit": 1679,
+        "request": 2491.89999999851,
+        "fetchHeaders": 214.5,
+        "fetchBody": 216,
+        "bodyToData": 13.5,
+        "bodyToState": 0.10000000149011612,
+        "stateToData": 13.399999998509884,
+        "data": 2721.39999999851,
+        "shell": 468,
+        "inp": 72,
+        "inpInput": 5.5,
+        "mockDelay": 152.69999999925494,
+        "appCommitToEffectBusy": 342.72,
+        "dataToMainPaint": 34.1
+      },
+      "rendererBusyMs": 342.72,
+      "rendererLongestTaskMs": 187.11,
+      "preEffectActivities": [
+        {
+          "name": "EvaluateScript",
+          "overlapMs": 131.718
+        },
+        {
+          "name": "Layout",
+          "overlapMs": 78.309
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 59.728
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 41.046
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 530.013,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 2092.711,
+          "fromServiceWorker": false,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 2093.941,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 2211.189,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 2424.752,
+          "fromServiceWorker": true,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 2426.124,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "mode": "passthrough",
+      "variant": "gated",
+      "trace": "test-results\\jonbeo-msw\\traces\\2-passthrough-gated.json.gz",
+      "phases": {
+        "boot": 388.4000000022352,
+        "appCommit": 575.7000000029802,
+        "bootToAppCommit": 187.30000000074506,
+        "appCommitToEffect": 82.19999999925494,
+        "bootToStart": 270.5999999977648,
+        "start": 659,
+        "workerToModule": 533.6000000014901,
+        "moduleToWorkerReady": 70.5,
+        "workerInit": 604.1000000014901,
+        "request": 1265.1000000014901,
+        "fetchHeaders": 247.39999999850988,
+        "fetchBody": 256.80000000074506,
+        "bodyToData": 11.599999997764826,
+        "bodyToState": 0.19999999925494194,
+        "stateToData": 11.399999998509884,
+        "data": 1533.5,
+        "shell": 1283.800000000745,
+        "inp": 120,
+        "inpInput": 1.1000000014901161,
+        "mockDelay": null,
+        "appCommitToEffectBusy": 81.726,
+        "dataToMainPaint": 30.872
+      },
+      "rendererBusyMs": 81.73,
+      "rendererLongestTaskMs": 171.9,
+      "preEffectActivities": [
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 40.381
+        },
+        {
+          "name": "Layout",
+          "overlapMs": 15.762
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 14.061
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 273.95,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 773.732,
+          "fromServiceWorker": false,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 774.782,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 878.888,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 1123.642,
+          "fromServiceWorker": true,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 1132.586,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "mode": "mock",
+      "variant": "gated",
+      "trace": "test-results\\jonbeo-msw\\traces\\2-mock-gated.json.gz",
+      "phases": {
+        "boot": 322.30000000074506,
+        "appCommit": 486.9000000022352,
+        "bootToAppCommit": 164.60000000149012,
+        "appCommitToEffect": 147.09999999776483,
+        "bootToStart": 314.30000000074506,
+        "start": 636.6000000014901,
+        "workerToModule": 252.09999999776483,
+        "moduleToWorkerReady": 45,
+        "workerInit": 297.0999999977648,
+        "request": 935.5,
+        "fetchHeaders": 253.60000000149012,
+        "fetchBody": 262.1000000014901,
+        "bodyToData": 10.300000000745058,
+        "bodyToState": 0.5,
+        "stateToData": 9.800000000745058,
+        "data": 1207.9000000022352,
+        "shell": 945.3000000007451,
+        "inp": 48,
+        "inpInput": 1.800000000745058,
+        "mockDelay": 156.80000000074506,
+        "appCommitToEffectBusy": 146.817,
+        "dataToMainPaint": 32.212
+      },
+      "rendererBusyMs": 146.82,
+      "rendererLongestTaskMs": 159.83,
+      "preEffectActivities": [
+        {
+          "name": "Layout",
+          "overlapMs": 50.802
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 33.901
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 24.634
+        },
+        {
+          "name": "FunctionCall",
+          "overlapMs": 15.723,
+          "script": "http://127.0.0.1:61581/assets/jsx-runtime-BrntCUzc.js"
+        },
+        {
+          "name": "FunctionCall",
+          "overlapMs": 5.625,
+          "script": "http://127.0.0.1:61581/assets/jsx-runtime-BrntCUzc.js"
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 329.432,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 476.101,
+          "fromServiceWorker": false,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 482.67,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 614.195,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 866.165,
+          "fromServiceWorker": true,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 874.55,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "mode": "off",
+      "variant": "shell",
+      "trace": "test-results\\jonbeo-msw\\traces\\2-off-shell.json.gz",
+      "phases": {
+        "boot": 223.5,
+        "appCommit": 347.3999999985099,
+        "bootToAppCommit": 123.89999999850988,
+        "appCommitToEffect": 164.5,
+        "bootToStart": 288.5999999977648,
+        "start": null,
+        "workerToModule": null,
+        "moduleToWorkerReady": null,
+        "workerInit": null,
+        "request": 512.0999999977648,
+        "fetchHeaders": 174.10000000149012,
+        "fetchBody": 176.69999999925494,
+        "bodyToData": 21.400000002235174,
+        "bodyToState": 0.7000000029802322,
+        "stateToData": 20.699999999254942,
+        "data": 710.1999999992549,
+        "shell": 346.5999999977648,
+        "inp": 72,
+        "inpInput": 1.300000000745058,
+        "mockDelay": null,
+        "appCommitToEffectBusy": 164.314,
+        "dataToMainPaint": 31.906
+      },
+      "rendererBusyMs": 164.31,
+      "rendererLongestTaskMs": 99.43,
+      "preEffectActivities": [
+        {
+          "name": "Layout",
+          "overlapMs": 56.932
+        },
+        {
+          "name": "EvaluateScript",
+          "overlapMs": 54.412
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 27.84
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 12.333
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 291.805,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 461.517,
+          "fromServiceWorker": false,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 464.557,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "mode": "passthrough",
+      "variant": "shell",
+      "trace": "test-results\\jonbeo-msw\\traces\\2-passthrough-shell.json.gz",
+      "phases": {
+        "boot": 215.39999999850988,
+        "appCommit": 334.0999999977648,
+        "bootToAppCommit": 118.69999999925494,
+        "appCommitToEffect": 134.60000000149012,
+        "bootToStart": 254.39999999850988,
+        "start": 469.79999999701977,
+        "workerToModule": 83.30000000074506,
+        "moduleToWorkerReady": 62.600000001490116,
+        "workerInit": 145.90000000223517,
+        "request": 617.3999999985099,
+        "fetchHeaders": 219.39999999850988,
+        "fetchBody": 226.80000000074506,
+        "bodyToData": 12,
+        "bodyToState": 0,
+        "stateToData": 12,
+        "data": 856.1999999992549,
+        "shell": 333.69999999925494,
+        "inp": 56,
+        "inpInput": 1.199999999254942,
+        "mockDelay": null,
+        "appCommitToEffectBusy": 134.319,
+        "dataToMainPaint": 26.983
+      },
+      "rendererBusyMs": 134.32,
+      "rendererLongestTaskMs": 80.73,
+      "preEffectActivities": [
+        {
+          "name": "EvaluateScript",
+          "overlapMs": 43.327
+        },
+        {
+          "name": "Layout",
+          "overlapMs": 42.612
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 32.712
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 3.694
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 257.338,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 291.803,
+          "fromServiceWorker": false,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 293.743,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 403.412,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 620.787,
+          "fromServiceWorker": true,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 627.559,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "mode": "mock",
+      "variant": "shell",
+      "trace": "test-results\\jonbeo-msw\\traces\\2-mock-shell.json.gz",
+      "phases": {
+        "boot": 226.89999999850988,
+        "appCommit": 315.69999999925494,
+        "bootToAppCommit": 88.80000000074506,
+        "appCommitToEffect": 166.90000000223517,
+        "bootToStart": 256.6000000014901,
+        "start": 483.5,
+        "workerToModule": 75.80000000074506,
+        "moduleToWorkerReady": 56.5,
+        "workerInit": 132.30000000074506,
+        "request": 617.3999999985099,
+        "fetchHeaders": 221.30000000074506,
+        "fetchBody": 229.30000000074506,
+        "bodyToData": 11.699999999254942,
+        "bodyToState": 0.30000000074505806,
+        "stateToData": 11.399999998509884,
+        "data": 858.3999999985099,
+        "shell": 315.69999999925494,
+        "inp": 48,
+        "inpInput": 1.300000000745058,
+        "mockDelay": 152,
+        "appCommitToEffectBusy": 166.676,
+        "dataToMainPaint": 32.279
+      },
+      "rendererBusyMs": 166.68,
+      "rendererLongestTaskMs": 101.71,
+      "preEffectActivities": [
+        {
+          "name": "Layout",
+          "overlapMs": 56.538
+        },
+        {
+          "name": "EvaluateScript",
+          "overlapMs": 49.565
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 24.814
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 16.843
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 260.145,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 286.246,
+          "fromServiceWorker": false,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 288.928,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 392.02,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 610.883,
+          "fromServiceWorker": true,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 618.237,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "mode": "off",
+      "variant": "gated",
+      "trace": "test-results\\jonbeo-msw\\traces\\2-off-gated.json.gz",
+      "phases": {
+        "boot": 229,
+        "appCommit": 324.8999999985099,
+        "bootToAppCommit": 95.89999999850988,
+        "appCommitToEffect": 169,
+        "bootToStart": 265.8999999985099,
+        "start": null,
+        "workerToModule": null,
+        "moduleToWorkerReady": null,
+        "workerInit": null,
+        "request": 494.8999999985099,
+        "fetchHeaders": 170.5,
+        "fetchBody": 188.40000000223517,
+        "bodyToData": 45,
+        "bodyToState": 1.300000000745058,
+        "stateToData": 43.69999999925494,
+        "data": 728.3000000007451,
+        "shell": 324.30000000074506,
+        "inp": 48,
+        "inpInput": 0.6999999992549419,
+        "mockDelay": null,
+        "appCommitToEffectBusy": 168.415,
+        "dataToMainPaint": 52.606
+      },
+      "rendererBusyMs": 168.42,
+      "rendererLongestTaskMs": 106.98,
+      "preEffectActivities": [
+        {
+          "name": "Layout",
+          "overlapMs": 59.418
+        },
+        {
+          "name": "EvaluateScript",
+          "overlapMs": 49.232
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 26.307
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 14.812
+        },
+        {
+          "name": "PrePaint",
+          "overlapMs": 4.2
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 271.288,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 431.867,
+          "fromServiceWorker": false,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 446.94,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    },
+    {
+      "run": 3,
+      "mode": "mock",
+      "variant": "gated",
+      "trace": "test-results\\jonbeo-msw\\traces\\3-mock-gated.json.gz",
+      "phases": {
+        "boot": 191.39999999850988,
+        "appCommit": 262,
+        "bootToAppCommit": 70.60000000149012,
+        "appCommitToEffect": 143.5,
+        "bootToStart": 214.90000000223517,
+        "start": 406.30000000074506,
+        "workerToModule": 73.5,
+        "moduleToWorkerReady": 51.099999997764826,
+        "workerInit": 124.59999999776483,
+        "request": 531.8000000007451,
+        "fetchHeaders": 234,
+        "fetchBody": 241.39999999850988,
+        "bodyToData": 11,
+        "bodyToState": 0.30000000074505806,
+        "stateToData": 10.699999999254942,
+        "data": 784.1999999992549,
+        "shell": 546.0999999977648,
+        "inp": 56,
+        "inpInput": 1.199999999254942,
+        "mockDelay": 154.09999999776483,
+        "appCommitToEffectBusy": 143.359,
+        "dataToMainPaint": 32.367
+      },
+      "rendererBusyMs": 143.36,
+      "rendererLongestTaskMs": 89.52,
+      "preEffectActivities": [
+        {
+          "name": "Layout",
+          "overlapMs": 49.057
+        },
+        {
+          "name": "EvaluateScript",
+          "overlapMs": 42.681
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 21.494
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 14.579
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 217.4,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 242.875,
+          "fromServiceWorker": false,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 245.997,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 341.916,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 573.88,
+          "fromServiceWorker": true,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 580.377,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    },
+    {
+      "run": 3,
+      "mode": "off",
+      "variant": "shell",
+      "trace": "test-results\\jonbeo-msw\\traces\\3-off-shell.json.gz",
+      "phases": {
+        "boot": 209.80000000074506,
+        "appCommit": 237.80000000074506,
+        "bootToAppCommit": 28,
+        "appCommitToEffect": 83.89999999850988,
+        "bootToStart": 113.30000000074506,
+        "start": null,
+        "workerToModule": null,
+        "moduleToWorkerReady": null,
+        "workerInit": null,
+        "request": 323.1000000014901,
+        "fetchHeaders": 171,
+        "fetchBody": 174.69999999925494,
+        "bodyToData": 23.899999998509884,
+        "bodyToState": 0.6999999992549419,
+        "stateToData": 23.199999999254942,
+        "data": 521.6999999992549,
+        "shell": 237.80000000074506,
+        "inp": 48,
+        "inpInput": 1.300000000745058,
+        "mockDelay": null,
+        "appCommitToEffectBusy": 83.844,
+        "dataToMainPaint": 31.984
+      },
+      "rendererBusyMs": 83.84,
+      "rendererLongestTaskMs": 81.06,
+      "preEffectActivities": [
+        {
+          "name": "Layout",
+          "overlapMs": 52.533
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 13.079
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 11.567
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 116.398,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 282.02,
+          "fromServiceWorker": false,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 286.971,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    },
+    {
+      "run": 3,
+      "mode": "passthrough",
+      "variant": "shell",
+      "trace": "test-results\\jonbeo-msw\\traces\\3-passthrough-shell.json.gz",
+      "phases": {
+        "boot": 229.89999999850988,
+        "appCommit": 327.1000000014901,
+        "bootToAppCommit": 97.20000000298023,
+        "appCommitToEffect": 220.59999999776483,
+        "bootToStart": 319.20000000298023,
+        "start": 549.1000000014901,
+        "workerToModule": 90.29999999701977,
+        "moduleToWorkerReady": 44.900000002235174,
+        "workerInit": 135.19999999925494,
+        "request": 685.5,
+        "fetchHeaders": 219.30000000074506,
+        "fetchBody": 227.30000000074506,
+        "bodyToData": 5.899999998509884,
+        "bodyToState": 0.5999999977648258,
+        "stateToData": 5.300000000745058,
+        "data": 918.6999999992549,
+        "shell": 327,
+        "inp": 80,
+        "inpInput": 1.2999999970197678,
+        "mockDelay": null,
+        "appCommitToEffectBusy": 220.501,
+        "dataToMainPaint": 32.838
+      },
+      "rendererBusyMs": 220.5,
+      "rendererLongestTaskMs": 148.82,
+      "preEffectActivities": [
+        {
+          "name": "Layout",
+          "overlapMs": 109.266
+        },
+        {
+          "name": "EvaluateScript",
+          "overlapMs": 57.69
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 30.244
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 7.337
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 323.818,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 363.385,
+          "fromServiceWorker": false,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 365.578,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 457.386,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 674.556,
+          "fromServiceWorker": true,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 681.256,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    },
+    {
+      "run": 3,
+      "mode": "mock",
+      "variant": "shell",
+      "trace": "test-results\\jonbeo-msw\\traces\\3-mock-shell.json.gz",
+      "phases": {
+        "boot": 202.89999999850988,
+        "appCommit": 286.69999999925494,
+        "bootToAppCommit": 83.80000000074506,
+        "appCommitToEffect": 169.69999999925494,
+        "bootToStart": 254.39999999850988,
+        "start": 457.29999999701977,
+        "workerToModule": 76.80000000074506,
+        "moduleToWorkerReady": 57.30000000074506,
+        "workerInit": 134.10000000149012,
+        "request": 592.7999999970198,
+        "fetchHeaders": 219.10000000149012,
+        "fetchBody": 225.30000000074506,
+        "bodyToData": 11.100000001490116,
+        "bodyToState": 0.6000000014901161,
+        "stateToData": 10.5,
+        "data": 829.1999999992549,
+        "shell": 286.29999999701977,
+        "inp": 48,
+        "inpInput": 1,
+        "mockDelay": 157.5,
+        "appCommitToEffectBusy": 169.342,
+        "dataToMainPaint": 26.589
+      },
+      "rendererBusyMs": 169.34,
+      "rendererLongestTaskMs": 109,
+      "preEffectActivities": [
+        {
+          "name": "Layout",
+          "overlapMs": 64.574
+        },
+        {
+          "name": "EvaluateScript",
+          "overlapMs": 47.187
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 24.851
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 15.937
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 257.353,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 286.142,
+          "fromServiceWorker": false,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 288.539,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 391.541,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 608.47,
+          "fromServiceWorker": true,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 613.298,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    },
+    {
+      "run": 3,
+      "mode": "off",
+      "variant": "gated",
+      "trace": "test-results\\jonbeo-msw\\traces\\3-off-gated.json.gz",
+      "phases": {
+        "boot": 216.5,
+        "appCommit": 313.19999999925494,
+        "bootToAppCommit": 96.69999999925494,
+        "appCommitToEffect": 197.5,
+        "bootToStart": 296.1000000014901,
+        "start": null,
+        "workerToModule": null,
+        "moduleToWorkerReady": null,
+        "workerInit": null,
+        "request": 512.6000000014901,
+        "fetchHeaders": 168.39999999850988,
+        "fetchBody": 170.89999999850988,
+        "bodyToData": 17.199999999254942,
+        "bodyToState": 0.6999999992549419,
+        "stateToData": 16.5,
+        "data": 700.6999999992549,
+        "shell": 313,
+        "inp": 40,
+        "inpInput": 1,
+        "mockDelay": null,
+        "appCommitToEffectBusy": 197.398,
+        "dataToMainPaint": 21.391
+      },
+      "rendererBusyMs": 197.4,
+      "rendererLongestTaskMs": 116.63,
+      "preEffectActivities": [
+        {
+          "name": "EvaluateScript",
+          "overlapMs": 66.7
+        },
+        {
+          "name": "Layout",
+          "overlapMs": 66.256
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 25.71
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 20.063
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 299.25,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 463.554,
+          "fromServiceWorker": false,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 466.437,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    },
+    {
+      "run": 3,
+      "mode": "passthrough",
+      "variant": "gated",
+      "trace": "test-results\\jonbeo-msw\\traces\\3-passthrough-gated.json.gz",
+      "phases": {
+        "boot": 242.69999999925494,
+        "appCommit": 338.6000000014901,
+        "bootToAppCommit": 95.90000000223517,
+        "appCommitToEffect": 161.69999999925494,
+        "bootToStart": 257.80000000074506,
+        "start": 500.5,
+        "workerToModule": 89.39999999850988,
+        "moduleToWorkerReady": 56.600000001490116,
+        "workerInit": 146,
+        "request": 648.3999999985099,
+        "fetchHeaders": 252.30000000074506,
+        "fetchBody": 256.1000000014901,
+        "bodyToData": 12,
+        "bodyToState": 0.6999999992549419,
+        "stateToData": 11.300000000745058,
+        "data": 916.5,
+        "shell": 671.5,
+        "inp": 56,
+        "inpInput": 18,
+        "mockDelay": null,
+        "appCommitToEffectBusy": 161.511,
+        "dataToMainPaint": 33.927
+      },
+      "rendererBusyMs": 161.51,
+      "rendererLongestTaskMs": 95.65,
+      "preEffectActivities": [
+        {
+          "name": "EvaluateScript",
+          "overlapMs": 55.615
+        },
+        {
+          "name": "Layout",
+          "overlapMs": 49.388
+        },
+        {
+          "name": "UpdateLayoutTree",
+          "overlapMs": 30.962
+        },
+        {
+          "name": "Paint",
+          "overlapMs": 12.229
+        }
+      ],
+      "resources": [
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 260.411,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 298.404,
+          "fromServiceWorker": false,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 302.181,
+          "fromServiceWorker": null,
+          "path": "/assets/worker-client-B5j_wEgO.js"
+        },
+        {
+          "name": "ResourceSendRequest",
+          "fromFirstMarkMs": 406.849,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceReceiveResponse",
+          "fromFirstMarkMs": 657.293,
+          "fromServiceWorker": true,
+          "path": "/api/jonbeo-msw/portfolio"
+        },
+        {
+          "name": "ResourceFinish",
+          "fromFirstMarkMs": 661.155,
+          "fromServiceWorker": null,
+          "path": "/api/jonbeo-msw/portfolio"
+        }
+      ]
+    }
+  ],
+  "traceCategoryNote": "Chrome DevTools Protocol. Main activity intervals can nest."
+}

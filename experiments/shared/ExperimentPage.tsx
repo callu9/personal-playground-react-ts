@@ -1,0 +1,119 @@
+import { useLayoutEffect, type ReactNode } from 'react'
+import { documentsFor, experimentTitles, projectDocuments, type Experiment } from './experiment-documents'
+import styles from './experiment-page.module.css'
+
+const sections = {
+  'source-analysis': '원본 코드 분석',
+  options: '선택지',
+  playground: 'Playground',
+  conclusion: '결론',
+  verification: '검증 결과',
+} as const
+
+type Section = keyof typeof sections
+
+export function ExperimentPage({ experiment, summary, sourceAnalysis, children }: {
+  experiment: Experiment
+  summary: { problem: ReactNode; finding: ReactNode; decision: ReactNode }
+  sourceAnalysis?: ReactNode
+  children: ReactNode
+}) {
+  const documents = documentsFor(experiment)
+  useLayoutEffect(() => {
+    // A direct fragment can be resolved only after React has mounted its target.
+    const target = document.getElementById(window.location.hash.slice(1))
+    target?.scrollIntoView()
+  }, [])
+
+  return (
+    <div className={styles.page} lang="ko">
+      <nav className={styles.experiments} aria-label="실험 이동">
+        <a href="/" className={styles.home} lang="en">React experiments</a>
+        <ul lang="en">
+          {Object.entries(experimentTitles).map(([id, { label }]) => (
+            <li key={id}>
+              <a href={`/experiments/${id}/`} aria-current={id === experiment ? 'page' : undefined}>{label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <main className={styles.content}>
+        <header className={styles.header}>
+          <h1 lang="en">{experimentTitles[experiment].title}</h1>
+          <section className={styles.summary} aria-labelledby="experiment-summary-title">
+            <h2 id="experiment-summary-title">실험 요약</h2>
+            <dl>
+              <div><dt>문제</dt><dd>{summary.problem}</dd></div>
+              <div><dt>확인한 결과</dt><dd>{summary.finding}</dd></div>
+              <div><dt>판단</dt><dd>{summary.decision}</dd></div>
+            </dl>
+          </section>
+          <nav className={styles.sections} aria-label="이 페이지에서">
+            <ul>
+              {Object.entries(sections)
+                .filter(([id]) => id !== 'source-analysis' || sourceAnalysis)
+                .map(([id, label]) => <li key={id}><a href={`#${id}`}>{label}</a></li>)}
+            </ul>
+          </nav>
+          <nav className={styles.documents} aria-label="실험 문서">
+            <ul>
+              <li><a href={documents.guide}>실험 지침</a></li>
+              <li><a href={documents.report}>결과 보고서</a></li>
+              <li><a href={documents.evidence}>측정 원본</a></li>
+              <li><a href={projectDocuments.guide}>프로젝트 공통 지침</a></li>
+            </ul>
+          </nav>
+        </header>
+        {sourceAnalysis && <ExperimentSection id="source-analysis">{sourceAnalysis}</ExperimentSection>}
+        {children}
+      </main>
+    </div>
+  )
+}
+
+export function ExperimentSection({ id, description, children }: { id: Section; description?: ReactNode; children: ReactNode }) {
+  return (
+    <section id={id} className={styles.section} aria-labelledby={`${id}-section-title`}>
+      <h2 id={`${id}-section-title`}>{sections[id]}</h2>
+      {description && <p className={styles.description}>{description}</p>}
+      {children}
+    </section>
+  )
+}
+
+export function ExperimentOptions({ items }: { items: readonly { label: ReactNode; description: ReactNode }[] }) {
+  return (
+    <dl className={styles.options}>
+      {items.map(({ label, description }, index) => (
+        <div key={index}>
+          <dt>{label}</dt>
+          <dd>{description}</dd>
+        </div>
+      ))}
+    </dl>
+  )
+}
+
+export function ExperimentWorkbench({ children }: { children: ReactNode }) {
+  return <div className={styles.workbench}>{children}</div>
+}
+
+export function ExperimentTable({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <div>
+      <p className={styles.tableHint}>좁은 화면에서는 표를 가로로 스크롤할 수 있습니다.</p>
+      <div className={styles.tableViewport} role="region" aria-label={`${label} 스크롤 영역`} tabIndex={0}>
+        <table className={styles.table} aria-label={label}>{children}</table>
+      </div>
+    </div>
+  )
+}
+
+export function ExperimentFrame({ href, title }: { href: string; title: string }) {
+  return (
+    <div className={styles.frame}>
+      <div><a href={href}>Playground 전체 화면 열기 <span aria-hidden="true">↗</span></a></div>
+      <iframe src={href} title={title} loading="lazy" />
+    </div>
+  )
+}

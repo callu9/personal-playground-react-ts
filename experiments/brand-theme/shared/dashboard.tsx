@@ -5,7 +5,7 @@ import { createRoot } from 'react-dom/client'
 import { accounts, resolveBrand } from './brands'
 import { brands } from './design-system/brands'
 import { resolveTheme, type ResolvedTheme } from './design-system/theme'
-import { activity, metrics, results, statuses, type Status } from './fixture'
+import { dashboardFixture, statuses, type DashboardData, type Status } from './fixture'
 
 export const slots = [
   'shell', 'sidebar', 'identity', 'mark', 'nav', 'back', 'workspace', 'topbar',
@@ -36,6 +36,8 @@ const sessionKey = 'brand-theme-demo-account'
 const labels = { Completed: 'completed', Running: 'running', Failed: 'failed', Queued: 'queued' } as const
 const metricIcons = [Gauge, CheckCircle2, Timer]
 
+type DashboardResult = DashboardData['results'][number]
+
 function storedAccount() {
   try {
     const value = sessionStorage.getItem(sessionKey)
@@ -46,7 +48,7 @@ function storedAccount() {
 }
 
 function Details({ item, c, Button, onClose }: {
-  item: (typeof results)[number]
+  item: DashboardResult
   c: Classes
   Button: Components['Button']
   onClose: () => void
@@ -77,20 +79,25 @@ function Details({ item, c, Button, onClose }: {
   )
 }
 
-function Dashboard({ c, Scope, components = plainComponents }: {
+export function Dashboard({ c, Scope, components = plainComponents, data = dashboardFixture, live }: {
   c: Classes
   Scope: ThemeScope
   components?: Components
+  data?: DashboardData
+  live?: { version: number; recordedAt: number }
 }) {
   const [account, setAccount] = useState<string>(storedAccount)
   const [query, setQuery] = useState('')
   const [status, setStatus] = useState<Status | ''>('')
-  const [selected, setSelected] = useState<(typeof results)[number] | null>(null)
+  const [selected, setSelected] = useState<DashboardResult | null>(null)
   const portalRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLButtonElement | null>(null)
   const brandId = resolveBrand(account, import.meta.env.VITE_DEFAULT_BRAND)
   const theme = useMemo(() => resolveTheme(brandId), [brandId])
   const { Card, Button, Badge } = components
+  const { activity, metrics, results } = data
+  const Content = live ? 'section' : 'main'
+  const Heading = live ? 'h3' : 'h1'
   const search = query.trim().toLowerCase()
   const visibleResults = results.filter((item) => (
     (!status || item.status === status) && `${item.name} ${item.id} ${item.source}`.toLowerCase().includes(search)
@@ -123,7 +130,7 @@ function Dashboard({ c, Scope, components = plainComponents }: {
           <a href="#activity"><Activity aria-hidden="true" size={17} /> Run activity</a>
           <a href="#results"><ListChecks aria-hidden="true" size={17} /> Recent results</a>
         </nav>
-        <a className={c.back} href="/"><ArrowLeft aria-hidden="true" size={15} /> All implementations</a>
+        <a className={c.back} href={live ? '/experiments/dashboard-refresh/#playground' : '/experiments/brand-theme/#playground'} target="_top"><ArrowLeft aria-hidden="true" size={15} /> {live ? 'Dashboard refresh experiment' : 'Brand theme experiment'}</a>
       </aside>
       <div className={c.workspace}>
         <header className={c.topbar}>
@@ -139,12 +146,12 @@ function Dashboard({ c, Scope, components = plainComponents }: {
             </select>
           </label>
         </header>
-        <main className={c.content} id="overview">
+        <Content className={c.content} id="overview">
           <header className={c.intro}>
-            <div><p className={c.eyebrow}>Pipeline monitor</p><h1>Operations overview</h1><p>Track pipeline health and review the latest execution results.</p></div>
-            <span className={c.period}>Nov 19–25, 2026</span>
+            <div><p className={c.eyebrow}>Pipeline monitor</p><Heading>Operations overview</Heading><p>Track pipeline health and review the latest execution results.</p></div>
+            <span className={c.period}>{live ? `Live snapshot · v${live.version}` : 'Nov 19–25, 2026'}</span>
           </header>
-          <div className={c.metrics} aria-label="Weekly metrics">
+          <div className={c.metrics} aria-label="Weekly metrics" data-testid={live ? 'live-metrics' : undefined} data-version={live?.version} data-recorded-at={live?.recordedAt}>
             {metrics.map(({ label, value, note }, index) => {
               const Icon = metricIcons[index]
               const Trend = index === 2 ? ArrowDownRight : ArrowUpRight
@@ -207,8 +214,8 @@ function Dashboard({ c, Scope, components = plainComponents }: {
               </table>
             </div>
           </Card>
-          <footer className={c.footer}>Sample data · Nov 25, 2026</footer>
-        </main>
+          <footer className={c.footer}>{live ? <>Server updated <time dateTime={new Date(live.recordedAt).toISOString()}>{new Date(live.recordedAt).toLocaleTimeString('en-US', { timeZone: 'UTC' })} UTC</time></> : 'Sample data · Nov 25, 2026'}</footer>
+        </Content>
       </div>
       <div ref={portalRef} style={{ display: 'contents' }} />
       {selected && portalRef.current && createPortal(<Details item={selected} c={c} Button={Button} onClose={closeDetails} />, portalRef.current)}

@@ -1,0 +1,94 @@
+.axes, .findings, .recorded { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.4rem; }
+.axes h3, .findings h3, .recorded h3 { margin: 0; font-size: 1.05rem; }
+.axes p, .findings p, .recorded p {
+  color: var(--experiment-muted);
+  max-width: 80ch;
+  margin: 0.45rem 0 0;
+}
+.originalAnalysis { display: grid; gap: .8rem; }
+.originalAnalysis article {
+  padding: clamp(.85rem, 2.4vw, 1.2rem);
+  border: 1px solid var(--experiment-line);
+  border-radius: .7rem;
+  background: #fff;
+}
+.originalAnalysis h3 { margin: 0; font-size: 1.05rem; }
+.originalAnalysis p { max-width: 86ch; margin: .4rem 0 0; color: var(--experiment-muted); }
+.originalAnalysis .analysisIntro { margin: 0; }
+.originalAnalysis pre {
+  width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: .55rem 0;
+  padding: .35rem .65rem;
+  border-radius: .4rem;
+  background: var(--experiment-tint);
+}
+.sourceLinks { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; margin-top: 0.65rem; }
+.sourceLinks a { color: var(--experiment-link); }
+.measurement { white-space: nowrap; }
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: .75rem;
+  padding: .9rem;
+  border: 1px solid var(--experiment-line);
+  border-radius: .65rem;
+  background: #fff;
+}
+.controls label { display: grid; gap: .3rem; font-weight: 650; }
+.controls :is(button, select), .panelHeader button {
+  min-height: 2.75rem;
+  border: 1px solid #90afa4;
+  border-radius: .45rem;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  padding: .4rem .7rem;
+}
+.controls button, .panelHeader button { cursor: pointer; font-weight: 650; }
+.controls button, .panelHeader button[aria-pressed="true"] { border-color: #185a4c; background: #185a4c; color: #fff; }
+.controls button:hover { background: #104337; }
+.panelHeader button[aria-pressed="false"]:hover { background: var(--experiment-tint); }
+.condition { color: var(--experiment-muted); margin: .75rem 0 1rem; font-size: .9rem; }
+.condition span { color: var(--experiment-ink); }
+.panel { border: 1px solid var(--experiment-line); border-radius: .65rem; background: #fff; overflow: hidden; }
+.panelHeader { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: .95rem 1rem; }
+.panelHeader h3 { margin: 0; font-size: 1.25rem; }
+.panelHeader p { color: var(--experiment-muted); margin: 0; }
+.portfolioGrid { display: grid; grid-template-columns: minmax(0, 1fr); border-top: 1px solid var(--experiment-line); }
+
+.chart { min-width: 0; margin: 0; padding: .95rem 1rem 1.15rem; background: #f7faf8; }
+.chartCaption h4 { margin: 0; font-size: .95rem; color: var(--experiment-muted); }
+.chartCaption strong { display: block; font-size: 1.5rem; line-height: 1.25; font-variant-numeric: tabular-nums; }
+.chartCaption p { margin: .25rem 0 0; font-size: .8rem; color: var(--experiment-muted); }
+.chartList { display: grid; gap: .65rem; list-style: none; margin: .9rem 0 0; padding: 0; }
+.chartList li { display: grid; grid-template-columns: 3.2rem minmax(0, 1fr) 5.4rem; align-items: center; gap: .35rem; }
+.chartCode { font-size: .82rem; font-weight: 720; }
+.chartTrack { display: block; height: .55rem; border-radius: 1rem; background: #deebe4; overflow: hidden; }
+.chartTrack > span { display: block; height: 100%; border-radius: inherit; background: #21805e; }
+.chartValue { font-size: .82rem; text-align: right; font-variant-numeric: tabular-nums; }
+
+.tableScroll { overflow-x: auto; }
+.tableScroll:focus-visible { outline-offset: -2px; }
+.panel table { width: 100%; border-collapse: collapse; }
+.panel :is(th, td) { border-bottom: 1px solid var(--experiment-line); text-align: left; padding: .55rem .85rem; }
+.panel :is(th, td):is(:first-child, :nth-child(3), :last-child) { white-space: nowrap; }
+.panel thead { background: var(--experiment-tint); }
+.panel tbody tr:last-child > * { border-bottom: 0; }
+
+@media (min-width: 730px) {
+  .portfolioGrid { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+  .chart { border-inline-end: 1px solid var(--experiment-line); }
+}
+
+@media (max-width: 729px) {
+  .chart { border-bottom: 1px solid var(--experiment-line); }
+}
+
+@media (max-width: 900px) {
+  .panel :is(th, td) { padding-inline: .5rem; font-size: .875rem; }
+}

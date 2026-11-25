@@ -1,0 +1,36 @@
+.empty, .controlHelp p, .results p { color: #415b55; }
+.feedLink a { color: #1a5f51; }
+.controls, .empty { border: 1px solid #d3e1dc; border-radius: .8rem; background: #fff; }
+.controls { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem; padding: 1rem; margin-bottom: 1rem; }
+.controls label { display: grid; flex: 1 1 9rem; gap: .35rem; color: #334d46; font-weight: 700; }
+.controls select, .controls button { min-height: 2.75rem; padding: .4rem .65rem; border: 1px solid #90afa4; border-radius: .45rem; font: inherit; }
+.controls select { width: 100%; background: #fff; color: #182926; }
+.controls button { background: #185a4c; border-color: #185a4c; color: #fff; font-weight: 700; cursor: pointer; }
+.controls button:hover { background: #104337; }
+.feedLink { margin: .2rem 0 .7rem; font-size: .875rem; }
+.connectionStrip { display: flex; justify-content: flex-end; margin-bottom: .55rem; }
+.connection { padding: .2rem .6rem; border: 1px solid #b5cec0; border-radius: 1rem; background: #fff; color: #185a4c; font-size: .875rem; font-weight: 700; }
+.empty { margin-bottom: 0; padding: 1.1rem; }
+.controlHelp { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 1fr)); gap: .6rem 1.25rem; }
+.controlHelp p { margin: 0 0 .55rem; font-size: .9rem; word-break: keep-all; }
+.groupTitle, .results h3, .results h4 { margin: 0; font-size: 1.05rem; }
+.groupTitle:not(:first-child) { margin-top: 1rem; }
+.groupTitle span { margin-left: .35rem; color: #415b55; font-size: .85em; font-weight: 500; }
+.choiceGuide { scroll-margin-top: 1rem; }
+.choiceGuide > p { margin: .4rem 0 .8rem; color: #415b55; }
+.results a { color: #1a5f51; text-underline-offset: .17em; }
+.resultsCard { padding: clamp(.8rem, 2.4vw, 1.2rem); border: 1px solid #d3e1dc; border-radius: .8rem; background: #fff; }
+.resultsCard p { margin: .45rem 0; }
+.resultTable table { white-space: nowrap; }
+.resultTable small { display: block; color: #185a4c; }
+.selectedResult { background: #e6f4ec; }
+.tradeoffs { display: grid; gap: .65rem; margin: .65rem 0; }
+.tradeoffs div { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: .5rem 1rem; border: 1px solid #d3e1dc; border-radius: .65rem; background: #fff; padding: .8rem; }
+.tradeoffs dt { font-weight: 700; }
+.tradeoffs dt strong { display: block; color: #185a4c; }
+.tradeoffs dd { margin: 0; color: #415b55; font-size: .875rem; }
+.tradeoffs dd strong { color: #182926; }
+@media (max-width: 620px) {
+  .tradeoffs div { grid-template-columns: minmax(0, 1fr); }
+}
+.dataNote { font-size: .825rem; }
