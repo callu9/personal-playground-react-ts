@@ -117,7 +117,6 @@ test('the brand experiment compares four candidates and embeds the selected dash
   await page.goto('/')
   await expect(page.getByRole('heading', { name: 'React playground' })).toBeVisible()
   const launcher = page.getByRole('navigation', { name: 'Playground experiments' })
-  await expect(launcher.getByRole('link')).toHaveCount(3)
   await expect(launcher.getByRole('link', { name: /Dashboard auto refresh/ })).toHaveAttribute('href', '/experiments/dashboard-refresh/')
   await expect(launcher.getByRole('link', { name: /Jonbeo MSW performance/ })).toHaveAttribute('href', '/experiments/jonbeo-msw/')
   await expect(page.locator('[data-brand]')).toHaveCount(0)

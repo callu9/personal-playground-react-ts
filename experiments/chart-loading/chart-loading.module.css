@@ -1,0 +1,19 @@
+.controls, .resultsCard { border: 1px solid #d3e1dc; border-radius: .8rem; background: #fff; }
+.controls { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem; padding: 1rem; margin-bottom: 1rem; }
+.controls label { display: grid; flex: 1 1 14rem; gap: .35rem; color: #334d46; font-weight: 700; }
+.controls select { width: 100%; min-height: 2.75rem; padding: .4rem .65rem; border: 1px solid #90afa4; border-radius: .45rem; background: #fff; color: #182926; font: inherit; }
+.note, .results p, .finding { color: #415b55; }
+.groupTitle, .results h3, .results h4 { margin: 0; font-size: 1.05rem; }
+.groupTitle:not(:first-child) { margin-top: 1rem; }
+.groupTitle span { margin-left: .35rem; color: #415b55; font-size: .85em; font-weight: 500; }
+.finding { margin: 0; }
+.results a, .finding a { color: #1a5f51; text-underline-offset: .17em; }
+.resultsCard { padding: clamp(.8rem, 2.4vw, 1.2rem); margin-top: .8rem; }
+.resultsCard p { margin: .45rem 0; }
+.resultTable table { white-space: nowrap; }
+.selectedResult { background: #e6f4ec; }
+.tradeoffs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr)); gap: .65rem; margin: .65rem 0; }
+.tradeoffs div { border: 1px solid #d3e1dc; border-radius: .65rem; background: #fff; padding: .8rem; }
+.tradeoffs dt { font-weight: 700; }
+.tradeoffs dd { margin: .35rem 0 0; color: #415b55; font-size: .875rem; }
+.dataNote { font-size: .825rem; }

@@ -1,0 +1,2565 @@
+{
+  "environment": {
+    "platform": "darwin 27.2.0 arm64",
+    "cpu": "Apple M2",
+    "cores": 8,
+    "memoryGiB": 24,
+    "node": "v24.18.0",
+    "chrome": "158.0.8127.37",
+    "viewport": "1280x900",
+    "chartjs": "4.6.2",
+    "react": "19.3.1"
+  },
+  "protocol": {
+    "charts": 12,
+    "scrollSteps": 8,
+    "conditions": [
+      {
+        "id": "throttled",
+        "cpuRate": 4,
+        "network": {
+          "latency": 60,
+          "downloadThroughput": 1310720,
+          "uploadThroughput": 655360
+        },
+        "repeats": 5
+      },
+      {
+        "id": "plain",
+        "cpuRate": 1,
+        "network": null,
+        "repeats": 3
+      }
+    ],
+    "settleMs": 3000
+  },
+  "bundles": {
+    "eager": {
+      "initialJs": [
+        {
+          "file": "assets/chart-eager-DwRjDU0J.js",
+          "gzipBytes": 169
+        },
+        {
+          "file": "assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "gzipBytes": 389
+        },
+        {
+          "file": "assets/ChartPage-DHwBFhl9.js",
+          "gzipBytes": 1725
+        },
+        {
+          "file": "assets/rolldown-runtime-XKyaHtl9.js",
+          "gzipBytes": 429
+        },
+        {
+          "file": "assets/jsx-runtime-BNCMh3YF.js",
+          "gzipBytes": 67527
+        },
+        {
+          "file": "assets/chart-runtime-CQQ6fCxl.js",
+          "gzipBytes": 70254
+        }
+      ],
+      "deferredJs": []
+    },
+    "split": {
+      "initialJs": [
+        {
+          "file": "assets/chart-split-BUhFZShj.js",
+          "gzipBytes": 280
+        },
+        {
+          "file": "assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "gzipBytes": 389
+        },
+        {
+          "file": "assets/ChartPage-DHwBFhl9.js",
+          "gzipBytes": 1725
+        },
+        {
+          "file": "assets/rolldown-runtime-XKyaHtl9.js",
+          "gzipBytes": 429
+        },
+        {
+          "file": "assets/jsx-runtime-BNCMh3YF.js",
+          "gzipBytes": 67527
+        },
+        {
+          "file": "assets/preload-helper-7y9sWmk5.js",
+          "gzipBytes": 828
+        }
+      ],
+      "deferredJs": [
+        {
+          "file": "assets/chart-runtime-CQQ6fCxl.js",
+          "gzipBytes": 70254
+        }
+      ]
+    },
+    "observer": {
+      "initialJs": [
+        {
+          "file": "assets/chart-observer-CUlOtWmz.js",
+          "gzipBytes": 282
+        },
+        {
+          "file": "assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "gzipBytes": 389
+        },
+        {
+          "file": "assets/ChartPage-DHwBFhl9.js",
+          "gzipBytes": 1725
+        },
+        {
+          "file": "assets/rolldown-runtime-XKyaHtl9.js",
+          "gzipBytes": 429
+        },
+        {
+          "file": "assets/jsx-runtime-BNCMh3YF.js",
+          "gzipBytes": 67527
+        },
+        {
+          "file": "assets/preload-helper-7y9sWmk5.js",
+          "gzipBytes": 828
+        }
+      ],
+      "deferredJs": [
+        {
+          "file": "assets/chart-runtime-CQQ6fCxl.js",
+          "gzipBytes": 70254
+        }
+      ]
+    },
+    "idle": {
+      "initialJs": [
+        {
+          "file": "assets/chart-idle-CckiBd1y.js",
+          "gzipBytes": 279
+        },
+        {
+          "file": "assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "gzipBytes": 389
+        },
+        {
+          "file": "assets/ChartPage-DHwBFhl9.js",
+          "gzipBytes": 1725
+        },
+        {
+          "file": "assets/rolldown-runtime-XKyaHtl9.js",
+          "gzipBytes": 429
+        },
+        {
+          "file": "assets/jsx-runtime-BNCMh3YF.js",
+          "gzipBytes": 67527
+        },
+        {
+          "file": "assets/preload-helper-7y9sWmk5.js",
+          "gzipBytes": 828
+        }
+      ],
+      "deferredJs": [
+        {
+          "file": "assets/chart-runtime-CQQ6fCxl.js",
+          "gzipBytes": 70254
+        }
+      ]
+    }
+  },
+  "samples": [
+    {
+      "round": 1,
+      "kind": "paint",
+      "strategy": "eager",
+      "condition": "throttled",
+      "fcpMs": 404,
+      "lcpMs": 404,
+      "lcpElement": "P",
+      "longTaskCount": 1,
+      "longTaskMs": 322,
+      "blockingMs": 272,
+      "drawnCharts": 12,
+      "heapMb": 6.836421966552734,
+      "loadMs": 310.5,
+      "scriptBytesBeforeLcp": 141094,
+      "scriptBytesTotal": 141094,
+      "chartChunk": [
+        {
+          "name": "chart-eager-DwRjDU0J.js",
+          "start": 87.89999997615814,
+          "end": 158.69999998807907,
+          "bytes": 192
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 90,
+          "end": 165.39999997615814,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 90,
+          "end": 274.19999998807907,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "input",
+      "strategy": "eager",
+      "condition": "throttled",
+      "firstBlankMs": 0,
+      "medianBlankMs": 0,
+      "maxBlankMs": 0,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 719.1999999880791,
+      "firstInputDelayMs": 20.799999952316284,
+      "firstInputDurationMs": 72,
+      "scrollInteractions": 8,
+      "scrollInpMs": 24,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 7.6352691650390625,
+      "heapAfterScrollMb": 7.914386749267578
+    },
+    {
+      "round": 1,
+      "kind": "paint",
+      "strategy": "split",
+      "condition": "throttled",
+      "fcpMs": 312,
+      "lcpMs": 312,
+      "lcpElement": "P",
+      "longTaskCount": 1,
+      "longTaskMs": 103,
+      "blockingMs": 53,
+      "drawnCharts": 12,
+      "heapMb": 6.851024627685547,
+      "loadMs": 228,
+      "scriptBytesBeforeLcp": 71872,
+      "scriptBytesTotal": 142126,
+      "chartChunk": [
+        {
+          "name": "chart-split-BUhFZShj.js",
+          "start": 76.10000002384186,
+          "end": 141.80000001192093,
+          "bytes": 396
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 76.90000003576279,
+          "end": 148.9000000357628,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 260,
+          "end": 375.30000001192093,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "input",
+      "strategy": "split",
+      "condition": "throttled",
+      "firstBlankMs": 0,
+      "medianBlankMs": 0,
+      "maxBlankMs": 0,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 343.80000001192093,
+      "firstInputDelayMs": 4.600000023841858,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 24,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 7.623950958251953,
+      "heapAfterScrollMb": 7.915538787841797
+    },
+    {
+      "round": 1,
+      "kind": "paint",
+      "strategy": "observer",
+      "condition": "throttled",
+      "fcpMs": 296,
+      "lcpMs": 296,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 0,
+      "heapMb": 1.8800811767578125,
+      "loadMs": 223.39999997615814,
+      "scriptBytesBeforeLcp": 71875,
+      "scriptBytesTotal": 71875,
+      "chartChunk": [
+        {
+          "name": "chart-observer-CUlOtWmz.js",
+          "start": 74.79999995231628,
+          "end": 139.5999999642372,
+          "bytes": 399
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 76,
+          "end": 146.29999995231628,
+          "bytes": 1725
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "input",
+      "strategy": "observer",
+      "condition": "throttled",
+      "firstBlankMs": 200.10000002384186,
+      "medianBlankMs": 200.10000002384186,
+      "maxBlankMs": 200.10000002384186,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 341.30000001192093,
+      "firstInputDelayMs": 4.100000023841858,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 24,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 2.669666290283203,
+      "heapAfterScrollMb": 7.9031982421875
+    },
+    {
+      "round": 1,
+      "kind": "paint",
+      "strategy": "idle",
+      "condition": "throttled",
+      "fcpMs": 292,
+      "lcpMs": 292,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 0,
+      "heapMb": 2.2380447387695312,
+      "loadMs": 224.0999999642372,
+      "scriptBytesBeforeLcp": 71871,
+      "scriptBytesTotal": 142125,
+      "chartChunk": [
+        {
+          "name": "chart-idle-CckiBd1y.js",
+          "start": 75.29999995231628,
+          "end": 139.5,
+          "bytes": 395
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 76.39999997615814,
+          "end": 146.0999999642372,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 286.89999997615814,
+          "end": 408.0999999642372,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "input",
+      "strategy": "idle",
+      "condition": "throttled",
+      "firstBlankMs": 99.80000001192093,
+      "medianBlankMs": 99.80000001192093,
+      "maxBlankMs": 99.80000001192093,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 327.5,
+      "firstInputDelayMs": 4.199999988079071,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 32,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 3.0181121826171875,
+      "heapAfterScrollMb": 7.926311492919922
+    },
+    {
+      "round": 2,
+      "kind": "paint",
+      "strategy": "split",
+      "condition": "throttled",
+      "fcpMs": 304,
+      "lcpMs": 304,
+      "lcpElement": "P",
+      "longTaskCount": 1,
+      "longTaskMs": 103,
+      "blockingMs": 53,
+      "drawnCharts": 12,
+      "heapMb": 6.851795196533203,
+      "loadMs": 235.19999998807907,
+      "scriptBytesBeforeLcp": 71872,
+      "scriptBytesTotal": 142126,
+      "chartChunk": [
+        {
+          "name": "chart-split-BUhFZShj.js",
+          "start": 78.5,
+          "end": 149.30000001192093,
+          "bytes": 396
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 79.69999998807907,
+          "end": 155.80000001192093,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 299.0999999642372,
+          "end": 422.39999997615814,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "input",
+      "strategy": "split",
+      "condition": "throttled",
+      "firstBlankMs": 0,
+      "medianBlankMs": 0,
+      "maxBlankMs": 0,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 342.5,
+      "firstInputDelayMs": 4.300000011920929,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 32,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 7.6253814697265625,
+      "heapAfterScrollMb": 7.916957855224609
+    },
+    {
+      "round": 2,
+      "kind": "paint",
+      "strategy": "observer",
+      "condition": "throttled",
+      "fcpMs": 312,
+      "lcpMs": 312,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 0,
+      "heapMb": 1.8800811767578125,
+      "loadMs": 228,
+      "scriptBytesBeforeLcp": 71875,
+      "scriptBytesTotal": 71875,
+      "chartChunk": [
+        {
+          "name": "chart-observer-CUlOtWmz.js",
+          "start": 75.19999998807907,
+          "end": 142.39999997615814,
+          "bytes": 399
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 76.29999995231628,
+          "end": 149.5,
+          "bytes": 1725
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "input",
+      "strategy": "observer",
+      "condition": "throttled",
+      "firstBlankMs": 200.80000001192093,
+      "medianBlankMs": 200.80000001192093,
+      "maxBlankMs": 200.80000001192093,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 345.7000000476837,
+      "firstInputDelayMs": 4.600000023841858,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 32,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 2.669677734375,
+      "heapAfterScrollMb": 7.919979095458984
+    },
+    {
+      "round": 2,
+      "kind": "paint",
+      "strategy": "idle",
+      "condition": "throttled",
+      "fcpMs": 308,
+      "lcpMs": 308,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 0,
+      "heapMb": 2.2378578186035156,
+      "loadMs": 229.39999997615814,
+      "scriptBytesBeforeLcp": 71871,
+      "scriptBytesTotal": 142125,
+      "chartChunk": [
+        {
+          "name": "chart-idle-CckiBd1y.js",
+          "start": 81.30000001192093,
+          "end": 145.39999997615814,
+          "bytes": 395
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 81.5,
+          "end": 152,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 297.60000002384186,
+          "end": 416.19999998807907,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "input",
+      "strategy": "idle",
+      "condition": "throttled",
+      "firstBlankMs": 76.59999996423721,
+      "medianBlankMs": 76.59999996423721,
+      "maxBlankMs": 76.59999996423721,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 341.7000000476837,
+      "firstInputDelayMs": 4.400000035762787,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 24,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 3.0180130004882812,
+      "heapAfterScrollMb": 7.912586212158203
+    },
+    {
+      "round": 2,
+      "kind": "paint",
+      "strategy": "eager",
+      "condition": "throttled",
+      "fcpMs": 660,
+      "lcpMs": 660,
+      "lcpElement": "P",
+      "longTaskCount": 1,
+      "longTaskMs": 310,
+      "blockingMs": 260,
+      "drawnCharts": 12,
+      "heapMb": 6.833965301513672,
+      "loadMs": 293,
+      "scriptBytesBeforeLcp": 141094,
+      "scriptBytesTotal": 141094,
+      "chartChunk": [
+        {
+          "name": "chart-eager-DwRjDU0J.js",
+          "start": 77,
+          "end": 149,
+          "bytes": 192
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 77.90000003576279,
+          "end": 156.10000002384186,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 78.10000002384186,
+          "end": 264.5,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "input",
+      "strategy": "eager",
+      "condition": "throttled",
+      "firstBlankMs": 0,
+      "medianBlankMs": 0,
+      "maxBlankMs": 0,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 693.8999999761581,
+      "firstInputDelayMs": 3.899999976158142,
+      "firstInputDurationMs": 40,
+      "scrollInteractions": 8,
+      "scrollInpMs": 24,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 7.625762939453125,
+      "heapAfterScrollMb": 7.904880523681641
+    },
+    {
+      "round": 3,
+      "kind": "paint",
+      "strategy": "observer",
+      "condition": "throttled",
+      "fcpMs": 312,
+      "lcpMs": 312,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 0,
+      "heapMb": 1.8801040649414062,
+      "loadMs": 228.5,
+      "scriptBytesBeforeLcp": 71875,
+      "scriptBytesTotal": 71875,
+      "chartChunk": [
+        {
+          "name": "chart-observer-CUlOtWmz.js",
+          "start": 76.09999996423721,
+          "end": 143.79999995231628,
+          "bytes": 399
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 77.09999996423721,
+          "end": 150.19999998807907,
+          "bytes": 1725
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "input",
+      "strategy": "observer",
+      "condition": "throttled",
+      "firstBlankMs": 202.4000000357628,
+      "medianBlankMs": 202.4000000357628,
+      "maxBlankMs": 202.4000000357628,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 335.0999999642372,
+      "firstInputDelayMs": 3.899999976158142,
+      "firstInputDurationMs": 40,
+      "scrollInteractions": 8,
+      "scrollInpMs": 16,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 2.6694908142089844,
+      "heapAfterScrollMb": 7.918888092041016
+    },
+    {
+      "round": 3,
+      "kind": "paint",
+      "strategy": "idle",
+      "condition": "throttled",
+      "fcpMs": 300,
+      "lcpMs": 300,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 0,
+      "heapMb": 2.2380447387695312,
+      "loadMs": 228.5999999642372,
+      "scriptBytesBeforeLcp": 71871,
+      "scriptBytesTotal": 142125,
+      "chartChunk": [
+        {
+          "name": "chart-idle-CckiBd1y.js",
+          "start": 78.89999997615814,
+          "end": 143.29999995231628,
+          "bytes": 395
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 79.79999995231628,
+          "end": 150.0999999642372,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 294.69999998807907,
+          "end": 410.89999997615814,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "input",
+      "strategy": "idle",
+      "condition": "throttled",
+      "firstBlankMs": 107.09999996423721,
+      "medianBlankMs": 107.09999996423721,
+      "maxBlankMs": 107.09999996423721,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 341.10000002384186,
+      "firstInputDelayMs": 4.400000035762787,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 24,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 3.0178871154785156,
+      "heapAfterScrollMb": 7.922573089599609
+    },
+    {
+      "round": 3,
+      "kind": "paint",
+      "strategy": "eager",
+      "condition": "throttled",
+      "fcpMs": 360,
+      "lcpMs": 360,
+      "lcpElement": "P",
+      "longTaskCount": 1,
+      "longTaskMs": 277,
+      "blockingMs": 227,
+      "drawnCharts": 12,
+      "heapMb": 6.837181091308594,
+      "loadMs": 288.9000000357628,
+      "scriptBytesBeforeLcp": 141094,
+      "scriptBytesTotal": 141094,
+      "chartChunk": [
+        {
+          "name": "chart-eager-DwRjDU0J.js",
+          "start": 78,
+          "end": 143.70000004768372,
+          "bytes": 192
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 78.90000003576279,
+          "end": 150.60000002384186,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 78.90000003576279,
+          "end": 259.5,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "input",
+      "strategy": "eager",
+      "condition": "throttled",
+      "firstBlankMs": 0,
+      "medianBlankMs": 0,
+      "maxBlankMs": 0,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 679.1000000238419,
+      "firstInputDelayMs": 4.100000023841858,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 32,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 7.6240997314453125,
+      "heapAfterScrollMb": 7.9131927490234375
+    },
+    {
+      "round": 3,
+      "kind": "paint",
+      "strategy": "split",
+      "condition": "throttled",
+      "fcpMs": 316,
+      "lcpMs": 316,
+      "lcpElement": "P",
+      "longTaskCount": 1,
+      "longTaskMs": 105,
+      "blockingMs": 55,
+      "drawnCharts": 12,
+      "heapMb": 6.8458404541015625,
+      "loadMs": 226.10000002384186,
+      "scriptBytesBeforeLcp": 71872,
+      "scriptBytesTotal": 142126,
+      "chartChunk": [
+        {
+          "name": "chart-split-BUhFZShj.js",
+          "start": 78.60000002384186,
+          "end": 141.69999998807907,
+          "bytes": 396
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 79.89999997615814,
+          "end": 150.10000002384186,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 254.39999997615814,
+          "end": 373.30000001192093,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "input",
+      "strategy": "split",
+      "condition": "throttled",
+      "firstBlankMs": 0,
+      "medianBlankMs": 0,
+      "maxBlankMs": 0,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 332.0999999642372,
+      "firstInputDelayMs": 4.199999988079071,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 32,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 7.647499084472656,
+      "heapAfterScrollMb": 7.939788818359375
+    },
+    {
+      "round": 4,
+      "kind": "paint",
+      "strategy": "idle",
+      "condition": "throttled",
+      "fcpMs": 296,
+      "lcpMs": 296,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 0,
+      "heapMb": 2.2380218505859375,
+      "loadMs": 224.89999997615814,
+      "scriptBytesBeforeLcp": 71871,
+      "scriptBytesTotal": 142125,
+      "chartChunk": [
+        {
+          "name": "chart-idle-CckiBd1y.js",
+          "start": 74.39999997615814,
+          "end": 140.5,
+          "bytes": 395
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 75.19999998807907,
+          "end": 147.80000001192093,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 295.5999999642372,
+          "end": 417.30000001192093,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 4,
+      "kind": "input",
+      "strategy": "idle",
+      "condition": "throttled",
+      "firstBlankMs": 99.5,
+      "medianBlankMs": 99.5,
+      "maxBlankMs": 99.5,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 336.69999998807907,
+      "firstInputDelayMs": 4.199999988079071,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 24,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 3.0177764892578125,
+      "heapAfterScrollMb": 7.923923492431641
+    },
+    {
+      "round": 4,
+      "kind": "paint",
+      "strategy": "eager",
+      "condition": "throttled",
+      "fcpMs": 360,
+      "lcpMs": 360,
+      "lcpElement": "P",
+      "longTaskCount": 1,
+      "longTaskMs": 298,
+      "blockingMs": 248,
+      "drawnCharts": 12,
+      "heapMb": 6.830165863037109,
+      "loadMs": 288.39999997615814,
+      "scriptBytesBeforeLcp": 141094,
+      "scriptBytesTotal": 141094,
+      "chartChunk": [
+        {
+          "name": "chart-eager-DwRjDU0J.js",
+          "start": 76.09999996423721,
+          "end": 143.5999999642372,
+          "bytes": 192
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 77.30000001192093,
+          "end": 150.5999999642372,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 77.30000001192093,
+          "end": 259.19999998807907,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 4,
+      "kind": "input",
+      "strategy": "eager",
+      "condition": "throttled",
+      "firstBlankMs": 0,
+      "medianBlankMs": 0,
+      "maxBlankMs": 0,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 671.3000000119209,
+      "firstInputDelayMs": 3.800000011920929,
+      "firstInputDurationMs": 40,
+      "scrollInteractions": 8,
+      "scrollInpMs": 32,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 7.620967864990234,
+      "heapAfterScrollMb": 7.909641265869141
+    },
+    {
+      "round": 4,
+      "kind": "paint",
+      "strategy": "split",
+      "condition": "throttled",
+      "fcpMs": 296,
+      "lcpMs": 296,
+      "lcpElement": "P",
+      "longTaskCount": 1,
+      "longTaskMs": 104,
+      "blockingMs": 54,
+      "drawnCharts": 12,
+      "heapMb": 6.850563049316406,
+      "loadMs": 225.20000004768372,
+      "scriptBytesBeforeLcp": 71872,
+      "scriptBytesTotal": 142126,
+      "chartChunk": [
+        {
+          "name": "chart-split-BUhFZShj.js",
+          "start": 76.90000003576279,
+          "end": 140,
+          "bytes": 396
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 77.80000001192093,
+          "end": 148.30000001192093,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 289.4000000357628,
+          "end": 406.9000000357628,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 4,
+      "kind": "input",
+      "strategy": "split",
+      "condition": "throttled",
+      "firstBlankMs": 0,
+      "medianBlankMs": 0,
+      "maxBlankMs": 0,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 329,
+      "firstInputDelayMs": 4.100000023841858,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 24,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 7.657451629638672,
+      "heapAfterScrollMb": 7.949741363525391
+    },
+    {
+      "round": 4,
+      "kind": "paint",
+      "strategy": "observer",
+      "condition": "throttled",
+      "fcpMs": 300,
+      "lcpMs": 300,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 0,
+      "heapMb": 1.8800811767578125,
+      "loadMs": 228.30000001192093,
+      "scriptBytesBeforeLcp": 71875,
+      "scriptBytesTotal": 71875,
+      "chartChunk": [
+        {
+          "name": "chart-observer-CUlOtWmz.js",
+          "start": 76,
+          "end": 145.10000002384186,
+          "bytes": 399
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 76.90000003576279,
+          "end": 151.4000000357628,
+          "bytes": 1725
+        }
+      ]
+    },
+    {
+      "round": 4,
+      "kind": "input",
+      "strategy": "observer",
+      "condition": "throttled",
+      "firstBlankMs": 206.70000004768372,
+      "medianBlankMs": 206.70000004768372,
+      "maxBlankMs": 206.70000004768372,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 321.5999999642372,
+      "firstInputDelayMs": 3.5,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 32,
+      "scrollMedianMs": 20,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 2.669567108154297,
+      "heapAfterScrollMb": 7.913272857666016
+    },
+    {
+      "round": 5,
+      "kind": "paint",
+      "strategy": "eager",
+      "condition": "throttled",
+      "fcpMs": 660,
+      "lcpMs": 660,
+      "lcpElement": "P",
+      "longTaskCount": 1,
+      "longTaskMs": 312,
+      "blockingMs": 262,
+      "drawnCharts": 12,
+      "heapMb": 6.838462829589844,
+      "loadMs": 292.30000001192093,
+      "scriptBytesBeforeLcp": 141094,
+      "scriptBytesTotal": 141094,
+      "chartChunk": [
+        {
+          "name": "chart-eager-DwRjDU0J.js",
+          "start": 78.59999996423721,
+          "end": 147.80000001192093,
+          "bytes": 192
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 79.5,
+          "end": 154.5999999642372,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 79.5,
+          "end": 263.0999999642372,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 5,
+      "kind": "input",
+      "strategy": "eager",
+      "condition": "throttled",
+      "firstBlankMs": 0,
+      "medianBlankMs": 0,
+      "maxBlankMs": 0,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 694.5,
+      "firstInputDelayMs": 3.899999976158142,
+      "firstInputDurationMs": 40,
+      "scrollInteractions": 8,
+      "scrollInpMs": 24,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 7.631015777587891,
+      "heapAfterScrollMb": 7.910030364990234
+    },
+    {
+      "round": 5,
+      "kind": "paint",
+      "strategy": "split",
+      "condition": "throttled",
+      "fcpMs": 304,
+      "lcpMs": 304,
+      "lcpElement": "P",
+      "longTaskCount": 1,
+      "longTaskMs": 104,
+      "blockingMs": 54,
+      "drawnCharts": 12,
+      "heapMb": 6.846527099609375,
+      "loadMs": 233.9000000357628,
+      "scriptBytesBeforeLcp": 71872,
+      "scriptBytesTotal": 142126,
+      "chartChunk": [
+        {
+          "name": "chart-split-BUhFZShj.js",
+          "start": 79.19999998807907,
+          "end": 150.10000002384186,
+          "bytes": 396
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 79.90000003576279,
+          "end": 156.5,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 298.9000000357628,
+          "end": 422.19999998807907,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 5,
+      "kind": "input",
+      "strategy": "split",
+      "condition": "throttled",
+      "firstBlankMs": 0,
+      "medianBlankMs": 0,
+      "maxBlankMs": 0,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 327.19999998807907,
+      "firstInputDelayMs": 4,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 32,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 7.647041320800781,
+      "heapAfterScrollMb": 7.9393310546875
+    },
+    {
+      "round": 5,
+      "kind": "paint",
+      "strategy": "observer",
+      "condition": "throttled",
+      "fcpMs": 304,
+      "lcpMs": 304,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 0,
+      "heapMb": 1.8799171447753906,
+      "loadMs": 229.89999997615814,
+      "scriptBytesBeforeLcp": 71875,
+      "scriptBytesTotal": 71875,
+      "chartChunk": [
+        {
+          "name": "chart-observer-CUlOtWmz.js",
+          "start": 76.19999998807907,
+          "end": 147,
+          "bytes": 399
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 77.39999997615814,
+          "end": 152.89999997615814,
+          "bytes": 1725
+        }
+      ]
+    },
+    {
+      "round": 5,
+      "kind": "input",
+      "strategy": "observer",
+      "condition": "throttled",
+      "firstBlankMs": 222.5,
+      "medianBlankMs": 222.5,
+      "maxBlankMs": 222.5,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 343.89999997615814,
+      "firstInputDelayMs": 4.599999964237213,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 32,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 2.6694679260253906,
+      "heapAfterScrollMb": 7.928485870361328
+    },
+    {
+      "round": 5,
+      "kind": "paint",
+      "strategy": "idle",
+      "condition": "throttled",
+      "fcpMs": 312,
+      "lcpMs": 312,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 0,
+      "heapMb": 2.2345314025878906,
+      "loadMs": 229.89999997615814,
+      "scriptBytesBeforeLcp": 71871,
+      "scriptBytesTotal": 142125,
+      "chartChunk": [
+        {
+          "name": "chart-idle-CckiBd1y.js",
+          "start": 75.59999996423721,
+          "end": 144.69999998807907,
+          "bytes": 395
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 76.29999995231628,
+          "end": 151.5,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 312.0999999642372,
+          "end": 427.19999998807907,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 5,
+      "kind": "input",
+      "strategy": "idle",
+      "condition": "throttled",
+      "firstBlankMs": 97.39999997615814,
+      "medianBlankMs": 97.39999997615814,
+      "maxBlankMs": 97.39999997615814,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 330.80000001192093,
+      "firstInputDelayMs": 4.100000023841858,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 24,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 3.017871856689453,
+      "heapAfterScrollMb": 7.928417205810547
+    },
+    {
+      "round": 1,
+      "kind": "paint",
+      "strategy": "eager",
+      "condition": "plain",
+      "fcpMs": 128,
+      "lcpMs": 128,
+      "lcpElement": "P",
+      "longTaskCount": 1,
+      "longTaskMs": 77,
+      "blockingMs": 27,
+      "drawnCharts": 12,
+      "heapMb": 6.825901031494141,
+      "loadMs": 30,
+      "scriptBytesBeforeLcp": 141094,
+      "scriptBytesTotal": 141094,
+      "chartChunk": [
+        {
+          "name": "chart-eager-DwRjDU0J.js",
+          "start": 6.900000035762787,
+          "end": 12.200000047683716,
+          "bytes": 192
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 7.100000023841858,
+          "end": 15.100000023841858,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 7.100000023841858,
+          "end": 21.600000023841858,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "input",
+      "strategy": "eager",
+      "condition": "plain",
+      "firstBlankMs": 0,
+      "medianBlankMs": 0,
+      "maxBlankMs": 0,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 139.69999998807907,
+      "firstInputDelayMs": 1,
+      "firstInputDurationMs": 40,
+      "scrollInteractions": 8,
+      "scrollInpMs": 16,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 7.611598968505859,
+      "heapAfterScrollMb": 7.901508331298828
+    },
+    {
+      "round": 1,
+      "kind": "paint",
+      "strategy": "split",
+      "condition": "plain",
+      "fcpMs": 52,
+      "lcpMs": 52,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 12,
+      "heapMb": 6.843990325927734,
+      "loadMs": 25.399999976158142,
+      "scriptBytesBeforeLcp": 142126,
+      "scriptBytesTotal": 142126,
+      "chartChunk": [
+        {
+          "name": "chart-split-BUhFZShj.js",
+          "start": 5.699999988079071,
+          "end": 10.5,
+          "bytes": 396
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 5.800000011920929,
+          "end": 14,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 40.59999996423721,
+          "end": 46.39999997615814,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "input",
+      "strategy": "split",
+      "condition": "plain",
+      "firstBlankMs": 0,
+      "medianBlankMs": 0,
+      "maxBlankMs": 0,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 132.80000001192093,
+      "firstInputDelayMs": 1,
+      "firstInputDurationMs": 40,
+      "scrollInteractions": 8,
+      "scrollInpMs": 24,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 7.636013031005859,
+      "heapAfterScrollMb": 7.926246643066406
+    },
+    {
+      "round": 1,
+      "kind": "paint",
+      "strategy": "observer",
+      "condition": "plain",
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 0,
+      "heapMb": 1.8801040649414062,
+      "loadMs": 25.600000023841858,
+      "scriptBytesBeforeLcp": 71875,
+      "scriptBytesTotal": 71875,
+      "chartChunk": [
+        {
+          "name": "chart-observer-CUlOtWmz.js",
+          "start": 5.5,
+          "end": 10.300000011920929,
+          "bytes": 399
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 5.600000023841858,
+          "end": 13.5,
+          "bytes": 1725
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "input",
+      "strategy": "observer",
+      "condition": "plain",
+      "firstBlankMs": 45.10000002384186,
+      "medianBlankMs": 45.10000002384186,
+      "maxBlankMs": 45.10000002384186,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 66,
+      "firstInputDelayMs": 1,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 24,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 2.6677474975585938,
+      "heapAfterScrollMb": 7.911262512207031
+    },
+    {
+      "round": 1,
+      "kind": "paint",
+      "strategy": "idle",
+      "condition": "plain",
+      "fcpMs": 56,
+      "lcpMs": 56,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 0,
+      "heapMb": 2.237987518310547,
+      "loadMs": 24.30000001192093,
+      "scriptBytesBeforeLcp": 142125,
+      "scriptBytesTotal": 142125,
+      "chartChunk": [
+        {
+          "name": "chart-idle-CckiBd1y.js",
+          "start": 4.399999976158142,
+          "end": 9.5,
+          "bytes": 395
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 4.5,
+          "end": 12.100000023841858,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 46.19999998807907,
+          "end": 52.30000001192093,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "kind": "input",
+      "strategy": "idle",
+      "condition": "plain",
+      "firstBlankMs": 30.5,
+      "medianBlankMs": 30.5,
+      "maxBlankMs": 30.5,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 74.60000002384186,
+      "firstInputDelayMs": 1.100000023841858,
+      "firstInputDurationMs": 40,
+      "scrollInteractions": 8,
+      "scrollInpMs": 16,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 3.0189781188964844,
+      "heapAfterScrollMb": 7.9151458740234375
+    },
+    {
+      "round": 2,
+      "kind": "paint",
+      "strategy": "split",
+      "condition": "plain",
+      "fcpMs": 52,
+      "lcpMs": 52,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 12,
+      "heapMb": 6.843849182128906,
+      "loadMs": 24.099999964237213,
+      "scriptBytesBeforeLcp": 142126,
+      "scriptBytesTotal": 142126,
+      "chartChunk": [
+        {
+          "name": "chart-split-BUhFZShj.js",
+          "start": 5.5,
+          "end": 10.199999988079071,
+          "bytes": 396
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 5.699999988079071,
+          "end": 12.5,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 39,
+          "end": 44.80000001192093,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "input",
+      "strategy": "split",
+      "condition": "plain",
+      "firstBlankMs": 0,
+      "medianBlankMs": 0,
+      "maxBlankMs": 0,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 132.4000000357628,
+      "firstInputDelayMs": 1.100000023841858,
+      "firstInputDurationMs": 40,
+      "scrollInteractions": 7,
+      "scrollInpMs": 24,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 7.6395721435546875,
+      "heapAfterScrollMb": 7.929462432861328
+    },
+    {
+      "round": 2,
+      "kind": "paint",
+      "strategy": "observer",
+      "condition": "plain",
+      "fcpMs": 56,
+      "lcpMs": 56,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 0,
+      "heapMb": 1.8801040649414062,
+      "loadMs": 25,
+      "scriptBytesBeforeLcp": 71875,
+      "scriptBytesTotal": 71875,
+      "chartChunk": [
+        {
+          "name": "chart-observer-CUlOtWmz.js",
+          "start": 4.800000011920929,
+          "end": 9.800000011920929,
+          "bytes": 399
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 4.899999976158142,
+          "end": 13.099999964237213,
+          "bytes": 1725
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "input",
+      "strategy": "observer",
+      "condition": "plain",
+      "firstBlankMs": 48.19999998807907,
+      "medianBlankMs": 48.19999998807907,
+      "maxBlankMs": 48.19999998807907,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 72.30000001192093,
+      "firstInputDelayMs": 1,
+      "firstInputDurationMs": 56,
+      "scrollInteractions": 8,
+      "scrollInpMs": 16,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 2.6670455932617188,
+      "heapAfterScrollMb": 7.917156219482422
+    },
+    {
+      "round": 2,
+      "kind": "paint",
+      "strategy": "idle",
+      "condition": "plain",
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 0,
+      "heapMb": 2.2382049560546875,
+      "loadMs": 33.40000003576279,
+      "scriptBytesBeforeLcp": 71871,
+      "scriptBytesTotal": 142125,
+      "chartChunk": [
+        {
+          "name": "chart-idle-CckiBd1y.js",
+          "start": 5.600000023841858,
+          "end": 13.300000011920929,
+          "bytes": 395
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 5.700000047683716,
+          "end": 15.200000047683716,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 56.60000002384186,
+          "end": 62.40000003576279,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "input",
+      "strategy": "idle",
+      "condition": "plain",
+      "firstBlankMs": 38.80000001192093,
+      "medianBlankMs": 38.80000001192093,
+      "maxBlankMs": 38.80000001192093,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 73.5,
+      "firstInputDelayMs": 1,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 16,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 3.0189895629882812,
+      "heapAfterScrollMb": 7.913448333740234
+    },
+    {
+      "round": 2,
+      "kind": "paint",
+      "strategy": "eager",
+      "condition": "plain",
+      "fcpMs": 124,
+      "lcpMs": 124,
+      "lcpElement": "P",
+      "longTaskCount": 1,
+      "longTaskMs": 75,
+      "blockingMs": 25,
+      "drawnCharts": 12,
+      "heapMb": 6.826732635498047,
+      "loadMs": 27.80000001192093,
+      "scriptBytesBeforeLcp": 141094,
+      "scriptBytesTotal": 141094,
+      "chartChunk": [
+        {
+          "name": "chart-eager-DwRjDU0J.js",
+          "start": 4.800000011920929,
+          "end": 10.800000011920929,
+          "bytes": 192
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 5,
+          "end": 14.5,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 5,
+          "end": 19.600000023841858,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "kind": "input",
+      "strategy": "eager",
+      "condition": "plain",
+      "firstBlankMs": 0,
+      "medianBlankMs": 0,
+      "maxBlankMs": 0,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 143.80000001192093,
+      "firstInputDelayMs": 1,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 24,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 7.602863311767578,
+      "heapAfterScrollMb": 7.892772674560547
+    },
+    {
+      "round": 3,
+      "kind": "paint",
+      "strategy": "observer",
+      "condition": "plain",
+      "fcpMs": 52,
+      "lcpMs": 52,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 0,
+      "heapMb": 1.8801040649414062,
+      "loadMs": 25,
+      "scriptBytesBeforeLcp": 71875,
+      "scriptBytesTotal": 71875,
+      "chartChunk": [
+        {
+          "name": "chart-observer-CUlOtWmz.js",
+          "start": 5.200000047683716,
+          "end": 11.400000035762787,
+          "bytes": 399
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 5.400000035762787,
+          "end": 13.600000023841858,
+          "bytes": 1725
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "input",
+      "strategy": "observer",
+      "condition": "plain",
+      "firstBlankMs": 56.60000002384186,
+      "medianBlankMs": 56.60000002384186,
+      "maxBlankMs": 56.60000002384186,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 85.09999996423721,
+      "firstInputDelayMs": 1.199999988079071,
+      "firstInputDurationMs": 40,
+      "scrollInteractions": 8,
+      "scrollInpMs": 16,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 2.6668968200683594,
+      "heapAfterScrollMb": 7.9110260009765625
+    },
+    {
+      "round": 3,
+      "kind": "paint",
+      "strategy": "idle",
+      "condition": "plain",
+      "fcpMs": 56,
+      "lcpMs": 56,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 0,
+      "heapMb": 2.238056182861328,
+      "loadMs": 24.80000001192093,
+      "scriptBytesBeforeLcp": 142125,
+      "scriptBytesTotal": 142125,
+      "chartChunk": [
+        {
+          "name": "chart-idle-CckiBd1y.js",
+          "start": 4.700000047683716,
+          "end": 10.300000011920929,
+          "bytes": 395
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 4.800000011920929,
+          "end": 13.200000047683716,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 47.60000002384186,
+          "end": 54,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "input",
+      "strategy": "idle",
+      "condition": "plain",
+      "firstBlankMs": 35.5,
+      "medianBlankMs": 35.5,
+      "maxBlankMs": 35.5,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 86,
+      "firstInputDelayMs": 1,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 24,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 3.0191688537597656,
+      "heapAfterScrollMb": 7.922191619873047
+    },
+    {
+      "round": 3,
+      "kind": "paint",
+      "strategy": "eager",
+      "condition": "plain",
+      "fcpMs": 60,
+      "lcpMs": 60,
+      "lcpElement": "P",
+      "longTaskCount": 1,
+      "longTaskMs": 68,
+      "blockingMs": 18,
+      "drawnCharts": 12,
+      "heapMb": 6.826335906982422,
+      "loadMs": 34,
+      "scriptBytesBeforeLcp": 141094,
+      "scriptBytesTotal": 141094,
+      "chartChunk": [
+        {
+          "name": "chart-eager-DwRjDU0J.js",
+          "start": 4.899999976158142,
+          "end": 10,
+          "bytes": 192
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 5.100000023841858,
+          "end": 13.800000011920929,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 5.100000023841858,
+          "end": 24.69999998807907,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "input",
+      "strategy": "eager",
+      "condition": "plain",
+      "firstBlankMs": 0,
+      "medianBlankMs": 0,
+      "maxBlankMs": 0,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 140.30000001192093,
+      "firstInputDelayMs": 0.8999999761581421,
+      "firstInputDurationMs": 40,
+      "scrollInteractions": 8,
+      "scrollInpMs": 32,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 7.610584259033203,
+      "heapAfterScrollMb": 7.9006195068359375
+    },
+    {
+      "round": 3,
+      "kind": "paint",
+      "strategy": "split",
+      "condition": "plain",
+      "fcpMs": 128,
+      "lcpMs": 128,
+      "lcpElement": "P",
+      "longTaskCount": 0,
+      "longTaskMs": 0,
+      "blockingMs": 0,
+      "drawnCharts": 12,
+      "heapMb": 6.855037689208984,
+      "loadMs": 24.599999964237213,
+      "scriptBytesBeforeLcp": 142126,
+      "scriptBytesTotal": 142126,
+      "chartChunk": [
+        {
+          "name": "chart-split-BUhFZShj.js",
+          "start": 4.099999964237213,
+          "end": 9.399999976158142,
+          "bytes": 396
+        },
+        {
+          "name": "ChartPage-DHwBFhl9.js",
+          "start": 4.299999952316284,
+          "end": 11.299999952316284,
+          "bytes": 1725
+        },
+        {
+          "name": "chart-runtime-CQQ6fCxl.js",
+          "start": 31.5,
+          "end": 37.59999996423721,
+          "bytes": 70254
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "kind": "input",
+      "strategy": "split",
+      "condition": "plain",
+      "firstBlankMs": 0,
+      "medianBlankMs": 0,
+      "maxBlankMs": 0,
+      "blankCharts": 1,
+      "firstInputProcessingStartMs": 125.69999998807907,
+      "firstInputDelayMs": 0.8999999761581421,
+      "firstInputDurationMs": 48,
+      "scrollInteractions": 8,
+      "scrollInpMs": 16,
+      "scrollMedianMs": 16,
+      "drawnCharts": 12,
+      "heapAfterLoadMb": 7.623443603515625,
+      "heapAfterScrollMb": 7.913677215576172
+    }
+  ],
+  "aggregate": [
+    {
+      "condition": "throttled",
+      "strategy": "eager",
+      "paintLoads": 5,
+      "inputLoads": 5,
+      "lcpMs": {
+        "median": 404,
+        "min": 360,
+        "max": 660
+      },
+      "fcpMs": {
+        "median": 404,
+        "min": 360,
+        "max": 660
+      },
+      "longTaskCount": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "blockingMs": {
+        "median": 260,
+        "min": 227,
+        "max": 272
+      },
+      "drawnAtLoad": {
+        "median": 12,
+        "min": 12,
+        "max": 12
+      },
+      "heapAfterLoadMb": {
+        "median": 6.8,
+        "min": 6.8,
+        "max": 6.8
+      },
+      "scriptKbBeforeLcp": {
+        "median": 137.8,
+        "min": 137.8,
+        "max": 137.8
+      },
+      "firstInputProcessingStartMs": {
+        "median": 693.9,
+        "min": 671.3,
+        "max": 719.2
+      },
+      "firstInputDelayMs": {
+        "median": 3.9,
+        "min": 3.8,
+        "max": 20.8
+      },
+      "scrollInpMs": {
+        "median": 24,
+        "min": 24,
+        "max": 32
+      },
+      "firstBlankMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxBlankMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "scrollMedianMs": {
+        "median": 16,
+        "min": 16,
+        "max": 16
+      },
+      "drawnAfterScroll": {
+        "median": 12,
+        "min": 12,
+        "max": 12
+      },
+      "heapAfterScrollMb": {
+        "median": 7.9,
+        "min": 7.9,
+        "max": 7.9
+      }
+    },
+    {
+      "condition": "throttled",
+      "strategy": "split",
+      "paintLoads": 5,
+      "inputLoads": 5,
+      "lcpMs": {
+        "median": 304,
+        "min": 296,
+        "max": 316
+      },
+      "fcpMs": {
+        "median": 304,
+        "min": 296,
+        "max": 316
+      },
+      "longTaskCount": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "blockingMs": {
+        "median": 54,
+        "min": 53,
+        "max": 55
+      },
+      "drawnAtLoad": {
+        "median": 12,
+        "min": 12,
+        "max": 12
+      },
+      "heapAfterLoadMb": {
+        "median": 6.9,
+        "min": 6.8,
+        "max": 6.9
+      },
+      "scriptKbBeforeLcp": {
+        "median": 70.2,
+        "min": 70.2,
+        "max": 70.2
+      },
+      "firstInputProcessingStartMs": {
+        "median": 332.1,
+        "min": 327.2,
+        "max": 343.8
+      },
+      "firstInputDelayMs": {
+        "median": 4.2,
+        "min": 4,
+        "max": 4.6
+      },
+      "scrollInpMs": {
+        "median": 32,
+        "min": 24,
+        "max": 32
+      },
+      "firstBlankMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxBlankMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "scrollMedianMs": {
+        "median": 16,
+        "min": 16,
+        "max": 16
+      },
+      "drawnAfterScroll": {
+        "median": 12,
+        "min": 12,
+        "max": 12
+      },
+      "heapAfterScrollMb": {
+        "median": 7.9,
+        "min": 7.9,
+        "max": 7.9
+      }
+    },
+    {
+      "condition": "throttled",
+      "strategy": "observer",
+      "paintLoads": 5,
+      "inputLoads": 5,
+      "lcpMs": {
+        "median": 304,
+        "min": 296,
+        "max": 312
+      },
+      "fcpMs": {
+        "median": 304,
+        "min": 296,
+        "max": 312
+      },
+      "longTaskCount": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "blockingMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "drawnAtLoad": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "heapAfterLoadMb": {
+        "median": 1.9,
+        "min": 1.9,
+        "max": 1.9
+      },
+      "scriptKbBeforeLcp": {
+        "median": 70.2,
+        "min": 70.2,
+        "max": 70.2
+      },
+      "firstInputProcessingStartMs": {
+        "median": 341.3,
+        "min": 321.6,
+        "max": 345.7
+      },
+      "firstInputDelayMs": {
+        "median": 4.1,
+        "min": 3.5,
+        "max": 4.6
+      },
+      "scrollInpMs": {
+        "median": 32,
+        "min": 16,
+        "max": 32
+      },
+      "firstBlankMs": {
+        "median": 202.4,
+        "min": 200.1,
+        "max": 222.5
+      },
+      "maxBlankMs": {
+        "median": 202.4,
+        "min": 200.1,
+        "max": 222.5
+      },
+      "scrollMedianMs": {
+        "median": 16,
+        "min": 16,
+        "max": 20
+      },
+      "drawnAfterScroll": {
+        "median": 12,
+        "min": 12,
+        "max": 12
+      },
+      "heapAfterScrollMb": {
+        "median": 7.9,
+        "min": 7.9,
+        "max": 7.9
+      }
+    },
+    {
+      "condition": "throttled",
+      "strategy": "idle",
+      "paintLoads": 5,
+      "inputLoads": 5,
+      "lcpMs": {
+        "median": 300,
+        "min": 292,
+        "max": 312
+      },
+      "fcpMs": {
+        "median": 300,
+        "min": 292,
+        "max": 312
+      },
+      "longTaskCount": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "blockingMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "drawnAtLoad": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "heapAfterLoadMb": {
+        "median": 2.2,
+        "min": 2.2,
+        "max": 2.2
+      },
+      "scriptKbBeforeLcp": {
+        "median": 70.2,
+        "min": 70.2,
+        "max": 70.2
+      },
+      "firstInputProcessingStartMs": {
+        "median": 336.7,
+        "min": 327.5,
+        "max": 341.7
+      },
+      "firstInputDelayMs": {
+        "median": 4.2,
+        "min": 4.1,
+        "max": 4.4
+      },
+      "scrollInpMs": {
+        "median": 24,
+        "min": 24,
+        "max": 32
+      },
+      "firstBlankMs": {
+        "median": 99.5,
+        "min": 76.6,
+        "max": 107.1
+      },
+      "maxBlankMs": {
+        "median": 99.5,
+        "min": 76.6,
+        "max": 107.1
+      },
+      "scrollMedianMs": {
+        "median": 16,
+        "min": 16,
+        "max": 16
+      },
+      "drawnAfterScroll": {
+        "median": 12,
+        "min": 12,
+        "max": 12
+      },
+      "heapAfterScrollMb": {
+        "median": 7.9,
+        "min": 7.9,
+        "max": 7.9
+      }
+    },
+    {
+      "condition": "plain",
+      "strategy": "eager",
+      "paintLoads": 3,
+      "inputLoads": 3,
+      "lcpMs": {
+        "median": 124,
+        "min": 60,
+        "max": 128
+      },
+      "fcpMs": {
+        "median": 124,
+        "min": 60,
+        "max": 128
+      },
+      "longTaskCount": {
+        "median": 1,
+        "min": 1,
+        "max": 1
+      },
+      "blockingMs": {
+        "median": 25,
+        "min": 18,
+        "max": 27
+      },
+      "drawnAtLoad": {
+        "median": 12,
+        "min": 12,
+        "max": 12
+      },
+      "heapAfterLoadMb": {
+        "median": 6.8,
+        "min": 6.8,
+        "max": 6.8
+      },
+      "scriptKbBeforeLcp": {
+        "median": 137.8,
+        "min": 137.8,
+        "max": 137.8
+      },
+      "firstInputProcessingStartMs": {
+        "median": 140.3,
+        "min": 139.7,
+        "max": 143.8
+      },
+      "firstInputDelayMs": {
+        "median": 1,
+        "min": 0.9,
+        "max": 1
+      },
+      "scrollInpMs": {
+        "median": 24,
+        "min": 16,
+        "max": 32
+      },
+      "firstBlankMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxBlankMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "scrollMedianMs": {
+        "median": 16,
+        "min": 16,
+        "max": 16
+      },
+      "drawnAfterScroll": {
+        "median": 12,
+        "min": 12,
+        "max": 12
+      },
+      "heapAfterScrollMb": {
+        "median": 7.9,
+        "min": 7.9,
+        "max": 7.9
+      }
+    },
+    {
+      "condition": "plain",
+      "strategy": "split",
+      "paintLoads": 3,
+      "inputLoads": 3,
+      "lcpMs": {
+        "median": 52,
+        "min": 52,
+        "max": 128
+      },
+      "fcpMs": {
+        "median": 52,
+        "min": 52,
+        "max": 128
+      },
+      "longTaskCount": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "blockingMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "drawnAtLoad": {
+        "median": 12,
+        "min": 12,
+        "max": 12
+      },
+      "heapAfterLoadMb": {
+        "median": 6.8,
+        "min": 6.8,
+        "max": 6.9
+      },
+      "scriptKbBeforeLcp": {
+        "median": 138.8,
+        "min": 138.8,
+        "max": 138.8
+      },
+      "firstInputProcessingStartMs": {
+        "median": 132.4,
+        "min": 125.7,
+        "max": 132.8
+      },
+      "firstInputDelayMs": {
+        "median": 1,
+        "min": 0.9,
+        "max": 1.1
+      },
+      "scrollInpMs": {
+        "median": 24,
+        "min": 16,
+        "max": 24
+      },
+      "firstBlankMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "maxBlankMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "scrollMedianMs": {
+        "median": 16,
+        "min": 16,
+        "max": 16
+      },
+      "drawnAfterScroll": {
+        "median": 12,
+        "min": 12,
+        "max": 12
+      },
+      "heapAfterScrollMb": {
+        "median": 7.9,
+        "min": 7.9,
+        "max": 7.9
+      }
+    },
+    {
+      "condition": "plain",
+      "strategy": "observer",
+      "paintLoads": 3,
+      "inputLoads": 3,
+      "lcpMs": {
+        "median": 56,
+        "min": 52,
+        "max": 60
+      },
+      "fcpMs": {
+        "median": 56,
+        "min": 52,
+        "max": 60
+      },
+      "longTaskCount": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "blockingMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "drawnAtLoad": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "heapAfterLoadMb": {
+        "median": 1.9,
+        "min": 1.9,
+        "max": 1.9
+      },
+      "scriptKbBeforeLcp": {
+        "median": 70.2,
+        "min": 70.2,
+        "max": 70.2
+      },
+      "firstInputProcessingStartMs": {
+        "median": 72.3,
+        "min": 66,
+        "max": 85.1
+      },
+      "firstInputDelayMs": {
+        "median": 1,
+        "min": 1,
+        "max": 1.2
+      },
+      "scrollInpMs": {
+        "median": 16,
+        "min": 16,
+        "max": 24
+      },
+      "firstBlankMs": {
+        "median": 48.2,
+        "min": 45.1,
+        "max": 56.6
+      },
+      "maxBlankMs": {
+        "median": 48.2,
+        "min": 45.1,
+        "max": 56.6
+      },
+      "scrollMedianMs": {
+        "median": 16,
+        "min": 16,
+        "max": 16
+      },
+      "drawnAfterScroll": {
+        "median": 12,
+        "min": 12,
+        "max": 12
+      },
+      "heapAfterScrollMb": {
+        "median": 7.9,
+        "min": 7.9,
+        "max": 7.9
+      }
+    },
+    {
+      "condition": "plain",
+      "strategy": "idle",
+      "paintLoads": 3,
+      "inputLoads": 3,
+      "lcpMs": {
+        "median": 56,
+        "min": 56,
+        "max": 60
+      },
+      "fcpMs": {
+        "median": 56,
+        "min": 56,
+        "max": 60
+      },
+      "longTaskCount": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "blockingMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "drawnAtLoad": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      },
+      "heapAfterLoadMb": {
+        "median": 2.2,
+        "min": 2.2,
+        "max": 2.2
+      },
+      "scriptKbBeforeLcp": {
+        "median": 138.8,
+        "min": 70.2,
+        "max": 138.8
+      },
+      "firstInputProcessingStartMs": {
+        "median": 74.6,
+        "min": 73.5,
+        "max": 86
+      },
+      "firstInputDelayMs": {
+        "median": 1,
+        "min": 1,
+        "max": 1.1
+      },
+      "scrollInpMs": {
+        "median": 16,
+        "min": 16,
+        "max": 24
+      },
+      "firstBlankMs": {
+        "median": 35.5,
+        "min": 30.5,
+        "max": 38.8
+      },
+      "maxBlankMs": {
+        "median": 35.5,
+        "min": 30.5,
+        "max": 38.8
+      },
+      "scrollMedianMs": {
+        "median": 16,
+        "min": 16,
+        "max": 16
+      },
+      "drawnAfterScroll": {
+        "median": 12,
+        "min": 12,
+        "max": 12
+      },
+      "heapAfterScrollMb": {
+        "median": 7.9,
+        "min": 7.9,
+        "max": 7.9
+      }
+    }
+  ]
+}

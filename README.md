@@ -4,7 +4,7 @@
 
 React와 TypeScript로 서로 다른 프론트엔드 질문을 작은 단위로 실험하는 저장소입니다. 후보마다 같은 화면과 데이터를 사용해 **구현·수정에 드는 시간, 코드 복잡도, 브라우저·서버 비용**을 비교합니다. 어떤 조건에서 무엇을 선택할지와 그 판단의 근거를 실험별 보고서에 남깁니다.
 
-현재 주제는 브랜드 테마 주입, 대시보드 실시간 갱신, Jonbeo의 MSW 초기화와 입력 반응입니다. React·TypeScript·Vite 의존성은 하나의 npm 패키지에서 관리하며, 실험마다 독립 진입점을 둡니다. 브라우저 검증은 Chrome과 Playwright로 실행합니다.
+현재 주제는 아래 [실험](#실험) 표에 있습니다. React·TypeScript·Vite 의존성은 하나의 npm 패키지에서 관리하며, 실험마다 독립 진입점을 둡니다. 브라우저 검증은 Chrome과 Playwright로 실행합니다.
 
 [폴더 구조](#폴더-구조) · [따르는 지침](#따르는-지침) · [로컬 실행](#로컬-실행) · [실험 목록](#실험)
 
@@ -30,7 +30,7 @@ React와 TypeScript로 서로 다른 프론트엔드 질문을 작은 단위로 
 
 ## 로컬 실행
 
-세 실험은 기본 브랜치인 `main`에서 Node.js 24와 Google Chrome으로 실행합니다. 처음 내려받을 때는 다음 명령을 사용합니다.
+각 실험은 기본 브랜치인 `main`에서 Node.js 24와 Google Chrome으로 실행합니다. 처음 내려받을 때는 다음 명령을 사용합니다.
 
 ```sh
 git clone https://github.com/callu9/personal-playground-react-ts.git
@@ -48,6 +48,7 @@ npm run dev -- --host 127.0.0.1 --port 5173 --strictPort
 | 실험 | 로컬 Playground | 실험 지침 | 결과 보고서 |
 |---|---|---|---|
 | 브랜드 테마 | [Brand style runtime](http://127.0.0.1:5173/experiments/brand-theme/#playground) | [설계·실행·화면 캡처](docs/experiments/brand-theme/README.md) | [후보 비교와 추천](docs/experiments/brand-theme/results.md) |
+| 차트 지연 로딩 | [Chart loading](http://127.0.0.1:5173/experiments/chart-loading/#playground) | [로딩 전략과 측정 방법](docs/experiments/chart-loading/README.md) | [전략별 LCP·입력·힙과 선택 기준](docs/experiments/chart-loading/results.md) |
 | 대시보드 실시간 갱신 | [Dashboard auto refresh](http://127.0.0.1:5173/experiments/dashboard-refresh/#playground) | [조건과 계측 방법](docs/experiments/dashboard-refresh/README.md) | [폴링·SSE 비교와 사용 목적별 선택](docs/experiments/dashboard-refresh/results.md) |
 | Jonbeo MSW | [Jonbeo MSW performance](http://127.0.0.1:5173/experiments/jonbeo-msw/#playground) | [Playground·원본 재현 방법](docs/experiments/jonbeo-msw/README.md) | [코드 분석과 Chrome 측정](docs/experiments/jonbeo-msw/results.md) |
 

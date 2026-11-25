@@ -9,12 +9,18 @@
   <body>
     <main>
       <h1 lang="en">React playground</h1>
-      <p class="intro">세 실험에서 해결하려던 문제와 측정 결과입니다. 항목을 열면 판단 근거와 직접 실행할 수 있는 화면을 볼 수 있습니다.</p>
+      <p class="intro">여러 실험에서 해결하려던 문제와 측정 결과입니다. 항목을 열면 판단 근거와 직접 실행할 수 있는 화면을 볼 수 있습니다.</p>
       <nav aria-label="Playground experiments">
         <a href="/experiments/brand-theme/">
           <span class="card-title" lang="en">Brand style runtime</span>
           <span class="problem">공통값을 유지하며 브랜드 색상·글꼴만 바꿀 때 어떤 방식이 수정 비용을 줄일까?</span>
           <span class="finding">CSS Modules는 모달 토큰 연결에 1곳을 수정했습니다. styled-components도 1곳이었으며 새 브랜드에 CSS 규칙 73개를 추가했습니다.</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <a href="/experiments/chart-loading/">
+          <span class="card-title" lang="en">Chart loading</span>
+          <span class="problem">차트가 여러 개인 화면에서 차트를 보일 때 불러오면 첫 화면과 입력이 얼마나 빨라질까?</span>
+          <span class="finding">Eager 대비 보일 때 그리기는 LCP가 404 → 304 ms, 로드 직후 차단이 260 → 0 ms였습니다. 청크를 미리 받으면 첫 차트의 빈 카드가 202 → 99.5 ms로 줄었습니다.</span>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
         <a href="/experiments/dashboard-refresh/">

@@ -7,6 +7,7 @@
 | 실험 | 화면에서 바로 볼 내용 | 지침 | 보고서 | 측정 원본 |
 |---|---|---|---|---|
 | 브랜드 테마 | [공통 대시보드와 계정별 배경](http://127.0.0.1:5173/experiments/brand-theme/#playground) | [네 구현 후보와 확인 순서](brand-theme/README.md) | [후보 선택](brand-theme/results.md) · [빌드·개발 반영·런타임 상세](brand-theme/build-runtime.md) | [브랜드 테마](brand-theme/evidence/) |
+| 차트 지연 로딩 | [로딩 전략별 측정](http://127.0.0.1:5173/experiments/chart-loading/#verification) | [전략과 재실행](chart-loading/README.md) | [로딩 전략 선택 기준](chart-loading/results.md) | [차트 지연 로딩](chart-loading/evidence/) |
 | 대시보드 실시간 갱신 | [용도별 방식 선택](http://127.0.0.1:5173/experiments/dashboard-refresh/#refresh-choice) | [스냅샷과 전달 시나리오](dashboard-refresh/README.md) | [비교표와 선택 기준](dashboard-refresh/results.md) | [실시간 갱신](dashboard-refresh/evidence/) |
 | Jonbeo MSW | [원본 코드 분석](http://127.0.0.1:5173/experiments/jonbeo-msw/#source-analysis) | [로컬·원본 재현](jonbeo-msw/README.md) | [Worker 준비, DOM 반영, 통화 전환 INP](jonbeo-msw/results.md) | [Jonbeo MSW](jonbeo-msw/evidence/) |
 

@@ -12,6 +12,7 @@ export const projectDocuments = {
 
 export const experimentTitles = {
   'brand-theme': { label: 'Brand style runtime', title: 'Brand style runtime' },
+  'chart-loading': { label: 'Chart loading', title: 'Chart loading strategies' },
   'dashboard-refresh': { label: 'Dashboard auto refresh', title: 'Dashboard auto refresh' },
   'jonbeo-msw': { label: 'Jonbeo MSW performance', title: 'Jonbeo MSW performance lab' },
 } as const
