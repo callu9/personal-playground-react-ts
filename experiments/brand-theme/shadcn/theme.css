@@ -1,0 +1,13 @@
+@import "tailwindcss" source(none);
+@import "../tailwind/tokens.css";
+@source "./components/ui";
+@source "../tailwind/classes.ts";
+
+@theme inline {
+  --color-primary: var(--brand-accent);
+  --color-primary-foreground: #fff;
+  --color-ring: var(--brand-accent);
+  --color-card: #fff;
+  --color-card-foreground: #182520;
+  --color-border: #e1e7e3;
+}

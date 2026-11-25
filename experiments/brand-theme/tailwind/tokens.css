@@ -1,0 +1,11 @@
+@theme inline {
+  --color-page: #f5f7f6;
+  --color-ink: #182520;
+  --color-muted: #52615a;
+  --color-edge: #e1e7e3;
+  --color-control: #d9e2dd;
+  --color-rule: #edf0ee;
+  --color-brand: var(--brand-accent);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-ink: var(--brand-ink);
+}
