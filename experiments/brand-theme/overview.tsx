@@ -25,7 +25,11 @@ function BrandOverview() {
   return (
     <ExperimentPage
       experiment="brand-theme"
-      description="공통 디자인 토큰을 유지하면서 등록된 브랜드의 색상, 글꼴, 배경을 전환하는 네 가지 방식을 비교했습니다."
+      summary={{
+        problem: '공통 디자인 토큰을 유지하면서 계정에 따라 색상·글꼴·배경을 바꿔야 합니다. 브랜드 값을 연결하는 방식에 따라 새 토큰을 추가할 때의 수정 범위와 브라우저 비용이 달라집니다.',
+        finding: <>공통 작업을 제외한 모달 테두리 토큰 수정은 CSS Modules와 styled-components에서 각각 <strong>1곳</strong>, Tailwind 계열에서 <strong>2곳</strong>이었습니다. styled-components는 새 브랜드마다 처음 적용할 때 CSS 규칙을 <strong>73개</strong> 추가했고, 초기 gzip 자산은 CSS Modules보다 <strong>13.3%</strong> 컸습니다.</>,
+        decision: '등록 브랜드의 토큰 값만 바꾸는 범위에서는 CSS Modules + React Context + CSS 변수를 기본으로 제안합니다. 빌드 시간 범위는 겹쳤고, 개발 중 색상 수정은 공통 Fast Refresh 경계 문제로 네 후보 모두 전체 새로고침을 일으켰습니다. Context 자체의 렌더링 비용은 따로 측정하지 않았습니다.',
+      }}
     >
       <ExperimentSection id="options" description="네 후보는 같은 브랜드 토큰을 받고, 상세 버튼의 강조색을 각자의 방식으로 연결합니다.">
         <ExperimentOptions items={options} />

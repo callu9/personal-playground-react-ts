@@ -309,7 +309,11 @@ function App() {
   return (
     <ExperimentPage
       experiment="jonbeo-msw"
-      description="요청 경로와 초기 렌더링 순서를 바꿔 정렬 버튼을 쓸 수 있는 시점, 데이터 표시 시점, 로딩 후 입력 지연을 비교합니다."
+      summary={{
+        problem: '원본 Jonbeo 개발 모드에서는 MSW 워커가 준비될 때까지 앱 전체를 가려 버튼을 쓸 수 없었습니다. 첫 화면이 늦게 뜨는 문제와 화면이 뜬 뒤 클릭 반응이 느린 문제를 따로 추적했습니다.',
+        finding: <>워커 대기를 제거한 원본 개발 서버에서 제목이 DOM에 나타난 중앙값은 <strong>{originalResults.titleSeconds[0]}초 → {originalResults.titleSeconds[1]}초</strong>였습니다. 통화 전환 INP는 <strong>{originalResults.inpMs[0]} → {originalResults.inpMs[1]} ms</strong>였고, 가장 오래 걸린 구간은 클릭 이벤트 처리였습니다.</>,
+        decision: '독립적으로 쓸 수 있는 UI를 먼저 그리고, 모의 응답이 필요한 요청만 워커를 기다리게 합니다. 초회에 관측한 데이터 표시 지연은 재측정에서 반복되지 않았습니다. 로딩 후 클릭 반응을 개선하려면 이벤트 처리 구간을 따로 봐야 합니다.',
+      }}
     >
       <ExperimentSection id="options">
         <ComparisonAxes />

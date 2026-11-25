@@ -17,9 +17,9 @@ const sections = {
 type Experiment = keyof typeof experiments
 type Section = keyof typeof sections
 
-export function ExperimentPage({ experiment, description, children }: {
+export function ExperimentPage({ experiment, summary, children }: {
   experiment: Experiment
-  description: string
+  summary: { problem: ReactNode; finding: ReactNode; decision: ReactNode }
   children: ReactNode
 }) {
   useLayoutEffect(() => {
@@ -43,7 +43,14 @@ export function ExperimentPage({ experiment, description, children }: {
       <main className={styles.content}>
         <header className={styles.header}>
           <h1 lang="en">{experiments[experiment].title}</h1>
-          <p>{description}</p>
+          <section className={styles.summary} aria-labelledby="experiment-summary-title">
+            <h2 id="experiment-summary-title">실험 요약</h2>
+            <dl>
+              <div><dt>문제</dt><dd>{summary.problem}</dd></div>
+              <div><dt>확인한 결과</dt><dd>{summary.finding}</dd></div>
+              <div><dt>판단</dt><dd>{summary.decision}</dd></div>
+            </dl>
+          </section>
           <nav className={styles.sections} aria-label="이 페이지에서">
             <ul>
               {Object.entries(sections).map(([id, label]) => (

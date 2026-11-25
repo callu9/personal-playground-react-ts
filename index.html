@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,13 +8,27 @@
   </head>
   <body>
     <main>
-      <p class="eyebrow">React experiments</p>
-      <h1>React playground</h1>
-      <p class="intro">Explore brand themes, dashboard auto refresh, and MSW startup performance.</p>
+      <h1 lang="en">React playground</h1>
+      <p class="intro">세 실험에서 해결하려던 문제와 측정 결과입니다. 항목을 열면 판단 근거와 직접 실행할 수 있는 화면을 볼 수 있습니다.</p>
       <nav aria-label="Playground experiments">
-        <a href="/experiments/brand-theme/"><strong>Brand style runtime</strong><span>One dashboard example and four styling approaches compared</span><span aria-hidden="true">↗</span></a>
-        <a href="/experiments/dashboard-refresh/"><strong>Dashboard auto refresh</strong><span>Fixed polling, adaptive polling, and SSE</span><span aria-hidden="true">↗</span></a>
-        <a href="/experiments/jonbeo-msw/"><strong>Jonbeo MSW performance</strong><span>Worker startup, request paths, and INP</span><span aria-hidden="true">↗</span></a>
+        <a href="/experiments/brand-theme/">
+          <span class="card-title" lang="en">Brand style runtime</span>
+          <span class="problem">공통값을 유지하며 브랜드 색상·글꼴만 바꿀 때 어떤 방식이 수정 비용을 줄일까?</span>
+          <span class="finding">CSS Modules는 모달 토큰 연결에 1곳을 수정했습니다. styled-components도 1곳이었으며 새 브랜드에 CSS 규칙 73개를 추가했습니다.</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <a href="/experiments/dashboard-refresh/">
+          <span class="card-title" lang="en">Dashboard auto refresh</span>
+          <span class="problem">요청을 줄이면 완료 표시가 얼마나 늦어지고, 중간 상태를 얼마나 놓칠까?</span>
+          <span class="finding">정상 시 고정 3초는 고정 1초보다 요청이 적고 완료 표시가 늦었습니다. SSE는 반영 p95 75 ms로 모든 버전을 받았습니다.</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <a href="/experiments/jonbeo-msw/">
+          <span class="card-title" lang="en">Jonbeo MSW performance</span>
+          <span class="problem">MSW가 첫 화면과 화면이 뜬 뒤의 클릭 반응을 각각 늦췄을까?</span>
+          <span class="finding">워커 대기가 화면을 가렸습니다. 대기 제거 후 개발 서버에서 제목이 6.44초 → 0.34초에 나타났고, 로딩 후 INP 개선은 확인되지 않았습니다.</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
       </nav>
     </main>
   </body>

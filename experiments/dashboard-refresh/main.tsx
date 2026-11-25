@@ -132,7 +132,14 @@ function Dashboard() {
   }
 
   return (
-    <ExperimentPage experiment="dashboard-refresh" description="같은 가상 작업을 세 방식으로 받아 보고, 전달 조건에 따라 반영 지연과 요청량이 어떻게 달라지는지 비교합니다.">
+    <ExperimentPage
+      experiment="dashboard-refresh"
+      summary={{
+        problem: '최신 상태를 드물게 조회하면 완료 표시가 늦고, 두 요청 사이에 여러 번 바뀐 중간 상태를 건너뜁니다. 조회 주기를 줄이면 작업이 대기 중일 때도 요청이 늘어납니다.',
+        finding: <>정상 시나리오에서 고정 주기를 1초에서 3초로 늘리자 평균 요청은 <strong>14.0 → 5.7건/작업</strong>, 완료 반영 p95는 <strong>524 → 2,105 ms</strong>, 놓친 갱신은 <strong>2/18 → 8/18</strong>이었습니다. SSE는 전체 반영 p95 <strong>75 ms</strong>로 3회에서 총 18개 갱신을 모두 받았습니다.</>,
+        decision: '최신 상태나 완료만 필요하면 허용 지연과 요청 예산에 맞춰 고정 폴링을 고릅니다. 대기가 길고 진행 중 빠른 반영이 필요하면 적응형 폴링, 모든 버전이 필요하고 장기 연결을 운영할 수 있으면 SSE를 검토합니다.',
+      }}
+    >
       <ExperimentSection id="options">
         <RefreshOptions />
       </ExperimentSection>
