@@ -31,4 +31,6 @@ npm run measure
 - 실험의 각 후보는 자체 HTML과 스타일 진입점이 있습니다. Tailwind와 shadcn/ui는 유틸리티 정의를 공유하면서도 각각의 HTML에서 스타일을 로드합니다.
 - 새 주제는 `experiments/<주제>/`에 자체 진입점을 둡니다. 현재 의존성은 하나의 npm 패키지에서 관리합니다.
 
-[브랜드 테마 측정 결과](docs/brand-theme-results.md)
+## 실험 기록
+
+[실험별 구현 시간·복잡도·트레이드오프](docs/experiments/README.md)

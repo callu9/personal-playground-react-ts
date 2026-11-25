@@ -1,0 +1,115 @@
+{
+  "chrome": "158.0.8127.37",
+  "sharedFiles": 1,
+  "sharedEdits": 5,
+  "samples": [
+    {
+      "variant": "css-modules",
+      "round": 1,
+      "variantFiles": 1,
+      "variantEdits": 1,
+      "patchMs": 4,
+      "firstMs": 639,
+      "allMs": 897
+    },
+    {
+      "variant": "styled-components",
+      "round": 1,
+      "variantFiles": 1,
+      "variantEdits": 1,
+      "patchMs": 5,
+      "firstMs": 726,
+      "allMs": 985
+    },
+    {
+      "variant": "tailwind",
+      "round": 1,
+      "variantFiles": 2,
+      "variantEdits": 2,
+      "patchMs": 13,
+      "firstMs": 713,
+      "allMs": 1024
+    },
+    {
+      "variant": "shadcn",
+      "round": 1,
+      "variantFiles": 2,
+      "variantEdits": 2,
+      "patchMs": 13,
+      "firstMs": 690,
+      "allMs": 933
+    },
+    {
+      "variant": "styled-components",
+      "round": 2,
+      "variantFiles": 1,
+      "variantEdits": 1,
+      "patchMs": 4,
+      "firstMs": 559,
+      "allMs": 787
+    },
+    {
+      "variant": "tailwind",
+      "round": 2,
+      "variantFiles": 2,
+      "variantEdits": 2,
+      "patchMs": 10,
+      "firstMs": 492,
+      "allMs": 753
+    },
+    {
+      "variant": "shadcn",
+      "round": 2,
+      "variantFiles": 2,
+      "variantEdits": 2,
+      "patchMs": 8,
+      "firstMs": 1085,
+      "allMs": 1422
+    },
+    {
+      "variant": "css-modules",
+      "round": 2,
+      "variantFiles": 1,
+      "variantEdits": 1,
+      "patchMs": 3,
+      "firstMs": 544,
+      "allMs": 772
+    },
+    {
+      "variant": "tailwind",
+      "round": 3,
+      "variantFiles": 2,
+      "variantEdits": 2,
+      "patchMs": 10,
+      "firstMs": 518,
+      "allMs": 781
+    },
+    {
+      "variant": "shadcn",
+      "round": 3,
+      "variantFiles": 2,
+      "variantEdits": 2,
+      "patchMs": 10,
+      "firstMs": 606,
+      "allMs": 836
+    },
+    {
+      "variant": "css-modules",
+      "round": 3,
+      "variantFiles": 1,
+      "variantEdits": 1,
+      "patchMs": 5,
+      "firstMs": 592,
+      "allMs": 820
+    },
+    {
+      "variant": "styled-components",
+      "round": 3,
+      "variantFiles": 1,
+      "variantEdits": 1,
+      "patchMs": 4,
+      "firstMs": 521,
+      "allMs": 752
+    }
+  ]
+}
