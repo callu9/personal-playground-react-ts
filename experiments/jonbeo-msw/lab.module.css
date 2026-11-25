@@ -1,0 +1,32 @@
+html:has(.main) {
+  background: #11191a;
+  color: #eff6f2;
+  font: 16px/1.5 system-ui, sans-serif;
+}
+
+.main { width: min(64rem, calc(100% - 2rem)); margin: 2.5rem auto 4rem; }
+.back { color: #a3e4c9; text-underline-offset: 0.25em; }
+.title { margin: 2rem 0; }
+.title h1 { font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.1; margin: 0 0 0.65rem; }
+.title p, .condition, .panelHeader p { color: #b9c8c1; margin: 0; }
+.controls { display: flex; flex-wrap: wrap; align-items: end; gap: 0.75rem; }
+.controls label { display: grid; gap: 0.3rem; }
+.main button, .main select {
+  border: 1px solid #627d72;
+  border-radius: 0.4rem;
+  background: #203532;
+  color: inherit;
+  font: inherit;
+  padding: 0.5rem 0.75rem;
+}
+.main button { cursor: pointer; }
+.main button[aria-pressed="true"] { background: #a3e4c9; color: #152e26; }
+.main :focus-visible { outline: 2px solid #a3e4c9; outline-offset: 3px; }
+.condition { margin: 0.75rem 0 1.5rem; font-size: 0.9rem; }
+.panel { border: 1px solid #435e55; border-radius: 0.65rem; background: #192825; overflow: hidden; }
+.panelHeader { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem; }
+.panelHeader h2 { margin: 0; font-size: 1.3rem; }
+.tableScroll { overflow-x: auto; }
+.main table { width: 100%; min-width: 22rem; border-collapse: collapse; }
+.main :is(th, td) { border-top: 1px solid #435e55; text-align: left; padding: 0.55rem 1rem; }
+.main thead th { color: #a3e4c9; }

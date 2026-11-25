@@ -1,0 +1,24 @@
+[
+  {
+    "commit": "d68ac41",
+    "chrome": "158.0.8127.37",
+    "whilePending": {
+      "released": false,
+      "registerCalls": 1,
+      "controller": null
+    },
+    "shownWhilePaused": false,
+    "shownAfterRelease": true
+  },
+  {
+    "commit": "76f9ac6",
+    "chrome": "158.0.8127.37",
+    "whilePending": {
+      "released": false,
+      "registerCalls": 0,
+      "controller": null
+    },
+    "shownWhilePaused": true,
+    "shownAfterRelease": true
+  }
+]
