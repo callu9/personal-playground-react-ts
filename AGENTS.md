@@ -6,7 +6,8 @@
 
 - 실험 코드는 `experiments/<실험명>/`에 둡니다. 스타일은 각 HTML 진입점 또는 CSS Modules 범위에 둡니다. 공통 페이지 구조는 `experiments/shared/`에서 재사용하고, 비교에 영향을 주는 코드·스타일 공유는 실험 지침에 적습니다.
 - 실험 문서는 `docs/experiments/<실험명>/`에 둡니다. `README.md`는 질문, 통제 조건, 조작·재현 절차와 원본 파일 안내를 담습니다. `results.md`는 판단, 관측값과 해석 한계를 담습니다. 공개 가능한 회차별 원본은 `evidence/`에서 확인할 수 있게 합니다.
-- [루트 README](README.md)는 처음 보는 사람이 화면과 문서를 찾는 목차입니다. [실험 목차](docs/experiments/README.md), [화면 문서 링크](experiments/shared/experiment-documents.ts)와 함께 갱신합니다. 문서의 화면 링크는 README에 적은 로컬 서버에서 열립니다. 화면의 문서 링크는 통합 브랜치의 GitHub 렌더링을 사용합니다. 통합 브랜치가 바뀌면 문서 링크의 기준 ref를 함께 바꿉니다.
+- [루트 README](README.md)는 프로젝트 개요, 폴더 구조, 공통 지침과 실험 문서의 목차입니다. [실험 목차](docs/experiments/README.md), [화면 문서 링크](experiments/shared/experiment-documents.ts)와 함께 갱신합니다. 문서의 화면 링크는 README에 적은 로컬 서버에서 열리고, 화면의 문서 링크는 GitHub `main`을 가리킵니다.
+- `main`은 검증된 실험과 공통 문서를 두는 기본 브랜치입니다. 실험 변경은 작업 브랜치에서 만들고 관련 검증을 거쳐 `main`에 병합합니다.
 - 코드나 문서를 이동할 때 기존 링크가 어디서 쓰이는지 확인합니다. 보고서에서 인용한 특정 커밋과 원본 데이터 경로는 재현 근거입니다.
 
 ## 비교와 기록

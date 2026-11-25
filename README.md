@@ -30,10 +30,10 @@ React와 TypeScript로 서로 다른 프론트엔드 질문을 작은 단위로 
 
 ## 로컬 실행
 
-세 실험이 있는 [통합 브랜치](https://github.com/callu9/personal-playground-react-ts/tree/feature/jonbeo-msw-performance)에서 Node.js 24와 Google Chrome으로 실행합니다. 처음 내려받을 때는 다음 명령을 사용합니다.
+세 실험은 기본 브랜치인 `main`에서 Node.js 24와 Google Chrome으로 실행합니다. 처음 내려받을 때는 다음 명령을 사용합니다.
 
 ```sh
-git clone --branch feature/jonbeo-msw-performance https://github.com/callu9/personal-playground-react-ts.git
+git clone https://github.com/callu9/personal-playground-react-ts.git
 cd personal-playground-react-ts
 npm ci
 npm run dev -- --host 127.0.0.1 --port 5173 --strictPort

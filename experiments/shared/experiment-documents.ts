@@ -1,8 +1,7 @@
 const repository = 'https://github.com/callu9/personal-playground-react-ts'
-// The repository default branch contains the first experiment. Use the branch with all three.
-const documentRef = 'feature/jonbeo-msw-performance'
+const documentRef = 'main'
 
-function repositoryPath(path: string, view: 'blob' | 'tree' = 'blob') {
+export function repositoryPath(path: string, view: 'blob' | 'tree' = 'blob') {
   return `${repository}/${view}/${documentRef}/${path}`
 }
 
