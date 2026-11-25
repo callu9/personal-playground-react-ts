@@ -27,7 +27,7 @@ Vite가 출력한 주소에서 실험을 선택합니다. 위 표의 경로를 �
 
 - **Brand style runtime**에서 후보별 주입 코드를 비교합니다. 페이지 안의 CSS Modules 대시보드 또는 **Playground 전체 화면 열기**에서 **Demo account**를 바꿔 Grove, Signal, Ember를 전환할 수 있습니다. **Signed out**을 고르면 기본 브랜드가 적용됩니다.
 - **Dashboard auto refresh**에서 **Update method**는 작업을 가져오는 방식, **Next run scenario**는 다음 작업의 서버 전달 조건을 고릅니다. 시나리오를 바꾸면 기존 측정표가 갱신되고, **Start run**을 누르면 별도로 실제 관측 목록을 볼 수 있습니다.
-- **Jonbeo MSW performance**에서 **Request path**와 **Initial rendering**을 각각 바꿔 볼 수 있습니다. 하단에서 동일한 응답을 사용한 플레이그라운드 결과와 원본 Next.js 개발 서버의 게이트 제거 전후 결과를 확인합니다.
+- **Jonbeo MSW performance**의 **원본 코드 분석**에서 `MSWComponent`의 렌더링 조건, 서버의 데이터 경로, 통화 전환 코드를 확인합니다. **Playground**의 **Request path**와 **Initial rendering**은 같은 합성 응답으로 초기화·렌더링을 비교하는 별도 실험입니다.
 
 ## 브랜드 테마 화면
 

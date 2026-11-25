@@ -5,6 +5,25 @@
   max-width: 80ch;
   margin: 0.45rem 0 0;
 }
+.originalAnalysis { display: grid; gap: .8rem; }
+.originalAnalysis article {
+  padding: clamp(.85rem, 2.4vw, 1.2rem);
+  border: 1px solid var(--experiment-line);
+  border-radius: .7rem;
+  background: #fff;
+}
+.originalAnalysis h3 { margin: 0; font-size: 1.05rem; }
+.originalAnalysis p { max-width: 86ch; margin: .4rem 0 0; color: var(--experiment-muted); }
+.originalAnalysis .analysisIntro { margin: 0; }
+.originalAnalysis pre {
+  width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: .55rem 0;
+  padding: .35rem .65rem;
+  border-radius: .4rem;
+  background: var(--experiment-tint);
+}
 .sourceLinks { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; margin-top: 0.65rem; }
 .sourceLinks a { color: var(--experiment-link); }
 .measurement { white-space: nowrap; }

@@ -12,6 +12,14 @@ test('recorded lab results and original development results are identifiable on 
   await expect(page.getByLabel('Request path')).toHaveCSS('color-scheme', 'light')
   await expect(page.getByLabel('Initial rendering')).toBeVisible()
 
+  await page.getByRole('navigation', { name: '이 페이지에서' }).getByRole('link', { name: '원본 코드 분석' }).click()
+  await expect(page).toHaveURL(/#source-analysis$/)
+  const analysis = page.getByRole('region', { name: '원본 코드 분석', exact: true })
+  await expect(analysis.getByText('if (!mswReady) return null;', { exact: true })).toBeVisible()
+  await expect(analysis).toContainText('0건')
+  await expect(analysis).toContainText('이벤트 처리')
+  await expect(analysis.getByRole('link', { name: 'Provider의 초기 렌더링 조건' })).toHaveAttribute('href', /jonbeo-next-ts\/blob\/d68ac41\/src\/providers\/MSWComponent\.tsx#L6-L20$/)
+
   await expect(page.getByRole('heading', { name: '결론', exact: true })).toBeVisible()
   await expect(page.getByText('201.5 ms', { exact: true })).toBeVisible()
 

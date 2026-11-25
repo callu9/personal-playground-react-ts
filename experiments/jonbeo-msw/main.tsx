@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { ExperimentOptions, ExperimentPage, ExperimentSection, ExperimentTable, ExperimentWorkbench } from '../shared/ExperimentPage'
 import { labPath, portfolioPath, responseDelayMs, workerScope, type Holding, type Portfolio, type RequestPath, type Variant } from './contract'
 import { mark, metrics } from './metrics'
+import { OriginalAnalysis } from './OriginalAnalysis'
 import { coldResults, originalResults } from './recorded'
 import styles from './lab.module.css'
 
@@ -15,8 +16,6 @@ const renderingLabels = { gated: 'Wait for worker', shell: 'Render shell first' 
 const paths = ['off', 'passthrough', 'mock'] as const
 const number = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
 const metricNumber = new Intl.NumberFormat('en-US')
-const reportUrl = 'https://github.com/callu9/personal-playground-react-ts/blob/0a26ebe0fc0b6725abda9089028f1ce52634b9d1/docs/experiments/jonbeo-msw/results.md'
-const sourceChangeUrl = 'https://github.com/callu9/jonbeo-next-ts/commit/76f9ac6'
 
 function Controls() {
   const [path, setPath] = useState(mode)
@@ -78,7 +77,7 @@ const Findings = memo(function Findings() {
   return (
     <div className={styles.findings}>
       <div>
-        <h3>요청 경로와 초기 렌더링</h3>
+        <h3>플레이그라운드의 요청 경로와 초기 렌더링</h3>
         <p>
           <span lang="en">Render shell first</span>로 렌더링을 고정했을 때 요청부터 응답 헤더까지 직접 API는 {coldResults.off.headers[1]} ms,
           요청 통과는 {coldResults.passthrough.headers[1]} ms, 모의 응답은 {coldResults.mock.headers[1]} ms가 걸렸습니다.
@@ -92,22 +91,6 @@ const Findings = memo(function Findings() {
           초회에 두 워커 경로의 데이터 표시가 늦어진 방향은 같은 조건의 재측정에서 반복되지 않았습니다. Chrome trace에서는 요청 전 스크립트 작업과 MSW 모듈 로드 시간이 실행마다 달랐습니다.
           재측정에서 응답 본문 수신 후 DOM 반영까지는 두 구현 모두 약 11~12 ms였습니다.
         </p>
-      </div>
-      <div>
-        <h3>원본 Jonbeo에서 첫 화면을 가린 게이트</h3>
-        <p>
-          원본 개발 서버에서 게이트를 제거하자 제목이 DOM에 나타난 중앙값이 <strong>{originalResults.titleSeconds[0]}초 → {originalResults.titleSeconds[1]}초</strong>로 줄었습니다.
-          제거 전에는 탐색부터 워커 등록 호출까지 {originalResults.navigationToRegisterSeconds}초, 등록 호출부터 모의 응답 활성화까지 약 {Math.round(originalResults.registerToEnabledMs)} ms가 걸렸습니다.
-          초기 번들 로드와 모의 응답 활성화를 기다리는 동안 게이트가 화면 전체를 가렸습니다.
-        </p>
-        <p>
-          통화 전환 INP 중앙값은 {originalResults.inpMs[0]} → {originalResults.inpMs[1]} ms였습니다. 클릭 이벤트 처리가 가장 오래 걸린 구간이었고,
-          해당 구간의 중앙값은 {originalResults.eventProcessingMs[0]} → {originalResults.eventProcessingMs[1]} ms였습니다. 운영 환경의 영향은 별도 측정 대상입니다.
-        </p>
-        <div className={styles.sourceLinks}>
-          <a href={sourceChangeUrl}>원본 게이트 제거 커밋</a>
-          <a href={reportUrl}>자세한 측정 보고서</a>
-        </div>
       </div>
     </div>
   )
@@ -310,10 +293,11 @@ function App() {
     <ExperimentPage
       experiment="jonbeo-msw"
       summary={{
-        problem: '원본 Jonbeo 개발 모드에서는 MSW 워커가 준비될 때까지 앱 전체를 가려 버튼을 쓸 수 없었습니다. 첫 화면이 늦게 뜨는 문제와 화면이 뜬 뒤 클릭 반응이 느린 문제를 따로 추적했습니다.',
+        problem: <>원본 Jonbeo 개발 모드의 <code>MSWComponent</code>는 워커가 준비될 때까지 <code>null</code>을 반환해 페이지 전체의 렌더링을 막았습니다.</>,
         finding: <>워커 대기를 제거한 원본 개발 서버에서 제목이 DOM에 나타난 중앙값은 <strong>{originalResults.titleSeconds[0]}초 → {originalResults.titleSeconds[1]}초</strong>였습니다. 통화 전환 INP는 <strong>{originalResults.inpMs[0]} → {originalResults.inpMs[1]} ms</strong>였고, 가장 오래 걸린 구간은 클릭 이벤트 처리였습니다.</>,
-        decision: '독립적으로 쓸 수 있는 UI를 먼저 그리고, 모의 응답이 필요한 요청만 워커를 기다리게 합니다. 초회에 관측한 데이터 표시 지연은 재측정에서 반복되지 않았습니다. 로딩 후 클릭 반응을 개선하려면 이벤트 처리 구간을 따로 봐야 합니다.',
+        decision: '변경 커밋은 홈의 서버 데이터 경로를 유지하면서 MSW 초기화 호출과 렌더링 대기 조건을 제거했습니다. 로딩 후 클릭 지연은 이벤트 처리에서 관측됐습니다.',
       }}
+      sourceAnalysis={<OriginalAnalysis />}
     >
       <ExperimentSection id="options">
         <ComparisonAxes />

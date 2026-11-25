@@ -1,14 +1,29 @@
 # 03. Jonbeo MSW와 입력 반응성
 
-**원본에서는 MSW 초기화를 기다리는 렌더링 게이트 때문에 첫 화면에서 입력할 수 없었다.** 플레이그라운드에서 보유 종목 UI를 먼저 그리니 첫 방문의 버튼 준비가 요청 통과에서 **201.5ms**, 모의 응답에서 **171.2ms** 빨라졌다. 데이터가 표시된 뒤 같은 동작의 INP는 아래 표에 기록했다. 추가 측정에서는 첫 방문 데이터 표시가 늦어진 방향이 반복되지 않았다. 원본 개발 서버의 통화 전환은 이벤트 처리 구간에서 가장 많은 시간을 썼다. [재측정과 Chrome trace](#데이터-표시-지연-재측정)
+**Jonbeo 원본의 첫 화면은 `MSWComponent`가 워커 준비를 기다리는 동안 자식을 렌더링하지 않아 늦어졌습니다.** `d68ac41` → `76f9ac6`에서 제목의 첫 DOM 등장 중앙값은 **6.44초 → 0.34초**였습니다. 홈 데이터는 두 커밋 모두 서버에서 같은 fixture를 읽었습니다. 로딩 후 통화 전환 INP의 가장 큰 구간은 클릭 이벤트 처리였으며, 워커 대기 제거 이후 INP 개선은 확인되지 않았습니다. [원본 Chrome 측정](#jonbeo-원본-클론-재측정)
+
+**플레이그라운드**에서는 같은 합성 데이터로 MSW 끔·요청 통과·모의 응답을 비교했습니다. UI를 먼저 그리자 첫 방문의 정렬 버튼은 워커 경로에서 **171.2~201.5ms** 빨리 준비됐습니다. 초회에 관측한 데이터 표시 지연은 같은 조건의 재측정에서 반복되지 않았습니다. [플레이그라운드 재측정과 Chrome trace](#데이터-표시-지연-재측정)
 
 ## 원본 코드에서 확인한 경로
 
-1. 게이트 제거 직전 `d68ac41`에서 `MSWComponent`는 초기 상태의 `mswReady`가 `false`이면 하위 앱 전체를 렌더링하지 않았다. 개발 모드에서는 effect가 `initMocks()`를 호출하고 브라우저에서 `await worker.start()`가 끝날 때까지 이 상태가 지속된다. 등록이 실패하면 준비 상태를 갱신하는 경로도 없었다. [MSWComponent](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/providers/MSWComponent.tsx) · [초기화 코드](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/mocks/index.ts)
-2. 해당 커밋의 포트폴리오 페이지는 서버 데이터 계층에서 보유 종목을 읽었다. 브라우저의 포트폴리오 mock은 별도 개발 주소에 150ms 지연을 설정했고, 화면에는 250ms를 기본값으로 하는 스켈레톤 유지 로직도 있었다. 화면이 비어 있던 시간, 스켈레톤을 표시한 시간, HTTP 응답 시간은 각각 따로 재야 한다. [페이지](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/app/page.tsx) · [데이터 접근](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/apis/portfolio.ts) · [mock 핸들러](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/mocks/handler/portfolio.ts) · [스켈레톤 훅](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/hooks/useMinLoading.tsx)
-3. `76f9ac6`은 레이아웃의 `initMocks()` 호출과 Provider의 `MSWComponent` 경계를 제거했다. Jonbeo의 과거 보고서에는 이후 프로덕션 Lighthouse 기준선이 있지만, 당시 문제 입력의 FID·INP trace나 현장 표본은 저장소에서 확인되지 않았다. Lighthouse 점수는 과거 수치로만 참고했다. [게이트 제거 커밋](https://github.com/callu9/jonbeo-next-ts/commit/76f9ac6) · [Jonbeo 성능 보고서](https://github.com/callu9/jonbeo-next-ts/blob/main/docs/performance-refactoring.md)
+### 첫 화면을 막은 렌더링 조건
 
-두 커밋의 Next 개발 서버도 Chrome에서 실행했다. 등록 호출을 보류한 동안 `d68ac41`에서는 포트폴리오 제목이 보이지 않았고, 등록을 재개하자 제목과 종목을 표시했다. `76f9ac6`에서는 등록 호출 없이 등록을 보류한 상태에서도 동일한 제목과 종목을 표시했다. 이 검사는 원본 코드에서 대기의 영향만 확인했으며, 보류 시간을 성능 수치에 포함하지 않았다. [원본 실행 관측값](evidence/jonbeo-msw-history.json)
+- `d68ac41`의 `RootLayout` → `Providers` → `MSWComponent` 경로가 페이지 전체를 감쌉니다. `MSWComponent`는 `mswReady`를 `false`로 시작하고 `if (!mswReady) return null;`로 자식 렌더링을 막습니다. effect의 `await initMocks()`가 완료되어야 `setMswReady(true)`를 실행합니다. 개발 모드의 브라우저에서는 `initMocks()`가 `./browser`를 동적으로 불러와 `await worker.start()`까지 기다립니다. 개발 모드 밖에서는 `initMocks()`가 즉시 반환하지만, 제거 전 Provider의 첫 렌더는 여전히 effect를 기다리는 구조입니다. [레이아웃](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/app/layout.tsx#L8-L24) · [Provider 배치](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/providers/providers.tsx#L5-L11) · [렌더링 조건](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/providers/MSWComponent.tsx#L6-L20) · [모의 응답 초기화](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/mocks/index.ts#L1-L9)
+- `76f9ac6`은 레이아웃에서 `initMocks()` 호출을 제거하고, `Providers`에서 `MSWComponent`를 빼 자식을 직접 렌더링합니다. 비교 커밋의 세 변경 파일은 레이아웃, Provider, 회귀 테스트입니다. 첫 화면의 대기 의존성은 아래의 동일 커밋 내 보류·재개 검사로 확인했습니다. **6.44초 → 0.34초**는 두 커밋의 전체 제목 DOM 시각으로, 모듈 로드·워커 준비·후속 렌더링을 포함합니다. [커밋 diff](https://github.com/callu9/jonbeo-next-ts/commit/76f9ac6)
+
+### 종목을 가져온 실제 경로
+
+두 커밋의 홈은 서버의 `PortfolioPage` → `getPortfolio()` → `getPortfolioData()` → `portfolio.json`을 읽어 종목을 클라이언트 컴포넌트에 props로 전달했습니다. `/api/portfolio`도 같은 fixture를 반환하며, `delay(150)`은 별도 브라우저 mock 핸들러의 `localhost:4000/portfolio`에 적용됩니다. Chrome 원본 측정 14회에서 두 포트폴리오 경로의 브라우저 요청은 총 **0건**이었습니다. 홈의 `useMinLoading`은 별도의 스켈레톤 정책이며, 이번 원본 측정은 첫 DOM 등장을 기록했습니다. [서버 페이지](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/app/page.tsx#L16-L32) · [getPortfolio](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/apis/portfolio.ts#L1-L6) · [fixture 접근](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/data/portfolio.ts#L1-L6) · [mock 핸들러](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/mocks/handler/portfolio.ts#L4-L11) · [스켈레톤 훅](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/hooks/useMinLoading.tsx#L10-L31)
+
+앞선 `48ccd38`에서 `getPortfolio()`가 서버의 `fetch('http://localhost:4000/portfolio')`에서 fixture 직접 읽기로 바뀌었습니다. 그 이전 코드에는 Node의 `setupServer`에 같은 mock 핸들러를 등록하는 경로가 있었습니다. 이어 `d68ac41`이 Route Handler를 추가했고 `76f9ac6`이 렌더링 대기를 제거했습니다. 이번 14회는 마지막 두 커밋만 측정했으므로, 앞선 서버 fetch에서 150ms 모의 응답이 실제로 적용된 빈도와 비용은 미측정입니다. [데이터 접근 변경 diff](https://github.com/callu9/jonbeo-next-ts/commit/48ccd38) · [이전 Node 초기화](https://github.com/callu9/jonbeo-next-ts/blob/694ca4b/src/mocks/index.ts#L1-L9) · [이전 Node 핸들러 등록](https://github.com/callu9/jonbeo-next-ts/blob/694ca4b/src/mocks/server.ts#L1-L5) · [Route Handler 추가](https://github.com/callu9/jonbeo-next-ts/commit/d68ac41)
+
+### 화면이 뜬 뒤 통화 버튼이 한 일
+
+`UnitButton`의 클릭은 Zustand의 `isWon`을 바꿉니다. 구독 중인 계정 금액과 종목 행이 새 단위로 다시 표시됩니다. 두 커밋에서 이 경로는 같습니다. Chrome의 클릭 처리 중앙값은 **314.2 → 701.0ms**, 이벤트가 처리되기까지 기다린 구간은 **3.2 → 7.8ms**였습니다. trace에서 React 개발 빌드 호출을 확인했으며, 개별 컴포넌트나 금액 포맷 함수의 비용은 분리 계측하지 않았습니다. 원본 프로덕션 성능과 당시 방문자의 FID는 검증 범위 밖입니다. [통화 버튼](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/components/UnitButton.tsx#L4-L14) · [상태 변경](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/store/unitStore.ts#L8-L12) · [종목 행 반영](https://github.com/callu9/jonbeo-next-ts/blob/d68ac41/src/components/portfolio/StockListItem.tsx#L19-L52)
+
+### 원본 코드에서 지연을 재현한 검사
+
+Chrome에서 `navigator.serviceWorker.register()`를 보류했습니다. `d68ac41`은 등록을 1회 호출한 뒤 제목과 종목이 DOM에 없었고, 등록을 재개하자 둘 다 나타났습니다. `76f9ac6`은 등록을 호출하지 않고 둘 다 표시했습니다. 이 의존성 검사는 원본 두 체크아웃에서 다시 확인했습니다. 보류 시간은 성능 벤치마크에 포함하지 않습니다. [원본 실행 관측값](evidence/jonbeo-msw-history.json) · [재현 스크립트](../../../scripts/verify-jonbeo-source-gate.mjs)
 
 ## 동일 조건 설계
 
@@ -126,7 +141,7 @@
 ## 적용 판단
 
 - **개발·QA에서 MSW가 필요한 경우**에는 페이지 전체를 준비 상태에 묶지 않는다. 독립적인 UI는 먼저 보여 주고, 응답 출처가 중요한 요청만 워커를 기다리게 한다. 등록이 실패하면 영역에 오류를 표시하거나 테스트를 실패 처리한다. 모의 데이터가 필요한 상황에서 API로 조용히 우회하면 테스트가 잘못 통과할 수 있다.
-- **서버 fixture나 Route Handler로 충분한 경우**에는 Jonbeo의 수정처럼 포트폴리오 데이터를 서버가 제공하도록 하는 편이 단순하다. 워커 등록을 기다리는 경로가 줄고 코드에서 개발용 mock과 실제 데이터를 구분하기 쉬워진다. 다른 팀과 독립적으로 API 오류·지연을 재현해야 한다면 브라우저 인터셉션의 이점이 크다. [Jonbeo 서버 데이터와 Route Handler](https://github.com/callu9/jonbeo-next-ts/blob/main/docs/performance-refactoring.md)
+- **서버 fixture나 Route Handler로 충분한 경우**에는 화면을 브라우저 워커 준비에 묶을 필요가 없다. Jonbeo 홈은 두 커밋 모두 서버 fixture를 사용했고, 이번 비교에서 제거한 것은 앱 전체의 초기화 대기였다. 브라우저에서 API 오류나 지연을 재현해야 하는 요청에는 인터셉션을 적용할 수 있다. [Jonbeo 변경 diff](https://github.com/callu9/jonbeo-next-ts/commit/76f9ac6)
 - **표시된 버튼을 누르고도 느린 경우**에는 입력과 겹친 긴 메인 스레드 작업, 이벤트 처리, 다음 페인트를 각각 본다. 원본의 스켈레톤 최소 시간은 콘텐츠 표시를 늦추는 별도 후보이고, CPU 작업의 영향은 해당 작업과 입력 시점이 겹친 trace에서 판단한다.
 
 ## 재실행
@@ -165,8 +180,9 @@ npm run dev -- --hostname 127.0.0.1 --port 4188
 npm run dev -- --hostname 127.0.0.1 --port 4189
 ```
 
-플레이그라운드 루트에서 아래 명령을 실행한다. 스크립트는 두 서버의 API 본문을 대조하고 새 Chrome 컨텍스트에서 통화 전환 버튼을 누른다. `test-results/jonbeo-msw/source-development/`에 개별 결과와 커밋별 Chrome trace를 저장한다.
+플레이그라운드 루트에서 아래 명령을 실행한다. 첫 스크립트는 등록을 보류해 화면의 의존성을 확인한다. 두 번째는 API 본문을 대조하고 새 Chrome 컨텍스트에서 통화 전환 버튼을 누른다. `test-results/jonbeo-msw/source-development/`에 개별 결과와 커밋별 Chrome trace를 저장한다.
 
 ```sh
+node scripts/verify-jonbeo-source-gate.mjs http://127.0.0.1:4188/ http://127.0.0.1:4189/
 node scripts/measure-jonbeo-source.mjs http://127.0.0.1:4188/ http://127.0.0.1:4189/ development
 ```

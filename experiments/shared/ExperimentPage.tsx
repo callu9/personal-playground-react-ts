@@ -8,6 +8,7 @@ const experiments = {
 } as const
 
 const sections = {
+  'source-analysis': '원본 코드 분석',
   options: '선택지',
   playground: 'Playground',
   conclusion: '결론',
@@ -17,9 +18,10 @@ const sections = {
 type Experiment = keyof typeof experiments
 type Section = keyof typeof sections
 
-export function ExperimentPage({ experiment, summary, children }: {
+export function ExperimentPage({ experiment, summary, sourceAnalysis, children }: {
   experiment: Experiment
   summary: { problem: ReactNode; finding: ReactNode; decision: ReactNode }
+  sourceAnalysis?: ReactNode
   children: ReactNode
 }) {
   useLayoutEffect(() => {
@@ -53,12 +55,13 @@ export function ExperimentPage({ experiment, summary, children }: {
           </section>
           <nav className={styles.sections} aria-label="이 페이지에서">
             <ul>
-              {Object.entries(sections).map(([id, label]) => (
-                <li key={id}><a href={`#${id}`}>{label}</a></li>
-              ))}
+              {Object.entries(sections)
+                .filter(([id]) => id !== 'source-analysis' || sourceAnalysis)
+                .map(([id, label]) => <li key={id}><a href={`#${id}`}>{label}</a></li>)}
             </ul>
           </nav>
         </header>
+        {sourceAnalysis && <ExperimentSection id="source-analysis">{sourceAnalysis}</ExperimentSection>}
         {children}
       </main>
     </div>
