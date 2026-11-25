@@ -1,0 +1,1009 @@
+{
+  "configuration": "development",
+  "chrome": "158.0.8127.37",
+  "cpuRate": 4,
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "rounds": 7,
+  "actions": 8,
+  "bodyBytes": 1061,
+  "hash": "f4d246bf2813b72bc1c7c8f0d2ac30ac1cc90653da13e5c446a3daffff94815c",
+  "samples": [
+    {
+      "round": 1,
+      "commit": "d68ac41",
+      "traced": false,
+      "marks": {
+        "init": 373.5,
+        "registerCalled": 4791,
+        "registerResolved": 4820.800000000745,
+        "workerController": 4825.699999999255,
+        "mockingEnabled": 4845.5,
+        "heading": 5253.400000002235,
+        "unitControl": 5253.800000000745,
+        "holdings": 5254
+      },
+      "firstInputDelayMs": 4.400000002235174,
+      "fcpMs": 4568,
+      "ttfbMs": 338.9000000022352,
+      "controller": true,
+      "portfolioRequests": [],
+      "inp": {
+        "value": 416,
+        "inputDelay": 88.30000000074506,
+        "processing": 270.6000000014901,
+        "presentation": 57.099999997764826
+      }
+    },
+    {
+      "round": 1,
+      "commit": "76f9ac6",
+      "traced": false,
+      "marks": {
+        "init": 280,
+        "heading": 302.30000000074506,
+        "unitControl": 302.4000000022352,
+        "holdings": 303.1000000014901
+      },
+      "firstInputDelayMs": 34.600000001490116,
+      "fcpMs": 968,
+      "ttfbMs": 247.19999999925494,
+      "controller": false,
+      "portfolioRequests": [],
+      "inp": {
+        "value": 592,
+        "inputDelay": 16.100000001490116,
+        "processing": 555.5,
+        "presentation": 20.399999998509884
+      }
+    },
+    {
+      "round": 2,
+      "commit": "76f9ac6",
+      "traced": false,
+      "marks": {
+        "init": 843.2000000029802,
+        "heading": 900.6000000014901,
+        "unitControl": 901.6000000014901,
+        "holdings": 902.2000000029802
+      },
+      "firstInputDelayMs": 32.80000000074506,
+      "fcpMs": 1700,
+      "ttfbMs": 830.1000000014901,
+      "controller": false,
+      "portfolioRequests": [],
+      "inp": {
+        "value": 864,
+        "inputDelay": 7.800000000745058,
+        "processing": 830.1999999992549,
+        "presentation": 26
+      }
+    },
+    {
+      "round": 2,
+      "commit": "d68ac41",
+      "traced": false,
+      "marks": {
+        "init": 541.8000000007451,
+        "registerCalled": 5353.5,
+        "registerResolved": 5408.300000000745,
+        "workerController": 5414.60000000149,
+        "mockingEnabled": 5444.10000000149,
+        "heading": 6165.400000002235,
+        "unitControl": 6170.199999999255,
+        "holdings": 6171
+      },
+      "firstInputDelayMs": 6.399999998509884,
+      "fcpMs": 7332,
+      "ttfbMs": 453.80000000074506,
+      "controller": true,
+      "portfolioRequests": [],
+      "inp": {
+        "value": 488,
+        "inputDelay": 0.19999999925494194,
+        "processing": 397.19999999925494,
+        "presentation": 90.60000000149012
+      }
+    },
+    {
+      "round": 3,
+      "commit": "d68ac41",
+      "traced": false,
+      "marks": {
+        "init": 1365.5,
+        "registerCalled": 11307.800000000745,
+        "registerResolved": 11888.60000000149,
+        "workerController": 11933.5,
+        "mockingEnabled": 11999.39999999851,
+        "heading": 12185,
+        "unitControl": 12185.10000000149,
+        "holdings": 12185.199999999255
+      },
+      "firstInputDelayMs": 2,
+      "fcpMs": 10144,
+      "ttfbMs": 1344,
+      "controller": true,
+      "portfolioRequests": [],
+      "inp": {
+        "value": 200,
+        "inputDelay": 3.199999999254942,
+        "processing": 136.80000000074506,
+        "presentation": 60
+      }
+    },
+    {
+      "round": 3,
+      "commit": "76f9ac6",
+      "traced": false,
+      "marks": {
+        "init": 1749.9000000022352,
+        "heading": 2196.5,
+        "unitControl": 2197.5,
+        "holdings": 2198
+      },
+      "firstInputDelayMs": 17.100000001490116,
+      "fcpMs": 2896,
+      "ttfbMs": 1733.300000000745,
+      "controller": false,
+      "portfolioRequests": [],
+      "inp": {
+        "value": 240,
+        "inputDelay": 0.5,
+        "processing": 224.19999999925494,
+        "presentation": 15.300000000745058
+      }
+    },
+    {
+      "round": 4,
+      "commit": "76f9ac6",
+      "traced": false,
+      "marks": {
+        "init": 1578.8999999985099,
+        "heading": 1583.3999999985099,
+        "unitControl": 1583.6000000014901,
+        "holdings": 1583.800000000745
+      },
+      "firstInputDelayMs": 1.800000000745058,
+      "fcpMs": 2744,
+      "ttfbMs": 1540.3999999985099,
+      "controller": false,
+      "portfolioRequests": [],
+      "inp": {
+        "value": 224,
+        "inputDelay": 52.900000002235174,
+        "processing": 155.89999999850988,
+        "presentation": 15.199999999254942
+      }
+    },
+    {
+      "round": 4,
+      "commit": "d68ac41",
+      "traced": false,
+      "marks": {
+        "init": 169.59999999776483,
+        "registerCalled": 14737.5,
+        "registerResolved": 14910,
+        "workerController": 14911,
+        "mockingEnabled": 14935.79999999702,
+        "heading": 15042.29999999702,
+        "unitControl": 15043.199999999255,
+        "holdings": 15043.199999999255
+      },
+      "firstInputDelayMs": 22.5,
+      "fcpMs": 16144,
+      "ttfbMs": 157.29999999701977,
+      "controller": true,
+      "portfolioRequests": [],
+      "inp": {
+        "value": 440,
+        "inputDelay": 2.600000001490116,
+        "processing": 323.29999999701977,
+        "presentation": 114.10000000149012
+      }
+    },
+    {
+      "round": 5,
+      "commit": "d68ac41",
+      "traced": false,
+      "marks": {
+        "init": 195.69999999925494,
+        "registerCalled": 5279.599999997765,
+        "registerResolved": 5316.39999999851,
+        "workerController": 5320.29999999702,
+        "mockingEnabled": 5331.39999999851,
+        "heading": 5843.89999999851,
+        "unitControl": 5844.79999999702,
+        "holdings": 5845.199999999255
+      },
+      "firstInputDelayMs": 25.599999997764826,
+      "fcpMs": 6924,
+      "ttfbMs": 161.89999999850988,
+      "controller": true,
+      "portfolioRequests": [],
+      "inp": {
+        "value": 416,
+        "inputDelay": 2.5,
+        "processing": 314.19999999925494,
+        "presentation": 99.30000000074506
+      }
+    },
+    {
+      "round": 5,
+      "commit": "76f9ac6",
+      "traced": false,
+      "marks": {
+        "init": 280.6000000014901,
+        "heading": 307.5,
+        "unitControl": 313.20000000298023,
+        "holdings": 313.5
+      },
+      "firstInputDelayMs": 24.199999999254942,
+      "fcpMs": 1032,
+      "ttfbMs": 224,
+      "controller": false,
+      "portfolioRequests": [],
+      "inp": {
+        "value": 744,
+        "inputDelay": 2.300000000745058,
+        "processing": 701,
+        "presentation": 40.69999999925494
+      }
+    },
+    {
+      "round": 6,
+      "commit": "76f9ac6",
+      "traced": false,
+      "marks": {
+        "init": 276,
+        "heading": 304.6000000014901,
+        "unitControl": 304.80000000074506,
+        "holdings": 304.80000000074506
+      },
+      "firstInputDelayMs": 28.799999997019768,
+      "fcpMs": 1096,
+      "ttfbMs": 261.6000000014901,
+      "controller": false,
+      "portfolioRequests": [],
+      "inp": {
+        "value": 1016,
+        "inputDelay": 15.899999998509884,
+        "processing": 961.3999999985099,
+        "presentation": 38.70000000298023
+      }
+    },
+    {
+      "round": 6,
+      "commit": "d68ac41",
+      "traced": false,
+      "marks": {
+        "init": 321.4000000022352,
+        "registerCalled": 5953.800000000745,
+        "registerResolved": 5970.900000002235,
+        "workerController": 5983.10000000149,
+        "mockingEnabled": 6003.800000000745,
+        "heading": 6714.60000000149,
+        "unitControl": 6714.70000000298,
+        "holdings": 6714.800000000745
+      },
+      "firstInputDelayMs": 23.299999997019768,
+      "fcpMs": 7712,
+      "ttfbMs": 295.20000000298023,
+      "controller": true,
+      "portfolioRequests": [],
+      "inp": {
+        "value": 408,
+        "inputDelay": 3.399999998509884,
+        "processing": 341.80000000074506,
+        "presentation": 62.80000000074506
+      }
+    },
+    {
+      "round": 7,
+      "commit": "d68ac41",
+      "traced": false,
+      "marks": {
+        "init": 183.10000000149012,
+        "registerCalled": 5459.300000000745,
+        "registerResolved": 5539.300000000745,
+        "workerController": 5549.60000000149,
+        "mockingEnabled": 5565.60000000149,
+        "heading": 6439,
+        "unitControl": 6439.199999999255,
+        "holdings": 6439.699999999255
+      },
+      "firstInputDelayMs": 1.5,
+      "fcpMs": 7280,
+      "ttfbMs": 158.10000000149012,
+      "controller": true,
+      "portfolioRequests": [],
+      "inp": {
+        "value": 488,
+        "inputDelay": 157.10000000149012,
+        "processing": 268.80000000074506,
+        "presentation": 62.099999997764826
+      }
+    },
+    {
+      "round": 7,
+      "commit": "76f9ac6",
+      "traced": false,
+      "marks": {
+        "init": 301.30000000074506,
+        "heading": 335.20000000298023,
+        "unitControl": 335.70000000298023,
+        "holdings": 335.70000000298023
+      },
+      "firstInputDelayMs": 10.300000000745058,
+      "fcpMs": 1612,
+      "ttfbMs": 247.90000000223517,
+      "controller": false,
+      "portfolioRequests": [],
+      "inp": {
+        "value": 992,
+        "inputDelay": 3.399999998509884,
+        "processing": 969.2000000029802,
+        "presentation": 19.399999998509884
+      }
+    }
+  ],
+  "traces": [
+    {
+      "commit": "76f9ac6",
+      "traced": true,
+      "marks": {
+        "init": 218.19999999925494,
+        "heading": 252.69999999925494,
+        "unitControl": 254.5,
+        "holdings": 255.10000000149012
+      },
+      "firstInputDelayMs": 11.699999999254942,
+      "fcpMs": 1148,
+      "ttfbMs": 156.80000000074506,
+      "controller": false,
+      "portfolioRequests": [],
+      "inp": {
+        "value": 408,
+        "inputDelay": 1.1000000014901161,
+        "processing": 277.0999999977648,
+        "presentation": 129.80000000074506
+      },
+      "summary": {
+        "main": {
+          "pid": 50344,
+          "tid": 53488,
+          "taskCount": 3431
+        },
+        "marksFromFirstMs": {
+          "init": 0,
+          "heading": 34.586,
+          "unitControl": 36.365,
+          "holdings": 36.992,
+          "actionsDone": 11917.825
+        },
+        "intervals": {
+          "initToHeading": {
+            "elapsedMs": 34.586,
+            "busyMs": 34.247,
+            "longestTaskMs": 45.998,
+            "events": [
+              {
+                "name": "RunTask",
+                "fromStartMs": -35.696,
+                "durationMs": 45.998
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": -35.696,
+                "durationMs": 45.464
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 21.407,
+                "durationMs": 16.092
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 21.408,
+                "durationMs": 10.042
+              }
+            ],
+            "mainActivities": []
+          },
+          "headingToHoldings": {
+            "elapsedMs": 2.406,
+            "busyMs": 2.406,
+            "longestTaskMs": 16.092,
+            "events": [
+              {
+                "name": "RunTask",
+                "fromStartMs": -13.179,
+                "durationMs": 16.092
+              }
+            ],
+            "mainActivities": []
+          }
+        },
+        "mainPaintAfterLastMarkMs": 846.583,
+        "resources": [
+          {
+            "name": "ResourceSendRequest",
+            "url": "/_next/static/chunks/app/layout.js",
+            "fromFirstMarkMs": -22.048,
+            "fromServiceWorker": null
+          },
+          {
+            "name": "ResourceReceiveResponse",
+            "url": "/_next/static/chunks/app/layout.js",
+            "fromFirstMarkMs": 912.595,
+            "fromServiceWorker": false
+          },
+          {
+            "name": "ResourceFinish",
+            "url": "/_next/static/chunks/app/layout.js",
+            "fromFirstMarkMs": 913.259,
+            "fromServiceWorker": null
+          }
+        ]
+      }
+    },
+    {
+      "commit": "d68ac41",
+      "traced": true,
+      "marks": {
+        "init": 131.09999999776483,
+        "registerCalled": 11379.699999999255,
+        "registerResolved": 11440.89999999851,
+        "workerController": 11441.599999997765,
+        "mockingEnabled": 11444.89999999851,
+        "heading": 11783.29999999702,
+        "unitControl": 11788.599999997765,
+        "holdings": 11789.599999997765
+      },
+      "firstInputDelayMs": 12.899999998509884,
+      "fcpMs": 11088,
+      "ttfbMs": 95,
+      "controller": true,
+      "portfolioRequests": [],
+      "inp": {
+        "value": 424,
+        "inputDelay": 12.899999998509884,
+        "processing": 331.70000000298023,
+        "presentation": 79.39999999850988
+      },
+      "summary": {
+        "main": {
+          "pid": 30256,
+          "tid": 57536,
+          "taskCount": 3967
+        },
+        "marksFromFirstMs": {
+          "init": 0,
+          "registerCalled": 11248.592,
+          "registerResolved": 11309.713,
+          "workerController": 11310.51,
+          "mockingEnabled": 11313.775,
+          "heading": 11652.136,
+          "unitControl": 11657.466,
+          "holdings": 11658.518,
+          "actionsDone": 18407.073
+        },
+        "intervals": {
+          "initToRegisterCalled": {
+            "elapsedMs": 11248.592,
+            "busyMs": 2810.252,
+            "longestTaskMs": 1522.232,
+            "events": [
+              {
+                "name": "RunTask",
+                "fromStartMs": 93.183,
+                "durationMs": 24.054
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 93.184,
+                "durationMs": 23.844
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 117.295,
+                "durationMs": 37.05
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 117.296,
+                "durationMs": 37.033
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 804.161,
+                "durationMs": 1522.232
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 804.161,
+                "durationMs": 1521.65
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 2326.419,
+                "durationMs": 25.199
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 2326.421,
+                "durationMs": 25.179
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 2352.293,
+                "durationMs": 15.109
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 2352.293,
+                "durationMs": 15.096
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 2396.584,
+                "durationMs": 13.215
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 2396.585,
+                "durationMs": 13.201
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 2409.805,
+                "durationMs": 11.055
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 2409.806,
+                "durationMs": 11.039
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 2429.198,
+                "durationMs": 64.321
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 2429.2,
+                "durationMs": 53.873
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 2493.532,
+                "durationMs": 99.646
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 2493.534,
+                "durationMs": 99.611
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 2593.189,
+                "durationMs": 13.309
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 2593.19,
+                "durationMs": 13.292
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 2606.6,
+                "durationMs": 155.371
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 2606.601,
+                "durationMs": 155.273
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 2763.832,
+                "durationMs": 11.35
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 2763.833,
+                "durationMs": 11.335
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 2775.209,
+                "durationMs": 26.245
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 2775.21,
+                "durationMs": 26.231
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 2802.403,
+                "durationMs": 15.935
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 2802.405,
+                "durationMs": 15.914
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 2827.937,
+                "durationMs": 48.943
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 2827.938,
+                "durationMs": 48.609
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 2876.888,
+                "durationMs": 39.439
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 2876.89,
+                "durationMs": 39.418
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 2916.354,
+                "durationMs": 33.15
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 2916.354,
+                "durationMs": 32.731
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 2949.675,
+                "durationMs": 64.46
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 2949.677,
+                "durationMs": 64.419
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 10777.537,
+                "durationMs": 15.613
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 10777.549,
+                "durationMs": 15.581
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 10807.033,
+                "durationMs": 122.178
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 10807.034,
+                "durationMs": 122.148
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 10934.278,
+                "durationMs": 156.136
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 10934.279,
+                "durationMs": 156.027
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 11090.784,
+                "durationMs": 12.844
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 11090.784,
+                "durationMs": 12.673
+              },
+              {
+                "name": "RunTask",
+                "fromStartMs": 11120.877,
+                "durationMs": 127.241
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 11120.877,
+                "durationMs": 127.13
+              }
+            ],
+            "mainActivities": [
+              {
+                "name": "EvaluateScript",
+                "overlapMs": 1515.589,
+                "script": "/_next/static/chunks/main-app.js"
+              },
+              {
+                "name": "EvaluateScript",
+                "overlapMs": 155.704,
+                "script": "/_next/static/chunks/_app-pages-browser_src_mocks_browser_ts.js"
+              },
+              {
+                "name": "FunctionCall",
+                "overlapMs": 155.157,
+                "script": "node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js"
+              },
+              {
+                "name": "EvaluateScript",
+                "overlapMs": 126.158,
+                "script": "/_next/static/chunks/_app-pages-browser_src_lib_feature_ts.js"
+              },
+              {
+                "name": "FunctionCall",
+                "overlapMs": 122.044,
+                "script": "node_modules/next/dist/compiled/next-devtools/index.js"
+              },
+              {
+                "name": "FunctionCall",
+                "overlapMs": 93.422,
+                "script": "node_modules/next/dist/compiled/next-devtools/index.js"
+              },
+              {
+                "name": "FunctionCall",
+                "overlapMs": 64.122,
+                "script": "node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js"
+              },
+              {
+                "name": "FunctionCall",
+                "overlapMs": 48.295,
+                "script": "node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js"
+              },
+              {
+                "name": "FunctionCall",
+                "overlapMs": 33.26,
+                "script": "node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js"
+              },
+              {
+                "name": "FunctionCall",
+                "overlapMs": 32.632,
+                "script": "node_modules/next/dist/compiled/next-devtools/index.js"
+              },
+              {
+                "name": "PrePaint",
+                "overlapMs": 28.887
+              },
+              {
+                "name": "UpdateLayoutTree",
+                "overlapMs": 23.855
+              }
+            ]
+          },
+          "registerCalledToMockingEnabled": {
+            "elapsedMs": 65.183,
+            "busyMs": 64.537,
+            "longestTaskMs": 43.397,
+            "events": [
+              {
+                "name": "RunTask",
+                "fromStartMs": 1.24,
+                "durationMs": 43.397
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 1.414,
+                "durationMs": 42.822
+              }
+            ],
+            "mainActivities": [
+              {
+                "name": "FunctionCall",
+                "overlapMs": 6.891,
+                "script": "node_modules/next/dist/compiled/next-devtools/index.js"
+              },
+              {
+                "name": "Layout",
+                "overlapMs": 4.445
+              }
+            ]
+          },
+          "mockingEnabledToHeading": {
+            "elapsedMs": 338.361,
+            "busyMs": 338.354,
+            "longestTaskMs": 346.288,
+            "events": [
+              {
+                "name": "RunTask",
+                "fromStartMs": 0.795,
+                "durationMs": 346.288
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": 0.796,
+                "durationMs": 346.259
+              }
+            ],
+            "mainActivities": [
+              {
+                "name": "FunctionCall",
+                "overlapMs": 336.915,
+                "script": "node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js"
+              }
+            ]
+          },
+          "headingToHoldings": {
+            "elapsedMs": 6.382,
+            "busyMs": 6.382,
+            "longestTaskMs": 346.288,
+            "events": [
+              {
+                "name": "RunTask",
+                "fromStartMs": -337.566,
+                "durationMs": 346.288
+              },
+              {
+                "name": "ThreadControllerImpl::RunTask",
+                "fromStartMs": -337.565,
+                "durationMs": 346.259
+              }
+            ],
+            "mainActivities": [
+              {
+                "name": "FunctionCall",
+                "overlapMs": 6.382
+              }
+            ]
+          }
+        },
+        "mainPaintAfterLastMarkMs": 994.464,
+        "resources": [
+          {
+            "name": "ResourceSendRequest",
+            "url": "/_next/static/chunks/app/layout.js",
+            "fromFirstMarkMs": -4.532,
+            "fromServiceWorker": null
+          },
+          {
+            "name": "ResourceReceiveResponse",
+            "url": "/_next/static/chunks/app/layout.js",
+            "fromFirstMarkMs": 172.826,
+            "fromServiceWorker": false
+          },
+          {
+            "name": "ResourceFinish",
+            "url": "/_next/static/chunks/app/layout.js",
+            "fromFirstMarkMs": 173.012,
+            "fromServiceWorker": null
+          }
+        ]
+      }
+    }
+  ],
+  "traceVerification": [
+    {
+      "commit": "76f9ac6",
+      "path": "test-results/jonbeo-msw/source-development/76f9ac6.json.gz",
+      "resources": [
+        {
+          "script": "/_next/static/chunks/main-app.js",
+          "requestFromInitMs": -23.618,
+          "requestToHeadersMs": 945.885
+        }
+      ],
+      "mainEvaluation": [
+        2755.209
+      ],
+      "inp": {
+        "value": 408,
+        "inputDelay": 1.1000000014901161,
+        "processing": 277.0999999977648,
+        "presentation": 129.80000000074506
+      },
+      "longestClickProcessingMs": 288.0550000000003,
+      "longestClickCalls": [
+        {
+          "script": "node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js",
+          "ms": 283.661
+        }
+      ]
+    },
+    {
+      "commit": "d68ac41",
+      "path": "test-results/jonbeo-msw/source-development/d68ac41.json.gz",
+      "resources": [
+        {
+          "script": "/_next/static/chunks/main-app.js",
+          "requestFromInitMs": -4.673,
+          "requestToHeadersMs": 799.163
+        },
+        {
+          "script": "/_next/static/chunks/_app-pages-browser_src_mocks_browser_ts.js",
+          "requestFromInitMs": 2829.421,
+          "requestToHeadersMs": 7977.162
+        }
+      ],
+      "mainEvaluation": [
+        1515.589
+      ],
+      "inp": {
+        "value": 424,
+        "inputDelay": 12.899999998509884,
+        "processing": 331.70000000298023,
+        "presentation": 79.39999999850988
+      },
+      "longestClickProcessingMs": 319.6999999999989,
+      "longestClickCalls": [
+        {
+          "script": "node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js",
+          "ms": 308.104
+        },
+        {
+          "script": "node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js",
+          "ms": 7.205
+        }
+      ]
+    }
+  ],
+  "summary": [
+    {
+      "commit": "d68ac41",
+      "n": 7,
+      "inpReports": 7,
+      "inpRange": [
+        200,
+        488
+      ],
+      "pagesWithWorker": 7,
+      "browserPortfolioRequests": 0,
+      "ttfb": 295.2,
+      "fcp": 7332,
+      "registerCalled": 5459.3,
+      "registerToEnabled": 90.6,
+      "enabledToHeading": 512.5,
+      "heading": 6439,
+      "headingAfterTtfb": 6280.9,
+      "unitControl": 6439.2,
+      "holdings": 6439.7,
+      "headingToHoldings": 0.7,
+      "inp": 416,
+      "inpInput": 3.2,
+      "inpProcessing": 314.2,
+      "inpPresentation": 62.8,
+      "firstInput": 6.4
+    },
+    {
+      "commit": "76f9ac6",
+      "n": 7,
+      "inpReports": 7,
+      "inpRange": [
+        224,
+        1016
+      ],
+      "pagesWithWorker": 0,
+      "browserPortfolioRequests": 0,
+      "ttfb": 261.6,
+      "fcp": 1612,
+      "registerCalled": null,
+      "registerToEnabled": null,
+      "enabledToHeading": null,
+      "heading": 335.2,
+      "headingAfterTtfb": 70.5,
+      "unitControl": 335.7,
+      "holdings": 335.7,
+      "headingToHoldings": 0.8,
+      "inp": 744,
+      "inpInput": 7.8,
+      "inpProcessing": 701,
+      "inpPresentation": 20.4,
+      "firstInput": 24.2
+    }
+  ]
+}

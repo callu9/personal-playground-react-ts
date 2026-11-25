@@ -4,6 +4,7 @@ import os from 'node:os'
 import { join } from 'node:path'
 import { chromium, expect } from '@playwright/test'
 import { preview } from 'vite'
+import { startTrace, stopTrace, summarizeTrace } from './chrome-startup-trace.mjs'
 import { labPath, portfolioPath, responseDelayMs, workerScope } from '../experiments/jonbeo-msw/contract.ts'
 
 const modes = ['off', 'passthrough', 'mock']
@@ -16,10 +17,12 @@ const viewport = { width: 1280, height: 900 }
 const cpuRate = 4
 const actions = 8
 const workerScript = workerScope + 'mockServiceWorker.js'
+const traceEnabled = process.env.MSW_BENCH_TRACE === '1'
 const output = 'test-results/jonbeo-msw'
 const hash = (body) => createHash('sha256').update(body).digest('hex')
 const startedAt = performance.now()
 await mkdir(output, { recursive: true })
+if (traceEnabled) await mkdir(join(output, 'traces'), { recursive: true })
 
 function median(values) {
   const numbers = values.filter(Number.isFinite).sort((a, b) => a - b)
@@ -133,21 +136,59 @@ try {
   const browser = await chromium.launch({ channel: 'chrome' })
   try {
     const samples = []
+    const failures = []
+    const traceSession = traceEnabled ? await browser.newBrowserCDPSession() : null
     for (let round = 0; round < rounds; round++) {
       for (let index = 0; index < scenarios.length; index++) {
         const condition = scenarios[(round + index) % scenarios.length]
-        const context = await browser.newContext({ viewport, serviceWorkers: 'allow' })
-        try {
+        for (let attempt = 1; attempt <= 2; attempt++) {
+          const context = await browser.newContext({ viewport, serviceWorkers: 'allow' })
           const page = await context.newPage()
-          await installInstrumentation(page)
-          const path = condition.mode === 'off' ? labPath : workerScope
-          const url = origin + path + '?mode=' + condition.mode + '&variant=' + condition.variant
-          for (const visit of ['cold', 'repeat']) {
-            const run = await sample(page, url, condition, visit)
-            samples.push({ round: round + 1, ...run })
+          const logs = []
+          page.on('pageerror', (error) => logs.push(error.message))
+          page.on('console', (message) => {
+            if (message.type() === 'error' || message.type() === 'warning') logs.push(message.text())
+          })
+          let visit
+          try {
+            await installInstrumentation(page)
+            const path = condition.mode === 'off' ? labPath : workerScope
+            const url = origin + path + '?mode=' + condition.mode + '&variant=' + condition.variant
+            const visits = []
+            for (visit of ['cold', 'repeat']) {
+              const traced = traceSession && visit === 'cold'
+              if (traced) await startTrace(traceSession)
+              const run = await sample(page, url, condition, visit)
+              let trace
+              if (traced) {
+                const file = join(output, 'traces', [round + 1, condition.mode, condition.variant].join('-') + '.json.gz')
+                const events = await stopTrace(traceSession, file)
+                const workerMarks = condition.mode === 'off' ? [] : ['workerStart', 'workerModuleReady']
+                trace = {
+                  path: file,
+                  ...summarizeTrace(events, 'jonbeo:', [
+                    'boot', 'appCommit', 'effect', ...workerMarks, 'workerReady',
+                    'request', 'headers', 'body', 'stateUpdate', 'data',
+                  ], [/worker-client-/, new RegExp(portfolioPath)]),
+                }
+              }
+              visits.push({ round: round + 1, ...run, trace })
+            }
+            samples.push(...visits)
+            break
+          } catch (error) {
+            const state = await page.evaluate(() => ({
+              marks: window.jonbeoMetrics?.marks,
+              error: window.jonbeoMetrics?.error,
+              controller: navigator.serviceWorker.controller?.state,
+            })).catch(() => null)
+            const failure = { round: round + 1, attempt, visit, ...condition, message: error.message, state, logs }
+            failures.push(failure)
+            console.error(JSON.stringify(failure))
+            if (traceEnabled || attempt === 2) throw error
+          } finally {
+            await context.close()
           }
-        } finally {
-          await context.close()
         }
       }
       console.log('Completed round ' + (round + 1) + '/' + rounds)
@@ -167,9 +208,9 @@ try {
         repeat: 'same context and tab after navigating away, worker registration retained',
         inp: 'web-vitals/attribution, reportAllChanges, 16 ms threshold, captured after the visibilitychange hidden flush' },
       summary: summarize(samples),
-      samples,
+      samples, failures,
     }
-    const file = join(output, 'results.json')
+    const file = join(output, traceEnabled ? 'traced-results.json' : 'results.json')
     await writeFile(file, JSON.stringify(results, null, 2) + '\n')
     console.table(results.summary)
     console.log(file)

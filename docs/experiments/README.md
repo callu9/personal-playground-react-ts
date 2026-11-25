@@ -1,10 +1,14 @@
-# 실험별 측정과 선택 근거
+# 실험 문서
 
-| 실험 | 상태 | 기록 |
+각 실험의 `results.md`에 결론, 측정 조건, 재실행 절차가 있습니다. 개별 측정 원본은 같은 폴더의 `evidence/`에서 찾을 수 있습니다. 로컬 화면과 기준 측정 명령은 [저장소 README](../../README.md)를 참고하세요.
+
+| 실험 결과 | 바로 볼 수 있는 내용 | 측정 원본 |
 |---|---|---|
-| 01. 디자인 시스템과 브랜드 테마 | 구현 및 로컬 측정 완료 | [후보 선택 가이드와 구현·브라우저 실험](../brand-theme-results.md) · [정적·동적 스타일의 빌드와 런타임](brand-style-build-runtime.md) |
-| 02. 대시보드 결과 자동 조회 | 구현 및 로컬 측정 완료 | [고정·적응형 폴링과 SSE 측정 및 선택 기준](dashboard-refresh.md) |
-| 03. Jonbeo MSW와 입력 지연 | 원본 경로 확인 및 로컬 측정 완료 | [워커 시작 경로와 개선 전후 INP](jonbeo-msw-performance.md) |
+| [디자인 시스템과 브랜드 테마](brand-theme/results.md) | 네 후보의 구현·브라우저 비용과 선택 기준, [빌드·개발 반영·런타임 상세 측정](brand-theme/build-runtime.md) | [브랜드 테마 원본](brand-theme/evidence/) |
+| [대시보드 결과 자동 조회](dashboard-refresh/results.md) | 고정·적응형 폴링과 SSE의 반영 지연, 요청량, 단절 복구 | [자동 조회 원본](dashboard-refresh/evidence/) |
+| [Jonbeo MSW와 입력 지연](jonbeo-msw/results.md) | 동일 조건 재측정, Chrome trace, Jonbeo 원본 클론의 로딩과 INP | [Jonbeo MSW 원본](jonbeo-msw/evidence/) |
+
+## 공통 기록 기준
 
 각 실험은 **동일한 비교 과제**와 **통과 조건**을 먼저 정합니다. 처음 동작한 시점과 전체 검증 완료 시점을 따로 기록합니다. 공통 기반 작업과 후보별 작업에 귀속되는 시간을 구분하고, 재사용한 코드와 측정에 포함된 대기를 기록합니다. 유지보수 복잡도는 같은 변경에 필요한 파일·수정 지점·의존성으로 비교합니다.
 

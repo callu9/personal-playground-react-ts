@@ -72,7 +72,10 @@ function App() {
   const [portfolio, setPortfolio] = useState<Portfolio | null>(null)
   const [error, setError] = useState('')
 
+  useLayoutEffect(() => mark('appCommit'), [])
+
   useEffect(() => {
+    mark('effect')
     const request = new AbortController()
 
     async function load() {
@@ -80,6 +83,7 @@ function App() {
         if (mode !== 'off') {
           mark('workerStart')
           const { startWorker } = await import('./worker-client')
+          mark('workerModuleReady')
           await startWorker(mode)
         }
         mark('workerReady')
@@ -94,7 +98,9 @@ function App() {
         mark('body')
         metrics.body = body
         metrics.source = response.headers.get('X-Jonbeo-Source')
-        setPortfolio(JSON.parse(body) as Portfolio)
+        const parsed = JSON.parse(body) as Portfolio
+        mark('stateUpdate')
+        setPortfolio(parsed)
       } catch (cause) {
         if (request.signal.aborted) return
         const message = cause instanceof Error ? cause.message : String(cause)
