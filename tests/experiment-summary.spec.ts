@@ -3,6 +3,7 @@ import { expect, test } from '@playwright/test'
 const experiments = [
   { id: 'brand-theme', title: 'Brand style runtime', issue: '공통값', evidence: '73개' },
   { id: 'dashboard-refresh', title: 'Dashboard auto refresh', issue: '최신 상태', evidence: '분/탭' },
+  { id: 'job-status', title: 'Job status polling', issue: '요청 제한', evidence: '862' },
   { id: 'jonbeo-msw', title: 'Jonbeo MSW performance', issue: '워커', evidence: '6.44초' },
 ] as const
 
