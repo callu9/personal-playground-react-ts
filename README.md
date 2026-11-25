@@ -4,7 +4,7 @@
 
 React와 TypeScript로 서로 다른 프론트엔드 질문을 작은 단위로 실험하는 저장소입니다. 후보마다 같은 화면과 데이터를 사용해 **구현·수정에 드는 시간, 코드 복잡도, 브라우저·서버 비용**을 비교합니다. 어떤 조건에서 무엇을 선택할지와 그 판단의 근거를 실험별 보고서에 남깁니다.
 
-현재 주제는 브랜드 테마 주입, 대시보드 실시간 갱신, Jonbeo의 MSW 초기화와 입력 반응입니다. React·TypeScript·Vite 의존성은 하나의 npm 패키지에서 관리하며, 실험마다 독립 진입점을 둡니다. 브라우저 검증은 Chrome과 Playwright로 실행합니다.
+현재 주제는 아래 [실험](#실험) 표에 있습니다. React·TypeScript·Vite 의존성은 하나의 npm 패키지에서 관리하며, 실험마다 독립 진입점을 둡니다. 브라우저 검증은 Chrome과 Playwright로 실행합니다.
 
 [폴더 구조](#폴더-구조) · [따르는 지침](#따르는-지침) · [로컬 실행](#로컬-실행) · [실험 목록](#실험)
 
@@ -30,7 +30,7 @@ React와 TypeScript로 서로 다른 프론트엔드 질문을 작은 단위로 
 
 ## 로컬 실행
 
-세 실험은 기본 브랜치인 `main`에서 Node.js 24와 Google Chrome으로 실행합니다. 처음 내려받을 때는 다음 명령을 사용합니다.
+각 실험은 기본 브랜치인 `main`에서 Node.js 24와 Google Chrome으로 실행합니다. 처음 내려받을 때는 다음 명령을 사용합니다.
 
 ```sh
 git clone https://github.com/callu9/personal-playground-react-ts.git

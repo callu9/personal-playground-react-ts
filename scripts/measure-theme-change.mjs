@@ -26,6 +26,7 @@ const tailwindEdits = [
 const variants = [
   ['css-modules', [['css-modules/dashboard.module.css', 'padding: 22px; border: 1px solid var(--ds-color-control-border);', 'padding: 22px; border: 1px solid var(--ds-color-dialog-outline);']]],
   ['styled-components', [['styled-components/Region.ts', 'padding: 22px; border: 1px solid ${({ theme }) => theme.color.controlBorder};', 'padding: 22px; border: 1px solid ${({ theme }) => theme.color.dialogOutline};']]],
+  ['styled-css-variables', [['styled-css-variables/Region.ts', 'padding: 22px; border: 1px solid var(--ds-color-control-border);', 'padding: 22px; border: 1px solid var(--ds-color-dialog-outline);']]],
   ['tailwind', tailwindEdits],
   ['shadcn', tailwindEdits],
 ]

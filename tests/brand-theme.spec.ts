@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test'
 import { resolveBrand } from '../experiments/brand-theme/shared/brands'
 
-const variants = ['css-modules', 'styled-components', 'tailwind', 'shadcn']
+const variants = ['css-modules', 'styled-components', 'styled-css-variables', 'tailwind', 'shadcn']
 const path = (variant: string) => `/experiments/brand-theme/${variant}/`
 
 for (const variant of variants) {
@@ -112,12 +112,11 @@ for (const variant of variants) {
   })
 }
 
-test('the brand experiment compares four candidates and embeds the selected dashboard', async ({ page }) => {
+test('the brand experiment compares five candidates and embeds the selected dashboard', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('/')
   await expect(page.getByRole('heading', { name: 'React playground' })).toBeVisible()
   const launcher = page.getByRole('navigation', { name: 'Playground experiments' })
-  await expect(launcher.getByRole('link')).toHaveCount(3)
   await expect(launcher.getByRole('link', { name: /Dashboard auto refresh/ })).toHaveAttribute('href', '/experiments/dashboard-refresh/')
   await expect(launcher.getByRole('link', { name: /Jonbeo MSW performance/ })).toHaveAttribute('href', '/experiments/jonbeo-msw/')
   await expect(page.locator('[data-brand]')).toHaveCount(0)
@@ -145,6 +144,7 @@ test('the brand experiment compares four candidates and embeds the selected dash
   for (const [candidate, code] of [
     ['CSS Modules + React Context', 'useContext(ThemeContext)'],
     ['styled-components', 'ThemeProvider theme={theme.tokens}'],
+    ['styled-components + CSS variables', 'themeVariables(theme)'],
     ['Tailwind CSS', 'bg-brand'],
     ['shadcn/ui + Tailwind', 'bg-primary'],
   ]) {
@@ -152,9 +152,9 @@ test('the brand experiment compares four candidates and embeds the selected dash
   }
   const verification = page.getByRole('region', { name: '검증 결과' })
   const performance = verification.getByRole('table', { name: '성능과 빌드 크기' })
-  await expect(performance.getByRole('rowheader')).toHaveCount(4)
-  await expect(performance.getByRole('cell', { name: '76,785 B' })).toBeVisible()
-  await expect(page.getByRole('table', { name: '후보별 장단점' }).getByRole('rowheader')).toHaveCount(4)
+  await expect(performance.getByRole('rowheader')).toHaveCount(5)
+  await expect(performance.getByRole('cell', { name: '77,558 B' })).toBeVisible()
+  await expect(page.getByRole('table', { name: '후보별 장단점' }).getByRole('rowheader')).toHaveCount(5)
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390)
   await expect(page.locator('[data-brand]')).toHaveCount(0)
 

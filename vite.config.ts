@@ -10,7 +10,7 @@ const input = (path: string) => fileURLToPath(new URL(path, import.meta.url))
 export default defineConfig(({ mode }) => ({
   plugins: [react(), tailwind(), dashboardRefresh(mode === 'test'), jonbeoMsw()],
   resolve: { alias: { '@': input('./experiments/brand-theme/shadcn') } },
-  optimizeDeps: { entries: ['index.html', 'experiments/brand-theme/**/index.html', 'experiments/dashboard-refresh/index.html', 'experiments/jonbeo-msw/**/index.html'] },
+  optimizeDeps: { entries: ['index.html', 'experiments/**/index.html'] },
   build: {
     manifest: true,
     rolldownOptions: {
@@ -22,6 +22,7 @@ export default defineConfig(({ mode }) => ({
         'dashboard-refresh': input('./experiments/dashboard-refresh/index.html'),
         'css-modules': input('./experiments/brand-theme/css-modules/index.html'),
         'styled-components': input('./experiments/brand-theme/styled-components/index.html'),
+        'styled-css-variables': input('./experiments/brand-theme/styled-css-variables/index.html'),
         'tailwind': input('./experiments/brand-theme/tailwind/index.html'),
         'shadcn': input('./experiments/brand-theme/shadcn/index.html'),
       },
