@@ -3,11 +3,13 @@ import { expect, test, type Page } from '@playwright/test'
 const lab = '/experiments/jonbeo-msw/'
 const endpoint = '/api/jonbeo-msw/portfolio'
 const holdingsRows = (page: Page) => page.getByRole('table', { name: 'Holdings', exact: true }).getByRole('row')
+const chart = (page: Page) => page.getByRole('figure', { name: '보유 종목 평가액', exact: true })
 
 test('recorded lab results and original development results are identifiable on the same page', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto(lab)
   await expect(page.getByLabel('Request path')).toBeVisible()
+  await expect(page.getByLabel('Request path')).toHaveCSS('color-scheme', 'light')
   await expect(page.getByLabel('Initial rendering')).toBeVisible()
 
   await expect(page.getByRole('heading', { name: '결론', exact: true })).toBeVisible()
@@ -20,6 +22,10 @@ test('recorded lab results and original development results are identifiable on 
   const original = page.getByRole('table', { name: '원본 Jonbeo 개발 서버 결과', exact: true })
   await expect(original.getByText('6.44초', { exact: true })).toBeVisible()
   await expect(original.getByText('744 ms', { exact: true })).toBeVisible()
+  await expect(chart(page).getByRole('listitem')).toHaveCount(7)
+  await expect(chart(page).getByText('$5,007.63', { exact: true })).toBeVisible()
+  await expect(chart(page).getByRole('listitem').first()).toContainText('ATLS')
+  await expect(chart(page).getByRole('listitem').first()).toContainText('$1,026.48')
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390)
   await expect(holdingsRows(page)).toHaveCount(8)
 })
@@ -34,6 +40,7 @@ test('off, passthrough and mock return equal bodies through the expected routes'
       await page.goto(lab + (mode === 'off' ? '' : 'worker/') + '?mode=' + mode)
       const response = await responsePromise
       await expect(holdingsRows(page)).toHaveCount(8)
+      await expect(chart(page).getByText('$5,007.63', { exact: true })).toBeVisible()
       expect(response.ok()).toBe(true)
       expect(response.headers()['x-jonbeo-source']).toBe(mode === 'mock' ? 'mock' : 'api')
       expect(response.fromServiceWorker()).toBe(mode !== 'off')
@@ -68,7 +75,9 @@ test('shell controls work while worker startup is pending and keep their state w
         await expect(page.getByText('Starting the worker…')).toBeVisible()
         await expect(sort).toHaveCount(0)
       }
+      await expect(chart(page)).toHaveCount(0)
       release()
+      await expect(chart(page)).toBeVisible()
       await expect(holdingsRows(page)).toHaveCount(8)
       await expect(sort).toHaveAttribute('aria-pressed', variant === 'shell' ? 'true' : 'false')
       await expect(holdingsRows(page).nth(1)).toContainText(variant === 'shell' ? 'ATLS' : 'MESA')

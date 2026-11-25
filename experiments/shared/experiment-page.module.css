@@ -63,6 +63,14 @@
 .options dt { font-weight: 700; }
 .options dd { margin: .35rem 0 0; color: var(--experiment-muted); font-size: .875rem; }
 
+.workbench {
+  color-scheme: light;
+  padding: clamp(.75rem, 2vw, 1.2rem);
+  border: 1px solid var(--experiment-line);
+  border-radius: .8rem;
+  background: var(--experiment-tint);
+}
+
 .tableViewport { position: relative; overflow-x: auto; margin-block: .75rem; border: 1px solid var(--experiment-line); border-radius: .65rem; background: #fff; }
 .table { width: 100%; border-collapse: collapse; text-align: left; font-size: .875rem; }
 .table :is(th, td) { border-bottom: 1px solid var(--experiment-line); padding: .65rem .8rem; vertical-align: top; }

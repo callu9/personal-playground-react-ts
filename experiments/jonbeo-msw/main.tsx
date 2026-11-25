@@ -1,7 +1,7 @@
 import { memo, useEffect, useLayoutEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { ExperimentOptions, ExperimentPage, ExperimentSection, ExperimentTable } from '../shared/ExperimentPage'
-import { labPath, portfolioPath, responseDelayMs, workerScope, type Portfolio, type RequestPath, type Variant } from './contract'
+import { ExperimentOptions, ExperimentPage, ExperimentSection, ExperimentTable, ExperimentWorkbench } from '../shared/ExperimentPage'
+import { labPath, portfolioPath, responseDelayMs, workerScope, type Holding, type Portfolio, type RequestPath, type Variant } from './contract'
 import { mark, metrics } from './metrics'
 import { coldResults, originalResults } from './recorded'
 import styles from './lab.module.css'
@@ -119,7 +119,7 @@ const RecordedResults = memo(function RecordedResults() {
       <div>
         <h3 id="cold-results-title">플레이그라운드 첫 방문 결과</h3>
         <p>
-          단위는 ms이며 조건별 7회 중앙값입니다. 각 셀은 변경 전 <span lang="en">{renderingLabels.gated}</span> → 변경 후 <span lang="en">{renderingLabels.shell}</span> 순서입니다.
+          차트를 추가하기 전에 측정한 조건별 7회 중앙값입니다. 단위는 ms이며, 각 셀은 변경 전 <span lang="en">{renderingLabels.gated}</span> → 변경 후 <span lang="en">{renderingLabels.shell}</span> 순서입니다.
           정렬 버튼 준비와 데이터 DOM 반영은 탐색 시작 기준이며, INP는 데이터가 표시된 뒤 정렬 버튼을 8회 눌러 측정했습니다.
         </p>
         <ExperimentTable label="플레이그라운드 첫 방문 결과">
@@ -192,6 +192,36 @@ const RecordedResults = memo(function RecordedResults() {
   )
 })
 
+const PortfolioChart = memo(function PortfolioChart({ holdings }: { holdings: Holding[] }) {
+  const positions = holdings.map(({ code, name, shares, price }) => ({ code, name, value: shares * price }))
+    .sort((a, b) => b.value - a.value)
+  const maxValue = positions[0]?.value ?? 0
+  const total = positions.reduce((sum, position) => sum + position.value, 0)
+
+  return (
+    <figure className={styles.chart} aria-labelledby="portfolio-chart-title" aria-describedby="portfolio-chart-note">
+      <figcaption className={styles.chartCaption}>
+        <div>
+          <h4 id="portfolio-chart-title">보유 종목 평가액</h4>
+          <strong>{number.format(total)}</strong>
+        </div>
+        <p id="portfolio-chart-note">수량 × 단가 · 평가액 순</p>
+      </figcaption>
+      <ul className={styles.chartList}>
+        {positions.map(({ code, name, value }) => (
+          <li key={code}>
+            <span className={styles.chartCode} title={name}>{code}</span>
+            <span className={styles.chartTrack} aria-hidden="true">
+              <span style={{ width: maxValue > 0 ? `${value / maxValue * 100}%` : 0 }} />
+            </span>
+            <span className={styles.chartValue}>{number.format(value)}</span>
+          </li>
+        ))}
+      </ul>
+    </figure>
+  )
+})
+
 function Holdings({ portfolio }: { portfolio: Portfolio | null }) {
   const [sorted, setSorted] = useState(false)
   useLayoutEffect(() => mark('shell'), [])
@@ -213,15 +243,18 @@ function Holdings({ portfolio }: { portfolio: Portfolio | null }) {
         </button>
       </header>
       {portfolio && (
-        <div className={styles.tableScroll}>
-          <table aria-labelledby="holdings-title">
-            <thead><tr><th scope="col">Symbol</th><th scope="col">Name</th><th scope="col">Shares</th><th scope="col">Price</th></tr></thead>
-            <tbody>
-              {rows.map(({ code, name, shares, price }) => (
-                <tr key={code}><th scope="row">{code}</th><td>{name}</td><td>{shares}</td><td>{number.format(price)}</td></tr>
-              ))}
-            </tbody>
-          </table>
+        <div className={styles.portfolioGrid}>
+          <PortfolioChart holdings={portfolio.holdings} />
+          <div className={styles.tableScroll} role="region" aria-label="종목 표 스크롤 영역" tabIndex={0}>
+            <table aria-labelledby="holdings-title">
+              <thead><tr><th scope="col">Symbol</th><th scope="col">Name</th><th scope="col">Shares</th><th scope="col">Price</th></tr></thead>
+              <tbody>
+                {rows.map(({ code, name, shares, price }) => (
+                  <tr key={code}><th scope="row">{code}</th><td>{name}</td><td>{shares}</td><td>{number.format(price)}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </section>
@@ -282,12 +315,12 @@ function App() {
         <ComparisonAxes />
       </ExperimentSection>
       <ExperimentSection id="playground" description="두 설정을 고른 뒤 Apply를 누르면 선택한 조건으로 다시 로드합니다.">
-        <div className={styles.workbench}>
+        <ExperimentWorkbench>
           <Controls />
           <p className={styles.condition}>현재 실행 조건 · <span lang="en">{labels[mode]} · {renderingLabels[variant]}</span></p>
           {error && <p role="alert">{error}</p>}
           {(variant === 'shell' || workerReady) ? <Holdings portfolio={portfolio} /> : <p role="status">Starting the worker…</p>}
-        </div>
+        </ExperimentWorkbench>
       </ExperimentSection>
       <ExperimentSection id="conclusion">
         <Findings />

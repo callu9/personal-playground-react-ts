@@ -81,6 +81,10 @@ export function ExperimentOptions({ items }: { items: readonly { label: ReactNod
   )
 }
 
+export function ExperimentWorkbench({ children }: { children: ReactNode }) {
+  return <div className={styles.workbench}>{children}</div>
+}
+
 export function ExperimentTable({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { ExperimentPage, ExperimentSection } from '../shared/ExperimentPage'
+import { ExperimentPage, ExperimentSection, ExperimentWorkbench } from '../shared/ExperimentPage'
 import {
   apiPath, dashboardPath, methodLabels, pollingIntervals, runPath, scenarioLabels,
   type Connection, type Method, type PollInterval, type Run, type Scenario, type Snapshot,
@@ -137,7 +137,7 @@ function Dashboard() {
         <RefreshOptions />
       </ExperimentSection>
       <ExperimentSection id="playground" description="방식과 서버 조건을 선택해 실제 가상 작업을 시작합니다. 진행 중인 작업은 다른 탭에서 같은 주소로 열 수 있습니다.">
-        <div className={styles.workbench}>
+        <ExperimentWorkbench>
           <section className={styles.controls} aria-label="Run settings" lang="en">
             <label>Update method
               <select aria-describedby="update-method-help" value={method} onChange={(event) => setMethod(event.target.value as Method)}>
@@ -164,7 +164,7 @@ function Dashboard() {
               <RunMonitor key={monitorKey} run={run.id} method={method} interval={interval} />
             </div>
           ) : <p className={styles.empty} lang="en">Choose a method and start a run to see the job status and update history.</p>}
-        </div>
+        </ExperimentWorkbench>
       </ExperimentSection>
       <ExperimentSection id="conclusion">
         <RefreshConclusion scenario={scenario} />
