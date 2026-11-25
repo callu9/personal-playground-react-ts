@@ -9,6 +9,9 @@ html:has(.main) {
 .title { margin: 2rem 0; }
 .title h1 { font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.1; margin: 0 0 0.65rem; }
 .title p, .condition, .panelHeader p { color: #b9c8c1; margin: 0; }
+.title p { max-width: 44rem; }
+.title p, .axes, .results { word-break: keep-all; overflow-wrap: anywhere; }
+.resultLinks { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; margin-top: 0.65rem; }
 .controls { display: flex; flex-wrap: wrap; align-items: end; gap: 0.75rem; }
 .controls label { display: grid; gap: 0.3rem; }
 .main button, .main select {
@@ -22,11 +25,75 @@ html:has(.main) {
 .main button { cursor: pointer; }
 .main button[aria-pressed="true"] { background: #a3e4c9; color: #152e26; }
 .main :focus-visible { outline: 2px solid #a3e4c9; outline-offset: 3px; }
-.condition { margin: 0.75rem 0 1.5rem; font-size: 0.9rem; }
+.condition { margin: 0.75rem 0; font-size: 0.9rem; }
+.condition span { color: #eff6f2; }
+.axes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
+  gap: 0.75rem 1.5rem;
+  margin: 0 0 1.5rem;
+  border-top: 1px solid #435e55;
+  padding-top: 0.75rem;
+  font-size: 0.9rem;
+}
+.axes dt { color: #a3e4c9; font-weight: 600; }
+.axes dd { color: #b9c8c1; margin: 0.25rem 0 0; }
 .panel { border: 1px solid #435e55; border-radius: 0.65rem; background: #192825; overflow: hidden; }
-.panelHeader { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem; }
+.panelHeader { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem; }
 .panelHeader h2 { margin: 0; font-size: 1.3rem; }
 .tableScroll { overflow-x: auto; }
 .main table { width: 100%; min-width: 22rem; border-collapse: collapse; }
 .main :is(th, td) { border-top: 1px solid #435e55; text-align: left; padding: 0.55rem 1rem; }
 .main thead th { color: #a3e4c9; }
+
+.results { margin-top: 2.5rem; }
+.results h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.75rem); }
+.results h3 { margin: 0; font-size: 1rem; }
+.results p { color: #b9c8c1; margin: 0.5rem 0 0; }
+.results p strong { color: #eff6f2; }
+.resultsHeader { margin-bottom: 1rem; }
+.results .comparisonKey {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.65rem;
+  color: #a3e4c9;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.resultGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 0.75rem;
+}
+.resultCard {
+  border: 1px solid #435e55;
+  border-radius: 0.65rem;
+  background: #192825;
+  padding: 1rem;
+}
+.resultCard dl, .sourceMetrics { display: grid; gap: 0.65rem; margin: 0.65rem 0 0; }
+.metric {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.2rem 0.75rem;
+  border-top: 1px solid #435e55;
+  padding-top: 0.5rem;
+}
+.metric dt { color: #b9c8c1; font-size: 0.88rem; }
+.metric dd {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.metric dd > span { white-space: nowrap; }
+.arrow { color: #a3e4c9; }
+.finding { border-left: 2px solid #a3e4c9; margin-top: 1.25rem; padding-left: 1rem; }
+.sourceResults { border-top: 1px solid #435e55; margin-top: 2rem; padding-top: 1.5rem; }
+.sourceMetrics { max-width: 33rem; margin-bottom: 0.75rem; }
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }

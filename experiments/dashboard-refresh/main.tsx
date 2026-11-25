@@ -5,6 +5,7 @@ import {
   type Connection, type Method, type PollInterval, type Run, type Scenario, type Snapshot,
 } from './contract'
 import { transports } from './transports'
+import { Results, RunSettingsHelp } from './Results'
 import styles from './dashboard.module.css'
 
 function initialSettings() {
@@ -134,11 +135,12 @@ function Dashboard() {
       <header>
         <a className={styles.back} href="/">← React playground</a>
         <h1>Dashboard auto refresh</h1>
-        <p>Follow a queued job through completion using one of three update methods.</p>
+        <p lang="ko">같은 가상 작업을 세 방식으로 받아 보고, 전달 조건에 따라 반영 지연과 요청량이 어떻게 달라지는지 비교합니다.</p>
+        <a className={styles.back} href="#refresh-results" lang="ko">측정 결과로 이동 ↓</a>
       </header>
       <section className={styles.controls} aria-label="Run settings">
         <label>Update method
-          <select value={method} onChange={(event) => setMethod(event.target.value as Method)}>
+          <select aria-describedby="update-method-help" value={method} onChange={(event) => setMethod(event.target.value as Method)}>
             {Object.entries(methodLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
           </select>
         </label>
@@ -148,12 +150,13 @@ function Dashboard() {
           </select>
         </label>}
         <label>Next run scenario
-          <select value={scenario} onChange={(event) => setScenario(event.target.value as Scenario)}>
+          <select aria-describedby="run-scenario-help" value={scenario} onChange={(event) => setScenario(event.target.value as Scenario)}>
             {Object.entries(scenarioLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
           </select>
         </label>
         <button type="button" disabled={starting} onClick={start}>{starting ? 'Starting…' : 'Start run'}</button>
       </section>
+      <RunSettingsHelp method={method} scenario={scenario} />
       {error && <p role="alert">The run could not start. Try again.</p>}
       {run && joinUrl ? (
         <>
@@ -161,6 +164,7 @@ function Dashboard() {
           <RunMonitor key={monitorKey} run={run.id} method={method} interval={interval} />
         </>
       ) : <p className={styles.empty}>Choose a method and start a run to see the job status and update history.</p>}
+      <Results scenario={scenario} method={method} interval={interval} />
     </main>
   )
 }

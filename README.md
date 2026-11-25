@@ -23,9 +23,9 @@ npm run dev
 
 Vite가 출력한 주소에서 실험을 선택합니다. 위 표의 경로를 그 주소에 붙여 바로 열 수도 있습니다.
 
-- **Brand style runtime**에서 대표 화면과 네 구현의 비교표를 봅니다. **대시보드 열기**를 누른 뒤 **Demo account**에서 Grove, Signal, Ember를 전환할 수 있습니다. 같은 탭에서 새로고침하면 선택한 계정이 유지됩니다. **Signed out**을 고르면 기본 브랜드가 적용됩니다.
-- **Dashboard auto refresh**에서는 조회 방식과 시나리오를 고른 뒤 **Start run**을 누릅니다. 가상 작업의 상태와 화면이 반영한 버전을 볼 수 있습니다.
-- **Jonbeo MSW performance**에서는 MSW 끔·요청 통과·모의 응답을 고르고, 워커를 기다린 뒤 포트폴리오를 그리는 방식과 화면을 먼저 그리는 방식을 비교합니다.
+- **Brand style runtime**에서 공통 토큰이 네 후보의 화면에 주입되는 코드를 비교합니다. **대시보드 열기**를 누른 뒤 **Demo account**에서 Grove, Signal, Ember를 전환할 수 있습니다. 같은 탭에서 새로고침하면 선택한 계정이 유지됩니다. **Signed out**을 고르면 기본 브랜드가 적용됩니다.
+- **Dashboard auto refresh**에서 **Update method**는 작업을 가져오는 방식, **Next run scenario**는 다음 작업의 서버 전달 조건을 고릅니다. 시나리오를 바꾸면 기존 측정표가 갱신되고, **Start run**을 누르면 별도로 실제 관측 목록을 볼 수 있습니다.
+- **Jonbeo MSW performance**에서 **Request path**와 **Initial rendering**을 각각 바꿔 볼 수 있습니다. 하단에서 동일한 응답을 사용한 플레이그라운드 결과와 원본 Next.js 개발 서버의 게이트 제거 전후 결과를 확인합니다.
 
 ## 브랜드 테마 화면
 

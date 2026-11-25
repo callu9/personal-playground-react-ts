@@ -127,6 +127,15 @@ test('the launcher groups brand candidates into one experiment with a single dem
   const example = page.getByRole('region', { name: '대표 화면' })
   await expect(example.getByRole('img')).toHaveCount(1)
   await expect(example.getByRole('link', { name: '대시보드 열기' })).toHaveAttribute('href', './css-modules/')
+  const codeExamples = page.getByRole('region', { name: '브랜드 테마 주입 코드' })
+  for (const [candidate, code] of [
+    ['CSS Modules + React Context', 'useContext(ThemeContext)'],
+    ['styled-components', 'ThemeProvider theme={theme.tokens}'],
+    ['Tailwind CSS', 'bg-brand'],
+    ['shadcn/ui + Tailwind', 'bg-primary'],
+  ]) {
+    await expect(codeExamples.getByRole('article', { name: candidate }).locator('pre').filter({ hasText: code })).toBeVisible()
+  }
   const performance = page.getByRole('table', { name: '성능과 빌드 크기' })
   await expect(performance.getByRole('rowheader')).toHaveCount(4)
   await expect(performance.getByRole('cell', { name: '76,785 B' })).toBeVisible()

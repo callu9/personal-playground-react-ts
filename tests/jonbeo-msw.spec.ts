@@ -3,6 +3,22 @@ import { expect, test } from '@playwright/test'
 const lab = '/experiments/jonbeo-msw/'
 const endpoint = '/api/jonbeo-msw/portfolio'
 
+test('recorded lab results and original development results are identifiable on the same page', async ({ page }) => {
+  await page.goto(lab)
+  await expect(page.getByLabel('Request path')).toBeVisible()
+  await expect(page.getByLabel('Initial rendering')).toBeVisible()
+
+  const recorded = page.getByRole('region', { name: '플레이그라운드 첫 방문 결과' })
+  await expect(recorded.getByText('201.5 ms')).toBeVisible()
+  await expect(recorded.getByRole('heading', { name: 'MSW passthrough' })).toBeVisible()
+  await expect(recorded.getByRole('heading', { name: 'MSW mock' })).toBeVisible()
+
+  const original = page.getByRole('region', { name: '원본 Jonbeo 개발 서버 결과' })
+  await expect(original.getByText('6.44초', { exact: true })).toBeVisible()
+  await expect(original.getByText('744 ms', { exact: true })).toBeVisible()
+  await expect(page.getByRole('row')).toHaveCount(8)
+})
+
 test('off, passthrough and mock return equal bodies through the expected routes', async ({ browser, baseURL }) => {
   const bodies: string[] = []
   for (const mode of ['off', 'passthrough', 'mock']) {
