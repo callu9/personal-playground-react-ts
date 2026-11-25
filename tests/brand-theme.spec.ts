@@ -35,21 +35,28 @@ for (const variant of variants) {
       await expect(panel).toHaveAttribute('data-brand', 'signal')
       await expect(title).toHaveCSS('font-family', 'Verdana, sans-serif')
       await expect(action).toHaveCSS('background-color', 'rgb(68, 69, 180)')
+      await expect(panel).toHaveCSS('background-color', 'rgb(237, 240, 255)')
+      await expect(page.getByText('Page background: Brand color', { exact: true })).toBeVisible()
 
       await setAccount.selectOption('grove-operator')
       await expect(panel).toHaveAttribute('data-brand', 'grove')
       await expect(title).toHaveCSS('font-family', 'Georgia, serif')
       await expect(action).toHaveCSS('background-color', 'rgb(24, 102, 73)')
+      await expect(panel).toHaveCSS('background-color', 'rgb(245, 247, 246)')
+      await expect(page.getByText('Page background: Default', { exact: true })).toBeVisible()
 
       await setAccount.selectOption('ember-operator')
       await expect(panel).toHaveAttribute('data-brand', 'ember')
       await expect(title).toHaveCSS('font-family', '"Trebuchet MS", sans-serif')
       await expect(action).toHaveCSS('background-color', 'rgb(160, 67, 34)')
+      await expect(panel).toHaveCSS('background-color', 'rgb(255, 241, 232)')
       await page.reload()
       await expect(panel).toHaveAttribute('data-brand', 'ember')
+      await expect(panel).toHaveCSS('background-color', 'rgb(255, 241, 232)')
 
       await setAccount.selectOption('')
       await expect(panel).toHaveAttribute('data-brand', 'signal')
+      await expect(panel).toHaveCSS('background-color', 'rgb(237, 240, 255)')
     })
 
     test('filters results and keeps the theme through the details portal', async ({ page }) => {

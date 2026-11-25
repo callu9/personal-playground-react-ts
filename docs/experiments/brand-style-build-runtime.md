@@ -4,7 +4,7 @@
 
 ## 결정 조건
 
-제품에서는 **등록된 브랜드의 색상과 글꼴만 전환**합니다. 우선 기준은 **개발 중 빠른 수정과 빌드**입니다. 이 조건에서 **CSS Modules + React Context + CSS 변수**를 기본으로 권장합니다. 동일한 모달 토큰 변경에서 후보별 수정이 한 곳이었고, 브랜드 전환 시 CSS 규칙을 추가하지 않았습니다. 네 후보의 프로덕션 빌드 시간이 겹쳐 빌드 속도만으로 특정 후보를 고르기는 어렵습니다.
+제품에서는 **등록된 브랜드의 색상과 글꼴을 전환**하며, 페이지 배경은 공통값과 브랜드 지정값을 지원합니다. 우선 기준은 **개발 중 빠른 수정과 빌드**입니다. 이 조건에서 **CSS Modules + React Context + CSS 변수**를 기본으로 권장합니다. 동일한 모달 토큰 변경에서 후보별 수정이 한 곳이었고, 브랜드 전환 시 CSS 규칙을 추가하지 않았습니다. 네 후보의 프로덕션 빌드 시간이 겹쳐 빌드 속도만으로 특정 후보를 고르기는 어렵습니다.
 
 ## 어느 단계에서 어떤 작업을 하는가
 
@@ -18,6 +18,8 @@
 | shadcn/ui + Tailwind CSS | Tailwind가 공유 유틸리티와 레지스트리 컴포넌트의 클래스를 탐지해 CSS 생성. 컴포넌트 JS도 번들에 포함 | 기존 클래스 조합과 시맨틱 CSS 변수로 색상·글꼴 적용 | Button·Card·Badge 재사용으로 화면 작업을 줄일 수 있고, 이번 모달 토큰 변경은 Tailwind 매핑 공유 | 공유 Tailwind 설정 외에 제공 컴포넌트의 기본 스타일·토큰·전환을 DS에 맞추는 비용. 레지스트리 컴포넌트 설치 시간은 아래 빌드 측정에 미포함 |
 
 [Vite CSS Modules](https://vite.dev/guide/features.html#css-modules) · [styled-components 런타임 성능](https://styled-components.com/docs/advanced#performance) · [styled-components 빌드 플러그인](https://styled-components.com/docs/tooling) · [Tailwind 클래스 탐지](https://tailwindcss.com/docs/detecting-classes-in-source-files#dynamic-class-names) · [Tailwind 테마 변수](https://tailwindcss.com/docs/theme#referencing-other-variables) · [shadcn/ui 테마](https://ui.shadcn.com/docs/theming)
+
+빌드 시간과 개발 중 강조 색상 수정 시간은 페이지 배경 토큰을 추가하기 전의 측정값입니다. 자산 및 브라우저 CSS 규칙은 배경 토큰을 추가한 뒤 다시 측정했습니다.
 
 ## 단일 페이지 프로덕션 빌드
 
@@ -51,10 +53,10 @@
 
 | 후보 | 인라인 CSS 규칙 수 | 루트 브랜드 변수 수 |
 |---|---|---:|
-| CSS Modules + React Context | 0 → 0 → 0 → 0 | 4 |
+| CSS Modules + React Context | 0 → 0 → 0 → 0 | 5 |
 | styled-components | 73 → 146 → 219 → 219 | 0 |
-| Tailwind CSS | 0 → 0 → 0 → 0 | 4 |
-| shadcn/ui | 0 → 0 → 0 → 0 | 4 |
+| Tailwind CSS | 0 → 0 → 0 → 0 | 5 |
+| shadcn/ui | 0 → 0 → 0 → 0 | 5 |
 
 styled-components는 **처음 방문한 브랜드마다 73개의 최상위 규칙을 추가**했습니다. Grove로 돌아갈 때 규칙 수가 그대로였습니다. CSS 변수 기반 후보도 브라우저에서 스타일을 재계산하지만, 관찰한 전환에서 스타일시트 규칙을 추가하지 않았습니다. 규칙 수는 메인 스레드 실행 시간, 메모리 사용량, 사용자 입력 지연을 직접 나타내지 않습니다. [CSSOM 원시 기록](evidence/theme-runtime-style-rules.json)
 

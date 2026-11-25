@@ -1,5 +1,5 @@
 import { type DefaultTheme, styled } from 'styled-components'
-import type { Brand } from '../shared/brands'
+import { pageBackground, type Brand } from '../shared/brands'
 
 declare module 'styled-components' {
   export interface DefaultTheme extends Brand {}
@@ -11,7 +11,7 @@ export const Region = styled.section`
     min-height: 100vh;
     display: grid;
     grid-template-columns: 214px minmax(0, 1fr);
-    background: #f5f7f6;
+    background: ${({ theme }) => pageBackground(theme)};
     color: #182520;
     font-family: ${({ theme }) => theme.font};
     font-size: 14px;

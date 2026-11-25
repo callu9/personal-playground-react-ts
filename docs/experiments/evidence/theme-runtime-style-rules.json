@@ -9,28 +9,28 @@
           "linkedRules": 80,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 4
+          "scopedBrandVariables": 5
         },
         {
           "brand": "signal",
           "linkedRules": 80,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 4
+          "scopedBrandVariables": 5
         },
         {
           "brand": "ember",
           "linkedRules": 80,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 4
+          "scopedBrandVariables": 5
         },
         {
           "brand": "grove",
           "linkedRules": 80,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 4
+          "scopedBrandVariables": 5
         }
       ]
     },
@@ -75,28 +75,28 @@
           "linkedRules": 32,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 4
+          "scopedBrandVariables": 5
         },
         {
           "brand": "signal",
           "linkedRules": 32,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 4
+          "scopedBrandVariables": 5
         },
         {
           "brand": "ember",
           "linkedRules": 32,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 4
+          "scopedBrandVariables": 5
         },
         {
           "brand": "grove",
           "linkedRules": 32,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 4
+          "scopedBrandVariables": 5
         }
       ]
     },
@@ -108,28 +108,28 @@
           "linkedRules": 33,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 4
+          "scopedBrandVariables": 5
         },
         {
           "brand": "signal",
           "linkedRules": 33,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 4
+          "scopedBrandVariables": 5
         },
         {
           "brand": "ember",
           "linkedRules": 33,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 4
+          "scopedBrandVariables": 5
         },
         {
           "brand": "grove",
           "linkedRules": 33,
           "inlineRules": 0,
           "styledRules": 0,
-          "scopedBrandVariables": 4
+          "scopedBrandVariables": 5
         }
       ]
     }

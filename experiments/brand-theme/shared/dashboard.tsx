@@ -87,7 +87,7 @@ function Dashboard({ c, Scope, components = plainComponents }: {
   const portalRef = useRef<HTMLDivElement>(null)
   const triggerRef = useRef<HTMLButtonElement | null>(null)
   const brandId = resolveBrand(account, import.meta.env.VITE_DEFAULT_BRAND)
-  const brand = brands[brandId]
+  const brand: Brand = brands[brandId]
   const { Card, Button, Badge } = components
   const search = query.trim().toLowerCase()
   const visibleResults = results.filter((item) => (
@@ -125,7 +125,11 @@ function Dashboard({ c, Scope, components = plainComponents }: {
       </aside>
       <div className={c.workspace}>
         <header className={c.topbar}>
-          <span>Workspace <span aria-hidden="true">/</span> Operations</span>
+          <span>
+            Workspace <span aria-hidden="true">/</span> Operations
+            <span aria-hidden="true"> · </span>
+            <small>Page background: {brand.pageBackground ? 'Brand color' : 'Default'}</small>
+          </span>
           <label className={c.account}>Demo account
             <select value={account} onChange={(event) => changeAccount(event.target.value)}>
               <option value="">Signed out</option>

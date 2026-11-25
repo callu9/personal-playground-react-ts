@@ -15,6 +15,8 @@ Vite가 출력한 로컬 주소를 열고 구현을 선택한 뒤, 화면 우측
 
 환경 변수는 `.env.example`을 참고해 `.env.local`에 `VITE_DEFAULT_BRAND=signal` 등으로 설정합니다. 공통 우선순위는 **데모 계정 브랜드 → 유효한 환경 변수 → Grove**입니다. 프로덕션의 env 기본값을 바꾸려면 다시 빌드합니다.
 
+페이지 배경은 Grove가 공통 기본값을 쓰고, Signal과 Ember는 각각 지정한 색을 씁니다. 상단의 **Page background**에서 기본값과 브랜드 지정값을 구분할 수 있습니다.
+
 ## 검증 및 측정
 
 ```sh
