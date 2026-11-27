@@ -23,6 +23,12 @@
           <span class="finding">일상 운영 화면의 기본값은 고정 3초입니다. 정상 전달에서 20.6건/분/탭이었고, 낮은 지연이 필요한 관제에는 집중 갱신 p95 70 ms의 SSE가 유리했습니다.</span>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
+        <a href="/experiments/job-status/">
+          <span class="card-title" lang="en">Job status polling</span>
+          <span class="problem">장시간 작업의 상태를 폴링으로 보여 줄 때 요청 제한과 취소 응답 시간까지 감당할 수 있을까?</span>
+          <span class="finding">취소 후 Cancelled 표시까지 중앙값은 SSE 862 ms, 고정 3초 2,522 ms였습니다. 5개 탭의 3초 폴링은 요청 31건 중 10건이 429를 받았습니다.</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
         <a href="/experiments/jonbeo-msw/">
           <span class="card-title" lang="en">Jonbeo MSW performance</span>
           <span class="problem">MSW가 첫 화면과 화면이 뜬 뒤의 클릭 반응을 각각 늦췄을까?</span>
