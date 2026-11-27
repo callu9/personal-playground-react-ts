@@ -17,6 +17,12 @@
           <span class="finding">CSS Modules는 모달 토큰 연결에 1곳을 수정했습니다. styled-components도 1곳이었으며 새 브랜드에 CSS 규칙 73개를 추가했지만, 값을 CSS 변수로 넘기면 0개였습니다.</span>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
+        <a href="/experiments/chart-loading/">
+          <span class="card-title" lang="en">Chart loading</span>
+          <span class="problem">차트가 여러 개인 화면에서 차트를 보일 때 불러오면 첫 화면과 입력이 얼마나 빨라질까?</span>
+          <span class="finding">Eager 대비 보일 때 그리기는 LCP가 404 → 304 ms, 로드 직후 차단이 260 → 0 ms였습니다. 청크를 미리 받으면 첫 차트의 빈 카드가 202 → 99.5 ms로 줄었습니다.</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
         <a href="/experiments/dashboard-refresh/">
           <span class="card-title" lang="en">Dashboard auto refresh</span>
           <span class="problem">지표가 계속 변할 때 요청을 줄이면 화면이 최신 상태보다 얼마나 뒤처질까?</span>
