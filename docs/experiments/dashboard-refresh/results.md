@@ -4,7 +4,7 @@
 
 [비교 조건](#무엇을-비교했나) · [시나리오별 수치](#측정-결과) · [사용 목적별 선택](#사용-목적별-선택)
 
-브랜드 테마 실험의 **Operations overview**를 재사용했습니다. 같은 CSS Modules 테마, 지표 카드, 활동 차트, 상태 분포, 최근 결과 표로 서버의 최신 스냅샷을 보여 줍니다. 화면을 열어 둔 동안 데이터는 계속 갱신되고, 비교에서 바꾸는 것은 고정 폴링·적응형 폴링·SSE의 조회 방식입니다. 기존 작업 상태 실험의 수치는 별도로 볼 수 있습니다. [이전 작업 상태 실험](https://github.com/callu9/personal-playground-react-ts/blob/60c12c6/docs/experiments/dashboard-refresh/results.md)
+브랜드 테마 실험의 **Operations overview**를 재사용했습니다. 같은 CSS Modules 테마, 지표 카드, 활동 차트, 상태 분포, 최근 결과 표로 서버의 최신 스냅샷을 보여 줍니다. 화면을 열어 둔 동안 데이터는 계속 갱신되고, 비교에서 바꾸는 것은 고정 폴링·적응형 폴링·SSE의 조회 방식입니다. 기존 작업 상태 실험의 수치는 [이전 보고서](https://github.com/callu9/personal-playground-react-ts/blob/60c12c6/docs/experiments/dashboard-refresh/results.md)에서 볼 수 있고, 요청 제한·취소·여러 탭을 더해 복원한 실험은 [작업 상태 조회](../job-status/results.md)입니다.
 
 **이 예시의 일상 운영 화면은 고정 3초를 기본으로 둡니다.** 정상 전달에서 집중 갱신 p95는 2,797ms, 요청량은 20.6건/분/탭이었습니다. 지연이 중요한 관제에서는 SSE가 70ms를 기록했습니다. SSE는 탭별 연결을 유지했고 본문 전송량은 고정 3초의 약 1.9배였습니다. [사용 목적별 선택](#사용-목적별-선택)
 

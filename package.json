@@ -9,6 +9,7 @@
     "test": "playwright test",
     "measure": "node scripts/measure-theme.mjs",
     "measure:refresh": "node scripts/measure-dashboard-refresh.mjs",
+    "measure:job-status": "node scripts/measure-job-status.mjs",
     "measure:msw": "node scripts/measure-jonbeo-msw.mjs"
   },
   "dependencies": {

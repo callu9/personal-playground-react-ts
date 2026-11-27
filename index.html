@@ -9,7 +9,7 @@
   <body>
     <main>
       <h1 lang="en">React playground</h1>
-      <p class="intro">세 실험에서 해결하려던 문제와 측정 결과입니다. 항목을 열면 판단 근거와 직접 실행할 수 있는 화면을 볼 수 있습니다.</p>
+      <p class="intro">여러 실험에서 해결하려던 문제와 측정 결과입니다. 항목을 열면 판단 근거와 직접 실행할 수 있는 화면을 볼 수 있습니다.</p>
       <nav aria-label="Playground experiments">
         <a href="/experiments/brand-theme/">
           <span class="card-title" lang="en">Brand style runtime</span>
@@ -21,6 +21,12 @@
           <span class="card-title" lang="en">Dashboard auto refresh</span>
           <span class="problem">지표가 계속 변할 때 요청을 줄이면 화면이 최신 상태보다 얼마나 뒤처질까?</span>
           <span class="finding">일상 운영 화면의 기본값은 고정 3초입니다. 정상 전달에서 20.6건/분/탭이었고, 낮은 지연이 필요한 관제에는 집중 갱신 p95 70 ms의 SSE가 유리했습니다.</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+        <a href="/experiments/job-status/">
+          <span class="card-title" lang="en">Job status polling</span>
+          <span class="problem">장시간 작업의 상태를 폴링으로 보여 줄 때 요청 제한과 취소 응답 시간까지 감당할 수 있을까?</span>
+          <span class="finding">취소 후 Cancelled 표시까지 중앙값은 SSE 862 ms, 고정 3초 2,522 ms였습니다. 5개 탭의 3초 폴링은 요청 31건 중 10건이 429를 받았습니다.</span>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
         <a href="/experiments/jonbeo-msw/">
