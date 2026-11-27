@@ -1,0 +1,630 @@
+{
+  "chrome": "158.0.8127.37",
+  "variants": [
+    {
+      "variant": "css-modules",
+      "jsGzipBytes": 75290,
+      "cssGzipBytes": 2268,
+      "stateMedianMs": 16.6,
+      "stateP95Ms": 18.3,
+      "styleMedianMs": 16.6,
+      "styleP95Ms": 18.3,
+      "transition": {
+        "property": "all",
+        "duration": "0s"
+      },
+      "ruleSnapshots": [
+        {
+          "brand": "grove",
+          "linkedRules": 82,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedDesignVariables": 15
+        },
+        {
+          "brand": "signal",
+          "linkedRules": 82,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedDesignVariables": 15
+        },
+        {
+          "brand": "ember",
+          "linkedRules": 82,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedDesignVariables": 15
+        },
+        {
+          "brand": "grove",
+          "linkedRules": 82,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedDesignVariables": 15
+        }
+      ],
+      "samples": [
+        {
+          "stateMs": 16.69999998807907,
+          "styleMs": 16.69999998807907
+        },
+        {
+          "stateMs": 16.19999998807907,
+          "styleMs": 16.19999998807907
+        },
+        {
+          "stateMs": 16.100000023841858,
+          "styleMs": 16.100000023841858
+        },
+        {
+          "stateMs": 17.5,
+          "styleMs": 17.600000023841858
+        },
+        {
+          "stateMs": 15.399999976158142,
+          "styleMs": 15.399999976158142
+        },
+        {
+          "stateMs": 16.5,
+          "styleMs": 16.5
+        },
+        {
+          "stateMs": 16.69999998807907,
+          "styleMs": 16.69999998807907
+        },
+        {
+          "stateMs": 16.400000035762787,
+          "styleMs": 16.400000035762787
+        },
+        {
+          "stateMs": 16.700000047683716,
+          "styleMs": 16.80000001192093
+        },
+        {
+          "stateMs": 16.099999964237213,
+          "styleMs": 16.099999964237213
+        },
+        {
+          "stateMs": 16.19999998807907,
+          "styleMs": 16.19999998807907
+        },
+        {
+          "stateMs": 15.700000047683716,
+          "styleMs": 15.700000047683716
+        },
+        {
+          "stateMs": 16.599999964237213,
+          "styleMs": 16.599999964237213
+        },
+        {
+          "stateMs": 16.69999998807907,
+          "styleMs": 16.69999998807907
+        },
+        {
+          "stateMs": 17.899999976158142,
+          "styleMs": 17.899999976158142
+        },
+        {
+          "stateMs": 17.30000001192093,
+          "styleMs": 17.400000035762787
+        },
+        {
+          "stateMs": 16.19999998807907,
+          "styleMs": 16.299999952316284
+        },
+        {
+          "stateMs": 16.700000047683716,
+          "styleMs": 16.80000001192093
+        },
+        {
+          "stateMs": 18.30000001192093,
+          "styleMs": 18.30000001192093
+        },
+        {
+          "stateMs": 18.5,
+          "styleMs": 18.5
+        }
+      ]
+    },
+    {
+      "variant": "styled-components",
+      "jsGzipBytes": 87476,
+      "cssGzipBytes": 237,
+      "stateMedianMs": 16.7,
+      "stateP95Ms": 18.4,
+      "styleMedianMs": 16.7,
+      "styleP95Ms": 18.4,
+      "transition": {
+        "property": "all",
+        "duration": "0s"
+      },
+      "ruleSnapshots": [
+        {
+          "brand": "grove",
+          "linkedRules": 8,
+          "inlineRules": 73,
+          "styledRules": 73,
+          "scopedDesignVariables": 0
+        },
+        {
+          "brand": "signal",
+          "linkedRules": 8,
+          "inlineRules": 146,
+          "styledRules": 146,
+          "scopedDesignVariables": 0
+        },
+        {
+          "brand": "ember",
+          "linkedRules": 8,
+          "inlineRules": 219,
+          "styledRules": 219,
+          "scopedDesignVariables": 0
+        },
+        {
+          "brand": "grove",
+          "linkedRules": 8,
+          "inlineRules": 219,
+          "styledRules": 219,
+          "scopedDesignVariables": 0
+        }
+      ],
+      "samples": [
+        {
+          "stateMs": 17.19999998807907,
+          "styleMs": 17.30000001192093
+        },
+        {
+          "stateMs": 14.800000011920929,
+          "styleMs": 14.800000011920929
+        },
+        {
+          "stateMs": 16.100000023841858,
+          "styleMs": 16.100000023841858
+        },
+        {
+          "stateMs": 16.600000023841858,
+          "styleMs": 16.600000023841858
+        },
+        {
+          "stateMs": 16.700000047683716,
+          "styleMs": 16.700000047683716
+        },
+        {
+          "stateMs": 16.69999998807907,
+          "styleMs": 16.69999998807907
+        },
+        {
+          "stateMs": 16.80000001192093,
+          "styleMs": 16.80000001192093
+        },
+        {
+          "stateMs": 16.100000023841858,
+          "styleMs": 16.100000023841858
+        },
+        {
+          "stateMs": 16,
+          "styleMs": 16
+        },
+        {
+          "stateMs": 18.600000023841858,
+          "styleMs": 18.600000023841858
+        },
+        {
+          "stateMs": 17.69999998807907,
+          "styleMs": 17.69999998807907
+        },
+        {
+          "stateMs": 15.600000023841858,
+          "styleMs": 15.699999988079071
+        },
+        {
+          "stateMs": 16.80000001192093,
+          "styleMs": 16.80000001192093
+        },
+        {
+          "stateMs": 14.700000047683716,
+          "styleMs": 14.700000047683716
+        },
+        {
+          "stateMs": 16.899999976158142,
+          "styleMs": 16.899999976158142
+        },
+        {
+          "stateMs": 17.5,
+          "styleMs": 17.5
+        },
+        {
+          "stateMs": 18.400000035762787,
+          "styleMs": 18.400000035762787
+        },
+        {
+          "stateMs": 15.399999976158142,
+          "styleMs": 15.399999976158142
+        },
+        {
+          "stateMs": 17.69999998807907,
+          "styleMs": 17.69999998807907
+        },
+        {
+          "stateMs": 17,
+          "styleMs": 17
+        }
+      ]
+    },
+    {
+      "variant": "styled-css-variables",
+      "jsGzipBytes": 87486,
+      "cssGzipBytes": 237,
+      "stateMedianMs": 16.7,
+      "stateP95Ms": 18.2,
+      "styleMedianMs": 16.7,
+      "styleP95Ms": 18.2,
+      "transition": {
+        "property": "all",
+        "duration": "0s"
+      },
+      "ruleSnapshots": [
+        {
+          "brand": "grove",
+          "linkedRules": 8,
+          "inlineRules": 73,
+          "styledRules": 73,
+          "scopedDesignVariables": 15
+        },
+        {
+          "brand": "signal",
+          "linkedRules": 8,
+          "inlineRules": 73,
+          "styledRules": 73,
+          "scopedDesignVariables": 15
+        },
+        {
+          "brand": "ember",
+          "linkedRules": 8,
+          "inlineRules": 73,
+          "styledRules": 73,
+          "scopedDesignVariables": 15
+        },
+        {
+          "brand": "grove",
+          "linkedRules": 8,
+          "inlineRules": 73,
+          "styledRules": 73,
+          "scopedDesignVariables": 15
+        }
+      ],
+      "samples": [
+        {
+          "stateMs": 17.900000035762787,
+          "styleMs": 17.900000035762787
+        },
+        {
+          "stateMs": 16.80000001192093,
+          "styleMs": 16.80000001192093
+        },
+        {
+          "stateMs": 17.19999998807907,
+          "styleMs": 17.30000001192093
+        },
+        {
+          "stateMs": 18.19999998807907,
+          "styleMs": 18.19999998807907
+        },
+        {
+          "stateMs": 16.69999998807907,
+          "styleMs": 16.69999998807907
+        },
+        {
+          "stateMs": 18.100000023841858,
+          "styleMs": 18.100000023841858
+        },
+        {
+          "stateMs": 16.600000023841858,
+          "styleMs": 16.600000023841858
+        },
+        {
+          "stateMs": 18.19999998807907,
+          "styleMs": 18.19999998807907
+        },
+        {
+          "stateMs": 16.69999998807907,
+          "styleMs": 16.69999998807907
+        },
+        {
+          "stateMs": 16.399999976158142,
+          "styleMs": 16.399999976158142
+        },
+        {
+          "stateMs": 18.099999964237213,
+          "styleMs": 18.099999964237213
+        },
+        {
+          "stateMs": 16.69999998807907,
+          "styleMs": 16.799999952316284
+        },
+        {
+          "stateMs": 16.69999998807907,
+          "styleMs": 16.69999998807907
+        },
+        {
+          "stateMs": 16.600000023841858,
+          "styleMs": 16.600000023841858
+        },
+        {
+          "stateMs": 16.69999998807907,
+          "styleMs": 16.69999998807907
+        },
+        {
+          "stateMs": 16.5,
+          "styleMs": 16.600000023841858
+        },
+        {
+          "stateMs": 16.5,
+          "styleMs": 16.5
+        },
+        {
+          "stateMs": 16.69999998807907,
+          "styleMs": 16.69999998807907
+        },
+        {
+          "stateMs": 17.80000001192093,
+          "styleMs": 17.80000001192093
+        },
+        {
+          "stateMs": 18.400000035762787,
+          "styleMs": 18.400000035762787
+        }
+      ]
+    },
+    {
+      "variant": "tailwind",
+      "jsGzipBytes": 76474,
+      "cssGzipBytes": 4745,
+      "stateMedianMs": 16.7,
+      "stateP95Ms": 17.9,
+      "styleMedianMs": 16.7,
+      "styleP95Ms": 17.9,
+      "transition": {
+        "property": "all",
+        "duration": "0s"
+      },
+      "ruleSnapshots": [
+        {
+          "brand": "grove",
+          "linkedRules": 32,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedDesignVariables": 15
+        },
+        {
+          "brand": "signal",
+          "linkedRules": 32,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedDesignVariables": 15
+        },
+        {
+          "brand": "ember",
+          "linkedRules": 32,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedDesignVariables": 15
+        },
+        {
+          "brand": "grove",
+          "linkedRules": 32,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedDesignVariables": 15
+        }
+      ],
+      "samples": [
+        {
+          "stateMs": 16.600000023841858,
+          "styleMs": 16.600000023841858
+        },
+        {
+          "stateMs": 17.100000023841858,
+          "styleMs": 17.100000023841858
+        },
+        {
+          "stateMs": 17.80000001192093,
+          "styleMs": 17.80000001192093
+        },
+        {
+          "stateMs": 16.700000047683716,
+          "styleMs": 16.700000047683716
+        },
+        {
+          "stateMs": 16.799999952316284,
+          "styleMs": 16.799999952316284
+        },
+        {
+          "stateMs": 15.699999988079071,
+          "styleMs": 15.699999988079071
+        },
+        {
+          "stateMs": 16.700000047683716,
+          "styleMs": 16.700000047683716
+        },
+        {
+          "stateMs": 16.80000001192093,
+          "styleMs": 16.80000001192093
+        },
+        {
+          "stateMs": 16.69999998807907,
+          "styleMs": 16.69999998807907
+        },
+        {
+          "stateMs": 16.700000047683716,
+          "styleMs": 16.700000047683716
+        },
+        {
+          "stateMs": 16.69999998807907,
+          "styleMs": 16.69999998807907
+        },
+        {
+          "stateMs": 17.900000035762787,
+          "styleMs": 17.900000035762787
+        },
+        {
+          "stateMs": 16.80000001192093,
+          "styleMs": 16.80000001192093
+        },
+        {
+          "stateMs": 16.400000035762787,
+          "styleMs": 16.400000035762787
+        },
+        {
+          "stateMs": 18.100000023841858,
+          "styleMs": 18.100000023841858
+        },
+        {
+          "stateMs": 16.600000023841858,
+          "styleMs": 16.600000023841858
+        },
+        {
+          "stateMs": 16.899999976158142,
+          "styleMs": 16.899999976158142
+        },
+        {
+          "stateMs": 16.80000001192093,
+          "styleMs": 16.80000001192093
+        },
+        {
+          "stateMs": 17.5,
+          "styleMs": 17.5
+        },
+        {
+          "stateMs": 16.69999998807907,
+          "styleMs": 16.69999998807907
+        }
+      ]
+    },
+    {
+      "variant": "shadcn",
+      "jsGzipBytes": 89647,
+      "cssGzipBytes": 5815,
+      "stateMedianMs": 16.6,
+      "stateP95Ms": 17.7,
+      "styleMedianMs": 166.9,
+      "styleP95Ms": 168.2,
+      "transition": {
+        "property": "all",
+        "duration": "0.15s"
+      },
+      "ruleSnapshots": [
+        {
+          "brand": "grove",
+          "linkedRules": 33,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedDesignVariables": 15
+        },
+        {
+          "brand": "signal",
+          "linkedRules": 33,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedDesignVariables": 15
+        },
+        {
+          "brand": "ember",
+          "linkedRules": 33,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedDesignVariables": 15
+        },
+        {
+          "brand": "grove",
+          "linkedRules": 33,
+          "inlineRules": 0,
+          "styledRules": 0,
+          "scopedDesignVariables": 15
+        }
+      ],
+      "samples": [
+        {
+          "stateMs": 16.600000023841858,
+          "styleMs": 167
+        },
+        {
+          "stateMs": 17.099999964237213,
+          "styleMs": 168.5
+        },
+        {
+          "stateMs": 16.599999964237213,
+          "styleMs": 167
+        },
+        {
+          "stateMs": 16.80000001192093,
+          "styleMs": 167.0999999642372
+        },
+        {
+          "stateMs": 15.899999976158142,
+          "styleMs": 167
+        },
+        {
+          "stateMs": 16.5,
+          "styleMs": 166.80000001192093
+        },
+        {
+          "stateMs": 18,
+          "styleMs": 168
+        },
+        {
+          "stateMs": 16.400000035762787,
+          "styleMs": 166.9000000357628
+        },
+        {
+          "stateMs": 17,
+          "styleMs": 166.10000002384186
+        },
+        {
+          "stateMs": 16.599999964237213,
+          "styleMs": 166.89999997615814
+        },
+        {
+          "stateMs": 16.80000001192093,
+          "styleMs": 167.4000000357628
+        },
+        {
+          "stateMs": 16.700000047683716,
+          "styleMs": 165.4000000357628
+        },
+        {
+          "stateMs": 16.80000001192093,
+          "styleMs": 165.80000001192093
+        },
+        {
+          "stateMs": 16.799999952316284,
+          "styleMs": 165.5
+        },
+        {
+          "stateMs": 16.400000035762787,
+          "styleMs": 166.30000001192093
+        },
+        {
+          "stateMs": 17.399999976158142,
+          "styleMs": 167.39999997615814
+        },
+        {
+          "stateMs": 16.600000023841858,
+          "styleMs": 166.80000001192093
+        },
+        {
+          "stateMs": 16.600000023841858,
+          "styleMs": 166.4000000357628
+        },
+        {
+          "stateMs": 17.69999998807907,
+          "styleMs": 168.19999998807907
+        },
+        {
+          "stateMs": 15.200000047683716,
+          "styleMs": 166.9000000357628
+        }
+      ]
+    }
+  ]
+}

@@ -25,6 +25,7 @@ export default defineConfig(({ mode }) => ({
         'job-status': input('./experiments/job-status/index.html'),
         'css-modules': input('./experiments/brand-theme/css-modules/index.html'),
         'styled-components': input('./experiments/brand-theme/styled-components/index.html'),
+        'styled-css-variables': input('./experiments/brand-theme/styled-css-variables/index.html'),
         'tailwind': input('./experiments/brand-theme/tailwind/index.html'),
         'shadcn': input('./experiments/brand-theme/shadcn/index.html'),
       },

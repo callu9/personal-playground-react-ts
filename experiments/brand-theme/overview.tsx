@@ -13,6 +13,10 @@ const options = [
     description: 'ThemeProvider로 토큰을 전달하면 스타일 함수가 색상과 글꼴을 읽어 CSS 규칙을 만듭니다.',
   },
   {
+    label: 'styled-components + CSS variables',
+    description: 'styled-components를 유지하되 ThemeProvider는 CSS 변수만 영역에 설정합니다. 스타일은 var(--ds-*)를 참조해 테마 값을 보간하지 않습니다.',
+  },
+  {
     label: 'Tailwind CSS',
     description: '@theme inline에서 CSS 변수에 별칭을 붙이고 bg-brand 같은 유틸리티를 사용합니다.',
   },
@@ -28,11 +32,11 @@ function BrandOverview() {
       experiment="brand-theme"
       summary={{
         problem: '공통 디자인 토큰을 유지하면서 계정에 따라 색상·글꼴·배경을 바꿔야 합니다. 브랜드 값을 연결하는 방식에 따라 새 토큰을 추가할 때의 수정 범위와 브라우저 비용이 달라집니다.',
-        finding: <>공통 작업을 제외한 모달 테두리 토큰 수정은 CSS Modules와 styled-components에서 각각 <strong>1곳</strong>, Tailwind 계열에서 <strong>2곳</strong>이었습니다. styled-components는 새 브랜드마다 처음 적용할 때 CSS 규칙을 <strong>73개</strong> 추가했고, 초기 gzip 자산은 CSS Modules보다 <strong>13.3%</strong> 컸습니다.</>,
-        decision: '등록 브랜드의 토큰 값만 바꾸는 범위에서는 CSS Modules + React Context + CSS 변수를 기본으로 제안합니다. 빌드 시간 범위는 겹쳤고, 개발 중 색상 수정은 공통 Fast Refresh 경계 문제로 네 후보 모두 전체 새로고침을 일으켰습니다. Context 자체의 렌더링 비용은 따로 측정하지 않았습니다.',
+        finding: <>모달 테두리 토큰 수정은 CSS Modules와 styled-components에서 각각 <strong>1곳</strong>, Tailwind 계열에서 <strong>2곳</strong>이었습니다. 테마 값을 보간하는 styled-components는 새 브랜드마다 CSS 규칙을 <strong>73개</strong> 추가했고, CSS 변수로 넘기면 <strong>0개</strong>였습니다.</>,
+        decision: '등록 브랜드의 토큰 값만 바꾸는 범위에서는 CSS Modules + React Context + CSS 변수를 기본으로 제안합니다. 기존 styled-components 화면은 값을 CSS 변수로 넘기면 규칙 증가를 없앨 수 있습니다. 개발 중 색상 수정은 다섯 후보 모두 전체 새로고침을 일으켰습니다.',
       }}
     >
-      <ExperimentSection id="options" description="네 후보는 같은 브랜드 토큰을 받고, 상세 버튼의 강조색을 각자의 방식으로 연결합니다.">
+      <ExperimentSection id="options" description="다섯 후보는 같은 브랜드 토큰을 받고, 상세 버튼의 강조색을 각자의 방식으로 연결합니다.">
         <ExperimentOptions items={options} />
         <details className={styles.codeDisclosure}>
           <summary id="injection-title">공통 토큰 흐름과 후보별 주입 코드</summary>
@@ -106,6 +110,26 @@ return <section {...props} style={themeVariables(theme.tokens)}>
               </figure>
             </article>
 
+            <article className={styles.candidateCode} aria-labelledby="styled-variables-code">
+              <h3 id="styled-variables-code">styled-components + CSS variables</h3>
+              <p><code>ThemeProvider</code>는 그대로 두고, <code>Region</code>이 <code>attrs</code>로 <code>--ds-*</code> 변수를 영역에 설정합니다. 스타일 본문에는 테마 보간이 없어 브랜드가 바뀌어도 새 클래스가 생기지 않습니다.</p>
+              <figure className={styles.sourceExcerpt}>
+                <figcaption>변수 주입 <a href={repositoryPath('experiments/brand-theme/styled-css-variables/Region.ts#L9-L10')}>Region.ts</a></figcaption>
+                <pre><code>{`export const Region = styled.section
+  .attrs(({ theme }) => ({ style: themeVariables(theme) }))\`
+  /* … */
+\``}</code></pre>
+              </figure>
+              <figure className={styles.sourceExcerpt}>
+                <figcaption>상세 버튼이 변수를 읽는 스타일 <a href={repositoryPath('experiments/brand-theme/styled-css-variables/Region.ts#L82')}>Region.ts</a></figcaption>
+                <pre><code>{`.lab-action {
+  /* … */
+  background: var(--ds-color-accent);
+  color: var(--ds-color-on-accent);
+}`}</code></pre>
+              </figure>
+            </article>
+
             <article className={styles.candidateCode} aria-labelledby="tailwind-code">
               <h3 id="tailwind-code">Tailwind CSS</h3>
               <p><code>Scope</code>가 영역에 <code>--ds-*</code>를 설정합니다. <code>@theme inline</code>에 연결한 별칭으로 <code>bg-brand</code> 같은 정적 유틸리티를 사용합니다.</p>
@@ -170,7 +194,7 @@ return <section {...props} style={themeVariables(theme.tokens)}>
       >
         <div className={styles.changeNote}>
           <h3>새 모달 테두리 토큰을 연결한 경우</h3>
-          <p>공통 토큰 정의와 연결에 든 3개 파일의 6곳은 후보별 수정량 집계에서 제외했습니다. CSS Modules와 styled-components는 각 후보에서 테두리 선언 한 곳을 수정했습니다. Tailwind는 이름이 있는 유틸리티를 쓰기 위해 <code>tokens.css</code>의 별칭과 <code>classes.ts</code>의 모달 클래스를 수정했습니다. shadcn/ui는 같은 두 파일을 공유해 전용 코드 수정이 없었습니다.</p>
+          <p>공통 토큰 정의와 연결에 든 3개 파일의 6곳은 후보별 수정량 집계에서 제외했습니다. CSS Modules와 styled-components 두 방식은 각 후보에서 테두리 선언 한 곳을 수정했습니다. Tailwind는 이름이 있는 유틸리티를 쓰기 위해 <code>tokens.css</code>의 별칭과 <code>classes.ts</code>의 모달 클래스를 수정했습니다. shadcn/ui는 같은 두 파일을 공유해 전용 코드 수정이 없었습니다.</p>
         </div>
         <p>현재 테마를 읽는 React 컴포넌트는 <code>ThemeRegion</code> 한 곳입니다. CSS 변수를 영역에 직접 주입하면 읽어야 할 경로를 줄일 수 있습니다.</p>
         <h3 id="tradeoffs-title" className={styles.subheading}>후보별 장단점</h3>
@@ -186,6 +210,11 @@ return <section {...props} style={themeVariables(theme.tokens)}>
               <th scope="row">styled-components</th>
               <td>타입이 있는 테마와 props를 받아 스타일 규칙을 직접 계산할 수 있습니다.</td>
               <td>이 구현은 새 브랜드에서 CSS 규칙을 생성하며, 런타임 라이브러리가 JS 번들에 포함됩니다.</td>
+            </tr>
+            <tr>
+              <th scope="row">styled-components<br />+ CSS variables</th>
+              <td>기존 styled-components 코드와 컴포넌트 경계를 유지하면서 브랜드 전환에서 규칙을 만들지 않습니다. 테두리 토큰은 선언 한 곳을 수정했습니다.</td>
+              <td>styled-components 런타임이 번들에 남습니다. 스타일에서 테마 값을 props처럼 계산할 수 없어 변수 이름을 직접 관리합니다.</td>
             </tr>
             <tr>
               <th scope="row">Tailwind CSS</th>
@@ -215,13 +244,14 @@ return <section {...props} style={themeVariables(theme.tokens)}>
             </tr>
           </thead>
           <tbody>
-            <tr className={styles.selected}><th scope="row">CSS Modules<br />+ React Context</th><td>76,785 B</td><td>881 ms</td><td>36 ms</td><td>16.7 ms</td><td>0</td></tr>
-            <tr><th scope="row">styled-components</th><td>86,960 B</td><td>881 ms</td><td>46 ms</td><td>16.6 ms</td><td>73</td></tr>
-            <tr><th scope="row">Tailwind CSS</th><td>80,599 B</td><td>915 ms</td><td>56 ms</td><td>16.6 ms</td><td>0</td></tr>
-            <tr><th scope="row">shadcn/ui + Tailwind</th><td>94,830 B</td><td>944 ms</td><td>179 ms</td><td>166.8 ms</td><td>0</td></tr>
+            <tr className={styles.selected}><th scope="row">CSS Modules<br />+ React Context</th><td>77,558 B</td><td>170 ms</td><td>128 ms</td><td>16.6 ms</td><td>0</td></tr>
+            <tr><th scope="row">styled-components</th><td>87,713 B</td><td>162 ms</td><td>30 ms</td><td>16.7 ms</td><td>73</td></tr>
+            <tr><th scope="row">styled-components<br />+ CSS variables</th><td>87,723 B</td><td>162 ms</td><td>35 ms</td><td>16.7 ms</td><td>0</td></tr>
+            <tr><th scope="row">Tailwind CSS</th><td>81,219 B</td><td>168 ms</td><td>48 ms</td><td>16.7 ms</td><td>0</td></tr>
+            <tr><th scope="row">shadcn/ui + Tailwind</th><td>95,462 B</td><td>182 ms</td><td>160 ms</td><td>166.9 ms</td><td>0</td></tr>
           </tbody>
         </ExperimentTable>
-        <p className={styles.measurementNote}>2026-11-25 로컬 Chrome과 단일 페이지 Vite 빌드 측정입니다. 빌드 시간 범위는 서로 겹쳤습니다. 스타일 정착 시간은 글꼴과 버튼·페이지의 배경색이 목표 값에 도달할 때까지 잰 값입니다. Provider 자체 비용은 별도로 측정하지 않았으며, shadcn/ui 결과에는 버튼의 150 ms 색상 전환 효과가 포함됩니다.</p>
+        <p className={styles.measurementNote}>2026-11-26 macOS(Apple M2) · Node v24.18.0 · Chrome 158.0.8127.37에서 다섯 후보를 같은 조건으로 다시 잰 값입니다. 이전 Windows 측정은 결과 보고서에 따로 있습니다. Vite 빌드(7회)는 shadcn/ui를 뺀 네 후보의 범위가 겹쳤고, 개발 중 색상 수정(3회)은 측정마다 편차가 커 순위로 읽지 않습니다. 스타일 정착 시간은 글꼴과 버튼·페이지의 배경색이 목표 값에 도달할 때까지 잰 값입니다. Provider 자체 비용은 별도로 측정하지 않았으며, shadcn/ui 결과에는 버튼의 150 ms 색상 전환 효과가 포함됩니다.</p>
         <p className={styles.measurementNote}><a href={`${documentsFor('brand-theme').report}#브라우저와-빌드`}>브라우저 측정 기록</a> · <a href={brandBuildReport}>빌드·개발 반영·런타임 상세</a></p>
       </ExperimentSection>
     </ExperimentPage>
