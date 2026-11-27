@@ -15,6 +15,7 @@ export const experimentTitles = {
   'dashboard-refresh': { label: 'Dashboard auto refresh', title: 'Dashboard auto refresh' },
   'job-status': { label: 'Job status polling', title: 'Job status polling' },
   'jonbeo-msw': { label: 'Jonbeo MSW performance', title: 'Jonbeo MSW performance lab' },
+  'state-subscription': { label: 'State subscription and INP', title: 'State subscription and INP' },
 } as const
 
 export type Experiment = keyof typeof experimentTitles

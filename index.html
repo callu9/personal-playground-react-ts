@@ -35,6 +35,12 @@
           <span class="finding">워커 대기가 화면을 가렸습니다. 대기 제거 후 개발 서버에서 제목이 6.44초 → 0.34초에 나타났고, 로딩 후 INP 개선은 확인되지 않았습니다.</span>
           <span class="arrow" aria-hidden="true">↗</span>
         </a>
+        <a href="/experiments/state-subscription/">
+          <span class="card-title" lang="en">State subscription and INP</span>
+          <span class="problem">통화 단위를 바꿀 때 상태 구독 방식을 바꾸면 입력 반응이 얼마나 달라질까?</span>
+          <span class="finding">행 1,000개에서 단위 전환 INP는 네 구독 방식 모두 192~208 ms였고, 금액 셀만 구독하면 144~160 ms였습니다. 행 선택은 Zustand selector만 64 ms로 줄었습니다.</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
       </nav>
       <p class="documents"><a id="project-contents-link">프로젝트 문서 목차</a></p>
     </main>

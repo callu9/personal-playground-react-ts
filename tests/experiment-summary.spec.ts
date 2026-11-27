@@ -5,6 +5,7 @@ const experiments = [
   { id: 'dashboard-refresh', title: 'Dashboard auto refresh', issue: '최신 상태', evidence: '분/탭' },
   { id: 'job-status', title: 'Job status polling', issue: '요청 제한', evidence: '862' },
   { id: 'jonbeo-msw', title: 'Jonbeo MSW performance', issue: '워커', evidence: '6.44초' },
+  { id: 'state-subscription', title: 'State subscription and INP', issue: '통화', evidence: '192' },
 ] as const
 
 for (const { id, title, issue, evidence } of experiments) {
