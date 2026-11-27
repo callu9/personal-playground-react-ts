@@ -9,7 +9,9 @@
     "test": "playwright test",
     "measure:charts": "node scripts/measure-chart-loading.mjs",
     "measure": "node scripts/measure-theme.mjs",
+    "measure:state": "node scripts/measure-state-subscription.mjs",
     "measure:refresh": "node scripts/measure-dashboard-refresh.mjs",
+    "measure:job-status": "node scripts/measure-job-status.mjs",
     "measure:msw": "node scripts/measure-jonbeo-msw.mjs"
   },
   "dependencies": {
@@ -24,7 +26,8 @@
     "react-dom": "^19.3.1",
     "styled-components": "^6.7.0",
     "tailwindcss": "^4.3.5",
-    "web-vitals": "^6.2.3"
+    "web-vitals": "^6.2.3",
+    "zustand": "^5.1.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.65.1",

@@ -4,7 +4,7 @@ import { gzipSync } from 'node:zlib'
 import { chromium } from '@playwright/test'
 import { preview } from 'vite'
 
-const variants = ['css-modules', 'styled-components', 'tailwind', 'shadcn']
+const variants = ['css-modules', 'styled-components', 'styled-css-variables', 'tailwind', 'shadcn']
 const switchTargets = [
   { brand: 'signal', font: 'Verdana, sans-serif', color: 'rgb(68, 69, 180)', pageColor: 'rgb(237, 240, 255)' },
   { brand: 'grove', font: 'Georgia, serif', color: 'rgb(24, 102, 73)', pageColor: 'rgb(245, 247, 246)' },

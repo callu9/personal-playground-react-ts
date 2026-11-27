@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url'
 
 const script = fileURLToPath(import.meta.url)
 const root = dirname(dirname(script))
-const variants = ['css-modules', 'styled-components', 'tailwind', 'shadcn']
+const variants = ['css-modules', 'styled-components', 'styled-css-variables', 'tailwind', 'shadcn']
 
 if (process.argv[2]) {
   const variant = process.argv[2]

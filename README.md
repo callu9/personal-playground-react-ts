@@ -50,6 +50,8 @@ npm run dev -- --host 127.0.0.1 --port 5173 --strictPort
 | 브랜드 테마 | [Brand style runtime](http://127.0.0.1:5173/experiments/brand-theme/#playground) | [설계·실행·화면 캡처](docs/experiments/brand-theme/README.md) | [후보 비교와 추천](docs/experiments/brand-theme/results.md) |
 | 차트 지연 로딩 | [Chart loading](http://127.0.0.1:5173/experiments/chart-loading/#playground) | [로딩 전략과 측정 방법](docs/experiments/chart-loading/README.md) | [전략별 LCP·입력·힙과 선택 기준](docs/experiments/chart-loading/results.md) |
 | 대시보드 실시간 갱신 | [Dashboard auto refresh](http://127.0.0.1:5173/experiments/dashboard-refresh/#playground) | [조건과 계측 방법](docs/experiments/dashboard-refresh/README.md) | [폴링·SSE 비교와 사용 목적별 선택](docs/experiments/dashboard-refresh/results.md) |
+| 작업 상태 조회 | [Job status polling](http://127.0.0.1:5173/experiments/job-status/#playground) | [조건과 재현 방법](docs/experiments/job-status/README.md) | [폴링 충분 조건과 SSE 전환 기준](docs/experiments/job-status/results.md) |
 | Jonbeo MSW | [Jonbeo MSW performance](http://127.0.0.1:5173/experiments/jonbeo-msw/#playground) | [Playground·원본 재현 방법](docs/experiments/jonbeo-msw/README.md) | [코드 분석과 Chrome 측정](docs/experiments/jonbeo-msw/results.md) |
+| 전역 상태 구독과 입력 반응 | [State subscription and INP](http://127.0.0.1:5173/experiments/state-subscription/#playground) | [비교 설계와 재현 방법](docs/experiments/state-subscription/README.md) | [구독 방식·위치별 INP와 선택 기준](docs/experiments/state-subscription/results.md) |
 
 [실험 문서 목차](docs/experiments/README.md)에는 실험의 핵심 화면과 측정 원본이 연결돼 있습니다.

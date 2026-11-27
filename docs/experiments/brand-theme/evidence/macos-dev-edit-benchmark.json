@@ -1,0 +1,112 @@
+{
+  "chrome": "158.0.8127.37",
+  "sharedFiles": 1,
+  "sharedEdits": 1,
+  "samples": [
+    {
+      "variant": "css-modules",
+      "round": 1,
+      "visibleMs": 128,
+      "reloads": 1,
+      "duplicateRootWarnings": 0
+    },
+    {
+      "variant": "styled-components",
+      "round": 1,
+      "visibleMs": 30,
+      "reloads": 1,
+      "duplicateRootWarnings": 1
+    },
+    {
+      "variant": "styled-css-variables",
+      "round": 1,
+      "visibleMs": 35,
+      "reloads": 1,
+      "duplicateRootWarnings": 1
+    },
+    {
+      "variant": "tailwind",
+      "round": 1,
+      "visibleMs": 121,
+      "reloads": 1,
+      "duplicateRootWarnings": 0
+    },
+    {
+      "variant": "shadcn",
+      "round": 1,
+      "visibleMs": 156,
+      "reloads": 1,
+      "duplicateRootWarnings": 0
+    },
+    {
+      "variant": "styled-components",
+      "round": 2,
+      "visibleMs": 27,
+      "reloads": 1,
+      "duplicateRootWarnings": 1
+    },
+    {
+      "variant": "styled-css-variables",
+      "round": 2,
+      "visibleMs": 46,
+      "reloads": 1,
+      "duplicateRootWarnings": 1
+    },
+    {
+      "variant": "tailwind",
+      "round": 2,
+      "visibleMs": 46,
+      "reloads": 1,
+      "duplicateRootWarnings": 0
+    },
+    {
+      "variant": "shadcn",
+      "round": 2,
+      "visibleMs": 160,
+      "reloads": 1,
+      "duplicateRootWarnings": 0
+    },
+    {
+      "variant": "css-modules",
+      "round": 2,
+      "visibleMs": 46,
+      "reloads": 1,
+      "duplicateRootWarnings": 0
+    },
+    {
+      "variant": "styled-css-variables",
+      "round": 3,
+      "visibleMs": 31,
+      "reloads": 1,
+      "duplicateRootWarnings": 1
+    },
+    {
+      "variant": "tailwind",
+      "round": 3,
+      "visibleMs": 48,
+      "reloads": 1,
+      "duplicateRootWarnings": 0
+    },
+    {
+      "variant": "shadcn",
+      "round": 3,
+      "visibleMs": 260,
+      "reloads": 1,
+      "duplicateRootWarnings": 0
+    },
+    {
+      "variant": "css-modules",
+      "round": 3,
+      "visibleMs": 141,
+      "reloads": 1,
+      "duplicateRootWarnings": 0
+    },
+    {
+      "variant": "styled-components",
+      "round": 3,
+      "visibleMs": 70,
+      "reloads": 1,
+      "duplicateRootWarnings": 1
+    }
+  ]
+}
